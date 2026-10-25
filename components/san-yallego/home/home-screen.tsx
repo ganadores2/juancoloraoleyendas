@@ -1,6 +1,5 @@
 'use client'
 
-import { Map as MapIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useSound, useWhisper } from '@/hooks/use-san-yallego'
@@ -36,14 +35,6 @@ export function HomeScreen() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,oklch(0_0_0/0.85)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 to-transparent" />
       </div>
-
-      <Link
-        href="/mapa"
-        aria-label="Abrir el mapa de San Yallego"
-        className="absolute left-4 top-4 z-10 p-2 text-foreground/60 transition-colors hover:text-gold md:left-6 md:top-6"
-      >
-        <MapIcon className="size-5" aria-hidden />
-      </Link>
 
       <div className="relative z-10 flex flex-col items-center gap-10">
         <header className="animate-sy-fade-in flex flex-col items-center gap-3">
