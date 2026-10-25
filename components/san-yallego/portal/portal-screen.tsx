@@ -14,9 +14,9 @@ export function PortalScreen() {
   const [phase, setPhase] = useState<Phase>('transicion')
 
   const toAerial = useCallback(() => setPhase('recorrido'), [])
-  const toMap = useCallback(() => {
+  const toEntranceOracle = useCallback(() => {
     crossPortal()
-    router.push('/mapa')
+    router.push('/sitio/entrada')
   }, [crossPortal, router])
 
   return (
@@ -34,7 +34,7 @@ export function PortalScreen() {
           key="recorrido"
           src={ASSETS.video.recorridoAereo}
           label="Recorrido aéreo por San Yallego"
-          onEnded={toMap}
+          onEnded={toEntranceOracle}
         />
       )}
     </main>
