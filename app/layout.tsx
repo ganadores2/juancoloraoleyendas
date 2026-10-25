@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Cinzel, Cormorant_Garamond } from 'next/font/google'
 import { SoundToggle } from '@/components/san-yallego/sound-toggle'
+import { TravelerMapNav } from '@/components/san-yallego/traveler-map-nav'
 import './globals.css'
 
 const cinzel = Cinzel({
@@ -51,6 +52,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased">
         {children}
+        <TravelerMapNav />
         <SoundToggle />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
