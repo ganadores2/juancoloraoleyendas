@@ -67,15 +67,18 @@ export function CinematicVideo({ src, onEnded, label, showSkip = true }: Cinemat
         />
       )}
 
-      {status === 'blocked' && (
-        <button
-          type="button"
-          onClick={play}
-          className="absolute inset-0 m-auto flex size-20 items-center justify-center rounded-full border border-gold/50 text-gold transition-colors hover:bg-gold/10"
-          aria-label={`Reproducir: ${label}`}
-        >
-          <Play className="size-7 translate-x-0.5" aria-hidden />
-        </button>
+      {(status === 'blocked' || status === 'loading') && (
+        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+          <button
+            type="button"
+            onClick={play}
+            className="pointer-events-auto flex flex-col items-center gap-3 rounded-xl border border-gold/50 bg-black/75 px-7 py-5 font-display text-xs tracking-[0.2em] text-gold backdrop-blur-sm hover:bg-black/90"
+            aria-label={`Iniciar reproducción: ${label}`}
+          >
+            <Play className="size-9" aria-hidden />
+            <span>REPRODUCIR RECORRIDO</span>
+          </button>
+        </div>
       )}
 
       {status === 'missing' && (
