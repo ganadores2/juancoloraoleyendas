@@ -20,9 +20,9 @@ const firstChapter = CHAPTERS.find((chapter) => chapter.siteId === site.id)!
 
 type Phase = 'descenso' | 'llegada' | 'oraculo'
 
-export function CasaJuanitoScreen() {
+export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boolean } = {}) {
   const { progress, hydrated, visitSite } = useProgress()
-  const [phase, setPhase] = useState<Phase>('descenso')
+  const [phase, setPhase] = useState<Phase>(skipDescenso ? 'llegada' : 'descenso')
   const unlocked = hydrated && isSiteUnlocked(site, progress)
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { CasaJuanitoScreen } from '@/components/san-yallego/casa/casa-juanito-screen'
 import { OraculoEntrada } from '@/components/san-yallego/oraculo/oraculo-entrada'
+import { SiteJourney } from '@/components/san-yallego/site-journey'
 import { SealedSite } from '@/components/san-yallego/sealed-site'
 import { getSite, siteLabel, SITES } from '@/lib/san-yallego/sites'
 
@@ -22,9 +23,9 @@ export default async function Page({ params }: Props) {
 
   switch (site.experience) {
     case 'oraculo-entrada':
-      return <OraculoEntrada />
+      return <SiteJourney siteId={site.id}><OraculoEntrada /></SiteJourney>
     case 'casa-de-juanito':
-      return <CasaJuanitoScreen />
+      return <SiteJourney siteId={site.id}><CasaJuanitoScreen skipDescenso /></SiteJourney>
     case 'sellado':
       return <SealedSite title={siteLabel(site)} />
   }
