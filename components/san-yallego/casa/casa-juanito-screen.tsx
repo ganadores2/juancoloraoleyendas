@@ -39,11 +39,37 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
       <h1 className="sr-only">{siteLabel(site)}</h1>
 
       {phase === 'hacia-oraculo' ? (
-        <CinematicVideo
-          src={ASSETS.video.oraculos['casa-de-juanito']}
-          label="Camino cinematográfico hacia el Oráculo de Juanito"
-          onEnded={() => setPhase('oraculo')}
-        />
+        <div className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-black">
+          <video
+            key="camino-oraculo-juanito"
+            src={ASSETS.video.oraculos['casa-de-juanito']}
+            className="min-h-0 w-full flex-1 object-contain"
+            autoPlay
+            muted
+            controls
+            playsInline
+            preload="auto"
+            onEnded={() => setPhase('oraculo')}
+            aria-label="Video del camino hacia el Oráculo de Juanito"
+          />
+          <div className="flex flex-wrap items-center justify-center gap-5 bg-black px-4 py-4 text-center">
+            <a
+              href={ASSETS.video.oraculos['casa-de-juanito']}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={ritualButton('secondary')}
+            >
+              Abrir video directamente
+            </a>
+            <button
+              type="button"
+              onClick={() => setPhase('oraculo')}
+              className={ritualButton('quiet')}
+            >
+              Continuar al capítulo 1
+            </button>
+          </div>
+        </div>
       ) : phase === 'descenso' ? (
         <CinematicVideo
           src={ASSETS.video.descensoCasaJuanito}
