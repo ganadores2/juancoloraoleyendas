@@ -18,7 +18,7 @@ const site = getSite('casa-de-juanito')!
 const oracle = ORACLES['oraculo-casa-de-juanito']
 const firstChapter = CHAPTERS.find((chapter) => chapter.siteId === site.id)!
 
-type Phase = 'descenso' | 'llegada' | 'oraculo'
+type Phase = 'descenso' | 'llegada' | 'hacia-oraculo' | 'oraculo'
 
 export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boolean } = {}) {
   const { progress, hydrated, visitSite } = useProgress()
@@ -38,7 +38,13 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
     <main className="relative min-h-dvh">
       <h1 className="sr-only">{siteLabel(site)}</h1>
 
-      {phase === 'descenso' ? (
+      {phase === 'hacia-oraculo' ? (
+        <CinematicVideo
+          src={ASSETS.video.oraculos['casa-de-juanito']}
+          label="Camino cinematográfico hacia el Oráculo de Juanito"
+          onEnded={() => setPhase('oraculo')}
+        />
+      ) : phase === 'descenso' ? (
         <CinematicVideo
           src={ASSETS.video.descensoCasaJuanito}
           label="Descenso a la Casa donde nació Juanito Colorao"
@@ -60,7 +66,7 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
           <h2 className="text-balance font-display text-3xl tracking-[0.1em] text-foreground text-glow md:text-5xl">
             {siteLabel(site)}
           </h2>
-          <button type="button" onClick={() => setPhase('oraculo')} className={ritualButton('primary', 'mt-4')}>
+          <button type="button" onClick={() => setPhase('hacia-oraculo')} className={ritualButton('primary', 'mt-4')}>
             Avanzar hacia el Oráculo
           </button>
         </div>
@@ -75,7 +81,7 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
         </div>
       )}
 
-      {phase !== 'descenso' && (
+      {phase !== 'descenso' && phase !== 'hacia-oraculo' && (
         <nav className="fixed left-4 top-4 z-40 md:left-6 md:top-6">
           <Link href="/mapa" className={ritualButton('quiet', 'px-0')}>
             Volver al mapa
