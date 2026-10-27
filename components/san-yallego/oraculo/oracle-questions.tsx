@@ -7,9 +7,10 @@ interface OracleQuestionsProps {
   questions: string[]
   closingLine?: string
   onAnswer: (index: number, answer: string) => void
+  onDiscover?: () => void
 }
 
-export function OracleQuestions({ questions, closingLine, onAnswer }: OracleQuestionsProps) {
+export function OracleQuestions({ questions, closingLine, onAnswer, onDiscover }: OracleQuestionsProps) {
   const [index, setIndex] = useState(0)
   const [draft, setDraft] = useState('')
   const finished = index >= questions.length
@@ -27,11 +28,18 @@ export function OracleQuestions({ questions, closingLine, onAnswer }: OracleQues
     >
       <div className="pointer-events-auto mx-auto flex max-w-xl flex-col items-center gap-5 text-center">
         {finished ? (
-          closingLine && (
-            <p key="cierre" className="animate-sy-fade-in text-balance text-2xl italic text-foreground/90 text-glow md:text-3xl">
-              {closingLine}
-            </p>
-          )
+          <div className="flex flex-col items-center gap-6">
+            {closingLine && (
+              <p key="cierre" className="animate-sy-fade-in text-balance text-2xl italic text-foreground/90 text-glow md:text-3xl">
+                {closingLine}
+              </p>
+            )}
+            {onDiscover && (
+              <button type="button" onClick={onDiscover} className={ritualButton('primary')}>
+                Tocar la piedra
+              </button>
+            )}
+          </div>
         ) : (
           <form
             key={index}

@@ -60,6 +60,7 @@ export function OraculoEntrada() {
           questions={oracle.questions}
           closingLine={oracle.closingLine}
           onAnswer={(index, answer) => answerOracle(oracle.id, index, answer)}
+          onDiscover={touchRing}
         />
       )}
 
