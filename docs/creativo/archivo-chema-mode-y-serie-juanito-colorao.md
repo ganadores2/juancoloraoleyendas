@@ -269,3 +269,18 @@
 - Diseñar un calendario realista y probar calidad del piloto antes de comprometer 33 episodios.
 
 **Importante:** Este es un documento de ideas conservadas para referencia futura, no una modificación funcional del sitio web ni una instrucción para publicar contenido sin revisión editorial.
+
+
+## 7. Archivo del Viajero y continuidad visual de los personajes
+
+**Orientaciones del autor (28 OCT 2026, conversación sobre la galería de personajes):**
+
+- Incorporar un **Archivo del Viajero** independiente, accesible mediante un enlace discreto en el mapa, sin sumar un undécimo sitio mítico ni cambiar los Oráculos.
+- Dos secciones públicas previstas: **Personajes** y **Glosario**, con imágenes fijas y descripciones breves sin revelaciones anticipadas. Más adelante, cuando exista la serie animada, añadir enlaces oficiales para verla en YouTube (no inventar URLs antes de publicarse).
+- Aprovechar las láminas existentes de la **Biblia de Personajes** y **Evolución de Personajes**: ofrecen edades y cambios físicos hasta aproximadamente los 50 años. El autor considera los retratos buenos, aunque quiere evaluar si son demasiado realistas; podrían funcionar con el estilo actual.
+- **ÚNICA DISCREPANCIA VISUAL DETECTADA POR EL AUTOR:** el Juan Colorao **adulto** de algunas imágenes de evolución no coincide del todo con el Juan Colorao adulto que aparece en las imágenes y videos de **entrada al sitio web**.
+- **Criterio editorial de continuidad propuesto:** tomar la imagen que aparece en la bienvenida/entrada como referencia principal para armonizar la versión adulta de Juan Colorao; conservar las versiones infantiles/juveniles que ya funcionan y hacer que la evolución represente a la misma persona. Antes de fijar arte final, el autor deberá aprobar explícitamente la correspondencia visual. No modificar videos ya publicados por esta observación.
+- **Separar identidades:** Juan Colorao adulto es distinto del Abuelo Pancho y de Don Chema (CHEMA MODE). Mantener sus nombres y roles diferenciados.
+- **Conservar el canon:** la Biblia Maestra V3.0 aclara que las láminas generadas son referentes de diseño, no imágenes canónicas definitivas sin la aprobación del autor. La galería pública deberá mostrar información apta para visitantes y guardar datos reservados fuera de la web pública.
+
+**Pendiente:** decidir cuál fotograma o retrato de entrada se aprobará como referencia exacta de Juan adulto; seleccionar y aprobar imágenes individuales por personaje y edad; crear la galería con una misma identidad visual para la futura animación.
