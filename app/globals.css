@@ -215,3 +215,57 @@
     animation-iteration-count: 1;
   }
 }
+
+/* El Pase de San Yallego debe caber en los teléfonos horizontales
+   sin perder sus botones. Si el navegador deja menos espacio, se desplaza. */
+@media (orientation: landscape) and (max-height: 600px) {
+  .sy-key-overlay {
+    padding-block: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-bottom));
+  }
+  .sy-key-layout {
+    display: grid;
+    grid-template-columns: minmax(80px, 30%) minmax(0, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: clamp(10px, 3vw, 32px);
+    padding-block: 4px;
+  }
+  .sy-key-art {
+    max-width: 100%;
+  }
+  .sy-key-image {
+    max-height: min(48dvh, 150px);
+    width: auto;
+  }
+  .sy-key-symbol {
+    width: min(28dvh, 112px);
+    height: min(28dvh, 112px);
+  }
+  .sy-key-content {
+    width: 100%;
+    gap: 8px;
+  }
+  .sy-key-title {
+    font-size: clamp(15px, 2.5vw, 23px);
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+  }
+  .sy-key-pass {
+    padding-block: 7px;
+  }
+  .sy-key-pass p {
+    font-size: 11px;
+    line-height: 1.3;
+    letter-spacing: 0.07em;
+  }
+  .sy-key-actions {
+    gap: 6px;
+  }
+  .sy-key-actions a {
+    min-height: 38px;
+    padding: 8px 10px;
+    font-size: 10px;
+    line-height: 1.3;
+    letter-spacing: 0.07em;
+  }
+}

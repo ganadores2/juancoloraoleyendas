@@ -15,7 +15,7 @@ function KeyArt() {
   if (missing) {
     return (
       <KeyRound
-        className="size-28 -rotate-45 text-copper [filter:drop-shadow(0_0_14px_var(--gold))] md:size-36"
+        className="sy-key-symbol size-20 -rotate-45 text-copper [filter:drop-shadow(0_0_14px_var(--gold))] md:size-32"
         strokeWidth={1.25}
         aria-hidden
       />
@@ -30,7 +30,7 @@ function KeyArt() {
       src={ASSETS.images.llave}
       alt=""
       onError={() => setMissing(true)}
-      className="h-40 w-auto object-contain md:h-56"
+      className="sy-key-image h-28 w-auto max-w-full object-contain md:h-48"
       draggable={false}
     />
   )
@@ -38,30 +38,32 @@ function KeyArt() {
 
 export function KeyReveal({ justFound }: KeyRevealProps) {
   return (
-    <div className="fixed inset-0 z-30 flex flex-col items-center justify-center gap-8 bg-black/60 px-6 text-center backdrop-blur-[2px]">
-      <div className={justFound ? 'animate-sy-key-rise' : 'animate-sy-fade-in'}>
-        <KeyArt />
-      </div>
+    <div className="sy-key-overlay fixed inset-0 z-30 overflow-y-auto overscroll-contain bg-black/70 px-4 py-4 text-center backdrop-blur-[2px]">
+      <div className="sy-key-layout mx-auto flex min-h-full w-full max-w-4xl flex-col items-center justify-center gap-5 py-3">
+        <div className={`sy-key-art ${justFound ? 'animate-sy-key-rise' : 'animate-sy-fade-in'}`}>
+          <KeyArt />
+        </div>
 
-      <div className="animate-sy-fade-in flex flex-col items-center gap-6 [animation-delay:1.6s]">
-        <h2 className="text-balance font-display text-2xl tracking-[0.12em] text-gold text-glow md:text-4xl">
+        <div className="sy-key-content animate-sy-fade-in flex min-w-0 flex-col items-center gap-4 [animation-delay:1.6s]">
+        <h2 className="sy-key-title text-balance font-display text-xl tracking-[0.08em] text-gold text-glow md:text-3xl">
           Has encontrado la Llave de San Yallego.
         </h2>
 
-        <div className="flex flex-col items-center gap-1 border-y border-gold/30 px-8 py-4">
-          <p className="font-display text-xs tracking-[0.45em] text-foreground md:text-sm">
+        <div className="sy-key-pass flex flex-col items-center gap-1 border-y border-gold/30 px-3 py-3 sm:px-8">
+          <p className="font-display text-[11px] tracking-[0.2em] text-foreground md:text-sm md:tracking-[0.35em]">
             PASE TEMPORAL DE SAN YALLEGO
           </p>
           <p className="text-lg italic text-gold/80">No expira.</p>
         </div>
 
-        <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-6">
-          <Link href="/sitio/casa-de-juanito" className={ritualButton('primary')}>
+        <div className="sy-key-actions flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+          <Link href="/sitio/casa-de-juanito" className={ritualButton('primary', 'max-w-full px-4 py-3 text-[11px] tracking-[0.15em] sm:px-6')}>
             Ir a la Casa de Juanito
           </Link>
-          <Link href="/mapa" className={ritualButton('secondary')}>
+          <Link href="/mapa" className={ritualButton('secondary', 'px-4 py-3 tracking-[0.16em]')}>
             Volver al mapa
           </Link>
+        </div>
         </div>
       </div>
     </div>
