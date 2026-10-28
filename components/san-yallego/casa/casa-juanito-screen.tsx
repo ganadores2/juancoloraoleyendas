@@ -10,6 +10,7 @@ import { isSiteUnlocked } from '@/lib/san-yallego/progress'
 import { getSite, siteLabel } from '@/lib/san-yallego/sites'
 import { CinematicImage } from '../cinematic-image'
 import { CinematicVideo } from '../cinematic-video'
+import { JuanitoFlightVideo } from '../juanito-flight-video'
 import { ritualButton } from '../ritual'
 import { SealedSite } from '../sealed-site'
 import { Stage } from '../stage'
@@ -39,34 +40,12 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
       <h1 className="sr-only">{siteLabel(site)}</h1>
 
       {phase === 'hacia-oraculo' ? (
-        <div className="fixed inset-0 z-30 flex flex-col items-center justify-center bg-black">
-          <video
-            key="camino-oraculo-juanito"
-            src={ASSETS.video.oraculos['casa-de-juanito']}
-            className="min-h-0 w-full flex-1 object-contain bg-black"
-            autoPlay
-            muted
-            controls
-            playsInline
-            preload="auto"
-            onEnded={() => setPhase('oraculo')}
-            aria-label="Video del camino hacia el Oráculo de Juanito"
-          />
-          <div className="flex flex-wrap items-center justify-center gap-3 border-t border-white/10 bg-black/85 px-4 py-2 text-center">
-            <details className="text-xs text-foreground/65">
-              <summary className="cursor-pointer select-none py-2 hover:text-gold">Opciones de reproducción</summary>
-              <a href={ASSETS.video.oraculos['casa-de-juanito']} target="_blank" rel="noopener noreferrer"
-                className="block pb-2 text-gold underline underline-offset-4">Abrir video directamente</a>
-            </details>
-            <button
-              type="button"
-              onClick={() => setPhase('oraculo')}
-              className={ritualButton('quiet')}
-            >
-              Continuar al capítulo 1
-            </button>
-          </div>
-        </div>
+        <JuanitoFlightVideo
+          src={ASSETS.video.oraculos['casa-de-juanito']}
+          label="Camino hacia el Oráculo de Juanito"
+          nextLabel="Continuar al capítulo 1"
+          onEnded={() => setPhase('oraculo')}
+        />
       ) : phase === 'descenso' ? (
         <CinematicVideo
           src={ASSETS.video.descensoCasaJuanito}

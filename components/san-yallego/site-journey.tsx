@@ -7,6 +7,7 @@ import { ASSETS } from '@/lib/san-yallego/assets'
 import { isSiteUnlocked } from '@/lib/san-yallego/progress'
 import { getSite, siteLabel, type SiteId } from '@/lib/san-yallego/sites'
 import { CinematicVideo } from './cinematic-video'
+import { JuanitoFlightVideo } from './juanito-flight-video'
 import { ritualButton } from './ritual'
 import { SealedSite } from './sealed-site'
 
@@ -18,7 +19,6 @@ type Phase = 'inicio' | 'descenso' | 'hacia-oraculo' | 'destino'
 export function SiteJourney({ siteId, children }: { siteId: SiteId; children: ReactNode }) {
   const { progress, hydrated } = useProgress()
   const [phase, setPhase] = useState<Phase>(siteId === 'casa-de-juanito' ? 'inicio' : 'descenso')
-  const [descentError, setDescentError] = useState(false)
   const toOracle = useCallback(() => setPhase(siteId === 'casa-de-juanito' ? 'destino' : 'hacia-oraculo'), [siteId])
   const arrive = useCallback(() => setPhase('destino'), [])
   const site = getSite(siteId)
@@ -47,41 +47,13 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
     </main>
   )
 
-  // Para Juanito usamos el mismo reproductor nativo que ya funciona en su segundo video.
-  // No avanzamos al oráculo hasta que este primer descenso termine o el visitante pulse continuar.
   if (siteId === 'casa-de-juanito' && phase === 'descenso') return (
-    <main className="fixed inset-0 flex flex-col items-center justify-center bg-black">
-      <h1 className="sr-only">Descenso a la Casa de Juanito Colorao</h1>
-      <video
-        key="descenso-casa-juanito"
-        src={ASSETS.video.descensos['casa-de-juanito']}
-        className="min-h-0 w-full flex-1 object-contain bg-black"
-        autoPlay
-        muted
-        playsInline
-        controls
-        preload="auto"
-        onEnded={toOracle}
-        onError={() => setDescentError(true)}
-        onPlaying={() => setDescentError(false)}
-        aria-label="Vuelo desde el mapa hasta la Casa de Juanito"
-      />
-      {descentError && (
-        <p role="alert" className="px-4 pt-3 text-center text-sm text-amber-200">
-          El navegador no pudo reproducir el descenso. Abre el archivo directamente para comprobar si carga o si necesita un formato compatible.
-        </p>
-      )}
-      <div className="flex flex-wrap items-center justify-center gap-3 border-t border-white/10 bg-black/85 px-4 py-2 text-center">
-        <details className="group text-xs text-foreground/65">
-          <summary className="cursor-pointer select-none py-2 hover:text-gold">Opciones de reproducción</summary>
-          <a href={ASSETS.video.descensos['casa-de-juanito']} target="_blank" rel="noopener noreferrer"
-            className="block pb-2 text-gold underline underline-offset-4">Abrir descenso directamente</a>
-        </details>
-        <button type="button" onClick={toOracle} className={ritualButton('quiet')}>
-          Continuar después del vuelo
-        </button>
-      </div>
-    </main>
+    <JuanitoFlightVideo
+      src={ASSETS.video.descensos['casa-de-juanito']}
+      label="Descenso a la Casa de Juanito Colorao"
+      nextLabel="Continuar a la casa"
+      onEnded={toOracle}
+    />
   )
 
   const isDescent = phase === 'descenso'
