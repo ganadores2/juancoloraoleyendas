@@ -14,6 +14,7 @@ export const ASSETS = {
   },
   video: {
     bienvenida: '/assets/video/bienvenida-juan-colorao.mp4',
+    bienvenidaMicrofono: '/assets/video/bienvenida-microfono-juan-colorao.mp4',
     portal: '/assets/video/portal-transicion.mp4',
     recorridoAereo: '/assets/video/recorrido-aereo-san-yallego.mp4',
     descensoCasaJuanito: '/assets/video/descenso/2-descenso-casa-juanito.mp4',

@@ -7,7 +7,7 @@ import { ritualButton } from '../ritual'
  * el mapa, los vuelos y el Oráculo de la Entrada.
  * Las películas de bienvenida preliminares esperan sus archivos definitivos.
  */
-export function HomeScreen() {
+export function HomeScreen({ introReady = false }: { introReady?: boolean }) {
   return (
     <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 py-12 text-center">
       <div className="absolute inset-0" aria-hidden>
@@ -34,11 +34,13 @@ export function HomeScreen() {
         </div>
 
         <div className="animate-sy-fade-in flex flex-col items-center gap-4 [animation-delay:900ms]">
-          <Link href="/mapa" className={ritualButton('primary', 'max-w-full px-6 py-4 text-xs tracking-[0.2em] sm:px-8 sm:text-sm')}>
+          <Link href={introReady ? "/bienvenida" : "/mapa"} className={ritualButton('primary', 'max-w-full px-6 py-4 text-xs tracking-[0.2em] sm:px-8 sm:text-sm')}>
             Comenzar la aventura
           </Link>
           <p className="max-w-sm text-balance text-sm italic text-foreground/70">
-            Tu primer camino comienza en el mapa. Mira con atención: San Yallego tiene sus propias señales.
+            {introReady
+              ? 'Juan Colorao te dará la bienvenida. Escucha su invitación y descubre por dónde comenzar.'
+              : 'Tu primer camino comienza en el mapa. Mira con atención: San Yallego tiene sus propias señales.'}
           </p>
         </div>
       </div>
