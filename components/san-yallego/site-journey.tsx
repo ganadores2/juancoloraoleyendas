@@ -10,14 +10,14 @@ import { CinematicVideo } from './cinematic-video'
 import { ritualButton } from './ritual'
 import { SealedSite } from './sealed-site'
 
-type Phase = 'descenso' | 'hacia-oraculo' | 'destino'
+type Phase = 'inicio' | 'descenso' | 'hacia-oraculo' | 'destino'
 
 /** Reproduce los dos tramos antes de entregar el control a la experiencia del sitio.
  * No abre lugares sellados ni modifica el progreso del visitante.
  */
 export function SiteJourney({ siteId, children }: { siteId: SiteId; children: ReactNode }) {
   const { progress, hydrated } = useProgress()
-  const [phase, setPhase] = useState<Phase>('descenso')
+  const [phase, setPhase] = useState<Phase>(siteId === 'casa-de-juanito' ? 'inicio' : 'descenso')
   const toOracle = useCallback(() => setPhase(siteId === 'casa-de-juanito' ? 'destino' : 'hacia-oraculo'), [siteId])
   const arrive = useCallback(() => setPhase('destino'), [])
   const site = getSite(siteId)
@@ -27,6 +27,24 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
   if (!isSiteUnlocked(site, progress)) return <SealedSite title={siteLabel(site)} />
 
   if (phase === 'destino') return <>{children}</>
+
+  // Juanito: el visitante inicia voluntariamente el primer vuelo.
+  if (phase === 'inicio') return (
+    <main className="relative flex min-h-dvh items-center justify-center overflow-hidden bg-black">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={ASSETS.images.mapa} alt="Mapa de San Yallego" className="absolute inset-0 size-full object-cover opacity-75" />
+      <div className="absolute inset-0 bg-black/35" />
+      <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center">
+        <h1 className="font-display text-2xl tracking-[0.12em] text-foreground text-glow md:text-4xl">
+          La casa de Juanito Colorao
+        </h1>
+        <button type="button" onClick={() => setPhase('descenso')} className={ritualButton('primary')}>
+          Iniciar descenso a la casa
+        </button>
+        <Link href="/mapa" className={ritualButton('quiet')}>Volver al mapa</Link>
+      </div>
+    </main>
+  )
 
   const isDescent = phase === 'descenso'
   const src = isDescent ? ASSETS.video.descensos[siteId] : ASSETS.video.oraculos[siteId]
