@@ -8,10 +8,12 @@ type Props = {
   label: string
   nextLabel: string
   onEnded: () => void
+  /** 1 = velocidad original; valores menores dan más tiempo para contemplar el paisaje. */
+  playbackRate?: number
 }
 
 /** Pantalla limpia por defecto, controles nativos disponibles a petición. */
-export function JuanitoFlightVideo({ src, label, nextLabel, onEnded }: Props) {
+export function JuanitoFlightVideo({ src, label, nextLabel, onEnded, playbackRate = 1 }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [playing, setPlaying] = useState(false)
   const [showControls, setShowControls] = useState(false)
@@ -31,8 +33,9 @@ export function JuanitoFlightVideo({ src, label, nextLabel, onEnded }: Props) {
   }, [])
 
   useEffect(() => {
+    if (videoRef.current) videoRef.current.playbackRate = playbackRate
     void attemptPlay()
-  }, [attemptPlay])
+  }, [attemptPlay, playbackRate])
 
   const togglePlayback = () => {
     const video = videoRef.current
@@ -52,6 +55,7 @@ export function JuanitoFlightVideo({ src, label, nextLabel, onEnded }: Props) {
         playsInline
         preload="auto"
         controls={showControls}
+        onLoadedMetadata={(event) => { event.currentTarget.playbackRate = playbackRate }}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onEnded={onEnded}

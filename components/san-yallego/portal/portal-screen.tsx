@@ -37,6 +37,7 @@ export function PortalScreen() {
           key="sobrevuelo-san-yallego"
           src={ASSETS.video.recorridoAereo}
           label="Recorrido aéreo por San Yallego"
+          playbackRate={0.85}
           nextLabel="Ir a la Entrada"
           onEnded={toEntranceOracle}
         />
