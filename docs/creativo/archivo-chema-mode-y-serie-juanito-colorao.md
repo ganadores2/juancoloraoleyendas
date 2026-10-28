@@ -284,3 +284,77 @@
 - **Conservar el canon:** la Biblia Maestra V3.0 aclara que las láminas generadas son referentes de diseño, no imágenes canónicas definitivas sin la aprobación del autor. La galería pública deberá mostrar información apta para visitantes y guardar datos reservados fuera de la web pública.
 
 **Pendiente:** decidir cuál fotograma o retrato de entrada se aprobará como referencia exacta de Juan adulto; seleccionar y aprobar imágenes individuales por personaje y edad; crear la galería con una misma identidad visual para la futura animación.
+
+
+## 8. CHEMA MODE — «7 BALAS POR UNA HAMACA» (corto western cómico)
+
+**Registro de idea original aportada por el autor:** «EL BUENO, EL MALO P...CHE DE DON CHEMA EN: 7 BALAS POR UNA HAMACA... coming soon everywhere».
+
+**Estado:** idea satírica en desarrollo, para posible cortometraje animado y/o episodios de CHEMA MODE. NO está publicada, producida ni aprobada como guion final.
+
+### Cartel / logline
+
+**SAN YALLEGO PICTURES PRESENTA**
+
+**EL BUENO, EL MALO Y EL P...CHE DE DON CHEMA**
+
+**7 BALAS POR UNA HAMACA**
+
+*«En un pueblo sin ley… había un hombre que tampoco quería trabajar».*
+
+*COMING SOON… EVERYWHERE!*
+
+**Género:** western mexicano de comedia, con guitarra o armónica original, viento, duelos de miradas y remates absurdos. Parodia con estética western propia de San Yallego, no reproducción de escenas ni música cinematográfica protegidas.
+
+**Logline:** Siete pistoleros llegan a San Yallego buscando al hombre más peligroso del pueblo. Don Chema solo quiere quedarse acostado en su hamaca; confunde el duelo con una obligación laboral y desarrolla estrategias extraordinarias para evitar levantarse.
+
+### Tráiler A — «Diles que no estoy»
+
+*Narrador, voz profunda:* En las tierras olvidadas de San Yallego, siete pistoleros llegaron buscando al hombre más peligroso del pueblo…
+
+*Silencio. Viento. Una armónica.*
+
+**PISTOLERO:** —¡DON CHEMA! ¡SALGA Y ENFRÉNTENOS COMO HOMBRE!
+
+**DON CHEMA (desde dentro):** —¡¡¡CHAVELAAAA!!! ¡¡¡DILES QUE NO ESTOY!!!
+
+**DOÑA CHAVELA:** —¡¡¡PERO SI TE ESTÁN ESCUCHANDO, VIEJO!!!
+
+**DON CHEMA:** —¡¡¡POS DILES QUE ME FUI A BUSCAR TRABAJO!!!
+
+*Los siete pistoleros se miran aterrorizados.*
+
+**PISTOLERO:** —¡MALDICIÓN! ¡¡¡ESE HOMBRE ES CAPAZ DE CUALQUIER COSA!!!
+
+**NARRADOR:** Siete balas. Siete enemigos. Una sola hamaca. Y un hombre dispuesto a dar la vida… ¡¡¡CON TAL DE NO LEVANTARSE!!!
+
+### Tráiler B — «Los diez segundos»
+
+*Duelo al mediodía. El sol quema. Siete pistoleros apuntan hacia una hamaca.*
+
+**PISTOLERO:** —¡¡¡DON CHEMA!!! ¡¡¡TIENE DIEZ SEGUNDOS PARA LEVANTARSE!!!
+
+**DON CHEMA:** —¡¡¡CHAVELAAAA!!! ¡¡¡TRÁEME UNA COBIJA!!!
+
+**DOÑA CHAVELA:** —¡¡¡¿UNA COBIJA PARA QUÉ, VIEJO?!!!
+
+**DON CHEMA:** —¡¡¡PORQUE CON ESTOS SIETE GÜEYES APUNTÁNDOME, ME VOY A HACER EL MUERTO!!!
+
+**PISTOLERO:** —¡¡¡SE ACABÓ SU TIEMPO!!!
+
+**DON CHEMA:** —¡¡¡POS QUÉ BUENO!!! ¡¡¡ASÍ YA NO TENGO QUE IR A TRABAJAR MAÑANA!!!
+
+*Pantalla negra. Suena una armónica original.*
+
+**COMING SOON… EVERYWHERE.**
+
+### Ideas adicionales / identidad
+
+- Nombre de trabajo de un posible personaje/director imaginario: **«MALONE-GPT»** (broma cariñosa del autor al asistente, nacida de recordar a los colaboradores de Clint Eastwood).
+- Referencias culturales que inspiraron la broma: **Sergio Leone** dirigió la trilogía del dólar; **Malpaso Productions** es la empresa productora de Eastwood; **Don Siegel** fue otro director colaborador. No atribuir «Malone» como director real de esas películas.
+- Repetir el motivo cómico de la **hamaca o mecedora** y la filosofía de no hacer nada; la trama se sostiene con **diálogos, timing, expresiones y humor mexicano** sin requerir violencia gráfica.
+- Título alternativo corto para redes: **«CHEMA MODE: SIETE BALAS, CERO GANAS DE TRABAJAR»**.
+- Potencial formato: tráiler corto para TikTok/YouTube Shorts, luego cortometraje independiente cuando sea oportuno.
+- **Pendiente:** aprobación del título, desarrollo de storyboard, voces propias, referencias visuales originales y revisión de música/licencias antes de producir.
+
+**No modificar el sitio web ni publicar avances sin decisión editorial posterior del autor.**
