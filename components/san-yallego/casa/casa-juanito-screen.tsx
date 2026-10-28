@@ -81,7 +81,7 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
           <CinematicImage
             src={oracle.image}
             alt={oracle.imageAlt}
-            className={phase === 'llegada' ? 'brightness-[0.35] blur-[2px] transition-all duration-[1600ms]' : 'transition-all duration-[1600ms]'}
+            className="transition-all duration-[1600ms]"
           />
         </Stage>
       )}
