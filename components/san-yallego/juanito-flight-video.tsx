@@ -15,6 +15,7 @@ export function JuanitoFlightVideo({ src, label, nextLabel, onEnded }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [playing, setPlaying] = useState(false)
   const [showControls, setShowControls] = useState(false)
+  const [fillScreen, setFillScreen] = useState(true)
   const [failed, setFailed] = useState(false)
 
   const attemptPlay = useCallback(async () => {
@@ -45,7 +46,7 @@ export function JuanitoFlightVideo({ src, label, nextLabel, onEnded }: Props) {
       <video
         ref={videoRef}
         src={src}
-        className="absolute inset-0 size-full bg-black object-contain"
+        className={`absolute inset-0 size-full bg-black ${fillScreen ? 'object-cover' : 'object-contain'}`}
         autoPlay
         muted
         playsInline
@@ -77,6 +78,12 @@ export function JuanitoFlightVideo({ src, label, nextLabel, onEnded }: Props) {
             aria-label={playing ? 'Pausar recorrido' : 'Reproducir recorrido'}
             className="flex size-9 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white/85 backdrop-blur-sm hover:text-gold">
             {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
+          </button>
+          <button type="button" onClick={() => setFillScreen(v => !v)}
+            aria-pressed={fillScreen}
+            aria-label={fillScreen ? 'Ver encuadre completo sin recortar' : 'Llenar la pantalla'}
+            className="rounded-full border border-white/20 bg-black/60 px-3 py-2 text-xs text-white/80 backdrop-blur-sm hover:text-gold">
+            {fillScreen ? 'Ver original' : 'Llenar pantalla'}
           </button>
           <button type="button" onClick={() => setShowControls(v => !v)}
             aria-pressed={showControls}
