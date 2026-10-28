@@ -43,7 +43,7 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
           <video
             key="camino-oraculo-juanito"
             src={ASSETS.video.oraculos['casa-de-juanito']}
-            className="min-h-0 w-full flex-1 object-contain"
+            className="min-h-0 w-full flex-1 object-contain bg-black"
             autoPlay
             muted
             controls
@@ -52,15 +52,12 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
             onEnded={() => setPhase('oraculo')}
             aria-label="Video del camino hacia el Oráculo de Juanito"
           />
-          <div className="flex flex-wrap items-center justify-center gap-5 bg-black px-4 py-4 text-center">
-            <a
-              href={ASSETS.video.oraculos['casa-de-juanito']}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={ritualButton('secondary')}
-            >
-              Abrir video directamente
-            </a>
+          <div className="flex flex-wrap items-center justify-center gap-3 border-t border-white/10 bg-black/85 px-4 py-2 text-center">
+            <details className="text-xs text-foreground/65">
+              <summary className="cursor-pointer select-none py-2 hover:text-gold">Opciones de reproducción</summary>
+              <a href={ASSETS.video.oraculos['casa-de-juanito']} target="_blank" rel="noopener noreferrer"
+                className="block pb-2 text-gold underline underline-offset-4">Abrir video directamente</a>
+            </details>
             <button
               type="button"
               onClick={() => setPhase('oraculo')}
@@ -87,7 +84,7 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
       )}
 
       {phase === 'llegada' && (
-        <div className="animate-sy-fade-in fixed inset-0 z-20 flex flex-col items-center justify-center gap-6 px-6 text-center">
+        <div className="animate-sy-fade-in fixed inset-0 z-20 flex flex-col items-center justify-center gap-6 bg-gradient-to-t from-black/55 via-transparent to-black/20 px-6 text-center">
           <p className="font-display text-[10px] tracking-[0.5em] text-gold/80">HAS LLEGADO A</p>
           <h2 className="text-balance font-display text-3xl tracking-[0.1em] text-foreground text-glow md:text-5xl">
             {siteLabel(site)}

@@ -55,7 +55,7 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
       <video
         key="descenso-casa-juanito"
         src={ASSETS.video.descensos['casa-de-juanito']}
-        className="min-h-0 w-full flex-1 object-contain"
+        className="min-h-0 w-full flex-1 object-contain bg-black"
         autoPlay
         muted
         playsInline
@@ -71,15 +71,12 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
           El navegador no pudo reproducir el descenso. Abre el archivo directamente para comprobar si carga o si necesita un formato compatible.
         </p>
       )}
-      <div className="flex flex-wrap items-center justify-center gap-4 bg-black px-4 py-3 text-center">
-        <a
-          href={ASSETS.video.descensos['casa-de-juanito']}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={ritualButton('secondary')}
-        >
-          Abrir descenso directamente
-        </a>
+      <div className="flex flex-wrap items-center justify-center gap-3 border-t border-white/10 bg-black/85 px-4 py-2 text-center">
+        <details className="group text-xs text-foreground/65">
+          <summary className="cursor-pointer select-none py-2 hover:text-gold">Opciones de reproducción</summary>
+          <a href={ASSETS.video.descensos['casa-de-juanito']} target="_blank" rel="noopener noreferrer"
+            className="block pb-2 text-gold underline underline-offset-4">Abrir descenso directamente</a>
+        </details>
         <button type="button" onClick={toOracle} className={ritualButton('quiet')}>
           Continuar después del vuelo
         </button>
