@@ -18,6 +18,7 @@ type Phase = 'inicio' | 'descenso' | 'hacia-oraculo' | 'destino'
 export function SiteJourney({ siteId, children }: { siteId: SiteId; children: ReactNode }) {
   const { progress, hydrated } = useProgress()
   const [phase, setPhase] = useState<Phase>(siteId === 'casa-de-juanito' ? 'inicio' : 'descenso')
+  const [descentError, setDescentError] = useState(false)
   const toOracle = useCallback(() => setPhase(siteId === 'casa-de-juanito' ? 'destino' : 'hacia-oraculo'), [siteId])
   const arrive = useCallback(() => setPhase('destino'), [])
   const site = getSite(siteId)
@@ -61,8 +62,15 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
         controls
         preload="auto"
         onEnded={toOracle}
+        onError={() => setDescentError(true)}
+        onPlaying={() => setDescentError(false)}
         aria-label="Vuelo desde el mapa hasta la Casa de Juanito"
       />
+      {descentError && (
+        <p role="alert" className="px-4 pt-3 text-center text-sm text-amber-200">
+          El navegador no pudo reproducir el descenso. Abre el archivo directamente para comprobar si carga o si necesita un formato compatible.
+        </p>
+      )}
       <div className="flex flex-wrap items-center justify-center gap-4 bg-black px-4 py-3 text-center">
         <a
           href={ASSETS.video.descensos['casa-de-juanito']}
