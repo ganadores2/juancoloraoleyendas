@@ -46,6 +46,39 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
     </main>
   )
 
+  // Para Juanito usamos el mismo reproductor nativo que ya funciona en su segundo video.
+  // No avanzamos al oráculo hasta que este primer descenso termine o el visitante pulse continuar.
+  if (siteId === 'casa-de-juanito' && phase === 'descenso') return (
+    <main className="fixed inset-0 flex flex-col items-center justify-center bg-black">
+      <h1 className="sr-only">Descenso a la Casa de Juanito Colorao</h1>
+      <video
+        key="descenso-casa-juanito"
+        src={ASSETS.video.descensos['casa-de-juanito']}
+        className="min-h-0 w-full flex-1 object-contain"
+        autoPlay
+        muted
+        playsInline
+        controls
+        preload="auto"
+        onEnded={toOracle}
+        aria-label="Vuelo desde el mapa hasta la Casa de Juanito"
+      />
+      <div className="flex flex-wrap items-center justify-center gap-4 bg-black px-4 py-3 text-center">
+        <a
+          href={ASSETS.video.descensos['casa-de-juanito']}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={ritualButton('secondary')}
+        >
+          Abrir descenso directamente
+        </a>
+        <button type="button" onClick={toOracle} className={ritualButton('quiet')}>
+          Continuar después del vuelo
+        </button>
+      </div>
+    </main>
+  )
+
   const isDescent = phase === 'descenso'
   const src = isDescent ? ASSETS.video.descensos[siteId] : ASSETS.video.oraculos[siteId]
 
