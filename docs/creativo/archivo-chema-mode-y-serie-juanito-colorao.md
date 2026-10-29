@@ -368,3 +368,32 @@
 **Anclas reales de vestuario:** foto personal del autor con traje rojo cobrizo brillante, bordados dorados, cierres ornamentales y moño azul. Animación breve complementaria muestra el atuendo de charro desplazándose y ofreciendo rosas en una calle colonial. **No confundir el rostro animado con el rostro canónico** que se aprobó para Juanito de 3 años y Juan de 17 años; **no asumir que viste por primera vez el traje a determinada edad**. Su decisión de empezar a portarlo ocurre en el Libro I, edad todavía no especificada. Sonido de espuelas **a diseñar originalmente** si se incorpora, sin afirmar que el clip suministra dicho audio o muestra todos los detalles de manera inequívoca.
 
 **Restricción:** no modificar sitio, publicar el tráiler ni incorporar la imagen/video personal en repositorio público sin autorización específica posterior.
+
+
+## Tráiler conceptual — Los pasos de una leyenda
+
+**Origen:** propuesta creativa conversada con el autor el 29 de octubre de 2026, a partir de su frase «El mundo ya se asoma porque escucha las espuelas y los pasos de Juan Colorao», y su cita de «Caminante, no hay camino, se hace camino al andar».
+
+**Atribución literaria correcta:** los versos «Caminante, no hay camino, se hace camino al andar» son de **Antonio Machado**, de «Proverbios y cantares» XXIX (en *Campos de Castilla*, 1912). **Joan Manuel Serrat** les puso música e incorporó versos propios en «Cantares» (1969). La canción o grabación de Serrat **no se ha licenciado**, por lo que esta propuesta utiliza **narración y música originales**; no usar el arreglo ni grabación de «Cantares» sin permisos apropiados. Ver las fuentes: https://poemas.uned.es/poema/proverbios-y-cantares-antonio-machado/ y https://jmserrat.com/project/cantares/.
+
+### Secuencia preliminar (no publicada)
+
+*Pantalla negra. Se escucha el viento.*
+
+*Los pasos pequeños de un niño sobre la tierra de San Yallego. Juanito, con tres años, conoce los senderos donde crecen las mejores moras.*
+
+*Los años pasan. Los pasos infantiles pasan a ser los de un muchacho de diecisiete años que contempla el horizonte. Su Camino del Guerrero aún no empieza.*
+
+*La guitarra original cambia el pulso. Un plano posterior, sin asignarle fecha ni edad concreta, muestra botas sobre piedra y tintineo de espuelas; el viento revela los bordados dorados de un traje rojo cobrizo y un moño azul.*
+
+**NARRADOR:** «Antes de que el mundo escuchara sus pasos, San Yallego ya conocía su corazón».
+
+*Juan levanta la mirada y sigue caminando.*
+
+### Salvaguardas narrativas y visuales
+
+- **Juan nació en 1969**; no usar la coincidencia del año de la canción de Serrat como conexión dentro de la ficción.
+- **Libro I:** Juanito está activo explorando San Yallego a los **3 años** y el Libro I termina cuando Juan tiene **17**, apenas listo para comenzar su Camino del Guerrero. Nunca presentar que lo completó en el Libro I.
+- La decisión de portar su traje rojo cobrizo y oro ocurre en el Libro I **por voluntad propia**, pero **su edad exacta al vestirlo por primera vez todavía se desconoce**. La transición de infancia → adolescencia → traje en el teaser es poética; no constituye cronología literal.
+- Foto real del traje aportada por el autor y animación complementaria siguen **sin subirse al repositorio** ni usarse en un despliegue público. El personaje animado debe mantener la identidad facial de las referencias aprobadas, no copiar automáticamente la cara del video.
+- Diseñar pasos, espuelas y guitarra **como audio original**. El titular y narración son propuestas, sujetos a revisión.
