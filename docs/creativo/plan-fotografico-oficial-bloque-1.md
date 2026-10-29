@@ -24,11 +24,11 @@ La identidad visual de Juan Colorao adulto debe contrastarse con el **video de b
 
 ## Orden de producción — 42 archivos
 
-### Ficha 1 — Juanito Colorao — niño
+### Ficha 1 — Juanito Colorao — 3 años (escena temprana del Libro I)
 
 **ID:** `JC-Juanito-Nino`  
-**Vestuario/referencia:** Atuendo infantil de referencia aprobado por el autor; mantener edad y facciones de Juanito, no confundir con Juan adulto.  
-**Control de continuidad:** Cabello/rasgos, altura infantil, calzado y elementos del traje deben coincidir en todas las vistas.
+**Vestuario/referencia:** **Edad narrativa confirmada por el autor: 3 años** en una escena temprana del Libro I. El texto indica que Juanito ya conocía San Yallego por sus recorridos a pie y sabía dónde crecían las mejores moras. Usar aspecto propio de un niño de 3 años, conservar facciones de su evolución y verificar el vestuario con la referencia aprobada; no confundir con el Juanito de 5 años ni con Juan adulto.  
+**Control de continuidad:** Proporciones de tres años, rostro, altura, cabello, calzado y vestuario idénticos en las siete vistas. **«Con sus pies» no demuestra que caminara descalzo**; calzado según el manuscrito y la imagen validada. Los recorridos por el pueblo y las moras son elementos narrativos para fotografías de escena adicionales, no accesorios que deban tapar los siete ángulos técnicos.
 
 | Archivo previsto | Vista |
 |---|---|
