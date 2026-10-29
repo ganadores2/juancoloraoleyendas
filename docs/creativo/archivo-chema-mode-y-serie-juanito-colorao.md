@@ -358,3 +358,13 @@
 - **Pendiente:** aprobación del título, desarrollo de storyboard, voces propias, referencias visuales originales y revisión de música/licencias antes de producir.
 
 **No modificar el sitio web ni publicar avances sin decisión editorial posterior del autor.**
+
+## Motivo cinematográfico — «Se escuchan los pasos del Colorao»
+
+**Frase del autor (29 de octubre de 2026):** «El mundo ya se asoma porque escucha las espuelas y los pasos de Juan Colorao».
+
+**Uso creativo propuesto, no guion aprobado:** comienzo de tráiler o transición de presentación del personaje: primero suenan unos pasos sobre piedra, quizá el tintineo de espuelas; el plano muestra botas y una sombra que avanza, después el rojo cobrizo de un traje con bordado dorado y moño azul, y finalmente se revela el rostro correspondiente a la edad de esa escena. El pueblo reacciona a la presencia de Juan sin explicar prematuramente los misterios.
+
+**Anclas reales de vestuario:** foto personal del autor con traje rojo cobrizo brillante, bordados dorados, cierres ornamentales y moño azul. Animación breve complementaria muestra el atuendo de charro desplazándose y ofreciendo rosas en una calle colonial. **No confundir el rostro animado con el rostro canónico** que se aprobó para Juanito de 3 años y Juan de 17 años; **no asumir que viste por primera vez el traje a determinada edad**. Su decisión de empezar a portarlo ocurre en el Libro I, edad todavía no especificada. Sonido de espuelas **a diseñar originalmente** si se incorpora, sin afirmar que el clip suministra dicho audio o muestra todos los detalles de manera inequívoca.
+
+**Restricción:** no modificar sitio, publicar el tráiler ni incorporar la imagen/video personal en repositorio público sin autorización específica posterior.
