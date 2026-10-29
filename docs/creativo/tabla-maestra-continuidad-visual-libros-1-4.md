@@ -49,6 +49,8 @@
 | **D. Madurez y legado** | Pasan las décadas; el Colorao conserva identidad, su mundo cambia | Libro III avanzado y/o Libro IV según cronología verificable. |
 | **E. Universo extendido / presagios** | El Bélico, otros pueblos y el hombre sin rostro | El IV y futuras obras, sin revelar conexiones que son todavía secreto narrativo. |
 
+- **Vestuario real del Colorao, dato del autor (29 oct. 2026):** fotografía de traje rojo cobrizo brillante con bordados dorados, cierres ornamentales, cinturón y moño azul grande. En el Libro I Juan **decide por sí mismo empezar a usarlo**, pero **la edad concreta es indeterminada** (no confirmar 12, 15 ni 17). Colocar la primera vez que lo viste en su **capítulo/evento correcto tras cotejo del manuscrito**, y construir una posible versión **juvenil** del mismo traje si la escena lo requiere. No dar por documentados sombrero ni botas a partir de esta fotografía parcial.
+
 ## Convenciones de vestuario de Juan adulto
 
 1. **Aventurero:** sombrero, atuendo de viaje y capa roja, para recorridos.

@@ -83,6 +83,8 @@ La identidad visual de Juan Colorao adulto debe contrastarse con el **video de b
 
 ### Ficha 4 — Juan Colorao — adulto charro
 
+**Referencia real de vestuario aportada por el autor (29 oct. 2026):** fotografía personal de su traje de Juan Colorao. Se aprecian chaqueta y pantalón color rojo cobrizo brillante, bordados florales/dibujos dorados, dos cierres ornamentales horizontales en el torso, cinturón de hebilla metálica y **moño azul eléctrico grande**. El encuadre de la foto **no documenta de forma fiable sombrero, rostro completo ni botas**, de modo que esos elementos deberán verificarse por separado. **Hecho narrativo comunicado por el autor:** en el **Libro I, Juan toma el traje y comienza a portarlo por voluntad propia**, pero el texto no precisa si tenía **12, 15 o 17 años**. La primera aparición del atuendo debe indexarse por **evento del capítulo**, NO por edad arbitraria; puede requerirse una **ficha del traje ajustado al cuerpo juvenil**, manteniendo el mismo diseño, sin asumir que solo pertenece a Juan adulto. La imagen se conserva como fuente aportada en la conversación; **el archivo fotográfico no se ha subido al repositorio**.
+
 **ID:** `JC-Juan-AdultoCharro`  
 **Vestuario/referencia:** Traje de charro completo, sombrero, botonadura, moño, cinturón, botas y espuelas. Versión para ceremonias, música y ocasiones especiales.  
 **Control de continuidad:** MISMO rostro, edad y complexión del adulto aventurero. Detalles bordados simétricos/coherentes; botas visibles en T5-T7.
