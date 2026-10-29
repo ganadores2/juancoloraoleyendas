@@ -140,6 +140,28 @@ La identidad visual de Juan Colorao adulto debe contrastarse con el **video de b
 - **Bloque 3:** resto de elenco del libro I y posteriores, con inventario contrastado con los manuscritos y Biblias. **El herrero** es rol previsto; confirmar nombre/apariencia antes de fijarlo.
 - **Libros III y IV:** reservar una **fase de continuidad de más de 30 años** con nuevas edades de personajes existentes y **personajes de otros pueblos**. Cada edad/vestuario nuevo tendrá su ficha propia, siete vistas y un puente explícito de continuidad; no inferir identidades o edades concretas sin revisar los manuscritos pertinentes. El libro IV y los personajes nuevos siguen sin ficha definitiva.
 
+
+## Registro de presagios — Ecos del futuro: El hombre sin rostro
+
+**Clave provisional:** `JC-ECO-FUTURO-HOMBRE-SIN-ROSTRO`  
+**Categoría:** personaje-enigma / presagio visual del universo extendido; **NO contar entre las 42 imágenes del Bloque 1**.  
+**Estado:** reservado para desarrollo futuro. Su relación exacta con El Bélico u otros personajes **no está confirmada como canon explícito**; el misterio se preserva.
+
+**Primera presencia propuesta:** en la **entrada de San Yallego**, muy a lo lejos, apenas perceptible; el viento mueve la figura o la tela que la rodea. Puede confundirse con polvo, sombra, ilusión o presencia humana. No mostrar rasgos faciales identificables ni introducir nombres dentro de la escena.
+
+**Sentido narrativo:** «No era un fantasma del pasado, sino un recuerdo del futuro». El lector o espectador podría descubrir mucho después que aquella presencia anunciaba otra historia, otra época y el legado que continúa después de Juan Colorao.
+
+**Reglas visuales del enigma:**
+- Mantener el rostro deliberadamente oculto mediante distancia, contraluz o ángulo; evitar una cara inventada que luego se convierta por accidente en identidad oficial.
+- Definir únicamente una silueta reconocible y un movimiento coherente del viento; no fijar aún edad, vestuario definitivo, procedencia ni biografía.
+- Si se desarrolla una ficha técnica, usar las 7 tomas **solamente cuando exista una decisión editorial sobre cuánto revelar**; antes, producir una **toma de presagio** o silueta, no siete retratos identificables.
+- En el archivo público de personajes, mostrarlo en un espacio separado llamado **«Ecos del futuro»**, sin spoilers y con acceso o revelación gradual si la narrativa lo requiere.
+- Conservar el vínculo temático con **el último concierto del libro IV**, la voz escuchada y el motivo «Yo voy abriendo camino», sin presentar deducciones como revelaciones oficiales.
+
+**Texto-semilla:** «A lo lejos, en la entrada de San Yallego, el viento movía una figura apenas visible. Nadie podía saber quién era. No era un recuerdo del pasado, sino del futuro. Algún día le llegaría su tiempo».
+
+**Pendiente:** decisión del autor sobre aparición exacta, lugar de la silueta en mapa/recorrido, niveles de revelación y eventual identidad.
+
 ## Nota editorial
 
 Este es el **plan operativo inicial** aprobado. Distinguir siempre **plan**, **arte preliminar** y **retrato oficialmente aprobado**; los personajes de etapas futuras no deben sustituir la estética establecida de los libros anteriores.
