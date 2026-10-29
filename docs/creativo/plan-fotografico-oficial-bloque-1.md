@@ -43,11 +43,13 @@ La identidad visual de Juan Colorao adulto debe contrastarse con el **video de b
 | `JC-Juanito-Nino-T7.png` | Cuerpo posterior |
 
 
-### Ficha 2 — Juan Colorao — adolescente
+### Ficha 2 — Juan Colorao — 17 años (cierre del Libro I)
+
+**Estado de aprobación autoral (29 de octubre de 2026):** el autor **aprueba la apariencia facial y la evolución de Juanito niño a Juan adolescente** mostradas en la hoja maestra preliminar de 17 años; manifiesta que la cara mantiene muy bien la continuidad entre ambos. La **hoja visual de referencia** queda aceptada para el diseño. Esto **no significa** que las siete fotografías individuales estén exportadas o validadas técnicamente.
 
 **ID:** `JC-Juan-Adolescente`  
-**Vestuario/referencia:** Vestuario juvenil por aprobar, coherente con la evolución desde Juanito.  
-**Control de continuidad:** Edad de trabajo aprox. 17 años (no declararla canon definitivo sin validación). Conservar rasgos familiares, no copiar la barba adulta.
+**Vestuario/referencia:** Hoja maestra juvenil propuesta: cabello oscuro y rizado, ojos expresivos, chaleco tejido, cinturón, morral y botas; verificar en posteriores vistas que se conserve idéntico diseño y el mismo rostro.  
+**Control de continuidad:** **17 años confirmados al cierre del Libro I.** Todavía está a punto de comenzar su Camino del Guerrero, no lo ha concluido. Siguiente tarea: aislar o producir siete ángulos originales, comprobar que perfiles derecho/izquierdo sean distintos y genuinos, exportar archivos y pedir validación técnica final.
 
 | Archivo previsto | Vista |
 |---|---|
