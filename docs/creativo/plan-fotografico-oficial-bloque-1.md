@@ -45,6 +45,8 @@ La identidad visual de Juan Colorao adulto debe contrastarse con el **video de b
 
 ### Ficha 2 — Juan Colorao — 17 años (cierre del Libro I)
 
+**Avance técnico (29 de octubre de 2026):** se extrajeron las siete tomas T1–T7 en archivos PNG separados a partir de la hoja maestra aprobada de **1536 × 1024 px**; se prepararon ZIP, manifiesto y hoja de revisión. Los dos perfiles proceden de poses diferentes de la lámina, no de espejado, y se etiquetaron según lateralidad anatómica. **Importante:** son recortes de resolución limitada, no siete renders independientes de alta definición ni una malla 3D. Mantener estado **rostro aprobado / paquete de recortes en revisión técnica**. Los entregables están en la conversación de producción, no cargados al repositorio.
+
 **Estado de aprobación autoral (29 de octubre de 2026):** el autor **aprueba la apariencia facial y la evolución de Juanito niño a Juan adolescente** mostradas en la hoja maestra preliminar de 17 años; manifiesta que la cara mantiene muy bien la continuidad entre ambos. La **hoja visual de referencia** queda aceptada para el diseño. Esto **no significa** que las siete fotografías individuales estén exportadas o validadas técnicamente.
 
 **ID:** `JC-Juan-Adolescente`  
