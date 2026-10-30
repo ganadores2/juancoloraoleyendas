@@ -1,6 +1,6 @@
 # Juan Colorao Leyendas — ESPERANZA, oráculo viviente
 
-**Estado editorial (29 de octubre de 2026):** CONCEPTO APROBADO por el autor: se incorpora la figura llamada **Esperanza**, que **en determinadas situaciones puede actuar como un oráculo viviente**. Su primera escena, edad, identidad visual, relaciones y cronología **no están fijadas todavía**. Este documento es una ficha de desarrollo creativo, no un nuevo capítulo publicado.
+**Estado editorial (29 de octubre de 2026):** CONCEPTO APROBADO por el autor: se incorpora la figura llamada **Esperanza**, que **en determinadas situaciones puede actuar como un oráculo viviente**. Su primera escena, edad, identidad visual definitiva, relaciones y cronología **no están fijadas todavía**; se autorizó conceptualmente su aparición corpórea en otros espacios oraculares. Este documento es una ficha de desarrollo creativo, no un nuevo capítulo publicado.
 
 ## Núcleo del personaje
 
@@ -31,6 +31,31 @@ Esperanza no encarna «sentarse a esperar a ver qué sucede». Representa **la f
 Una figura femenina de presencia serena y firme; puede tomarse como **inspiración estética parcial** el avatar pelirrojo de vestido marrón creado para el proyecto, sin considerarlo automáticamente su rostro oficial. **No copiar ni basar un personaje en la apariencia identificable de una persona desconocida real**. Preparar eventual ficha de siete vistas solo después de aprobar el retrato base y la edad correspondiente.
 
 **ID visual reservado:** `JC-Esperanza` (pendiente de incorporar al inventario numerado cuando autor apruebe etapa y atuendo). **No sumar siete tomas como producidas.**
+
+## Manifestaciones corpóreas dentro de otros oráculos — autorización conceptual del autor
+
+**Nuevo acuerdo creativo (29 de octubre de 2026):** Esperanza **podrá aparecer físicamente y con presencia reconocible dentro del espacio de uno o varios de los oráculos ya existentes**, durante escenas del Libro II, Libro III o de ambos; aún no se han elegido capítulos ni se han hecho inserciones en los manuscritos.
+
+La intención es **un personaje real con capacidad de cumplir ocasionalmente una función oracular**, no una voz despersonalizada, holograma automático, una respuesta omnisciente ni un reemplazo de los guardianes de cada lugar.
+
+### Integraciones posibles — no escenas confirmadas
+
+- **Ceiba:** puede encontrarse con el caminante en un entorno de raíces, memoria y vida; impulsa a cuidar aquello que todavía está creciendo.
+- **Lago:** puede encontrarse en un entorno que confronta memoria, tiempo y posibilidad; no revela ni garantiza el futuro.
+- **Umbral:** puede acompañar el momento en que alguien toma la decisión de cruzar o regresar; la elección sigue siendo del viajero.
+- Una aparición **puede ser única o repetirse en varias circunstancias**, siempre si el argumento la justifica. Se puede describir como plenamente corpórea dentro de la experiencia oracular sin establecer todavía la mecánica ontológica de su presencia.
+
+**Regla de misterio:** no explicar por adelantado si Esperanza entró a ese espacio por voluntad propia, fue convocada, es vista del mismo modo por todos los visitantes, ni cómo opera exactamente tal encuentro. Resolver solo si lo requiere el manuscrito y el autor lo aprueba.
+
+**Regla de dramaturgia:** cada aparición debe ofrecer una decisión o un punto de inflexión concreto, no adelantar los resultados ni borrar los esfuerzos de los protagonistas. Su convicción es activa, no una garantía mecánica de que nunca ocurrirá una pérdida.
+
+### Referencias visuales recién compartidas
+
+Se recibieron **cuatro imágenes de una mujer pelirroja**, vestido largo color marrón cobrizo y calle colonial florida de San Yallego, en vista frontal, perfil orientado hacia ambos lados y posterior. Estas imágenes permiten establecer una **base de identidad visual propuesta** y comprobar cabello, cuerpo, vestido y silueta desde varios ángulos.
+
+**Todavía no son una ficha de siete vistas técnicamente cerrada**: la caída y los pliegues del vestido presentan diferencias entre tomas y faltan los ángulos T1–T7 exactos y consistentes; no dar por verificado el diseño 3D. Se trata de imágenes de personaje creadas para la ficción; la semejanza casual que el autor percibió con alguien visto en la vida real no autoriza identificar ni copiar a esa persona.
+
+**Próximo paso visual eventual:** aprobar explícitamente el rostro y la silueta de Esperanza; después preparar sus siete tomas individuales con atuendo consistente, y diseñar variantes de escena para interior de Ceiba/Lago/Umbral sin alterar la cara. Los cuatro archivos de imagen proporcionados en la conversación **no se han cargado en GitHub ni incorporado al sitio público**.
 
 ## Muestra de función dramática — propuesta, no canon
 
