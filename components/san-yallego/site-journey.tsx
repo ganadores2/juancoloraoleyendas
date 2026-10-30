@@ -51,7 +51,7 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
     <JuanitoFlightVideo
       src={ASSETS.video.descensos['casa-de-juanito']}
       label="Descenso a la Casa de Juanito Colorao"
-      nextLabel="Continuar a la casa"
+      nextLabel="Continuar hacia el Oráculo"
       onEnded={toOracle}
     />
   )
