@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict'
+import { existsSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
+
+const root = process.cwd()
+const source = (path) => readFileSync(join(root, path), 'utf8')
+
+const assets = source('lib/san-yallego/assets.ts')
+const siteConfig = source('lib/san-yallego/sites.ts')
+const progress = source('lib/san-yallego/progress.ts')
+const page = source('app/sitio/[slug]/page.tsx')
+const guardian = source('lib/san-yallego/guardian.ts')
+const guardianPage = source('app/guardian/sitio/[slug]/page.tsx')
+
+const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
+assert.ok(videos.length >= 24, `Se esperaban 24 videos de bienvenida y recorridos; encontrados ${videos.length}`)
+for (const video of videos) {
+  assert.ok(existsSync(join(root, 'public', video.slice(1))), `Falta un video: ${video}`)
+}
+assert.ok(existsSync(join(root, 'public/assets/audio/libro-1/capitulo-01-el-primer-grito.mp3')),
+  'Falta el capítulo 1 en MP3')
+
+for (let n = 3; n <= 10; n++) {
+  const id = String(n).padStart(2, '0')
+  const rule = new RegExp(`id: 'sitio-${id}'[^\\n]*unlock: \\{ kind: 'sealed' \\}`)
+  assert.match(siteConfig, rule, `El sitio ${id} ya no está sellado en el mapa público`)
+}
+assert.match(progress, /case 'sealed':\s*return false/, 'El guardián de progreso debe bloquear lugares sellados')
+assert.match(page, /case 'sellado':\s*return <SealedSite/, 'Las rutas públicas selladas deben permanecer cerradas')
+assert.match(guardian, /SAN_YALLEGO_MASTER_KEY/, 'La llave debe provenir del entorno del servidor')
+assert.match(guardian, /timingSafeEqual/, 'La comparación de credenciales debe evitar diferencias de tiempo')
+assert.match(guardianPage, /hasGuardianSession/, 'La sala privada debe verificar una sesión antes de mostrar los recorridos')
+
+console.log(`✓ Cimientos verificados: ${videos.length} MP4, capítulo 1, ocho sitios sellados y sala privada protegida.`)
