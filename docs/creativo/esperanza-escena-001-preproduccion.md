@@ -1,36 +1,58 @@
-# Esperanza — Escena 001: ¿La habías perdido?
+# ESPERANZA — Escena 001: «¿La habías perdido?»
 
-**Preproducción, 29 oct 2026.** Concepto cinematográfico aún no integrado a manuscritos ni sitio web.
+**Documento de preproducción.** Estado: propuesta cinematográfica; no tiene capítulo ni libro canónico asignado. Preparado para la serie y posibles experiencias oraculares de los Libros II y III.
 
-## Objetivo
-Esperanza, una mujer humana que puede actuar como oráculo viviente, aparece en una calle de San Yallego. Se dirige al espectador sin predecir el futuro ni solucionar mágicamente sus conflictos.
+## Premisa
 
-## Referencias
-Cuatro fotografías digitales del avatar ficticio aportadas por el autor (frontal, dos perfiles y posterior). Cabello cobrizo largo, vestido marrón, mismo rostro y edad visual. Las imágenes permanecen en la conversación: **no cargarlas en el repositorio público**. El modelo de siete vistas aún no está aprobado.
+Un caminante descubre a Esperanza en la calle florida de San Yallego o en un espacio asociado a los oráculos de la Ceiba, el Lago o el Umbral. Ella no revela el futuro: ofrece una pregunta que recupera la voluntad de seguir adelante.
 
-## Guion de prueba (20 segundos)
-- 0–3: la mujer camina dos pasos entre flores de la calle colonial, brisa tenue.
-- 3–5: narrador: «Presten atención…».
-- 5–7: narrador: «Y guarden silencio…».
-- 7–10: narrador: «Porque Esperanza acaba de aparecer en tu vida».
-- 10–13: plano más cercano, pausa.
-- 13–16: Esperanza, mirando a cámara: «¿La habías perdido?».
-- 16–20: silencio, leve sonrisa y mirada sostenida.
+**Narrador, tono cálido:** «Presten atención… y guarden silencio… porque Esperanza acaba de aparecer en tu vida».
 
-## Kling, clip A: 10 segundos
-```text
-Cinematic image-to-video. Use the user's reference of Esperanza, identical fictional female face, copper-red wavy hair and long dark brown dress. Golden-hour floral cobblestone street of San Yallego, colorful facades and distant church. Slow stable dolly-in, full body to medium shot. Two gentle steps, arms lower naturally, she stops and looks calmly at camera. Delicate breeze, subtle flowers and village movement. No narration, lip movement, music, subtitles, morphing, new people or fast camera moves. Preserve character and costume exactly. 16:9, 10 seconds.
-```
+**Esperanza, serena:** «¿La habías perdido?»
 
-## Kling, clip B: 10 segundos
-```text
-Continuation, same identical Esperanza face, hair, dress and colonial street, medium close-up, nearly locked camera. First three seconds she watches the viewer in silence. Then a soft sincere expression and minimal natural lips as if asking the Spanish question “¿La habías perdido?”. Hold eye contact in silence at the end, gentle breathing and subtle hair breeze. Final Spanish voice will be recorded in ElevenLabs and lip-sync refined separately. No generated speech, subtitles, new objects, face changes, camera cuts or fast motions. 16:9, 10 seconds.
-```
+**Silencio posterior:** aproximadamente cuatro segundos.
 
-## ElevenLabs
-Narrador: cálido y pausado, no solemne. Esperanza: femenina, serena, firme, natural. Música de composición original opcional. Conservar entre tres y cuatro segundos de silencio tras la pregunta. Si los labios deforman el rostro, generar segundo plano mudo y sincronizar después.
+## Estética y referencias
 
-## Revisión
-Verificar rostro, vestido, edades, manos, perfiles y continuidad. No asignar aún al Libro II, III o IV ni a un oráculo concreto. No publicar. **Audio y videos no producidos todavía.**
+El autor aportó cuatro referencias originales de una misma mujer de cabello cobrizo largo, vestido de cuero/tela marrón cobrizo de largo completo y entorno de calle colonial con flores. Orientaciones: frontal, ambos perfiles y espalda. Preservar identidad y vestuario, sin confundir variaciones en los pliegues del vestido con un cambio de ropa.
 
-El paquete completo con las cuatro imágenes originales, hoja de continuidad, guion extendido y SRT quedó creado en la conversación.
+La semejanza casual que el autor percibió entre el avatar creado y una persona desconocida vista en la vida real no es prueba de identidad ni fuente de material para la ficción.
+
+Las cuatro imágenes originales permanecen en la conversación; **no se han incorporado al repositorio público**.
+
+## Estructura propuesta
+
+| Tiempo | Imagen y sonido |
+|---|---|
+| 0–3 s | Esperanza aparece en la calle; suave movimiento de flores y cabello |
+| 3–7 s | El narrador invita a prestar atención y guardar silencio |
+| 7–10 s | «Porque Esperanza acaba de aparecer en tu vida» |
+| 10–13 s | Plano cercano y mirada tranquila |
+| 13–16 s | Esperanza pregunta «¿La habías perdido?» |
+| 16–20 s | Silencio significativo, decisión dejada al espectador |
+
+### Producción visual — prueba local
+
+**30 de octubre de 2026:** se produjo una prueba de **6 segundos a 720 × 960 píxeles y 24 fps**, a partir de la fotografía frontal original. El clip usa movimiento ambiental leve, desplazamiento suave del cabello, flores y borde de falda; **no es un render generativo de Kling ni animación facial con labios sincronizados**. Disponible como adjunto dentro de la conversación, sin subir a GitHub.
+
+Se consultó Kling 3.0 Turbo para una prueba de cinco segundos a 720p (coste estimado: 7,5 créditos); el servicio de generación no permitió la operación porque la cuenta conectada requería un plan habilitado. **No se completó trabajo con Kling ni hubo video generado por ese servicio.**
+
+### Instrucciones para Kling cuando esté disponible
+
+**Clip A:** animar la referencia frontal sin cambios de cara ni vestido, cámara lenta y casi fija, brisa entre flores, gesto sutil, dos pasos cortos, diez segundos, sin voz incrustada.
+
+**Clip B:** primer plano del mismo rostro, mirada a cámara, pausa, «¿La habías perdido?», cierre de silencio. Para sincronía de labios, preferir audio aprobado de ElevenLabs y aplicar lip-sync específico posteriormente.
+
+**Formato:** fuente vertical 896 × 1200. Mantener 9:16 para prueba y expandir a 16:9 por los laterales si se integra en la web; nunca recortar la cara, los brazos ni el vestido.
+
+## Pautas de canon
+
+- Esperanza puede ser persona física y **oráculo viviente solo ocasionalmente**; no sustituye a los oráculos de lugar.
+- El mensaje es de esperanza activa, no predicción infalible ni garantía de resultados.
+- El libro de su debut y su primera escena están pendientes de aprobación.
+- No publicar esta secuencia ni modificar rutas del sitio sin autorización del autor.
+- La identidad visual todavía requiere las siete vistas y aprobación técnica definitiva.
+
+## Siguiente tarea
+
+Validar el movimiento y la identidad en la prueba local, fijar una voz femenina adecuada para Esperanza, generar la versión definitiva y decidir su primera inserción narrativa tras revisar los Libros II y III.
