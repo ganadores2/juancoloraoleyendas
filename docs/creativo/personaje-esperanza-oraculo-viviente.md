@@ -1,6 +1,6 @@
 # Juan Colorao Leyendas — ESPERANZA, oráculo viviente
 
-**Estado editorial (29 de octubre de 2026):** CONCEPTO APROBADO por el autor: se incorpora la figura llamada **Esperanza**, que **en determinadas situaciones puede actuar como un oráculo viviente**. Su primera escena, edad, identidad visual definitiva, relaciones y cronología **no están fijadas todavía**; se autorizó conceptualmente su aparición corpórea en otros espacios oraculares. Este documento es una ficha de desarrollo creativo, no un nuevo capítulo publicado.
+**Estado editorial (29 de octubre de 2026):** CONCEPTO APROBADO por el autor: se incorpora la figura llamada **Esperanza**, que **en determinadas situaciones puede actuar como un oráculo viviente**. Su escena literaria candidata en la Ceiba **fue aprobada por el autor el 30 de octubre de 2026**; su incorporación a un libro, edad, identidad visual definitiva, relaciones y cronología **no están fijadas todavía**; se autorizó conceptualmente su aparición corpórea en otros espacios oraculares. Este documento es una ficha de desarrollo creativo, no un nuevo capítulo publicado.
 
 ## Núcleo del personaje
 

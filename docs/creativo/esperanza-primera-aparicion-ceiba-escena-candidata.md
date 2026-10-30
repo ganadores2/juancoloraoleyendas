@@ -2,7 +2,7 @@
 ## ESPERANZA — «¿La habías perdido?»
 ### Primera aparición literaria candidata · Oráculo de la Ceiba
 
-**Estado:** borrador literario para aprobación del autor. **No es canon publicado ni capítulo ya asignado.** Libro posible: II o III, por confirmar tras lectura de manuscritos. Edad de Juan y cronología deliberadamente no fijadas. La presencia física de Esperanza dentro de un oráculo sí está autorizada como concepto.
+**Estado (30 de octubre de 2026): ESCENA LITERARIA APROBADA POR EL AUTOR, conservada como semilla narrativa oficial de desarrollo. **Todavía no es un capítulo integrado ni publicación del canon de los libros.** Libro posible: II o III, por confirmar tras lectura de manuscritos. Edad de Juan y cronología deliberadamente no fijadas. La presencia física de Esperanza dentro de un oráculo sí está autorizada como concepto.
 
 ---
 
@@ -154,4 +154,4 @@ Pero ahora conocía su siguiente paso.
 - **Visual:** tomar las cuatro imágenes aportadas como referentes de rostro, atuendo y tono cromático, pendiente de aprobación final y corrección técnica de siete vistas.
 - **Producción:** no modificar web pública, manuscritos originales ni Biblia pública hasta aprobación. Conservar el texto como propuesta revisable.
 
-**Prioridad de proyecto:** completar sitio web y revisar canon maestro; luego decidir inserción en los Libros II/III, conforme al plan editorial del autor.
+**Decisión autoral del 30 de octubre de 2026:** «Sí me gusta, guárdalo»; aprobada esta escena de Esperanza y su sentido de esperanza activa. Se conserva íntegra para la reconstrucción editorial posterior. **Prioridad actual:** completar los cimientos de juancoloraoleyendas.com y revisar el canon maestro; luego decidir inserción en los libros II/III. No se deben sobrescribir versiones antiguas ni modificar el sitio web por esta aprobación.
