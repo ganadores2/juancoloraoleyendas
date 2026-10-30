@@ -19,7 +19,7 @@ type Phase = 'inicio' | 'descenso' | 'hacia-oraculo' | 'destino'
 export function SiteJourney({ siteId, children }: { siteId: SiteId; children: ReactNode }) {
   const { progress, hydrated } = useProgress()
   const [phase, setPhase] = useState<Phase>(siteId === 'casa-de-juanito' ? 'inicio' : 'descenso')
-  const toOracle = useCallback(() => setPhase(siteId === 'casa-de-juanito' ? 'destino' : 'hacia-oraculo'), [siteId])
+  const toOracle = useCallback(() => setPhase('hacia-oraculo'), [])
   const arrive = useCallback(() => setPhase('destino'), [])
   const site = getSite(siteId)
 
@@ -51,7 +51,7 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
     <JuanitoFlightVideo
       src={ASSETS.video.descensos['casa-de-juanito']}
       label="Descenso a la Casa de Juanito Colorao"
-      nextLabel="Continuar a la casa"
+      nextLabel="Continuar hacia el Oráculo"
       onEnded={toOracle}
     />
   )
