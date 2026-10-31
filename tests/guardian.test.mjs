@@ -44,7 +44,7 @@ test('una sesión firmada vence y rechaza alteraciones', () => {
   assert.equal(validateGuardianSession(ticket), true)
   assert.equal(validateGuardianSession(ticket, Number(expires) + 1), false)
   assert.equal(validateGuardianSession(ticket, Number(expires) - GUARDIAN_SESSION_SECONDS * 1000 - 120_000), false)
-  assert.equal(validateGuardianSession([expires, nonce, 'A' + mac.slice(1)].join('.')), false)
+  assert.equal(validateGuardianSession([expires, nonce, (mac[0] === 'A' ? 'B' : 'A') + mac.slice(1)].join('.')), false)
   assert.equal(validateGuardianSession([expires, nonce + 'X', mac].join('.')), false)
   assert.equal(validateGuardianSession('invalid'), false)
   assert.equal(validateGuardianSession('x'.repeat(300)), false)

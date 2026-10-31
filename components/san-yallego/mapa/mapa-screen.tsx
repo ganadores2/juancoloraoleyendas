@@ -98,7 +98,7 @@ export function MapaScreen() {
       */}
       <nav
         aria-label="Acceso privado del creador"
-        className="fixed bottom-4 right-4 z-30 md:bottom-6 md:right-6"
+        className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 z-30 md:bottom-6 md:right-6"
       >
         <Link
           href="/guardian"

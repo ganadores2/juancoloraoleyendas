@@ -70,3 +70,16 @@ El autor abrió **El Taller del Creador**, autenticó exitosamente su Llave Maes
 **Resultado validado por el autor:** 10 sitios × 2 videos = **20 reproducciones revisadas y comunicadas como funcionales** en la versión de prueba.
 
 No atribuir a esta confirmación pruebas que no se reportaron: no consta una matriz separada de Android/iOS/escritorio, mediciones de latencia, verificación del enlace de logout ni una auditoría de seguridad. Permanecen pendientes esas verificaciones y la revisión de los lugares sellados en el recorrido público. **No fusionar a producción automáticamente**: mantener la Llave Maestra en Preview mientras se cierran las condiciones de acceso y publicación.
+
+## Consolidación del recorrido de Juanito en Preview (30 oct 2026)
+
+La rama de prueba `feature/llave-maestra-protegida` incorpora los dos ajustes ya trabajados en la PR #1, sin fusionar todavía ninguna de las dos propuestas a producción:
+
+1. `SiteJourney`: al finalizar el descenso a la Casa de Juanito, comienza el video **Casa de Juanito → Oráculo**, en lugar de saltar directamente a la pantalla final.
+2. `CasaJuanitoScreen`: cuando el viaje ya reprodujo ambas películas, muestra directamente el Oráculo; evita reproducir dos veces el video de aproximación.
+3. `verify-foundations.mjs`: verifica que este recorrido no regrese accidentalmente a la lógica anterior.
+4. El botón `El Taller del Creador` respeta el espacio inferior de pantalla de dispositivos con zona segura (safe area).
+
+**Por comprobar visualmente:** con una Llave de visitante válida, abrir `/sitio/casa-de-juanito`, pulsar «Iniciar descenso», terminar ambos videos, comprobar que el Oráculo aparece exactamente una vez y que «Escuchar Capítulo 1» llega al MP3 correcto. La confirmación de los 20 videos en el Taller del Creador es una prueba distinta y no sustituye esta verificación de navegación pública.
+
+**Pruebas de seguridad automatizadas añadidas:** clave válida/errónea, sesión firmada, alteración, vencimiento, rotación de secreto, orígenes de solicitudes y fail-closed si faltan variables. Compilación ahora valida tipos de TypeScript y páginas privadas con encabezados de no-cache/noindex y bloqueo de iframe. No se sustituyeron las credenciales actuales.

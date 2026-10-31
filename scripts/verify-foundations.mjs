@@ -17,6 +17,8 @@ const nextConfig = source('next.config.mjs')
 const guardianPage = source('app/guardian/sitio/[slug]/page.tsx')
 const mapScreen = source('components/san-yallego/mapa/mapa-screen.tsx')
 const navMenu = source('components/san-yallego/traveler-map-nav.tsx')
+const journey = source('components/san-yallego/site-journey.tsx')
+const casaJuanito = source('components/san-yallego/casa/casa-juanito-screen.tsx')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
 assert.ok(videos.length >= 24, `Se esperaban 24 videos de bienvenida y recorridos; encontrados ${videos.length}`)
@@ -49,5 +51,12 @@ assert.match(navMenu, /pathname\.startsWith\('\/guardian'\)/,
   'El menú global no debe tapar el ingreso privado')
 assert.doesNotMatch(mapScreen, /SAN_YALLEGO_MASTER_KEY|SAN_YALLEGO_GUARDIAN_SECRET/,
   'El mapa público no debe contener ni referenciar las credenciales privadas')
+
+assert.match(journey, /setPhase\('hacia-oraculo'\)/,
+  'Juanito: después del descenso debe comenzar el video de aproximación al Oráculo')
+assert.match(journey, /ASSETS\\.video\\.oraculos\\[siteId\\]/,
+  'El recorrido debe declarar el video de aproximación al Oráculo')
+assert.match(casaJuanito, /skipDescenso \? 'oraculo' : 'descenso'/,
+  'Juanito: después de ambos vuelos se muestra el Oráculo sin repetir el video')
 
 console.log(`✓ Cimientos verificados: ${videos.length} MP4, capítulo 1, ocho sitios sellados y sala privada protegida.`)
