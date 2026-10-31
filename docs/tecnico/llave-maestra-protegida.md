@@ -83,3 +83,16 @@ La rama de prueba `feature/llave-maestra-protegida` incorpora los dos ajustes ya
 **Por comprobar visualmente:** con una Llave de visitante válida, abrir `/sitio/casa-de-juanito`, pulsar «Iniciar descenso», terminar ambos videos, comprobar que el Oráculo aparece exactamente una vez y que «Escuchar Capítulo 1» llega al MP3 correcto. La confirmación de los 20 videos en el Taller del Creador es una prueba distinta y no sustituye esta verificación de navegación pública.
 
 **Pruebas de seguridad automatizadas añadidas:** clave válida/errónea, sesión firmada, alteración, vencimiento, rotación de secreto, orígenes de solicitudes y fail-closed si faltan variables. Compilación ahora valida tipos de TypeScript y páginas privadas con encabezados de no-cache/noindex y bloqueo de iframe. No se sustituyeron las credenciales actuales.
+
+## Revisión del flujo Casa → Oráculo: fase visible y comprobable (30 oct 2026)
+
+**Reporte del autor:** los dos MP4 funcionan cuando se reproducen por separado en el Taller del Creador, pero al seguir el recorrido normal solo se vio el descenso hacia la casa y después la imagen del Oráculo con enlace al capítulo 1, sin observar el video de aproximación. **Causa verificada en producción:** la rama `main` todavía contiene `toOracle = setPhase(siteId === 'casa-de-juanito' ? 'destino' : 'hacia-oraculo')`, por lo que el viaje público salta el segundo MP4. La rama Preview ya corregía ese salto, aunque no hay evidencia de cuál URL visitó el autor al reportar el fallo.
+
+**Mejora correctiva en Preview:**
+- Nueva máquina de fases compartida (`lib/san-yallego/journey-phases.mjs`) y pruebas de comportamiento para asegurar **inicio → descenso → hacia-oraculo → destino**, sin salto entre descenso y destino.
+- Ambos segmentos de Juanito usan **`JuanitoFlightVideo`**, el reproductor que también usa el portal. Al cambiar de fase se desmonta y reinicia el reproductor mediante `key={phase}`.
+- Indicadores visibles **VUELO 1 DE 2** («Descenso hacia la casa») y **VUELO 2 DE 2** («Camino hacia el Oráculo»). El botón para saltar es explícito; la secuencia progresa automáticamente cuando termina cada video.
+- El Taller incluye un botón **«PROBAR RECORRIDO COMPLETO · DOS VUELOS»** en Casa de Juanito. Enlaza a `/sitio/casa-de-juanito` dentro del **mismo host de Preview**, evitando cambiar accidentalmente al dominio de producción. Requiere tener la Llave del visitante, sin omitir bloqueos.
+- Compilación ejecuta las pruebas de la máquina de fases además del paquete de seguridad.
+
+**Validación visual todavía pendiente:** desde el Taller en Preview, pulsar el nuevo botón y comprobar que las etiquetas **1 DE 2** y **2 DE 2** aparecen durante sus respectivos MP4, antes del Oráculo. Probar en móvil y escritorio cuando sea posible. No fusionar a `main` sin esta verificación.

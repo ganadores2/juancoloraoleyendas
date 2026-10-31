@@ -45,6 +45,24 @@ export default async function GuardianSitePage({ params }: Props) {
               : 'Revisión de los dos vuelos que preceden a la experiencia pública.'}
           </p>
         </header>
+        {site.id === 'casa-de-juanito' && (
+          <aside className="rounded-lg border border-gold/45 bg-gold/5 p-5 text-center">
+            <p className="mb-3 text-sm text-foreground/85">
+              ¿Quieres comprobar los dos vuelos en secuencia? Este enlace permanece en la
+              misma versión de prueba y utiliza la ruta normal del visitante.
+            </p>
+            <Link
+              href="/sitio/casa-de-juanito"
+              className="inline-flex min-h-11 items-center justify-center border border-gold/65 px-5 py-3 font-display text-[11px] tracking-[0.12em] text-gold"
+            >
+              PROBAR RECORRIDO COMPLETO · DOS VUELOS
+            </Link>
+            <p className="mt-3 text-xs italic text-foreground/60">
+              Se necesita haber obtenido la Llave de San Yallego como visitante;
+              la Llave Maestra no elimina los sellos públicos.
+            </p>
+          </aside>
+        )}
         <div className="grid gap-8 md:grid-cols-2">
           {clips.map((clip) => (
             <section key={clip.src} className="space-y-3 border border-gold/25 p-3">
