@@ -5,12 +5,14 @@
   "packageManager": "pnpm@12.3.4",
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/verify-foundations.mjs && node --test tests/guardian.test.mjs tests/journey.test.mjs && next build",
+    "build": "node scripts/verify-foundations.mjs && node --test tests/guardian.test.mjs tests/guardian-cookie.test.mjs tests/journey.test.mjs tests/visitor-seals.test.mjs && next build",
     "start": "next start",
     "test:foundations": "node scripts/verify-foundations.mjs",
     "test:guardian": "node --test tests/guardian.test.mjs",
-    "test:security": "node scripts/verify-foundations.mjs && node --test tests/guardian.test.mjs tests/journey.test.mjs",
-    "test:journey": "node --test tests/journey.test.mjs"
+    "test:security": "node scripts/verify-foundations.mjs && node --test tests/guardian.test.mjs tests/guardian-cookie.test.mjs tests/journey.test.mjs tests/visitor-seals.test.mjs",
+    "test:journey": "node --test tests/journey.test.mjs",
+    "test:visitor-seals": "node --test tests/visitor-seals.test.mjs",
+    "test:guardian-cookie": "node --test tests/guardian-cookie.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

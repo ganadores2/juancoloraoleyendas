@@ -96,3 +96,13 @@ La rama de prueba `feature/llave-maestra-protegida` incorpora los dos ajustes ya
 - Compilación ejecuta las pruebas de la máquina de fases además del paquete de seguridad.
 
 **Validación visual todavía pendiente:** desde el Taller en Preview, pulsar el nuevo botón y comprobar que las etiquetas **1 DE 2** y **2 DE 2** aparecen durante sus respectivos MP4, antes del Oráculo. Probar en móvil y escritorio cuando sea posible. No fusionar a `main` sin esta verificación.
+
+## Pruebas de cierre de sesión y ocho sellos (30 oct 2026)
+
+Se añadió un módulo compartido de políticas de cookies para login y logout, con HttpOnly, SameSite Strict, path=/guardian y Secure en despliegues. Al cerrar la Sala se borra la misma cookie (maxAge=0), se confirma en pantalla y se ofrece un enlace a una ruta privada para comprobar que vuelve a solicitar credenciales.
+
+Los nuevos tests ejecutan las reglas TypeScript **reales** de sitios y progreso (con almacenamiento simulado): deben existir diez lugares, ocho sellados; ni el progreso manipulado ni la Llave del visitante pueden abrir los ocho; encontrar la llave solo abre la Casa de Juanito. La compilación de Preview exige estos tests además de las pruebas previas.
+
+**Límite:** la verificación automática no sustituye una prueba real de cierre de sesión en navegador; borrar la cookie local no invalida una copia robada del ticket si aún está vigente. Rotar el secreto de firma sí revoca las sesiones firmadas con el anterior. Protección distribuida ante fuerza bruta pendiente si el Taller se publica. Los videos no fueron modificados; el posible suavizado inicial del video 2 queda reservado para edición posterior.
+
+**Prueba visual recomendada:** desde el Taller en Preview, cerrar el acceso, comprobar la confirmación de salida, pulsar «Comprobar la puerta privada», confirmar que solicita Llave Maestra; después verificar en el mapa normal que los ocho lugares siguen sellados. No se fusiona a main.

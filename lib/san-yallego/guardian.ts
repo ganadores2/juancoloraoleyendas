@@ -19,3 +19,6 @@ export async function hasGuardianSession(): Promise<boolean> {
   const jar = await cookies()
   return validateGuardianSession(jar.get(GUARDIAN_COOKIE_NAME)?.value)
 }
+
+// Mismas reglas de cookie para el ingreso y el cierre de la Sala.
+export { creatorSessionCookie, closedCreatorSessionCookie } from './guardian-cookie.mjs'

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import {
-  GUARDIAN_COOKIE_NAME,
-  GUARDIAN_SESSION_SECONDS,
+  creatorSessionCookie,
   isGuardianPostAllowed,
   issueGuardianSession,
   verifyGuardianPassword,
@@ -36,15 +35,7 @@ export async function POST(request: Request) {
   }
 
   const response = NextResponse.redirect(new URL('/guardian', request.url), 303)
-  response.cookies.set({
-    name: GUARDIAN_COOKIE_NAME,
-    value: issueGuardianSession(),
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
-    path: '/guardian',
-    maxAge: GUARDIAN_SESSION_SECONDS,
-  })
+  response.cookies.set(creatorSessionCookie(issueGuardianSession(), process.env.NODE_ENV === 'production'))
   response.headers.set('Cache-Control', 'no-store')
   return response
 }

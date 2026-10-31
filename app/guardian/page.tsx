@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-type Props = { searchParams: Promise<{ error?: string }> }
+type Props = { searchParams: Promise<{ error?: string; salida?: string }> }
 
 /** Entrada privada: nunca cambia el progreso ni las llaves de los visitantes. */
 export default async function GuardianPage({ searchParams }: Props) {
   const authorized = await hasGuardianSession()
-  const { error } = await searchParams
+  const { error, salida } = await searchParams
 
   if (!authorized) {
     const configured = isGuardianConfigured()
@@ -26,6 +26,17 @@ export default async function GuardianPage({ searchParams }: Props) {
           <p className="text-base italic text-foreground/75">
             Una puerta especial para revisar los caminos sin revelar sus secretos a los viajeros.
           </p>
+          {salida === '1' && (
+            <div role="status" className="space-y-3 border border-gold/35 bg-gold/5 p-4 text-sm text-foreground/90">
+              <p>Has cerrado el Taller del Creador en este navegador.</p>
+              <Link
+                href="/guardian/sitio/casa-de-juanito"
+                className="inline-block py-2 text-gold underline underline-offset-4"
+              >
+                Comprobar la puerta privada (debe pedir Llave Maestra)
+              </Link>
+            </div>
+          )}
           {!configured ? (
             <p role="status" className="border border-gold/30 p-4 text-sm text-foreground/80">
               La Llave Maestra todavía no ha sido activada en el servidor.
