@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import {
   GUARDIAN_COOKIE_NAME,
   GUARDIAN_SESSION_SECONDS,
+  isGuardianPostAllowed,
   issueGuardianSession,
   verifyGuardianPassword,
 } from '@/lib/san-yallego/guardian'
@@ -10,14 +11,24 @@ export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
 
 export async function POST(request: Request) {
-  const origin = request.headers.get('origin')
-  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host')
-  if (origin && (!host || new URL(origin).host !== host)) {
-    return new Response('Solicitud no válida.', { status: 403 })
+  if (!isGuardianPostAllowed(request)) {
+    return new Response('Solicitud no válida.', { status: 403, headers: { 'Cache-Control': 'no-store' } })
   }
 
-  const data = await request.formData()
-  const clave = data.get('clave')
+  // Un formulario válido es pequeño; no procesar cuerpos declarados como gigantes.
+  const length = request.headers.get('content-length')
+  if (length && (Number.isNaN(Number(length)) || Number(length) > 4096)) {
+    return new Response('Solicitud demasiado grande.', { status: 413, headers: { 'Cache-Control': 'no-store' } })
+  }
+
+  let clave: FormDataEntryValue | null = null
+  try {
+    const data = await request.formData()
+    clave = data.get('clave')
+  } catch {
+    return new Response('Formulario no válido.', { status: 400, headers: { 'Cache-Control': 'no-store' } })
+  }
+
   if (!verifyGuardianPassword(clave)) {
     const response = NextResponse.redirect(new URL('/guardian?error=1', request.url), 303)
     response.headers.set('Cache-Control', 'no-store')
