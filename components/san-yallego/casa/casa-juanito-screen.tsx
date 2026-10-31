@@ -23,7 +23,9 @@ type Phase = 'descenso' | 'llegada' | 'hacia-oraculo' | 'oraculo'
 
 export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boolean } = {}) {
   const { progress, hydrated, visitSite } = useProgress()
-  const [phase, setPhase] = useState<Phase>(skipDescenso ? 'llegada' : 'descenso')
+  // Si SiteJourney ya reprodujo descenso y aproximación, mostrar el Oráculo directamente.
+  // No reproducir el video de aproximación una segunda vez.
+  const [phase, setPhase] = useState<Phase>(skipDescenso ? 'oraculo' : 'descenso')
   const unlocked = hydrated && isSiteUnlocked(site, progress)
 
   useEffect(() => {
