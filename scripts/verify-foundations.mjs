@@ -54,7 +54,7 @@ assert.doesNotMatch(mapScreen, /SAN_YALLEGO_MASTER_KEY|SAN_YALLEGO_GUARDIAN_SECR
 
 assert.match(journey, /setPhase\('hacia-oraculo'\)/,
   'Juanito: después del descenso debe comenzar el video de aproximación al Oráculo')
-assert.match(journey, /ASSETS\\.video\\.oraculos\\[siteId\\]/,
+assert.ok(journey.includes('ASSETS.video.oraculos[siteId]'),
   'El recorrido debe declarar el video de aproximación al Oráculo')
 assert.match(casaJuanito, /skipDescenso \? 'oraculo' : 'descenso'/,
   'Juanito: después de ambos vuelos se muestra el Oráculo sin repetir el video')
