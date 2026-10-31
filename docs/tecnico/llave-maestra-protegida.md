@@ -62,3 +62,11 @@ Repositorio: `ganadores2/juancoloraoleyendas`. Proyecto Vercel: `juancoloraoleye
 **Validación manual pendiente:** en la preview, entrar a `/mapa`, pulsar «El Taller del Creador», iniciar sesión cuando sea necesario, ver los diez lugares, cerrar sesión y confirmar que la ruta privada exige credenciales nuevamente.
 
 **No se ha fusionado a producción.** El dominio principal seguirá sin mostrar esta entrada hasta que se aprueben y fusionen los cambios.
+
+## Confirmación del autor: 20 recorridos operativos (30 oct 2026)
+
+El autor abrió **El Taller del Creador**, autenticó exitosamente su Llave Maestra y examinó los dos videos de cada uno de los diez sitios. Confirmó expresamente: **«T O D O S............... F U N C I O N A N!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!»**.
+
+**Resultado validado por el autor:** 10 sitios × 2 videos = **20 reproducciones revisadas y comunicadas como funcionales** en la versión de prueba.
+
+No atribuir a esta confirmación pruebas que no se reportaron: no consta una matriz separada de Android/iOS/escritorio, mediciones de latencia, verificación del enlace de logout ni una auditoría de seguridad. Permanecen pendientes esas verificaciones y la revisión de los lugares sellados en el recorrido público. **No fusionar a producción automáticamente**: mantener la Llave Maestra en Preview mientras se cierran las condiciones de acceso y publicación.
