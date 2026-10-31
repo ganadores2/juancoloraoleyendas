@@ -52,17 +52,17 @@ assert.match(navMenu, /pathname\.startsWith\('\/guardian'\)/,
 assert.doesNotMatch(mapScreen, /SAN_YALLEGO_MASTER_KEY|SAN_YALLEGO_GUARDIAN_SECRET/,
   'El mapa público no debe contener ni referenciar las credenciales privadas')
 
-assert.match(journey, /advanceJourneyPhase/, 'El recorrido debe usar la máquina de fases comprobada')
-assert.match(journey, /key=\\{phase\\}/, 'Cada vuelo de Juanito debe reiniciar su reproductor')
-assert.match(journey, /ASSETS\\.video\\.oraculos\\['casa-de-juanito'\\]/,
+assert.ok(journey.includes('advanceJourneyPhase'), 'El recorrido debe usar la máquina de fases comprobada')
+assert.ok(journey.includes('key={phase}'), 'Cada vuelo de Juanito debe reiniciar su reproductor')
+assert.ok(journey.includes("ASSETS.video.oraculos['casa-de-juanito']"),
   'El segundo vuelo de Juanito debe apuntar al MP4 real de aproximación')
-assert.match(journey, /VUELO \\{approaching \\? '2 DE 2' : '1 DE 2'\\}/,
+assert.ok(journey.includes("VUELO {approaching ? '2 DE 2' : '1 DE 2'}"),
   'Los dos vuelos de Juanito deben identificarse claramente')
-assert.match(casaJuanito, /skipDescenso \\? 'oraculo' : 'descenso'/,
+assert.ok(casaJuanito.includes("skipDescenso ? 'oraculo' : 'descenso'"),
   'El Oráculo debe aparecer tras completar ambos vuelos')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
-assert.match(workshop, /href="\\/sitio\\/casa-de-juanito"/,
+assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
   'El Taller debe tener un enlace al recorrido público dentro de la misma preview')
 
 console.log(`✓ Cimientos verificados: ${videos.length} MP4, capítulo 1, ocho sitios sellados y sala privada protegida.`)
