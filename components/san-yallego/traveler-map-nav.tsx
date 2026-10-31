@@ -15,7 +15,7 @@ export function TravelerMapNav() {
   const { progress, hydrated } = useProgress()
   const [open, setOpen] = useState(false)
 
-  if (!hydrated || HIDDEN_ROUTES.has(pathname) || !hasItem(progress, 'llave-san-yallego')) return null
+  if (!hydrated || HIDDEN_ROUTES.has(pathname) || pathname.startsWith('/guardian') || !hasItem(progress, 'llave-san-yallego')) return null
 
   return (
     <div className="fixed left-4 top-4 z-50 md:left-6 md:top-6">

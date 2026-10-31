@@ -11,6 +11,8 @@ const progress = source('lib/san-yallego/progress.ts')
 const page = source('app/sitio/[slug]/page.tsx')
 const guardian = source('lib/san-yallego/guardian.ts')
 const guardianPage = source('app/guardian/sitio/[slug]/page.tsx')
+const mapScreen = source('components/san-yallego/mapa/mapa-screen.tsx')
+const navMenu = source('components/san-yallego/traveler-map-nav.tsx')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
 assert.ok(videos.length >= 24, `Se esperaban 24 videos de bienvenida y recorridos; encontrados ${videos.length}`)
@@ -30,5 +32,12 @@ assert.match(page, /case 'sellado':\s*return <SealedSite/, 'Las rutas públicas 
 assert.match(guardian, /SAN_YALLEGO_MASTER_KEY/, 'La llave debe provenir del entorno del servidor')
 assert.match(guardian, /timingSafeEqual/, 'La comparación de credenciales debe evitar diferencias de tiempo')
 assert.match(guardianPage, /hasGuardianSession/, 'La sala privada debe verificar una sesión antes de mostrar los recorridos')
+
+assert.match(mapScreen, /href="\/guardian"/, 'El Taller del Creador debe enlazarse desde el mapa')
+assert.match(mapScreen, /El Taller del Creador/, 'La entrada del creador debe identificarse en el mapa')
+assert.match(navMenu, /pathname\.startsWith\('\/guardian'\)/,
+  'El menú global no debe tapar el ingreso privado')
+assert.doesNotMatch(mapScreen, /SAN_YALLEGO_MASTER_KEY|SAN_YALLEGO_GUARDIAN_SECRET/,
+  'El mapa público no debe contener ni referenciar las credenciales privadas')
 
 console.log(`✓ Cimientos verificados: ${videos.length} MP4, capítulo 1, ocho sitios sellados y sala privada protegida.`)

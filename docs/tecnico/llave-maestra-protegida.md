@@ -48,3 +48,17 @@ La aplicación no concede acceso al faltar las variables o si no cumplen longitu
 Repositorio: `ganadores2/juancoloraoleyendas`. Proyecto Vercel: `juancoloraoleyendas-bsrp`. El sitio público continúa en `main`.
 
 **Criterio de éxito:** que el creador observe los diez caminos sin romper la aventura de los demás.
+
+## Entrada desde el Mapa Fantástico (implementación en prueba)
+
+**30 de octubre de 2026:** se añade al mapa, en la esquina inferior derecha, un acceso discreto y accesible **«El Taller del Creador»**, que dirige a `/guardian` **en el mismo dominio de la prueba**. Es únicamente un enlace; no almacena contraseña ni cambia las reglas de desbloqueo del mapa.
+
+- **Visitante sin llave:** puede ver el enlace, pero la Sala solicita autenticar al creador. Esto es intencional; el enlace no es una llave.
+- **Creador autenticado:** entra a la Sala y consulta diez rutas sin levantar sus sellos públicos.
+- **Navegación general:** el botón global del mapa se oculta mientras se está en `/guardian`, para evitar cubrir el formulario de autenticación o los controles.
+- **Móvil:** acceso mínimo de 44 px de alto y texto legible; confirmar en el navegador real que no tape marcadores ni mensajes.
+- **Comprobación automática:** nueva regla exige que la entrada exista, enlace a `/guardian` y que el menú global no invada las pantallas privadas.
+
+**Validación manual pendiente:** en la preview, entrar a `/mapa`, pulsar «El Taller del Creador», iniciar sesión cuando sea necesario, ver los diez lugares, cerrar sesión y confirmar que la ruta privada exige credenciales nuevamente.
+
+**No se ha fusionado a producción.** El dominio principal seguirá sin mostrar esta entrada hasta que se aprueben y fusionen los cambios.
