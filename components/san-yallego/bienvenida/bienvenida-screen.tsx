@@ -11,7 +11,8 @@ type Phase = 'saludo' | 'invitacion' | 'microfono' | 'saliendo'
 type Playback = 'idle' | 'playing' | 'paused' | 'error'
 
 /** Dos saludos de Juan Colorao, seguidos del micrófono como llave del portal.
- * El primer video se inicia con un toque para garantizar que se escuche su voz.
+ * Una vez abierta la aventura, se intenta continuar automáticamente hasta el portal.
+ * Si el navegador bloquea el sonido, se ofrece un botón accesible para reproducir.
  */
 export function BienvenidaScreen() {
   const router = useRouter()
@@ -37,11 +38,19 @@ export function BienvenidaScreen() {
     setPhase((current) => current === 'saludo' ? 'invitacion' : 'microfono')
   }, [])
 
-  // Al terminar el saludo se intenta reproducir la invitación con voz.
-  // Los navegadores que bloqueen ese intento ofrecen el botón manual.
+  // Intento de reproducción sin imponer un segundo clic. El navegador puede
+  // exigir interacción para habilitar audio: el botón manual sigue disponible.
   useEffect(() => {
-    if (phase === 'invitacion') void play()
+    if (phase === 'saludo' || phase === 'invitacion') void play()
   }, [phase, play])
+
+  // El micrófono sigue siendo un gesto interactivo, pero no detiene la película.
+  // El visitante puede tocarlo o continuar solo tras una breve contemplación.
+  useEffect(() => {
+    if (phase !== 'microfono') return
+    const id = window.setTimeout(() => setPhase('saliendo'), 3500)
+    return () => window.clearTimeout(id)
+  }, [phase])
 
   useEffect(() => {
     if (phase !== 'saliendo') return
@@ -50,6 +59,7 @@ export function BienvenidaScreen() {
   }, [phase, router])
 
   const touchMic = () => {
+    if (phase !== 'microfono') return
     navigator.vibrate?.(40)
     setPhase('saliendo')
   }
@@ -108,7 +118,7 @@ export function BienvenidaScreen() {
             JUAN COLORAO TE INVITA
           </p>
           <p className="max-w-sm text-balance text-xl italic text-foreground text-glow md:text-2xl">
-            Toca el micrófono para cruzar el portal.
+            Toca el micrófono para cruzar el portal, o contempla cómo se abre el camino.
           </p>
           <button
             type="button"
@@ -119,7 +129,7 @@ export function BienvenidaScreen() {
             <span className="animate-sy-ripple absolute inset-0 rounded-full border border-gold/45" aria-hidden />
             <Mic className="size-9" aria-hidden />
           </button>
-          <span className="font-display text-[10px] tracking-[0.25em] text-gold/75">ENTRAR A LA LEYENDA</span>
+          <span className="font-display text-[10px] tracking-[0.25em] text-gold/75">ENTRAR A LA LEYENDA · CONTINÚA AUTOMÁTICAMENTE</span>
         </div>
       )}
 
@@ -156,7 +166,7 @@ export function BienvenidaScreen() {
             onClick={next}
             className="pointer-events-auto min-h-10 rounded-full border border-white/25 bg-black/65 px-4 text-xs text-white/85 backdrop-blur-sm"
           >
-            {isSaludo ? 'Siguiente saludo' : 'Ir al micrófono'}
+            {isSaludo ? 'Continuar al saludo 2' : 'Continuar al micrófono'}
           </button>
         </div>
       )}
