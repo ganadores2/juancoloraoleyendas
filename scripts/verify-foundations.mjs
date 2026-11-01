@@ -19,6 +19,8 @@ const guardianPage = source('app/guardian/sitio/[slug]/page.tsx')
 const mapScreen = source('components/san-yallego/mapa/mapa-screen.tsx')
 const navMenu = source('components/san-yallego/traveler-map-nav.tsx')
 const journey = source('components/san-yallego/site-journey.tsx')
+const welcome = source('components/san-yallego/bienvenida/bienvenida-screen.tsx')
+const portal = source('components/san-yallego/portal/portal-screen.tsx')
 const casaJuanito = source('components/san-yallego/casa/casa-juanito-screen.tsx')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
@@ -82,6 +84,21 @@ assert.ok(journey.includes("VUELO {approaching ? '2 DE 2' : '1 DE 2'}"),
   'Los dos vuelos de Juanito deben identificarse claramente')
 assert.ok(casaJuanito.includes("skipDescenso ? 'oraculo' : 'descenso'"),
   'El Oráculo debe aparecer tras completar ambos vuelos')
+
+assert.ok(welcome.includes("phase === 'saludo' || phase === 'invitacion'"),
+  'Ambos saludos deben intentar iniciar reproducción automática')
+assert.ok(welcome.includes("phase !== 'microfono'"),
+  'El micrófono debe conservar una transición controlada')
+assert.ok(welcome.includes("window.setTimeout(() => setPhase('saliendo'), 3500)"),
+  'La pausa ante el micrófono debe continuar sola después de 3.5 segundos')
+assert.ok(welcome.includes("if (phase !== 'microfono') return"),
+  'Pulsar varias veces el micrófono no debe repetir la salida')
+assert.ok(portal.includes("onEnded={toEntranceOracle}"),
+  'El recorrido aéreo debe conducir automáticamente a la Entrada')
+assert.ok(welcome.includes("onEnded={next}"),
+  'Los saludos deben avanzar cuando termina cada video')
+assert.ok(welcome.includes("onClick={() => void play()}"),
+  'Debe quedar una opción manual si el navegador bloquea el video')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
