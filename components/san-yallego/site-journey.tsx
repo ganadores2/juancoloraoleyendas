@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useCallback, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import { useProgress } from '@/hooks/use-san-yallego'
 import { ASSETS } from '@/lib/san-yallego/assets'
 import { isSiteUnlocked } from '@/lib/san-yallego/progress'
@@ -11,6 +11,35 @@ import { CinematicVideo } from './cinematic-video'
 import { JuanitoFlightVideo } from './juanito-flight-video'
 import { ritualButton } from './ritual'
 import { SealedSite } from './sealed-site'
+
+/** El mirador se presenta brevemente sin cubrir el paisaje durante los 15 s.
+ * Solo el vuelo panorámico de la Entrada oculta su cartel tras 3 s.
+ */
+function FlightHeading({ place, approaching, panorama }: { place: string; approaching: boolean; panorama: boolean }) {
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    if (!panorama) return
+    const timer = window.setTimeout(() => setVisible(false), 3000)
+    return () => window.clearTimeout(timer)
+  }, [panorama])
+
+  return (
+    <div
+      className={`pointer-events-none fixed inset-x-0 top-16 z-40 flex justify-center px-4 transition-opacity duration-1000 md:top-6 ${visible ? 'opacity-100' : 'opacity-0'}`}
+      aria-hidden={!visible}
+    >
+      <div className="rounded-lg border border-gold/40 bg-black/80 px-4 py-3 text-center shadow-xl backdrop-blur-md">
+        <p className="font-display text-[10px] tracking-[0.18em] text-gold/85">
+          {place} · VUELO {approaching ? '2 DE 2' : '1 DE 2'}
+        </p>
+        <p className="mt-1 text-sm italic text-foreground/90">
+          {panorama ? 'Contempla San Yallego. Cada rincón guarda una historia.' : approaching ? 'Camino hacia el Oráculo' : 'Descenso hacia el lugar'}
+        </p>
+      </div>
+    </div>
+  )
+}
 
 /** Reproduce los dos tramos antes de entregar el control a la experiencia del sitio.
  * No abre lugares sellados ni modifica el progreso del visitante.
@@ -64,19 +93,10 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
           label={approaching
             ? `Vuelo 2 de 2: camino hacia el Oráculo de ${destination}`
             : `Vuelo 1 de 2: descenso hacia ${destination}`}
-          nextLabel={approaching ? 'Saltar al Oráculo' : 'Saltar al vuelo 2 de 2'}
+          nextLabel={approaching ? 'Saltar al Oráculo' : isEntrance ? 'Seguir el descenso' : 'Saltar al vuelo 2 de 2'}
           onEnded={advance}
         />
-        <div className="pointer-events-none fixed inset-x-0 top-16 z-40 flex justify-center px-4 md:top-6">
-          <div className="rounded-lg border border-gold/40 bg-black/80 px-4 py-3 text-center shadow-xl backdrop-blur-md">
-            <p className="font-display text-[10px] tracking-[0.18em] text-gold/85">
-              {place} · VUELO {approaching ? '2 DE 2' : '1 DE 2'}
-            </p>
-            <p className="mt-1 text-sm italic text-foreground/90">
-              {approaching ? 'Camino hacia el Oráculo' : 'Descenso hacia el lugar'}
-            </p>
-          </div>
-        </div>
+        <FlightHeading key={`${siteId}-${phase}`} place={place} approaching={approaching} panorama={isEntrance && !approaching} />
         <nav className="fixed left-4 top-4 z-40 md:left-6 md:top-6">
           <Link href="/mapa" className={ritualButton('quiet', 'px-0')}>Volver al mapa</Link>
         </nav>
