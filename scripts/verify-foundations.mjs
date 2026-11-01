@@ -59,9 +59,18 @@ assert.doesNotMatch(mapScreen, /SAN_YALLEGO_MASTER_KEY|SAN_YALLEGO_GUARDIAN_SECR
   'El mapa público no debe contener ni referenciar las credenciales privadas')
 
 assert.ok(journey.includes('advanceJourneyPhase'), 'El recorrido debe usar la máquina de fases comprobada')
+assert.ok(journey.includes("siteId === 'entrada' || siteId === 'casa-de-juanito'"),
+  'Entrada y Casa deben usar la misma secuencia de dos vuelos comprobada')
+assert.ok(journey.includes("ASSETS.video.oraculos[siteId]"),
+  'La Entrada debe reproducir su segundo MP4 antes del Oráculo')
+assert.ok(journey.includes("ASSETS.video.descensos[siteId]"),
+  'La Entrada debe reproducir el MP4 de descenso')
+assert.ok(journey.includes('ENTRADA A SAN YALLEGO'),
+  'La Entrada debe mostrar la etiqueta visible VUELO 1/2 y 2/2')
+
 assert.ok(journey.includes('key={phase}'), 'Cada vuelo de Juanito debe reiniciar su reproductor')
-assert.ok(journey.includes("ASSETS.video.oraculos['casa-de-juanito']"),
-  'El segundo vuelo de Juanito debe apuntar al MP4 real de aproximación')
+assert.ok(journey.includes("ASSETS.video.oraculos[siteId]"),
+  'El segundo vuelo debe apuntar al MP4 real de aproximación')
 assert.ok(journey.includes("VUELO {approaching ? '2 DE 2' : '1 DE 2'}"),
   'Los dos vuelos de Juanito deben identificarse claramente')
 assert.ok(casaJuanito.includes("skipDescenso ? 'oraculo' : 'descenso'"),
