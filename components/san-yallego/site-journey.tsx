@@ -45,30 +45,35 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
     </main>
   )
 
-  // En la Casa los DOS vuelos usan el mismo reproductor fiable y las fases
-  // aparecen claramente identificadas. Nunca se salta al Oráculo tras el primer MP4.
-  if (siteId === 'casa-de-juanito' && (phase === 'descenso' || phase === 'hacia-oraculo')) {
+  // Entrada y Casa: dos vuelos claramente identificados con el reproductor
+  // ya validado para Juanito. La Entrada no puede saltar directamente al
+  // Oráculo sin terminar (o saltar explícitamente) ambos segmentos.
+  if ((siteId === 'entrada' || siteId === 'casa-de-juanito') &&
+    (phase === 'descenso' || phase === 'hacia-oraculo')) {
     const approaching = phase === 'hacia-oraculo'
+    const isEntrance = siteId === 'entrada'
+    const place = isEntrance ? 'ENTRADA A SAN YALLEGO' : 'CASA DE JUANITO'
+    const destination = isEntrance ? 'Entrada a San Yallego' : 'Casa de Juanito'
+    const src = approaching ? ASSETS.video.oraculos[siteId] : ASSETS.video.descensos[siteId]
+
     return (
       <main className="relative min-h-dvh bg-black">
         <JuanitoFlightVideo
-          key={phase}
-          src={approaching
-            ? ASSETS.video.oraculos['casa-de-juanito']
-            : ASSETS.video.descensos['casa-de-juanito']}
+          key={`${siteId}-${phase}`}
+          src={src}
           label={approaching
-            ? 'Vuelo 2 de 2: camino hacia el Oráculo de Juanito'
-            : 'Vuelo 1 de 2: descenso a la Casa de Juanito'}
+            ? `Vuelo 2 de 2: camino hacia el Oráculo de ${destination}`
+            : `Vuelo 1 de 2: descenso hacia ${destination}`}
           nextLabel={approaching ? 'Saltar al Oráculo' : 'Saltar al vuelo 2 de 2'}
           onEnded={advance}
         />
         <div className="pointer-events-none fixed inset-x-0 top-16 z-40 flex justify-center px-4 md:top-6">
           <div className="rounded-lg border border-gold/40 bg-black/80 px-4 py-3 text-center shadow-xl backdrop-blur-md">
             <p className="font-display text-[10px] tracking-[0.18em] text-gold/85">
-              CASA DE JUANITO · VUELO {approaching ? '2 DE 2' : '1 DE 2'}
+              {place} · VUELO {approaching ? '2 DE 2' : '1 DE 2'}
             </p>
             <p className="mt-1 text-sm italic text-foreground/90">
-              {approaching ? 'Camino hacia el Oráculo' : 'Descenso hacia la casa'}
+              {approaching ? 'Camino hacia el Oráculo' : 'Descenso hacia el lugar'}
             </p>
           </div>
         </div>
