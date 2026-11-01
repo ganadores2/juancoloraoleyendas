@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { GuardianFormError, readGuardianForm } from '@/lib/san-yallego/guardian-form.mjs'
 import {
   creatorSessionCookie,
   isGuardianPostAllowed,
@@ -14,18 +15,15 @@ export async function POST(request: Request) {
     return new Response('Solicitud no válida.', { status: 403, headers: { 'Cache-Control': 'no-store' } })
   }
 
-  // Un formulario válido es pequeño; no procesar cuerpos declarados como gigantes.
-  const length = request.headers.get('content-length')
-  if (length && (Number.isNaN(Number(length)) || Number(length) > 4096)) {
-    return new Response('Solicitud demasiado grande.', { status: 413, headers: { 'Cache-Control': 'no-store' } })
-  }
-
-  let clave: FormDataEntryValue | null = null
+  let clave: string | null
   try {
-    const data = await request.formData()
-    clave = data.get('clave')
-  } catch {
-    return new Response('Formulario no válido.', { status: 400, headers: { 'Cache-Control': 'no-store' } })
+    clave = await readGuardianForm(request)
+  } catch (error) {
+    const status = error instanceof GuardianFormError ? error.status : 400
+    return new Response(status === 413 ? 'Solicitud demasiado grande.' : 'Formulario no válido.', {
+      status,
+      headers: { 'Cache-Control': 'no-store' },
+    })
   }
 
   if (!verifyGuardianPassword(clave)) {
