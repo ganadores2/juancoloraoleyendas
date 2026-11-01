@@ -68,7 +68,7 @@ assert.ok(journey.includes("ASSETS.video.descensos[siteId]"),
 assert.ok(journey.includes('ENTRADA A SAN YALLEGO'),
   'La Entrada debe mostrar la etiqueta visible VUELO 1/2 y 2/2')
 
-assert.ok(journey.includes('key={phase}'), 'Cada vuelo de Juanito debe reiniciar su reproductor')
+assert.ok(journey.includes('key={\`\${siteId}-\${phase}\`}'), 'Cada vuelo debe reiniciar su reproductor al cambiar de fase')
 assert.ok(journey.includes("ASSETS.video.oraculos[siteId]"),
   'El segundo vuelo debe apuntar al MP4 real de aproximación')
 assert.ok(journey.includes("VUELO {approaching ? '2 DE 2' : '1 DE 2'}"),
