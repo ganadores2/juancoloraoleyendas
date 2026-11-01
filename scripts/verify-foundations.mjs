@@ -67,6 +67,13 @@ assert.ok(journey.includes("ASSETS.video.descensos[siteId]"),
   'La Entrada debe reproducir el MP4 de descenso')
 assert.ok(journey.includes('ENTRADA A SAN YALLEGO'),
   'La Entrada debe mostrar la etiqueta visible VUELO 1/2 y 2/2')
+assert.ok(journey.includes('window.setTimeout(() => setVisible(false), 3000)'),
+  'El cartel panorámico debe desaparecer tras 3 segundos, sin cambiar el video')
+assert.ok(journey.includes("'Seguir el descenso'"),
+  'La Entrada debe ofrecer continuar voluntariamente al segundo vuelo')
+assert.ok(journey.includes('onEnded={advance}'),
+  'Los vuelos deben avanzar automáticamente al terminar el MP4')
+
 
 assert.ok(journey.includes('key={') && journey.includes('siteId}-${phase}'), 'Cada vuelo debe reiniciar su reproductor al cambiar de fase')
 assert.ok(journey.includes("ASSETS.video.oraculos[siteId]"),
