@@ -23,7 +23,7 @@ export function OraculoEntrada() {
   const [phase, setPhase] = useState<Phase>('explorando')
   const [showPass, setShowPass] = useState(false)
   const discoveryStarted = useRef(false)
-  const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const revealTimer = useRef<number | null>(null)
   const alreadyHasKey = hydrated && hasItem(progress, 'llave-san-yallego')
 
   useEffect(() => {
