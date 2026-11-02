@@ -47,7 +47,11 @@ export async function POST(request: Request) {
   }
 
   if (!verifyGuardianPassword(clave)) {
-    const response = NextResponse.redirect(new URL('/guardian?error=1', request.url), 303)
+    const destination = new URL('/guardian?error=1', request.url)
+    if (process.env.VERCEL_ENV === 'preview' && rate.attempts !== undefined) {
+      destination.searchParams.set('attempt', String(rate.attempts))
+    }
+    const response = NextResponse.redirect(destination, 303)
     response.headers.set('Cache-Control', 'no-store')
     return response
   }
