@@ -33,13 +33,10 @@ export async function POST(request: Request) {
       },
     })
   }
-  // Nunca aceptar un login sin protección distribuida, tampoco en Preview.
-  // En Preview el código de diagnóstico distingue configuración/IP/proveedor/red
-  // sin mostrar claves, tokens, IPs ni URLs de Redis.
+  // Nunca aceptar un login sin contador distribuido, tampoco en Preview.
+  // No mostrar datos internos del proveedor al visitante.
   if (rate.status === 'unavailable') {
-    const diagnostic = process.env.VERCEL_ENV === 'preview'
-      ? ` (diagnóstico: ${rate.reason ?? 'desconocido'})` : ''
-    return new Response(`Protección temporalmente no disponible${diagnostic}. Intenta más tarde.`, {
+    return new Response('Protección temporalmente no disponible. Intenta más tarde.', {
       status: 503,
       headers: { 'Cache-Control': 'no-store', 'Retry-After': '60' },
     })
