@@ -12,7 +12,8 @@
     "test:security": "node scripts/verify-foundations.mjs && node --test tests/guardian.test.mjs tests/guardian-cookie.test.mjs tests/journey.test.mjs tests/visitor-seals.test.mjs && node --test tests/guardian-rate-limit.test.mjs",
     "test:journey": "node --test tests/journey.test.mjs",
     "test:visitor-seals": "node --test tests/visitor-seals.test.mjs",
-    "test:guardian-cookie": "node --test tests/guardian-cookie.test.mjs"
+    "test:guardian-cookie": "node --test tests/guardian-cookie.test.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
