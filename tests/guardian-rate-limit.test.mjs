@@ -34,7 +34,7 @@ test('el contador se incrementa en Redis mediante EVAL atómico', async () => {
     seen = { url, options }
     return { ok: true, json: async () => ({ result: [MAX_ATTEMPTS, WINDOW_SECONDS] }) }
   }
-  assert.deepEqual(await checkGuardianLoginRate(request(), { env, fetcher }), { status: 'allowed' })
+  assert.deepEqual(await checkGuardianLoginRate(request(), { env, fetcher }), { status: 'allowed', attempts: MAX_ATTEMPTS })
   const cmd = JSON.parse(seen.options.body)
   assert.equal(cmd[0], 'EVAL')
   assert.match(cmd[1], /redis\.call\('INCR'/)
@@ -48,7 +48,7 @@ test('el contador se incrementa en Redis mediante EVAL atómico', async () => {
 test('se bloquea al superar cinco solicitudes y devuelve espera', async () => {
   const fetcher = async () => ({ ok: true, json: async () => ({ result: [6, 37] }) })
   assert.deepEqual(await checkGuardianLoginRate(request(), { env, fetcher }),
-    { status: 'limited', retryAfter: 37 })
+    { status: 'limited', attempts: 6, retryAfter: 37 })
 })
 
 test('errores remotos o datos inválidos nunca se consideran tasa autorizada', async () => {
@@ -76,6 +76,6 @@ test('reconoce variables KV_REST_API de Vercel sin copiar secretos', async () =>
     seen.push([url, options.headers.Authorization])
     return { ok: true, json: async () => ({ result: [1, 60] }) }
   }
-  assert.deepEqual(await checkGuardianLoginRate(request(), { env: kvEnv, fetcher }), { status: 'allowed' })
+  assert.deepEqual(await checkGuardianLoginRate(request(), { env: kvEnv, fetcher }), { status: 'allowed', attempts: 1 })
   assert.deepEqual(seen, [['https://redis.example.test', 'Bearer token-privado']])
 })
