@@ -62,3 +62,18 @@ test('errores remotos o datos inválidos nunca se consideran tasa autorizada', a
     assert.deepEqual(await checkGuardianLoginRate(request(), { env, fetcher }), { status: 'unavailable' })
   }
 })
+
+test('reconoce variables KV_REST_API de Vercel sin copiar secretos', async () => {
+  const kvEnv = {
+    KV_REST_API_URL: 'https://redis.example.test',
+    KV_REST_API_TOKEN: 'token-privado',
+    SAN_YALLEGO_GUARDIAN_SECRET: 'S'.repeat(40),
+  }
+  const seen = []
+  const fetcher = async (url, options) => {
+    seen.push([url, options.headers.Authorization])
+    return { ok: true, json: async () => ({ result: [1, 60] }) }
+  }
+  assert.deepEqual(await checkGuardianLoginRate(request(), { env: kvEnv, fetcher }), { status: 'allowed' })
+  assert.deepEqual(seen, [['https://redis.example.test', 'Bearer token-privado']])
+})
