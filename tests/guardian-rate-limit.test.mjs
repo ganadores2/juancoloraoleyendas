@@ -16,7 +16,7 @@ const request = (ip = '203.0.113.5') =>
 test('no declara protección sin credenciales y rechaza URLs no HTTPS', async () => {
   assert.equal(guardianLoginConfig({}), null)
   assert.equal(guardianLoginConfig({ ...env, UPSTASH_REDIS_REST_URL: 'http://localhost' }), null)
-  assert.deepEqual(await checkGuardianLoginRate(request(), { env: {} }), { status: 'unavailable' })
+  assert.deepEqual(await checkGuardianLoginRate(request(), { env: {} }), { status: 'unavailable', reason: 'config' })
 })
 
 test('la clave nunca contiene IP ni contraseñas y separa IPs', () => {
@@ -59,7 +59,9 @@ test('errores remotos o datos inválidos nunca se consideran tasa autorizada', a
     async () => ({ ok: true, json: async () => ({ result: ['NaN', 30] }) }),
   ]
   for (const fetcher of bad) {
-    assert.deepEqual(await checkGuardianLoginRate(request(), { env, fetcher }), { status: 'unavailable' })
+    const result = await checkGuardianLoginRate(request(), { env, fetcher })
+    assert.equal(result.status, 'unavailable')
+    assert.ok(['network', 'upstream'].includes(result.reason))
   }
 })
 
