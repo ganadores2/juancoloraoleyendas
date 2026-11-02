@@ -18,9 +18,19 @@ export async function POST(request: Request) {
 
   const rate = await checkGuardianLoginRate(request)
   if (rate.status === 'limited') {
-    return new Response('Demasiados intentos. Intenta de nuevo más tarde.', {
+    // Mantener HTTP 429 real, pero presentar una página accesible y coherente
+    // con el Taller en lugar del texto sobre fondo blanco del navegador.
+    return new Response(`<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Acceso en pausa — Sala del Creador</title>
+<style>html{color-scheme:dark}body{background:#050505;color:#e5d6b8;min-height:100vh;margin:0;display:grid;place-items:center;font-family:Georgia,serif}main{width:min(88vw,560px);border:1px solid #8d7133;padding:clamp(24px,5vw,56px);text-align:center;box-sizing:border-box}h1{color:#d8ab4d;font-size:clamp(24px,4vw,36px);font-weight:400;letter-spacing:.06em}p{line-height:1.65;font-size:18px}a{display:inline-block;margin-top:18px;padding:14px 24px;color:#eac671;border:1px solid #a58444;text-decoration:none}a:focus-visible{outline:2px solid #fff;outline-offset:4px}</style></head><body><main><p style="color:#d8ab4d;letter-spacing:.2em;font-size:13px">SAN YALLEGO · ACCESO PRIVADO</p><h1>La puerta está en pausa</h1><p>Demasiados intentos. Por seguridad, espera aproximadamente un minuto antes de volver a intentarlo.</p><a href="/guardian">Volver a la Sala del Creador</a></main></body></html>`, {
       status: 429,
-      headers: { 'Cache-Control': 'no-store', 'Retry-After': String(rate.retryAfter ?? 60) },
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+        'Cache-Control': 'no-store',
+        'Retry-After': String(rate.retryAfter ?? 60),
+        'X-Robots-Tag': 'noindex, nofollow',
+      },
     })
   }
   // Nunca aceptar un login sin protección distribuida, tampoco en Preview.
