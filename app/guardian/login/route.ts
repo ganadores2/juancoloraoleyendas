@@ -23,10 +23,13 @@ export async function POST(request: Request) {
       headers: { 'Cache-Control': 'no-store', 'Retry-After': String(rate.retryAfter ?? 60) },
     })
   }
-  // En producción no se admite un login sin contador compartido;
-  // en Preview se permite validar el Taller hasta conectar Redis.
-  if (rate.status === 'unavailable' && process.env.VERCEL_ENV === 'production') {
-    return new Response('El acceso privado está temporalmente no disponible.', {
+  // Nunca aceptar un login sin protección distribuida, tampoco en Preview.
+  // En Preview el código de diagnóstico distingue configuración/IP/proveedor/red
+  // sin mostrar claves, tokens, IPs ni URLs de Redis.
+  if (rate.status === 'unavailable') {
+    const diagnostic = process.env.VERCEL_ENV === 'preview'
+      ? ` (diagnóstico: ${rate.reason ?? 'desconocido'})` : ''
+    return new Response(`Protección temporalmente no disponible${diagnostic}. Intenta más tarde.`, {
       status: 503,
       headers: { 'Cache-Control': 'no-store', 'Retry-After': '60' },
     })
