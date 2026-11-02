@@ -12,6 +12,7 @@ const page = source('app/sitio/[slug]/page.tsx')
 const guardian = source('lib/san-yallego/guardian.ts')
 const guardianCore = source('lib/san-yallego/guardian-core.mjs')
 const loginRoute = source('app/guardian/login/route.ts')
+const rateLimiter = source('lib/san-yallego/guardian-rate-limit.mjs')
 const logoutRoute = source('app/guardian/logout/route.ts')
 const guardianIndex = source('app/guardian/page.tsx')
 const nextConfig = source('next.config.mjs')
@@ -19,6 +20,8 @@ const guardianPage = source('app/guardian/sitio/[slug]/page.tsx')
 const mapScreen = source('components/san-yallego/mapa/mapa-screen.tsx')
 const navMenu = source('components/san-yallego/traveler-map-nav.tsx')
 const journey = source('components/san-yallego/site-journey.tsx')
+const welcome = source('components/san-yallego/bienvenida/bienvenida-screen.tsx')
+const portal = source('components/san-yallego/portal/portal-screen.tsx')
 const casaJuanito = source('components/san-yallego/casa/casa-juanito-screen.tsx')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
@@ -40,6 +43,10 @@ assert.match(guardianCore, /SAN_YALLEGO_MASTER_KEY/, 'La llave debe provenir del
 assert.match(guardian, /server-only/, 'El núcleo privado debe bloquear importaciones desde el navegador')
 assert.match(guardianCore, /timingSafeEqual/, 'La comparación de credenciales debe evitar diferencias de tiempo')
 assert.match(loginRoute, /isGuardianPostAllowed/, 'El login debe validar el origen de la solicitud')
+assert.match(loginRoute, /checkGuardianLoginRate\(request\)/, 'El login debe comprobar intentos distribuidos')
+assert.match(loginRoute, /rate.status === 'limited'/, 'El login debe detener solicitudes con tasa excedida')
+assert.match(loginRoute, /if \(rate.status === 'unavailable'\)/, 'Preview y Production deben rechazar login sin contador compartido')
+assert.match(rateLimiter, /'EVAL'/, 'El contador compartido debe ejecutarse como operación atómica')
 assert.match(logoutRoute, /isGuardianPostAllowed/, 'El logout debe validar el origen de la solicitud')
 assert.ok(logoutRoute.includes('closedCreatorSessionCookie('), 'Logout debe expirar la cookie compartida')
 assert.ok(loginRoute.includes('creatorSessionCookie('), 'Login debe usar la misma política de cookie')
@@ -59,13 +66,44 @@ assert.doesNotMatch(mapScreen, /SAN_YALLEGO_MASTER_KEY|SAN_YALLEGO_GUARDIAN_SECR
   'El mapa público no debe contener ni referenciar las credenciales privadas')
 
 assert.ok(journey.includes('advanceJourneyPhase'), 'El recorrido debe usar la máquina de fases comprobada')
-assert.ok(journey.includes('key={phase}'), 'Cada vuelo de Juanito debe reiniciar su reproductor')
-assert.ok(journey.includes("ASSETS.video.oraculos['casa-de-juanito']"),
-  'El segundo vuelo de Juanito debe apuntar al MP4 real de aproximación')
+assert.ok(journey.includes("siteId === 'entrada' || siteId === 'casa-de-juanito'"),
+  'Entrada y Casa deben usar la misma secuencia de dos vuelos comprobada')
+assert.ok(journey.includes("ASSETS.video.oraculos[siteId]"),
+  'La Entrada debe reproducir su segundo MP4 antes del Oráculo')
+assert.ok(journey.includes("ASSETS.video.descensos[siteId]"),
+  'La Entrada debe reproducir el MP4 de descenso')
+assert.ok(journey.includes('ENTRADA A SAN YALLEGO'),
+  'La Entrada debe mostrar la etiqueta visible VUELO 1/2 y 2/2')
+assert.ok(journey.includes('window.setTimeout(() => setVisible(false), 3000)'),
+  'El cartel panorámico debe desaparecer tras 3 segundos, sin cambiar el video')
+assert.ok(journey.includes("'Seguir el descenso'"),
+  'La Entrada debe ofrecer continuar voluntariamente al segundo vuelo')
+assert.ok(journey.includes('onEnded={advance}'),
+  'Los vuelos deben avanzar automáticamente al terminar el MP4')
+
+
+assert.ok(journey.includes('key={') && journey.includes('siteId}-${phase}'), 'Cada vuelo debe reiniciar su reproductor al cambiar de fase')
+assert.ok(journey.includes("ASSETS.video.oraculos[siteId]"),
+  'El segundo vuelo debe apuntar al MP4 real de aproximación')
 assert.ok(journey.includes("VUELO {approaching ? '2 DE 2' : '1 DE 2'}"),
   'Los dos vuelos de Juanito deben identificarse claramente')
 assert.ok(casaJuanito.includes("skipDescenso ? 'oraculo' : 'descenso'"),
   'El Oráculo debe aparecer tras completar ambos vuelos')
+
+assert.ok(welcome.includes("phase === 'saludo' || phase === 'invitacion'"),
+  'Ambos saludos deben intentar iniciar reproducción automática')
+assert.ok(welcome.includes("phase !== 'microfono'"),
+  'El micrófono debe conservar una transición controlada')
+assert.ok(welcome.includes("window.setTimeout(() => setPhase('saliendo'), 3500)"),
+  'La pausa ante el micrófono debe continuar sola después de 3.5 segundos')
+assert.ok(welcome.includes("if (phase !== 'microfono') return"),
+  'Pulsar varias veces el micrófono no debe repetir la salida')
+assert.ok(portal.includes("onEnded={toEntranceOracle}"),
+  'El recorrido aéreo debe conducir automáticamente a la Entrada')
+assert.ok(welcome.includes("onEnded={next}"),
+  'Los saludos deben avanzar cuando termina cada video')
+assert.ok(welcome.includes("onClick={() => void play()}"),
+  'Debe quedar una opción manual si el navegador bloquea el video')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),

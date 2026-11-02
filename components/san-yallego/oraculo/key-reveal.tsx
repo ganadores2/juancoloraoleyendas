@@ -44,7 +44,7 @@ export function KeyReveal({ justFound }: KeyRevealProps) {
           <KeyArt />
         </div>
 
-        <div className="sy-key-content animate-sy-fade-in flex min-w-0 flex-col items-center gap-4 [animation-delay:1.6s]">
+        <div className="sy-key-content animate-sy-fade-in flex min-w-0 flex-col items-center gap-4 ">
         <h2 className="sy-key-title text-balance font-display text-xl tracking-[0.08em] text-gold text-glow md:text-3xl">
           Has encontrado la Llave de San Yallego.
         </h2>
