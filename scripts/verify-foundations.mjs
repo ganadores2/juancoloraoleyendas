@@ -45,7 +45,7 @@ assert.match(guardianCore, /timingSafeEqual/, 'La comparación de credenciales d
 assert.match(loginRoute, /isGuardianPostAllowed/, 'El login debe validar el origen de la solicitud')
 assert.match(loginRoute, /checkGuardianLoginRate\(request\)/, 'El login debe comprobar intentos distribuidos')
 assert.match(loginRoute, /rate.status === 'limited'/, 'El login debe detener solicitudes con tasa excedida')
-assert.match(loginRoute, /rate.status === 'unavailable' && process.env.VERCEL_ENV === 'production'/, 'Producción no debe permitir login sin contador compartido')
+assert.match(loginRoute, /if \(rate.status === 'unavailable'\)/, 'Preview y Production deben rechazar login sin contador compartido')
 assert.match(rateLimiter, /'EVAL'/, 'El contador compartido debe ejecutarse como operación atómica')
 assert.match(logoutRoute, /isGuardianPostAllowed/, 'El logout debe validar el origen de la solicitud')
 assert.ok(logoutRoute.includes('closedCreatorSessionCookie('), 'Logout debe expirar la cookie compartida')
