@@ -1,6 +1,6 @@
 'use client'
 
-import { Compass, X } from 'lucide-react'
+import { Compass, KeyRound, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useProgress, useWhisper } from '@/hooks/use-san-yallego'
@@ -91,6 +91,24 @@ export function MapaScreen() {
           </p>
         </aside>
       )}
+
+      {/*
+        Entrada visible pero discreta; la autorización se verifica en el servidor
+        dentro de /guardian. Esta ruta NO modifica progreso ni desbloquea sitios.
+      */}
+      <nav
+        aria-label="Acceso privado del creador"
+        className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 z-30 md:bottom-6 md:right-6"
+      >
+        <Link
+          href="/guardian"
+          title="Entrada privada · requiere Llave Maestra"
+          className="inline-flex min-h-11 max-w-[calc(100vw-2rem)] items-center gap-2 rounded-full border border-copper/35 bg-black/75 px-4 py-2 text-[11px] tracking-[0.09em] text-foreground/75 shadow-lg backdrop-blur-md transition-colors hover:border-gold/60 hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+        >
+          <KeyRound className="size-4 shrink-0 text-copper" aria-hidden="true" />
+          <span>El Taller del Creador</span>
+        </Link>
+      </nav>
 
       <Whisper message={message} nonce={nonce} />
     </main>

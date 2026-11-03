@@ -1,0 +1,46 @@
+
+name: San Yallego - Quality Checks
+
+on:
+  push:
+    branches:
+      - chore/quality-checks
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: TypeScript and Security Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.3.4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check ESLint
+        run: pnpm exec eslint .
+
+      - name: Check TypeScript
+        run: pnpm run typecheck
+
+      - name: Run security tests
+        run: pnpm run test:security
+
+      - name: Build application
+        run: pnpm run build

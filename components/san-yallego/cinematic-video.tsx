@@ -45,8 +45,13 @@ export function CinematicVideo({ src, onEnded, label, showSkip = true }: Cinemat
   }, [])
 
   useEffect(() => {
-    play()
-  }, [play])
+    const video = videoRef.current
+    if (!video) return
+    void video.play().catch(() => {
+      setStatus('blocked')
+    })
+  }, [])
+
 
   return (
     <div className="fixed inset-0 bg-black">

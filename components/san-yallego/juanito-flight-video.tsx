@@ -33,9 +33,14 @@ export function JuanitoFlightVideo({ src, label, nextLabel, onEnded, playbackRat
   }, [])
 
   useEffect(() => {
-    if (videoRef.current) videoRef.current.playbackRate = playbackRate
-    void attemptPlay()
-  }, [attemptPlay, playbackRate])
+    const video = videoRef.current
+    if (!video) return
+    video.playbackRate = playbackRate
+    void video.play().catch(() => {
+      // Si el navegador bloquea autoplay, queda el botón manual.
+    })
+  }, [playbackRate])
+
 
   const togglePlayback = () => {
     const video = videoRef.current
