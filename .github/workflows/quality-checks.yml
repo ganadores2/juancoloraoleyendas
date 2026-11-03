@@ -33,10 +33,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check ESLint
+        run: pnpm exec eslint .
+
       - name: Check TypeScript
         run: pnpm run typecheck
 
       - name: Run security tests
         run: pnpm run test:security
 
-
+      - name: Build application
+        run: pnpm run build
