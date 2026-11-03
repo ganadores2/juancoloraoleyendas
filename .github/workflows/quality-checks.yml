@@ -39,5 +39,4 @@ jobs:
       - name: Run security tests
         run: pnpm run test:security
 
-      - name: Run security tests
-        run: pnpm run test:security
+
