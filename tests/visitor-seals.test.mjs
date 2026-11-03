@@ -17,13 +17,13 @@ function loadRules(path, dependencies = {}) {
   })
   const failures = result.diagnostics?.filter(d => d.category === ts.DiagnosticCategory.Error) ?? []
   assert.equal(failures.length, 0, `Error TypeScript en ${path}`)
-  const module = { exports: {} }
+  const testmodule = { exports: {} }
   function require(specifier) {
-    if (Object.hasOwn(dependencies, specifier)) return dependencies[specifier]
+    if (Object.hasOwn(dependencies, specifier)) return    dependencies[specifier]
     throw new Error(`Import inesperado desde ${path}: ${specifier}`)
   }
-  runInNewContext(result.outputText, { module, exports: module.exports, require, Date }, { filename: path })
-  return module.exports
+  runInNewContext(result.outputText, { module: testmodule, exports: testmodule.exports, require, Date }, { filename: path })
+  return testmodule.exports
 }
 
 const sites = loadRules('lib/san-yallego/sites.ts')

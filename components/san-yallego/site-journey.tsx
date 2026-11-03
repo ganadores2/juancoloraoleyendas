@@ -19,7 +19,6 @@ function FlightHeading({ place, approaching, panorama }: { place: string; approa
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    if (!panorama) return
     const timer = window.setTimeout(() => setVisible(false), 3000)
     return () => window.clearTimeout(timer)
   }, [panorama])
@@ -96,7 +95,8 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
           nextLabel={approaching ? 'Saltar al Oráculo' : isEntrance ? 'Seguir el descenso' : 'Saltar al vuelo 2 de 2'}
           onEnded={advance}
         />
-        <FlightHeading key={`${siteId}-${phase}`} place={place} approaching={approaching} panorama={isEntrance && !approaching} />
+<FlightHeading key={`heading-${siteId}-${phase}`} place={place} approaching={approaching} panorama={isEntrance && !approaching} />
+
         <nav className="fixed left-4 top-4 z-40 md:left-6 md:top-6">
           <Link href="/mapa" className={ritualButton('quiet', 'px-0')}>Volver al mapa</Link>
         </nav>

@@ -41,8 +41,13 @@ export function BienvenidaScreen() {
   // Intento de reproducción sin imponer un segundo clic. El navegador puede
   // exigir interacción para habilitar audio: el botón manual sigue disponible.
   useEffect(() => {
-    if (phase === 'saludo' || phase === 'invitacion') void play()
-  }, [phase, play])
+    if (phase !== 'saludo' && phase !== 'invitacion') return
+    const video = videoRef.current
+    if (!video) return
+    void video.play().catch(() => {
+      // Si el navegador bloquea el video, queda disponible el botón manual.
+    })
+  }, [phase])
 
   // El micrófono sigue siendo un gesto interactivo, pero no detiene la película.
   // El visitante puede tocarlo o continuar solo tras una breve contemplación.
