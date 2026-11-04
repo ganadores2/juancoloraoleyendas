@@ -81,6 +81,16 @@ export default async function GuardianPage({ searchParams }: Props) {
             Los lugares todavía sellados siguen siendo un trabajo en construcción.
           </p>
         </header>
+
+        <div className="flex justify-center">
+          <Link
+            href="/guardian/mapa"
+            className="inline-flex min-h-12 items-center justify-center border border-gold/70 bg-gold/10 px-8 py-4 text-center font-display text-sm tracking-[0.12em] text-gold transition-colors hover:bg-gold/20"
+          >
+            ABRIR MAPA CINEMATOGRÁFICO PRIVADO
+          </Link>
+        </div>
+
         <ol className="grid gap-4 sm:grid-cols-2">
           {SITES.map((site) => (
             <li key={site.id}>

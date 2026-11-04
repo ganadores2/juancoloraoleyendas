@@ -86,12 +86,21 @@ export function GuardianCinematicJourney({
               </Link>
             )}
 
+
             <Link
               href="/guardian"
               className="text-sm text-foreground/70 underline underline-offset-4"
             >
               VOLVER AL TALLER
             </Link>
+
+            <Link
+              href="/guardian/mapa"
+              className="text-sm text-gold underline underline-offset-4"
+            >
+              VOLVER AL MAPA CINEMATOGRÁFICO
+            </Link>
+
           </div>
         </section>
       </main>
