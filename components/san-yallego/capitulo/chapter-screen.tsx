@@ -4,10 +4,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useProgress, useWhisper } from '@/hooks/use-san-yallego'
 import { type Chapter } from '@/lib/san-yallego/chapters'
-import { isSiteUnlocked } from '@/lib/san-yallego/progress'
 import { getSite, LOCKED_PATH_MESSAGE, siteLabel } from '@/lib/san-yallego/sites'
 import { ritualButton } from '../ritual'
-import { SealedSite } from '../sealed-site'
 import { Whisper } from '../whisper'
 import { AudioPlayer } from './audio-player'
 import { ChapterPaths } from './chapter-paths'
@@ -19,27 +17,9 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
   const site = getSite(chapter.siteId)!
 
   if (!hydrated) return <main className="min-h-dvh bg-black" />
-  if (!isSiteUnlocked(site, progress)) {
-    return (
-      <SealedSite
-        title={siteLabel(site)}
-        message="El primer capítulo se descubre después de las preguntas y la llave del Oráculo de la Entrada."
-        nextHref="/sitio/entrada"
-        nextLabel="Comenzar por la Entrada"
-      />
-    )
-  }
-  if (chapter.book === 1 && !progress.visitedSites.includes('casa-de-juanito')) {
-    return (
-      <SealedSite
-        title={siteLabel(site)}
-        message="Antes de explorar los capítulos del Libro I, completa primero el recorrido cinematográfico de la Casa de Juanito."
-        nextHref="/sitio/casa-de-juanito"
-        nextLabel="Iniciar el descenso a la Casa"
-      />
-    )
-  }
-
+  // Las rutas del audiolibro son públicas desde el índice oficial.
+  // Los oráculos y el acceso a los sitios siguen protegidos en sus propias rutas.
+  // Así no se obliga a repetir los vuelos al cambiar de vista previa de Vercel.
   const completed = justFinished || progress.completedChapters.includes(chapter.id)
   const heading = `CAPÍTULO ${chapter.number} — ${chapter.title.toUpperCase()}`
 
@@ -105,8 +85,8 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
         </nav>
       ))}
 
-      <Link href="/mapa" className={ritualButton('quiet', 'absolute left-4 top-4 px-0 md:left-6 md:top-6')}>
-        Volver al mapa
+      <Link href="/libro/1" className={ritualButton('quiet', 'absolute left-4 top-4 px-0 md:left-6 md:top-6')}>
+        Volver al índice del Libro I
       </Link>
 
       <Whisper message={message} nonce={nonce} />
