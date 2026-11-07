@@ -47,7 +47,7 @@ export default function LibroUnoPage() {
               {chapter.audio ? (
                 <Link href={chapterHref(chapter)}
                   className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-gold/60 px-4 py-2 font-display text-[10px] tracking-[0.12em] text-gold hover:bg-gold/10">
-                  ESCUCHAR
+                  {chapter.number === 1 ? 'LEER / ESCUCHAR' : 'ESCUCHAR'}
                 </Link>
               ) : (
                 <span className="text-right text-[11px] leading-relaxed text-foreground/55">
