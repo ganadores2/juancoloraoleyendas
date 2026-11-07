@@ -149,6 +149,25 @@ assert.ok(audioPlayer.includes('restartFromBeginning') &&
 assert.doesNotMatch(audioPlayer, /autoPlay\s*(?:=|\/>)/,
   'La escucha del capítulo debe comenzar únicamente por decisión del visitante')
 
+assert.ok(chapterScreen.includes('parts={chapter.audioParts}'),
+  'La pantalla del capítulo debe entregar todas las partes del MP3 al reproductor')
+assert.ok(audioPlayer.includes('nextPart < playlist.length') &&
+  audioPlayer.includes('audio.src = playlist[nextPart]') &&
+  audioPlayer.includes('void audio.play().catch('),
+  'Las partes deben reproducirse secuencialmente con el mismo elemento de audio')
+assert.ok(audioPlayer.includes('JSON.stringify({ part, seconds })') &&
+  audioPlayer.includes('pendingSeekRef.current') &&
+  audioPlayer.includes('PARTE {partIndex + 1} DE {playlist.length}'),
+  'El reproductor debe mostrar la parte actual y reanudar por parte y segundo')
+assert.ok(audioPlayer.includes('window.localStorage.setItem(storageKey, JSON.stringify({ part: nextPart, seconds: 0 }))'),
+  'La transición entre partes debe registrar el avance antes de cargar la siguiente')
+const playlistEnd = audioPlayer.match(/onEnded=\{\(\) => \{([\s\S]*?)\n        \}\}/)?.[1] ?? ''
+assert.ok(playlistEnd.includes('if (audio && nextPart < playlist.length)') &&
+  playlistEnd.includes('return') &&
+  playlistEnd.includes('clearSavedPosition()\n          onEnded()'),
+  'Solo al completar la última parte debe marcarse el capítulo como terminado')
+
+
 
 assert.ok(chapterScreen.includes('completed && (chapter.book === 1 && chapter.number === 1 ?') &&
   chapterScreen.includes('<ChapterPaths paths={chapter.paths} />'),
