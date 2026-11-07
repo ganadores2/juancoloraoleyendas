@@ -35,6 +35,7 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
       {chapter.audio ? (
         <AudioPlayer
           src={chapter.audio}
+          parts={chapter.audioParts}
           title={heading}
           onEnded={() => {
             completeChapter(chapter.id)
