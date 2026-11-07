@@ -74,7 +74,9 @@ export const CHAPTERS: Chapter[] = BOOK_ONE_TITLES.map((title, index) => {
     book: 1,
     number,
     title,
-    siteId: 'casa-de-juanito',
+    // Capítulo XVIII: la Puerta del Mictlán es el sitio VIII del mapa (Entrada al Inframundo).
+    // La correspondencia literaria no desbloquea el recorrido cinematográfico.
+    siteId: number === 18 ? 'sitio-08' : 'casa-de-juanito',
     audio: firstAudio,
     audioParts: firstAudio ? [firstAudio] : [],
     paths: number === 1 ? [
