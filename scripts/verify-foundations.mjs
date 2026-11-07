@@ -106,6 +106,12 @@ assert.ok(portal.includes("onEnded={toEntranceOracle}"),
   'El recorrido aéreo debe conducir automáticamente a la Entrada')
 assert.ok(welcome.includes("onEnded={next}"),
   'Los saludos deben avanzar cuando termina cada video')
+assert.doesNotMatch(welcome, /poster={ASSETS.images.mapa}/,
+  'La transición no debe mostrar el mapa como poster entre los saludos')
+assert.ok(welcome.includes('firstVideoRef') && welcome.includes('secondVideoRef'),
+  'Los dos videos deben permanecer montados para conservar el último fotograma')
+assert.ok(welcome.includes('requestVideoFrameCallback') && welcome.includes('duration-300'),
+  'El segundo video debe aparecer al tener fotograma con fundido de 300 ms')
 assert.ok(welcome.includes("onClick={() => void play()}"),
   'Debe quedar una opción manual si el navegador bloquea el video')
 

@@ -17,33 +17,49 @@ type Playback = 'idle' | 'playing' | 'paused' | 'error'
 export function BienvenidaScreen() {
   const router = useRouter()
   const { soundOn } = useSound()
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const firstVideoRef = useRef<HTMLVideoElement>(null)
+  const secondVideoRef = useRef<HTMLVideoElement>(null)
+  // Mantener ambos videos montados: el primero conserva su último fotograma
+  // mientras carga y comienza el segundo.
+  const [secondVisible, setSecondVisible] = useState(false)
   const [phase, setPhase] = useState<Phase>('saludo')
   const [playback, setPlayback] = useState<Playback>('idle')
   const [fillScreen, setFillScreen] = useState(true)
 
   const play = useCallback(async () => {
-    const video = videoRef.current
-    if (!video) return
+    const video = phase === 'saludo' ? firstVideoRef.current : secondVideoRef.current
+    if (!video || (phase !== 'saludo' && phase !== 'invitacion')) return
     try {
       await video.play()
       setPlayback('playing')
     } catch {
-      setPlayback('paused')
+      setPlayback(video.error ? 'error' : 'paused')
     }
-  }, [])
+  }, [phase])
 
   const next = useCallback(() => {
-    setPlayback('idle')
-    setPhase((current) => current === 'saludo' ? 'invitacion' : 'microfono')
-  }, [])
+    if (phase === 'saludo') {
+      // En pausa conserva el último fotograma (o el fotograma actual al saltar).
+      firstVideoRef.current?.pause()
+      setPlayback('idle')
+      setPhase('invitacion')
+    } else if (phase === 'invitacion') {
+      secondVideoRef.current?.pause()
+      setPlayback('idle')
+      setPhase('microfono')
+    }
+  }, [phase])
 
   // Intento de reproducción sin imponer un segundo clic. El navegador puede
   // exigir interacción para habilitar audio: el botón manual sigue disponible.
   useEffect(() => {
     if (phase !== 'saludo' && phase !== 'invitacion') return
-    const video = videoRef.current
+    const video = phase === 'saludo' ? firstVideoRef.current : secondVideoRef.current
     if (!video) return
+    if (video.error) {
+      setPlayback('error')
+      return
+    }
     void video.play().catch(() => {
       // Si el navegador bloquea el video, queda disponible el botón manual.
     })
@@ -71,24 +87,52 @@ export function BienvenidaScreen() {
   const isSaludo = phase === 'saludo'
   const src = isSaludo ? ASSETS.video.bienvenida : ASSETS.video.bienvenidaMicrofono
 
+  const revealSecondVideo = () => {
+    if (phase !== 'invitacion' || secondVisible) return
+    const video = secondVideoRef.current
+    if (!video) return
+    // Esperamos al primer fotograma REAL, no solo al evento play.
+    if (typeof video.requestVideoFrameCallback === 'function') {
+      video.requestVideoFrameCallback(() => setSecondVisible(true))
+    } else {
+      // Compatibilidad: navegadores sin requestVideoFrameCallback.
+      setSecondVisible(true)
+    }
+  }
+
   return (
     <main className="fixed inset-0 overflow-hidden bg-black">
       <h1 className="sr-only">Bienvenida de Juan Colorao a San Yallego</h1>
 
       <video
-        key={isSaludo ? 'saludo' : 'invitacion'}
-        ref={videoRef}
-        src={src}
-        poster={ASSETS.images.mapa}
+        ref={firstVideoRef}
+        src={ASSETS.video.bienvenida}
         className={`absolute inset-0 size-full bg-black ${fillScreen ? 'object-cover' : 'object-contain'}`}
         playsInline
         preload="auto"
         muted={!soundOn}
-        onPlay={() => setPlayback('playing')}
-        onPause={() => setPlayback((state) => state === 'error' ? state : 'paused')}
+        onPlay={() => { if (phase === 'saludo') setPlayback('playing') }}
+        onPause={() => { if (phase === 'saludo') setPlayback((state) => state === 'error' ? state : 'paused') }}
         onEnded={next}
-        onError={() => setPlayback('error')}
-        aria-label={isSaludo ? 'Juan Colorao te da la bienvenida' : 'Juan Colorao te invita a conocer San Yallego'}
+        onError={() => { if (phase === 'saludo') setPlayback('error') }}
+        aria-hidden={!isSaludo}
+        aria-label="Juan Colorao te da la bienvenida"
+      />
+      <video
+        ref={secondVideoRef}
+        src={ASSETS.video.bienvenidaMicrofono}
+        className={`absolute inset-0 size-full bg-black transition-opacity duration-300 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
+        playsInline
+        preload="auto"
+        muted={!soundOn}
+        onPlay={() => { if (phase === 'invitacion') setPlayback('playing') }}
+        onPlaying={revealSecondVideo}
+        onTimeUpdate={revealSecondVideo}
+        onPause={() => { if (phase === 'invitacion') setPlayback((state) => state === 'error' ? state : 'paused') }}
+        onEnded={next}
+        onError={() => { if (phase === 'invitacion') setPlayback('error') }}
+        aria-hidden={isSaludo}
+        aria-label="Juan Colorao te invita a conocer San Yallego"
       />
 
       {(phase === 'saludo' || phase === 'invitacion') && playback !== 'playing' && playback !== 'error' && (
@@ -147,8 +191,9 @@ export function BienvenidaScreen() {
             <button
               type="button"
               onClick={() => {
-                if (videoRef.current?.paused) void play()
-                else videoRef.current?.pause()
+                const activeVideo = isSaludo ? firstVideoRef.current : secondVideoRef.current
+                if (activeVideo?.paused) void play()
+                else activeVideo?.pause()
               }}
               aria-label={playback === 'playing' ? 'Pausar bienvenida' : 'Reproducir bienvenida'}
               className="flex size-10 items-center justify-center rounded-full border border-white/25 bg-black/65 text-white/90 backdrop-blur-sm"
