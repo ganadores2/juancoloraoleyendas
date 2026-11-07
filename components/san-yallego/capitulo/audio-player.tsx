@@ -27,13 +27,17 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
   const [duration, setDuration] = useState(0)
   const [missing, setMissing] = useState(false)
   const [playError, setPlayError] = useState(false)
-  const [skipped, setSkipped] = useState(false)
   const [speed, setSpeed] = useState<number>(1)
 
   const toggle = async () => {
     const audio = audioRef.current
     if (!audio) return
     if (audio.paused) {
+      // El visitante ha elegido escuchar: evitamos iniciar el capítulo en silencio.
+      if (!soundOn) {
+        audio.muted = false
+        toggleSound()
+      }
       try {
         await audio.play()
         setPlayError(false)
@@ -155,12 +159,9 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
             className="text-xs text-gold underline underline-offset-4">
             Abrir audio directamente
           </a>
-          <button type="button"
-            onClick={() => { setSkipped(true); onEnded() }}
-            hidden={skipped}
-            className="font-display text-[10px] tracking-[0.25em] text-gold/70 hover:text-gold">
-            CONTINUAR
-          </button>
+          <p className="max-w-sm text-center text-xs text-foreground/60">
+            Puedes regresar al mapa y reintentar la escucha cuando esté disponible.
+          </p>
         </div>
       )}
 
