@@ -56,7 +56,7 @@ export function ChapterPaths({ paths }: { paths: ChapterPath[] }) {
       className="animate-sy-fade-in flex w-full max-w-2xl flex-col items-center gap-6">
       <div className="flex flex-col items-center gap-3 text-center">
         <p className="max-w-lg text-balance text-sm italic text-foreground/80">
-          Has escuchado el primer capítulo. Tu aventura en San Yallego apenas comienza.
+          Has terminado el primer capítulo. Tu aventura en San Yallego apenas comienza.
         </p>
         <p className="font-display text-[10px] tracking-[0.22em] text-gold/75">
           ELIGE TU SIGUIENTE MIRADA
