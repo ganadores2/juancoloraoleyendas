@@ -16,7 +16,7 @@ const INTERLUDIO = [
   },
   {
     title: 'El siguiente umbral',
-    text: 'Este pequeño interludio no es el Capítulo II. Por ahora, regresa al mapa y contempla San Yallego con los ojos de quien ya escuchó su primer relato.',
+    text: 'Este interludio no reemplaza al Capítulo II, «El Nombre Que Quema». Los 33 capítulos de «El Gran Cambio» ya existen. Puedes descubrir sus títulos en el índice oficial mientras incorporamos los demás audiolibros.',
   },
 ] as const
 
@@ -95,8 +95,8 @@ export function ChapterPaths({ paths }: { paths: ChapterPath[] }) {
                   Continuar el interludio
                 </button>
               ) : (
-                <Link href="/mapa" className={ritualButton('primary', 'min-h-12 text-xs tracking-[0.15em]')}>
-                  Regresar al mapa
+                <Link href="/libro/1" className={ritualButton('primary', 'min-h-12 text-xs tracking-[0.15em]')}>
+                  Ver los 33 capítulos del Libro I
                 </Link>
               )}
             </>
