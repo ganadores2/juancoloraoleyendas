@@ -248,9 +248,9 @@ assert.ok(bookOneCatalog.includes('CHAPTERS.filter((chapter) => chapter.book ===
   bookOneCatalog.includes('MP3 por incorporar') &&
   bookOneCatalog.includes('chapterHref(chapter)'),
   'El catálogo debe mostrar 33 capítulos y distinguir audio disponible de audio pendiente')
-assert.ok(chapterScreen.includes('{chapter.audio ? (') &&
+assert.ok(chapterScreen.includes(": chapter.audio ? (") &&
   chapterScreen.includes('AUDIO PENDIENTE DE INCORPORAR'),
-  'No intentar reproducir archivos MP3 que no se han incorporado al servidor')
+  'El modo lectura no debe intentar reproducir archivos MP3 que aún no están en el servidor')
 assert.ok(chapterPaths.includes('href="/libro/1"'),
   'Al terminar el interludio debe poderse abrir el índice oficial del libro')
 
