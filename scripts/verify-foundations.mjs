@@ -28,6 +28,8 @@ const chapterScreen = source('components/san-yallego/capitulo/chapter-screen.tsx
 const chapterPaths = source('components/san-yallego/capitulo/chapter-paths.tsx')
 const chaptersData = source('lib/san-yallego/chapters.ts')
 const bookOneCatalog = source('app/libro/1/page.tsx')
+const reader = source('components/san-yallego/capitulo/immersive-reader.tsx')
+const chapterOneText = source('lib/san-yallego/chapter-one-text.ts')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
 assert.ok(videos.length >= 24, `Se esperaban 24 videos de bienvenida y recorridos; encontrados ${videos.length}`)
@@ -200,6 +202,37 @@ assert.ok(siteConfig.includes("name: 'La Puerta hacia el Inframundo'") &&
   siteConfig.includes("id: 'sitio-08'") &&
   siteConfig.includes("order: 8"),
   'La Puerta del Mictlán debe conservar el sitio VIII en el mapa')
+
+const readingBlocksRaw = chapterOneText.match(/export const CHAPTER_ONE_TEXT: readonly string\[\] = (\[[\s\S]*?\]) as const/)?.[1] ?? '[]'
+const readingBlocks = JSON.parse(readingBlocksRaw)
+assert.equal(readingBlocks.length, 137,
+  'La edición digital del capítulo I debe contener sus 137 bloques narrativos completos (PDF pp. 4-8)')
+assert.equal(readingBlocks[0], 'La noche del 8 de marzo de 1969, San Yallego olía a tierra mojada aunque no había llovido en semanas.',
+  'La primera frase debe coincidir con el manuscrito')
+assert.equal(readingBlocks[readingBlocks.length - 1], 'Y luego silencio.',
+  'No incorporar material de producción ni perder el cierre del capítulo')
+assert.equal(readingBlocks.filter((p) => p.startsWith('—')).length, 34,
+  'Conservar los 34 bloques de diálogo del Capítulo I')
+assert.doesNotMatch(chapterOneText, /MAPA DE BLOQUES PARA ELEVENLABS|FIN DEL LIBRO PRIMERO/,
+  'La versión de lectura debe excluir instrucciones técnicas y texto de capítulos posteriores')
+assert.ok(chapterScreen.includes("setMode(next)") &&
+  chapterScreen.includes("<ImmersiveReader paragraphs={CHAPTER_ONE_TEXT}") &&
+  chapterScreen.includes('onListen={() => chooseMode(\'escuchar\')}') &&
+  chapterScreen.includes('onFinished={markRead}'),
+  'El Capítulo I debe ofrecer lectura y escucha como opciones en la misma página')
+assert.ok(reader.includes("Papel Vallego") && reader.includes("Noche de Mictlán") &&
+  reader.includes("Colorao") && reader.includes('setFontSize'),
+  'La lectura inmersiva debe respetar los tres ambientes y el control de tamaño')
+assert.ok(reader.includes('BOOKMARK_KEY') && reader.includes('window.localStorage.setItem(BOOKMARK_KEY') &&
+  reader.includes('Continuar donde me quedé'),
+  'Guardar y recuperar el punto de lectura, sin crear una cuenta')
+assert.ok(reader.includes("paragraph.startsWith('—')") &&
+  reader.includes('max-w-[62ch]') && reader.includes('lineHeight: 1.7'),
+  'Mantener diálogos aislados y columna de lectura con espaciado legible')
+assert.ok(bookOneCatalog.includes("LEER / ESCUCHAR"),
+  'El menú debe mostrar que el Capítulo I admite lectura y escucha')
+assert.ok(chapterPaths.includes('Has terminado el primer capítulo.'),
+  'El mensaje de cierre debe servir a lectores y oyentes')
 
 const chapterList = chaptersData.match(/export const BOOK_ONE_TITLES = \[([\s\S]*?)\] as const/)?.[1] ?? ''
 const chapterTitleLines = chapterList.match(/^\s*'[^']+',?$/gm) ?? []
