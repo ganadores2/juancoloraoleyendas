@@ -229,6 +229,16 @@ assert.ok(reader.includes('BOOKMARK_KEY') && reader.includes('window.localStorag
 assert.ok(reader.includes("paragraph.startsWith('—')") &&
   reader.includes('max-w-[62ch]') && reader.includes('lineHeight: 1.7'),
   'Mantener diálogos aislados y columna de lectura con espaciado legible')
+assert.ok(reader.includes('pointer-events-none fixed inset-x-0 top-0') &&
+  reader.includes('Lectura {progress}%') &&
+  reader.includes('setReadingVisible(readerRect.top < window.innerHeight && readerRect.bottom > 0)') &&
+  reader.includes('window.addEventListener(\'scroll\', trackReading'),
+  'La barra de avance debe permanecer visible y actualizarse al desplazarse por la lectura')
+assert.ok(reader.includes('Ver final del texto') &&
+  reader.includes('paragraphRefs.current[last]') &&
+  reader.includes('No es una transcripción verificada del MP3'),
+  'El lector debe permitir comprobar el cierre y distinguir edición PDF de la grabación posterior')
+
 assert.ok(bookOneCatalog.includes("LEER / ESCUCHAR"),
   'El menú debe mostrar que el Capítulo I admite lectura y escucha')
 assert.ok(chapterPaths.includes('Has terminado el primer capítulo.'),
