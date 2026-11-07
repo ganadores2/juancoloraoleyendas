@@ -24,6 +24,8 @@ const welcome = source('components/san-yallego/bienvenida/bienvenida-screen.tsx'
 const portal = source('components/san-yallego/portal/portal-screen.tsx')
 const casaJuanito = source('components/san-yallego/casa/casa-juanito-screen.tsx')
 const audioPlayer = source('components/san-yallego/capitulo/audio-player.tsx')
+const chapterScreen = source('components/san-yallego/capitulo/chapter-screen.tsx')
+const chapterPaths = source('components/san-yallego/capitulo/chapter-paths.tsx')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
 assert.ok(videos.length >= 24, `Se esperaban 24 videos de bienvenida y recorridos; encontrados ${videos.length}`)
@@ -145,6 +147,27 @@ assert.ok(audioPlayer.includes('restartFromBeginning') &&
 assert.doesNotMatch(audioPlayer, /autoPlay\s*(?:=|\/>)/,
   'La escucha del capítulo debe comenzar únicamente por decisión del visitante')
 
+
+assert.ok(chapterScreen.includes('completed && (chapter.book === 1 && chapter.number === 1 ?') &&
+  chapterScreen.includes('<ChapterPaths paths={chapter.paths} />'),
+  'Los caminos interactivos solo deben abrirse después de completar el Capítulo I')
+assert.ok(chapterScreen.includes('if (!isSiteUnlocked(site, progress))') &&
+  chapterScreen.includes("!progress.visitedSites.includes('casa-de-juanito')"),
+  'El nuevo epílogo no debe saltarse la llave ni el recorrido de la Casa de Juanito')
+for (const kind of ['seguir-la-historia', 'descubrir-un-misterio', 'mirar-mas-profundo']) {
+  assert.ok(chapterPaths.includes("selected === '" + kind + "'"),
+    'Falta el contenido interactivo para el camino ' + kind)
+}
+assert.ok(chapterPaths.includes('setSelected(kind)') &&
+  chapterPaths.includes('setSelected(null)') &&
+  chapterPaths.includes('href="/mapa"'),
+  'El visitante debe poder elegir, cambiar de camino y volver al mapa')
+assert.ok(chapterPaths.includes('Este pequeño interludio no es el Capítulo II.'),
+  'La continuación literaria no puede presentarse como un capítulo aún no publicado')
+assert.ok(chapterPaths.includes('No hay una respuesta correcta.'),
+  'Las reflexiones no deben imponer una respuesta como correcta')
+assert.ok(!chapterPaths.includes('localStorage') && !chapterPaths.includes('sessionStorage'),
+  'Las respuestas interpretativas de los visitantes no deben guardarse')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
