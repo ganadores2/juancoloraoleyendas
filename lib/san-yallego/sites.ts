@@ -54,6 +54,7 @@ export const SITES: MythicSite[] = [
   { id: 'sitio-05', order: 5, name: 'La Casa del Herrero', map: { x: 78, y: 42 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
   { id: 'sitio-06', order: 6, name: 'El Río de los Sueños', map: { x: 46, y: 40 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
   { id: 'sitio-07', order: 7, name: 'La Bifurcación y Salida del Pueblo', map: { x: 28, y: 24 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  // Mismo lugar narrativo que «La Puerta del Mictlán», Capítulo XVIII del Libro I.
   { id: 'sitio-08', order: 8, name: 'La Puerta hacia el Inframundo', map: { x: 66, y: 22 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
   { id: 'sitio-09', order: 9, name: 'El Lago Mítico del Tiempo', map: { x: 86, y: 70 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
   { id: 'sitio-10', order: 10, name: 'El Árbol de la Ceiba', map: { x: 50, y: 12 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
