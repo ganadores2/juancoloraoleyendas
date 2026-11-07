@@ -149,12 +149,12 @@ export function BienvenidaScreen() {
       <canvas
         ref={freezeCanvasRef}
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 z-10 size-full bg-transparent ${fillScreen ? 'object-cover' : 'object-contain'} ${isSaludo ? 'opacity-0' : 'opacity-100'}`}
+        className={`pointer-events-none absolute inset-0 z-0 size-full bg-transparent ${fillScreen ? 'object-cover' : 'object-contain'} ${isSaludo ? 'opacity-0' : 'opacity-100'}`}
       />
       <video
         ref={secondVideoRef}
         src={ASSETS.video.bienvenidaMicrofono}
-        className={`absolute inset-0 z-20 size-full bg-black transition-opacity duration-300 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 z-10 size-full bg-black transition-opacity duration-300 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
         playsInline
         preload="auto"
         muted={!soundOn}
