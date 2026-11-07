@@ -44,19 +44,19 @@ export const SITES: MythicSite[] = [
   {
     id: 'casa-de-juanito',
     order: 2,
-    name: 'Casa donde nació Juanito Colorao',
+    name: 'Casa de Juanito Colorao',
     map: { x: 34, y: 64 },
     unlock: { kind: 'requires-item', item: 'llave-san-yallego' },
     experience: 'casa-de-juanito',
   },
-  { id: 'sitio-03', order: 3, name: null, map: { x: 62, y: 60 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
-  { id: 'sitio-04', order: 4, name: null, map: { x: 18, y: 44 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
-  { id: 'sitio-05', order: 5, name: null, map: { x: 78, y: 42 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
-  { id: 'sitio-06', order: 6, name: null, map: { x: 46, y: 40 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
-  { id: 'sitio-07', order: 7, name: null, map: { x: 28, y: 24 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
-  { id: 'sitio-08', order: 8, name: null, map: { x: 66, y: 22 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
-  { id: 'sitio-09', order: 9, name: null, map: { x: 86, y: 70 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
-  { id: 'sitio-10', order: 10, name: null, map: { x: 50, y: 12 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  { id: 'sitio-03', order: 3, name: 'Plaza y Jardines del Pueblo', map: { x: 62, y: 60 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  { id: 'sitio-04', order: 4, name: 'Iglesia del Pueblo', map: { x: 18, y: 44 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  { id: 'sitio-05', order: 5, name: 'La Casa del Herrero', map: { x: 78, y: 42 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  { id: 'sitio-06', order: 6, name: 'El Río de los Sueños', map: { x: 46, y: 40 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  { id: 'sitio-07', order: 7, name: 'La Bifurcación y Salida del Pueblo', map: { x: 28, y: 24 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  { id: 'sitio-08', order: 8, name: 'La Puerta hacia el Inframundo', map: { x: 66, y: 22 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  { id: 'sitio-09', order: 9, name: 'El Lago Mítico del Tiempo', map: { x: 86, y: 70 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
+  { id: 'sitio-10', order: 10, name: 'El Árbol de la Ceiba', map: { x: 50, y: 12 }, unlock: { kind: 'sealed' }, experience: 'sellado' },
 ]
 
 export function getSite(id: string): MythicSite | undefined {
