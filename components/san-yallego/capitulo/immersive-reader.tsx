@@ -39,11 +39,11 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
   const [fontSize, setFontSize] = useState(20)
   const [resumeIndex, setResumeIndex] = useState<number | null>(null)
   const [progress, setProgress] = useState(0)
+  const [visibleBlock, setVisibleBlock] = useState(0)
   const [readingVisible, setReadingVisible] = useState(false)
   const [bookmarkMessage, setBookmarkMessage] = useState<string | null>(null)
   const [ready, setReady] = useState(false)
   const readerRef = useRef<HTMLElement>(null)
-  const endingRef = useRef<HTMLElement>(null)
   const articleRef = useRef<HTMLElement>(null)
   const paragraphRefs = useRef<(HTMLParagraphElement | null)[]>([])
   const currentBlockRef = useRef(0)
@@ -102,13 +102,14 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
         if (!article || !first || !reader) return
         const readerRect = reader.getBoundingClientRect()
         setReadingVisible(readerRect.top < window.innerHeight && readerRect.bottom > 0)
-        const documentTop = article.getBoundingClientRect().top + window.scrollY
-        const viewportReadingLine = window.scrollY + window.innerHeight * 0.38
-        const fraction = (viewportReadingLine - documentTop) / Math.max(1, article.offsetHeight)
+        // Funciona independientemente de si se mueve window o un contenedor anidado.
+        const articleRect = article.getBoundingClientRect()
+        const readingLine = window.innerHeight * 0.38
+        const fraction = (readingLine - articleRect.top) / Math.max(1, articleRect.height)
         setProgress(Math.round(Math.max(0, Math.min(1, fraction)) * 100))
 
-        // No sobrescribir un marcador recuperado solo por abrir la vista.
-        if (window.scrollY < documentTop + 40) return
+        // Evitar guardar el primer bloque antes de que empiece la lectura.
+        if (articleRect.top > readingLine) return
         let index = 0
         for (let i = 0; i < paragraphRefs.current.length; i++) {
           const paragraph = paragraphRefs.current[i]
@@ -119,15 +120,31 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
           }
         }
         currentBlockRef.current = index
+        setVisibleBlock(index + 1)
         saveBlock(index)
       })
     }
+    // El evento scroll no burbujea: captura también cambios en paneles internos.
+    document.addEventListener('scroll', trackReading, true)
     window.addEventListener('scroll', trackReading, { passive: true })
     window.addEventListener('resize', trackReading)
+
+    // Respaldo que responde al paso real de los párrafos por el visor.
+    const observer = typeof IntersectionObserver === 'undefined'
+      ? null
+      : new IntersectionObserver(trackReading, { root: null, rootMargin: '0px 0px -55% 0px' })
+    if (observer) {
+      if (readerRef.current) observer.observe(readerRef.current)
+      for (const paragraph of paragraphRefs.current) {
+        if (paragraph) observer.observe(paragraph)
+      }
+    }
     trackReading()
     return () => {
+      document.removeEventListener('scroll', trackReading, true)
       window.removeEventListener('scroll', trackReading)
       window.removeEventListener('resize', trackReading)
+      observer?.disconnect()
     }
   }, [ready, saveBlock])
 
@@ -176,7 +193,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
           </div>
           <div className="flex justify-end pr-3 pt-2">
             <span className="rounded-full bg-[#211a18]/90 px-3 py-1 text-xs font-semibold tabular-nums text-[#f1e4d5] shadow-lg">
-              Lectura {progress}%
+              Lectura {progress}% · bloque {visibleBlock || 1}/{paragraphs.length}
             </span>
           </div>
         </div>
