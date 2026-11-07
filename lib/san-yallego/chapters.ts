@@ -82,7 +82,7 @@ export const CHAPTERS: Chapter[] = BOOK_ONE_TITLES.map((title, index) => {
       { kind: 'descubrir-un-misterio', label: 'Descubrir un misterio' },
       { kind: 'mirar-mas-profundo', label: 'Mirar más profundo' },
     ] : [],
-  }
+  } satisfies Chapter
 })
 
 export function getChapter(book: number, number: number): Chapter | undefined {
