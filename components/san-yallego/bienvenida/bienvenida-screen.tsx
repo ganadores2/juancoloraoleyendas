@@ -19,12 +19,33 @@ export function BienvenidaScreen() {
   const { soundOn } = useSound()
   const firstVideoRef = useRef<HTMLVideoElement>(null)
   const secondVideoRef = useRef<HTMLVideoElement>(null)
-  // Mantener ambos videos montados: el primero conserva su último fotograma
-  // mientras carga y comienza el segundo.
+  const freezeCanvasRef = useRef<HTMLCanvasElement>(null)
+  const frameCapturedRef = useRef(false)
+  // Una copia del último fotograma del saludo 1 cubre el instante en que
+  // el navegador deja de dibujar el video terminado.
   const [secondVisible, setSecondVisible] = useState(false)
   const [phase, setPhase] = useState<Phase>('saludo')
   const [playback, setPlayback] = useState<Playback>('idle')
   const [fillScreen, setFillScreen] = useState(true)
+
+  const captureFirstFrame = useCallback(() => {
+    const video = firstVideoRef.current
+    const canvas = freezeCanvasRef.current
+    if (!video || !canvas || video.readyState < 2 || !video.videoWidth || !video.videoHeight) return
+    // Reducimos la resolución del fotograma congelado para no consumir memoria.
+    const width = Math.min(video.videoWidth, 1280)
+    const height = Math.round(width * video.videoHeight / video.videoWidth)
+    const context = canvas.getContext('2d')
+    if (!context) return
+    try {
+      if (canvas.width !== width) canvas.width = width
+      if (canvas.height !== height) canvas.height = height
+      context.drawImage(video, 0, 0, width, height)
+      frameCapturedRef.current = true
+    } catch {
+      // Si el navegador no permite capturar el fotograma, mantiene el video debajo.
+    }
+  }, [])
 
   const play = useCallback(async () => {
     const video = phase === 'saludo' ? firstVideoRef.current : secondVideoRef.current
@@ -39,7 +60,8 @@ export function BienvenidaScreen() {
 
   const next = useCallback(() => {
     if (phase === 'saludo') {
-      // En pausa conserva el último fotograma (o el fotograma actual al saltar).
+      // Congelamos el último fotograma *antes* de iniciar el segundo saludo.
+      if (!frameCapturedRef.current) captureFirstFrame()
       firstVideoRef.current?.pause()
       setPlayback('idle')
       setPhase('invitacion')
@@ -48,7 +70,7 @@ export function BienvenidaScreen() {
       setPlayback('idle')
       setPhase('microfono')
     }
-  }, [phase])
+  }, [phase, captureFirstFrame])
 
   // Intento de reproducción sin imponer un segundo clic. El navegador puede
   // exigir interacción para habilitar audio: el botón manual sigue disponible.
@@ -114,14 +136,25 @@ export function BienvenidaScreen() {
         onPlay={() => { if (phase === 'saludo') setPlayback('playing') }}
         onPause={() => { if (phase === 'saludo') setPlayback((state) => state === 'error' ? state : 'paused') }}
         onEnded={next}
+        onTimeUpdate={() => {
+          const video = firstVideoRef.current
+          if (video && Number.isFinite(video.duration) && video.duration - video.currentTime <= 0.55) {
+            captureFirstFrame()
+          }
+        }}
         onError={() => { if (phase === 'saludo') setPlayback('error') }}
         aria-hidden={!isSaludo}
         aria-label="Juan Colorao te da la bienvenida"
       />
+      <canvas
+        ref={freezeCanvasRef}
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 z-10 size-full bg-transparent ${fillScreen ? 'object-cover' : 'object-contain'} ${isSaludo ? 'opacity-0' : 'opacity-100'}`}
+      />
       <video
         ref={secondVideoRef}
         src={ASSETS.video.bienvenidaMicrofono}
-        className={`absolute inset-0 size-full bg-black transition-opacity duration-300 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 z-20 size-full bg-black transition-opacity duration-300 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
         playsInline
         preload="auto"
         muted={!soundOn}

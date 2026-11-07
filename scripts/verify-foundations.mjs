@@ -112,6 +112,10 @@ assert.ok(welcome.includes('firstVideoRef') && welcome.includes('secondVideoRef'
   'Los dos videos deben permanecer montados para conservar el último fotograma')
 assert.ok(welcome.includes('requestVideoFrameCallback') && welcome.includes('duration-300'),
   'El segundo video debe aparecer al tener fotograma con fundido de 300 ms')
+assert.ok(welcome.includes('freezeCanvasRef') && welcome.includes('captureFirstFrame()'),
+  'Debe congelarse un fotograma real del saludo 1 para evitar un destello entre videos')
+assert.ok(welcome.includes("z-10 size-full bg-transparent") && welcome.includes('z-20 size-full bg-black'),
+  'La imagen congelada debe quedar entre el primer y segundo video')
 assert.ok(welcome.includes("onClick={() => void play()}"),
   'Debe quedar una opción manual si el navegador bloquea el video')
 
