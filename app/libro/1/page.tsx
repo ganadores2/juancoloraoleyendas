@@ -22,9 +22,14 @@ export default function LibroUnoPage() {
             EL GRAN CAMBIO
           </h1>
           <p className="max-w-xl text-balance text-sm leading-relaxed text-foreground/75">
-            Índice oficial de los 33 capítulos. Las grabaciones se irán incorporando
-            al sitio sin alterar el texto ni el orden original del libro.
+            Índice oficial de los 33 capítulos. Puedes escuchar los episodios
+            disponibles directamente o vivir primero el recorrido cinematográfico
+            de San Yallego. Las demás grabaciones se incorporarán sin alterar
+            el texto ni el orden original del libro.
           </p>
+          <Link href="/bienvenida" className={ritualButton('secondary', 'min-h-11 tracking-[0.14em]')}>
+            Vivir el recorrido cinematográfico
+          </Link>
         </header>
 
         <ol className="grid gap-3" aria-label="Capítulos del Libro I">
