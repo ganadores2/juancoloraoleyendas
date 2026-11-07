@@ -28,7 +28,7 @@ export function CinematicVideo({ src, onEnded, label, showSkip = true }: Cinemat
 
   const attach = useCallback((video: HTMLVideoElement | null) => {
     videoRef.current = video
-    if (video && (video.error || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE)) {
+    if (video?.error) {
       setStatus('missing')
     }
   }, [])
