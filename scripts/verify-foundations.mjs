@@ -26,6 +26,8 @@ const casaJuanito = source('components/san-yallego/casa/casa-juanito-screen.tsx'
 const audioPlayer = source('components/san-yallego/capitulo/audio-player.tsx')
 const chapterScreen = source('components/san-yallego/capitulo/chapter-screen.tsx')
 const chapterPaths = source('components/san-yallego/capitulo/chapter-paths.tsx')
+const chaptersData = source('lib/san-yallego/chapters.ts')
+const bookOneCatalog = source('app/libro/1/page.tsx')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
 assert.ok(videos.length >= 24, `Se esperaban 24 videos de bienvenida y recorridos; encontrados ${videos.length}`)
@@ -162,12 +164,32 @@ assert.ok(chapterPaths.includes('setSelected(kind)') &&
   chapterPaths.includes('setSelected(null)') &&
   chapterPaths.includes('href="/mapa"'),
   'El visitante debe poder elegir, cambiar de camino y volver al mapa')
-assert.ok(chapterPaths.includes('Este pequeño interludio no es el Capítulo II.'),
+assert.ok(chapterPaths.includes('Este interludio no reemplaza al Capítulo II'),
   'La continuación literaria no puede presentarse como un capítulo aún no publicado')
 assert.ok(chapterPaths.includes('No hay una respuesta correcta.'),
   'Las reflexiones no deben imponer una respuesta como correcta')
 assert.ok(!chapterPaths.includes('localStorage') && !chapterPaths.includes('sessionStorage'),
   'Las respuestas interpretativas de los visitantes no deben guardarse')
+
+const chapterList = chaptersData.match(/export const BOOK_ONE_TITLES = \[([\s\S]*?)\] as const/)?.[1] ?? ''
+const chapterTitleLines = chapterList.match(/^\s*'[^']+',?$/gm) ?? []
+assert.equal(chapterTitleLines.length, 33,
+  'El catálogo del Libro I debe conservar exactamente los 33 títulos del manuscrito')
+assert.ok(chapterList.includes("'El Nombre Que Quema'") &&
+  chapterList.includes("'El Último Corrido Del Libro Primero'"),
+  'Los títulos del índice deben corresponder al manuscrito oficial')
+assert.ok(chaptersData.includes('firstAudio = number === 1 ? ASSETS.audio.libro1Capitulo1 : null') &&
+  chaptersData.includes('audioParts: firstAudio ? [firstAudio] : []'),
+  'No deben publicarse rutas de MP3 para capítulos que todavía no se han incorporado')
+assert.ok(bookOneCatalog.includes('CHAPTERS.filter((chapter) => chapter.book === 1)') &&
+  bookOneCatalog.includes('MP3 por incorporar') &&
+  bookOneCatalog.includes('chapterHref(chapter)'),
+  'El catálogo debe mostrar 33 capítulos y distinguir audio disponible de audio pendiente')
+assert.ok(chapterScreen.includes('{chapter.audio ? (') &&
+  chapterScreen.includes('AUDIO PENDIENTE DE INCORPORAR'),
+  'No intentar reproducir archivos MP3 que no se han incorporado al servidor')
+assert.ok(chapterPaths.includes('href="/libro/1"'),
+  'Al terminar el interludio debe poderse abrir el índice oficial del libro')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
