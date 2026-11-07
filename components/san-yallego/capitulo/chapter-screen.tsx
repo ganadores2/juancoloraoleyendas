@@ -29,11 +29,11 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
       />
     )
   }
-  if (chapter.book === 1 && chapter.number === 1 && !progress.visitedSites.includes('casa-de-juanito')) {
+  if (chapter.book === 1 && !progress.visitedSites.includes('casa-de-juanito')) {
     return (
       <SealedSite
         title={siteLabel(site)}
-        message="Antes de escuchar «El primer grito», haz el recorrido cinematográfico de la Casa de Juanito."
+        message="Antes de explorar los capítulos del Libro I, completa primero el recorrido cinematográfico de la Casa de Juanito."
         nextHref="/sitio/casa-de-juanito"
         nextLabel="Iniciar el descenso a la Casa"
       />
@@ -52,14 +52,29 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
         </h1>
       </header>
 
-      <AudioPlayer
-        src={chapter.audio}
-        title={heading}
-        onEnded={() => {
-          completeChapter(chapter.id)
-          setJustFinished(true)
-        }}
-      />
+      {chapter.audio ? (
+        <AudioPlayer
+          src={chapter.audio}
+          title={heading}
+          onEnded={() => {
+            completeChapter(chapter.id)
+            setJustFinished(true)
+          }}
+        />
+      ) : (
+        <section className="flex max-w-lg flex-col items-center gap-5 rounded-2xl border border-gold/30 bg-black/50 px-6 py-9 text-center">
+          <p className="font-display text-xs tracking-[0.2em] text-gold">
+            AUDIO PENDIENTE DE INCORPORAR
+          </p>
+          <p className="text-balance text-sm leading-relaxed text-foreground/80">
+            Este capítulo forma parte del manuscrito oficial de «El Gran Cambio».
+            Su grabación todavía no se ha incorporado a esta versión del sitio.
+          </p>
+          <Link href="/libro/1" className={ritualButton('secondary', 'min-h-11 tracking-[0.15em]')}>
+            Ver los 33 capítulos
+          </Link>
+        </section>
+      )}
 
       {completed && (chapter.book === 1 && chapter.number === 1 ? (
         <ChapterPaths paths={chapter.paths} />
