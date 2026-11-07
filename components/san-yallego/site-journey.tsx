@@ -51,7 +51,19 @@ export function SiteJourney({ siteId, children }: { siteId: SiteId; children: Re
 
   if (!site) return null
   if (!hydrated) return <main className="min-h-dvh bg-black" />
-  if (!isSiteUnlocked(site, progress)) return <SealedSite title={siteLabel(site)} />
+  if (!isSiteUnlocked(site, progress)) {
+    if (siteId === 'casa-de-juanito') {
+      return (
+        <SealedSite
+          title={siteLabel(site)}
+          message="Para llegar a la Casa de Juanito, comienza por la Entrada, pasa por las tres preguntas (puedes guardar silencio) y descubre tu Llave de San Yallego."
+          nextHref="/sitio/entrada"
+          nextLabel="Comenzar por la Entrada"
+        />
+      )
+    }
+    return <SealedSite title={siteLabel(site)} />
+  }
 
   if (phase === 'destino') return <>{children}</>
 

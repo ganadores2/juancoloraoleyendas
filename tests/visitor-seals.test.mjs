@@ -52,9 +52,21 @@ test('progreso falso no abre ninguno de los ocho sitios sellados', () => {
   }
 })
 
-test('la llave del visitante abre solo Casa de Juanito', () => {
+test('la llave exige tres preguntas; guardar silencio es válido', () => {
   const before = progress.INITIAL_PROGRESS
-  const after = progress.transitions.findKey(before)
+  assert.equal(progress.hasCompletedEntranceOracle(before), false)
+  assert.equal(progress.transitions.findKey(before).items.length, 0)
+
+  let p = before
+  for (let index = 0; index < 2; index++) {
+    p = progress.transitions.answerOracle('oraculo-entrada', index, '')(p)
+  }
+  assert.equal(progress.hasCompletedEntranceOracle(p), false)
+  assert.equal(progress.transitions.findKey(p).items.length, 0)
+
+  p = progress.transitions.answerOracle('oraculo-entrada', 2, '')(p)
+  assert.equal(progress.hasCompletedEntranceOracle(p), true)
+  const after = progress.transitions.findKey(p)
   assert.equal(progress.isSiteUnlocked(sites.getSite('entrada'), before), true)
   assert.equal(progress.isSiteUnlocked(sites.getSite('casa-de-juanito'), before), false)
   assert.equal(progress.isSiteUnlocked(sites.getSite('casa-de-juanito'), after), true)
@@ -62,4 +74,9 @@ test('la llave del visitante abre solo Casa de Juanito', () => {
     assert.equal(progress.isSiteUnlocked(site, after), false)
   }
   assert.equal(before.items.length, 0)
+})
+
+test('una lista falsa de lugares abiertos no sustituye la llave', () => {
+  const forged = { ...progress.INITIAL_PROGRESS, unlockedSites: ['casa-de-juanito'] }
+  assert.equal(progress.isSiteUnlocked(sites.getSite('casa-de-juanito'), forged), false)
 })

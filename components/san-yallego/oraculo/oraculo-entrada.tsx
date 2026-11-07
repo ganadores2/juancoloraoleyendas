@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useProgress } from '@/hooks/use-san-yallego'
 import { STAGE_ASPECT } from '@/lib/san-yallego/assets'
 import { ORACLES } from '@/lib/san-yallego/oracles'
-import { hasItem } from '@/lib/san-yallego/progress'
+import { hasCompletedEntranceOracle, hasItem } from '@/lib/san-yallego/progress'
 import { CinematicImage } from '../cinematic-image'
 import { ritualButton } from '../ritual'
 import { Stage } from '../stage'
@@ -25,6 +25,7 @@ export function OraculoEntrada() {
   const discoveryStarted = useRef(false)
   const revealTimer = useRef<number | null>(null)
   const alreadyHasKey = hydrated && hasItem(progress, 'llave-san-yallego')
+  const questionsComplete = hydrated && hasCompletedEntranceOracle(progress)
 
   useEffect(() => {
     visitSite('entrada')
@@ -35,7 +36,7 @@ export function OraculoEntrada() {
   }, [])
 
   const touchRing = () => {
-    if (discoveryStarted.current || alreadyHasKey) return
+    if (discoveryStarted.current || alreadyHasKey || !questionsComplete) return
     discoveryStarted.current = true
     setPhase('despertando')
     navigator.vibrate?.([30, 40, 30])
@@ -53,7 +54,7 @@ export function OraculoEntrada() {
       <h1 className="sr-only">Oráculo de la Entrada a San Yallego</h1>
       <Stage aspectRatio={STAGE_ASPECT.oraculo}>
         <CinematicImage src={oracle.image} alt={oracle.imageAlt} />
-        {oracle.hiddenRing && hydrated && (
+        {oracle.hiddenRing && hydrated && (questionsComplete || alreadyHasKey) && (
           <HiddenRing {...oracle.hiddenRing} state={ringState} onTouch={touchRing} />
         )}
       </Stage>

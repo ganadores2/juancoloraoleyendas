@@ -36,7 +36,11 @@ export function MapaScreen() {
                   site={site}
                   unlocked={isSiteUnlocked(site, progress)}
                   visited={progress.visitedSites.includes(site.id)}
-                  onLocked={() => whisper(LOCKED_PATH_MESSAGE)}
+                  onLocked={() => whisper(
+                    site.id === 'casa-de-juanito'
+                      ? 'Primero visita la Entrada, completa las preguntas del Oráculo y descubre la llave.'
+                      : LOCKED_PATH_MESSAGE,
+                  )}
                 />
               </li>
             ))}
@@ -77,8 +81,8 @@ export function MapaScreen() {
           </div>
           <p className="mb-4 text-pretty text-base leading-snug italic text-foreground/90">
             {needsFirstPath
-              ? 'Todo viaje comienza en una entrada. Sigue las luces doradas y escucha lo que el pueblo quiera contarte.'
-              : 'La llave ha abierto un nuevo camino. Una pequeña casa guarda el comienzo de una gran historia.'}
+              ? 'Comienza en la Entrada, escucha las tres preguntas del Oráculo (puedes guardar silencio) y descubre la llave para visitar a Juanito.'
+              : 'Tu llave ha abierto la Casa de Juanito. Haz sus dos vuelos y descubre el capítulo 1: El primer grito.'}
           </p>
           <Link
             href={needsFirstPath ? '/sitio/entrada' : '/sitio/casa-de-juanito'}
