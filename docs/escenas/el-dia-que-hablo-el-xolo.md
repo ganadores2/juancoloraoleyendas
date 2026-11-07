@@ -105,3 +105,7 @@ Y entonces aparece **Ojón Holmes**, ajustándose su sombrerito de detective:
 **Y desde entonces el Xolo se convirtió en el narrador oficial de… JUAN COLORAO LEYENDAS.**
 
 **Nota creativa:** Esta es la declaración narrativa y humorística del creador. Su incorporación al sistema de narración de los libros y al Oráculo-GPT se decidirá durante la edición y diseño correspondientes; no altera por sí sola los manuscritos o el sitio público.
+
+### Precisión sobre la voz del narrador (indicada por el creador)
+
+La voz del narrador es la **del Xolo del Libro III**, aproximadamente a sus **90 años**. Interpretación de voz: Xolo anciano, con años de memoria, presencia y humor seco. Evitar presentar al Xolo de los primeros libros como un anciano, o anticipar la revelación sin decidirlo en la estructura narrativa. Este matiz define **desde qué edad habla la voz que cuenta**; el momento exacto en que el público descubre su identidad se decidirá al editar la trilogía.
