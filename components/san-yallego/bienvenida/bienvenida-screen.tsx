@@ -20,7 +20,6 @@ export function BienvenidaScreen() {
   const firstVideoRef = useRef<HTMLVideoElement>(null)
   const secondVideoRef = useRef<HTMLVideoElement>(null)
   const freezeCanvasRef = useRef<HTMLCanvasElement>(null)
-  const frameCapturedRef = useRef(false)
   // Una copia del último fotograma del saludo 1 cubre el instante en que
   // el navegador deja de dibujar el video terminado.
   const [secondVisible, setSecondVisible] = useState(false)
@@ -32,8 +31,8 @@ export function BienvenidaScreen() {
     const video = firstVideoRef.current
     const canvas = freezeCanvasRef.current
     if (!video || !canvas || video.readyState < 2 || !video.videoWidth || !video.videoHeight) return
-    // Reducimos la resolución del fotograma congelado para no consumir memoria.
-    const width = Math.min(video.videoWidth, 1280)
+    // Conservamos nitidez Full HD con un límite razonable de memoria.
+    const width = Math.min(video.videoWidth, 1920)
     const height = Math.round(width * video.videoHeight / video.videoWidth)
     const context = canvas.getContext('2d')
     if (!context) return
@@ -41,7 +40,6 @@ export function BienvenidaScreen() {
       if (canvas.width !== width) canvas.width = width
       if (canvas.height !== height) canvas.height = height
       context.drawImage(video, 0, 0, width, height)
-      frameCapturedRef.current = true
     } catch {
       // Si el navegador no permite capturar el fotograma, mantiene el video debajo.
     }
@@ -60,8 +58,9 @@ export function BienvenidaScreen() {
 
   const next = useCallback(() => {
     if (phase === 'saludo') {
-      // Congelamos el último fotograma *antes* de iniciar el segundo saludo.
-      if (!frameCapturedRef.current) captureFirstFrame()
+      // Actualizamos siempre la imagen justo al terminar el video: una captura
+      // anterior (onTimeUpdate) puede tener varias décimas de segundo de atraso.
+      captureFirstFrame()
       firstVideoRef.current?.pause()
       setPlayback('idle')
       setPhase('invitacion')
