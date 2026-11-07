@@ -194,6 +194,13 @@ assert.ok(chapterPaths.includes('No hay una respuesta correcta.'),
 assert.ok(!chapterPaths.includes('localStorage') && !chapterPaths.includes('sessionStorage'),
   'Las respuestas interpretativas de los visitantes no deben guardarse')
 
+assert.ok(chaptersData.includes("siteId: number === 18 ? 'sitio-08' : 'casa-de-juanito'"),
+  'El capítulo XVIII La Puerta del Mictlán debe corresponder al sitio VIII: Entrada al Inframundo')
+assert.ok(siteConfig.includes("name: 'La Puerta hacia el Inframundo'") &&
+  siteConfig.includes("id: 'sitio-08'") &&
+  siteConfig.includes("order: 8"),
+  'La Puerta del Mictlán debe conservar el sitio VIII en el mapa')
+
 const chapterList = chaptersData.match(/export const BOOK_ONE_TITLES = \[([\s\S]*?)\] as const/)?.[1] ?? ''
 const chapterTitleLines = chapterList.match(/^\s*'[^']+',?$/gm) ?? []
 assert.equal(chapterTitleLines.length, 33,
