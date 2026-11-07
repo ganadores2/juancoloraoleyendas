@@ -6,6 +6,8 @@ import { useSound } from '@/hooks/use-san-yallego'
 
 interface AudioPlayerProps {
   src: string
+  /** Cuando hay más de un MP3, reproducir cada parte en orden. */
+  parts?: readonly string[]
   title: string
   onEnded: () => void
 }
@@ -22,7 +24,9 @@ const formatTime = (seconds: number) => {
   return `${m}:${s.toString().padStart(2, '0')}`
 }
 
-export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
+export function AudioPlayer({ src, parts, title, onEnded }: AudioPlayerProps) {
+  const playlist = parts && parts.length > 0 ? parts : [src]
+  const multipart = playlist.length > 1
   const { soundOn, toggle: toggleSound } = useSound()
   const audioRef = useRef<HTMLAudioElement>(null)
   const [playing, setPlaying] = useState(false)
@@ -32,6 +36,10 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
   const [playError, setPlayError] = useState(false)
   const [speed, setSpeed] = useState<number>(1)
   const [resumeAt, setResumeAt] = useState<number | null>(null)
+  const [partIndex, setPartIndex] = useState(0)
+  const activePartRef = useRef(0)
+  const initialRestoreRef = useRef(false)
+  const pendingSeekRef = useRef<number | null>(null)
   const lastSavedCheckpointRef = useRef(-1)
   // La posición se guarda solo en este navegador, separada por archivo MP3.
   const storageKey = `san-yallego:audio:posicion:${src}`
@@ -53,7 +61,15 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
     if (!force && checkpoint === lastSavedCheckpointRef.current) return
     lastSavedCheckpointRef.current = checkpoint
     try {
-      if (seconds < MIN_RESUME_SECONDS || audio.ended ||
+      if (multipart) {
+        // El avance del capítulo debe recordar tanto la parte como el segundo.
+        const part = activePartRef.current
+        if (!audio.ended && (part > 0 || seconds >= MIN_RESUME_SECONDS)) {
+          window.localStorage.setItem(storageKey, JSON.stringify({ part, seconds }))
+        } else if (part === 0 && seconds < MIN_RESUME_SECONDS) {
+          window.localStorage.removeItem(storageKey)
+        }
+      } else if (seconds < MIN_RESUME_SECONDS || audio.ended ||
           (Number.isFinite(audio.duration) && seconds >= audio.duration - END_MARGIN_SECONDS)) {
         window.localStorage.removeItem(storageKey)
       } else {
@@ -67,16 +83,59 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
   const restorePosition = (audio: HTMLAudioElement) => {
     const total = Number.isFinite(audio.duration) ? audio.duration : 0
     setDuration(total)
+    audio.playbackRate = speed
+
+    // El navegador carga una nueva parte al reanudar o avanzar de archivo.
+    if (pendingSeekRef.current !== null) {
+      const seconds = pendingSeekRef.current
+      pendingSeekRef.current = null
+      if (seconds >= MIN_RESUME_SECONDS && seconds < total - END_MARGIN_SECONDS) {
+        audio.currentTime = seconds
+        setCurrent(seconds)
+        setResumeAt(seconds)
+        lastSavedCheckpointRef.current = Math.floor(seconds / SAVE_INTERVAL_SECONDS)
+      } else {
+        setCurrent(0)
+      }
+      return
+    }
+    if (initialRestoreRef.current) return
+    initialRestoreRef.current = true
+
     lastSavedCheckpointRef.current = -1
     setResumeAt(null)
     if (!total) return
     try {
-      const saved = Number(window.localStorage.getItem(storageKey))
-      if (Number.isFinite(saved) && saved >= MIN_RESUME_SECONDS && saved < total - END_MARGIN_SECONDS) {
-        audio.currentTime = saved
-        setCurrent(saved)
-        setResumeAt(saved)
-        lastSavedCheckpointRef.current = Math.floor(saved / SAVE_INTERVAL_SECONDS)
+      const raw = window.localStorage.getItem(storageKey)
+      if (!raw) return
+      if (multipart) {
+        const saved = JSON.parse(raw) as { part?: number; seconds?: number }
+        const part = saved.part
+        const seconds = saved.seconds
+        if (!Number.isInteger(part) || part === undefined || part < 0 || part >= playlist.length ||
+            typeof seconds !== 'number' || !Number.isFinite(seconds) || seconds < 0) return
+        if (part > 0) {
+          activePartRef.current = part
+          setPartIndex(part)
+          pendingSeekRef.current = seconds
+          audio.src = playlist[part]
+          audio.load()
+          return
+        }
+        if (seconds >= MIN_RESUME_SECONDS && seconds < total - END_MARGIN_SECONDS) {
+          audio.currentTime = seconds
+          setCurrent(seconds)
+          setResumeAt(seconds)
+          lastSavedCheckpointRef.current = Math.floor(seconds / SAVE_INTERVAL_SECONDS)
+        }
+      } else {
+        const saved = Number(raw)
+        if (Number.isFinite(saved) && saved >= MIN_RESUME_SECONDS && saved < total - END_MARGIN_SECONDS) {
+          audio.currentTime = saved
+          setCurrent(saved)
+          setResumeAt(saved)
+          lastSavedCheckpointRef.current = Math.floor(saved / SAVE_INTERVAL_SECONDS)
+        }
       }
     } catch {
       // Algunos navegadores restringen localStorage o la búsqueda en el MP3.
@@ -86,9 +145,21 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
   const restartFromBeginning = () => {
     const audio = audioRef.current
     if (!audio) return
+    audio.pause()
     clearSavedPosition()
-    audio.currentTime = 0
+    activePartRef.current = 0
+    setPartIndex(0)
+    pendingSeekRef.current = null
+    if (multipart) {
+      audio.src = playlist[0]
+      audio.load()
+    } else {
+      audio.currentTime = 0
+    }
     setCurrent(0)
+    setDuration(multipart ? 0 : audio.duration)
+    setMissing(false)
+    setPlayError(false)
   }
 
   const toggle = async () => {
@@ -134,6 +205,9 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
   return (
     <div className="flex w-full max-w-md flex-col items-center gap-5">
       <p className="font-display text-[10px] tracking-[0.2em] text-foreground/60">
+        {multipart && (
+          <span className="mb-2 block text-gold/80">PARTE {partIndex + 1} DE {playlist.length}</span>
+        )}
         {!playing && resumeAt !== null
           ? `LISTO PARA RETOMAR DESDE ${formatTime(resumeAt)}`
           : 'TOCA PARA ESCUCHAR LA HISTORIA'}
@@ -230,7 +304,7 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
           <p role="alert" className="text-center text-xs text-amber-200">
             No se pudo cargar el archivo de audio.
           </p>
-          <a href={src} target="_blank" rel="noopener noreferrer"
+          <a href={playlist[partIndex]} target="_blank" rel="noopener noreferrer"
             className="text-xs text-gold underline underline-offset-4">
             Abrir audio directamente
           </a>
@@ -257,6 +331,29 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
         onLoadedMetadata={(event) => restorePosition(event.currentTarget)}
         onError={() => setMissing(true)}
         onEnded={() => {
+          const audio = audioRef.current
+          const nextPart = activePartRef.current + 1
+          if (audio && nextPart < playlist.length) {
+            // Mismo elemento de audio: continuar sin hacer completar el capítulo.
+            activePartRef.current = nextPart
+            setPartIndex(nextPart)
+            setCurrent(0)
+            setDuration(0)
+            setMissing(false)
+            setPlayError(false)
+            setResumeAt(null)
+            lastSavedCheckpointRef.current = -1
+            try {
+              window.localStorage.setItem(storageKey, JSON.stringify({ part: nextPart, seconds: 0 }))
+            } catch {
+              // La escucha continúa incluso cuando localStorage no está disponible.
+            }
+            audio.src = playlist[nextPart]
+            audio.load()
+            audio.playbackRate = speed
+            void audio.play().catch(() => setPlayError(true))
+            return
+          }
           setPlaying(false)
           clearSavedPosition()
           onEnded()
