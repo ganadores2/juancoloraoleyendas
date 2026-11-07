@@ -11,6 +11,9 @@ interface AudioPlayerProps {
 }
 
 const SPEEDS = [1, 1.25, 1.5] as const
+const SAVE_INTERVAL_SECONDS = 5
+const MIN_RESUME_SECONDS = 4
+const END_MARGIN_SECONDS = 5
 
 const formatTime = (seconds: number) => {
   if (!Number.isFinite(seconds)) return '0:00'
@@ -28,6 +31,65 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
   const [missing, setMissing] = useState(false)
   const [playError, setPlayError] = useState(false)
   const [speed, setSpeed] = useState<number>(1)
+  const [resumeAt, setResumeAt] = useState<number | null>(null)
+  const lastSavedCheckpointRef = useRef(-1)
+  // La posición se guarda solo en este navegador, separada por archivo MP3.
+  const storageKey = `san-yallego:audio:posicion:${src}`
+
+  const clearSavedPosition = () => {
+    lastSavedCheckpointRef.current = -1
+    setResumeAt(null)
+    try {
+      window.localStorage.removeItem(storageKey)
+    } catch {
+      // Navegación privada o almacenamiento bloqueado: se escucha normalmente.
+    }
+  }
+
+  const rememberPosition = (audio: HTMLAudioElement, force = false) => {
+    const seconds = audio.currentTime
+    if (!Number.isFinite(seconds)) return
+    const checkpoint = Math.floor(seconds / SAVE_INTERVAL_SECONDS)
+    if (!force && checkpoint === lastSavedCheckpointRef.current) return
+    lastSavedCheckpointRef.current = checkpoint
+    try {
+      if (seconds < MIN_RESUME_SECONDS || audio.ended ||
+          (Number.isFinite(audio.duration) && seconds >= audio.duration - END_MARGIN_SECONDS)) {
+        window.localStorage.removeItem(storageKey)
+      } else {
+        window.localStorage.setItem(storageKey, String(seconds))
+      }
+    } catch {
+      // El audio funciona aun cuando no se permiten datos locales.
+    }
+  }
+
+  const restorePosition = (audio: HTMLAudioElement) => {
+    const total = Number.isFinite(audio.duration) ? audio.duration : 0
+    setDuration(total)
+    lastSavedCheckpointRef.current = -1
+    setResumeAt(null)
+    if (!total) return
+    try {
+      const saved = Number(window.localStorage.getItem(storageKey))
+      if (Number.isFinite(saved) && saved >= MIN_RESUME_SECONDS && saved < total - END_MARGIN_SECONDS) {
+        audio.currentTime = saved
+        setCurrent(saved)
+        setResumeAt(saved)
+        lastSavedCheckpointRef.current = Math.floor(saved / SAVE_INTERVAL_SECONDS)
+      }
+    } catch {
+      // Algunos navegadores restringen localStorage o la búsqueda en el MP3.
+    }
+  }
+
+  const restartFromBeginning = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    clearSavedPosition()
+    audio.currentTime = 0
+    setCurrent(0)
+  }
 
   const toggle = async () => {
     const audio = audioRef.current
@@ -40,6 +102,7 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
       }
       try {
         await audio.play()
+        setResumeAt(null)
         setPlayError(false)
       } catch {
         // Reproducción denegada no equivale a un archivo inexistente.
@@ -56,6 +119,8 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
     const end = Number.isFinite(audio.duration) ? audio.duration : Infinity
     audio.currentTime = Math.max(0, Math.min(audio.currentTime + seconds, end))
     setCurrent(audio.currentTime)
+    setResumeAt(null)
+    rememberPosition(audio, true)
   }
 
   const changeSpeed = () => {
@@ -69,8 +134,16 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
   return (
     <div className="flex w-full max-w-md flex-col items-center gap-5">
       <p className="font-display text-[10px] tracking-[0.2em] text-foreground/60">
-        TOCA PARA ESCUCHAR LA HISTORIA
+        {!playing && resumeAt !== null
+          ? `LISTO PARA RETOMAR DESDE ${formatTime(resumeAt)}`
+          : 'TOCA PARA ESCUCHAR LA HISTORIA'}
       </p>
+      {!playing && resumeAt !== null && (
+        <button type="button" onClick={restartFromBeginning}
+          className="min-h-10 rounded-full border border-gold/40 px-4 text-xs text-gold hover:bg-gold/10">
+          Escuchar desde el inicio
+        </button>
+      )}
       <button
         type="button"
         onClick={toggle}
@@ -105,6 +178,8 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
               if (audio) {
                 audio.currentTime = Number(event.target.value)
                 setCurrent(audio.currentTime)
+                setResumeAt(null)
+                rememberPosition(audio, true)
               }
             }}
             aria-label="Avanzar o retroceder en el capítulo"
@@ -171,12 +246,19 @@ export function AudioPlayer({ src, title, onEnded }: AudioPlayerProps) {
         preload="metadata"
         muted={!soundOn}
         onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-        onTimeUpdate={(event) => setCurrent(event.currentTarget.currentTime)}
-        onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)}
+        onPause={(event) => {
+          setPlaying(false)
+          if (!event.currentTarget.ended) rememberPosition(event.currentTarget, true)
+        }}
+        onTimeUpdate={(event) => {
+          setCurrent(event.currentTarget.currentTime)
+          rememberPosition(event.currentTarget)
+        }}
+        onLoadedMetadata={(event) => restorePosition(event.currentTarget)}
         onError={() => setMissing(true)}
         onEnded={() => {
           setPlaying(false)
+          clearSavedPosition()
           onEnded()
         }}
       />
