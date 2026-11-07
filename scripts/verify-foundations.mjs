@@ -153,9 +153,13 @@ assert.doesNotMatch(audioPlayer, /autoPlay\s*(?:=|\/>)/,
 assert.ok(chapterScreen.includes('completed && (chapter.book === 1 && chapter.number === 1 ?') &&
   chapterScreen.includes('<ChapterPaths paths={chapter.paths} />'),
   'Los caminos interactivos solo deben abrirse después de completar el Capítulo I')
-assert.ok(chapterScreen.includes('if (!isSiteUnlocked(site, progress))') &&
-  chapterScreen.includes("!progress.visitedSites.includes('casa-de-juanito')"),
-  'El nuevo epílogo no debe saltarse la llave ni el recorrido de la Casa de Juanito')
+assert.doesNotMatch(chapterScreen, /isSiteUnlocked|visitedSites\.includes|<SealedSite/,
+  'El audiolibro debe poder escucharse directamente desde el índice, sin repetir los oráculos')
+assert.ok(chapterScreen.includes('href="/libro/1"'),
+  'La página de escucha debe permitir regresar al índice del Libro I')
+assert.ok(bookOneCatalog.includes('href="/bienvenida"') &&
+  bookOneCatalog.includes('Vivir el recorrido cinematográfico'),
+  'El índice debe conservar el recorrido cinematográfico como una opción voluntaria')
 for (const kind of ['seguir-la-historia', 'descubrir-un-misterio', 'mirar-mas-profundo']) {
   assert.ok(chapterPaths.includes("selected === '" + kind + "'"),
     'Falta el contenido interactivo para el camino ' + kind)
