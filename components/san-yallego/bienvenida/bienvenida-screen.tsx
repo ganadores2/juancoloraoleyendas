@@ -1,6 +1,6 @@
 'use client'
 
-import { Mic, Pause, Play, Scan } from 'lucide-react'
+import { Pause, Play, Scan } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -10,9 +10,9 @@ import { ASSETS } from '@/lib/san-yallego/assets'
 type Phase = 'saludo' | 'invitacion' | 'microfono' | 'saliendo'
 type Playback = 'idle' | 'playing' | 'paused' | 'error'
 
-/** Dos saludos de Juan Colorao, seguidos del micrófono como llave del portal.
- * Una vez abierta la aventura, se intenta continuar automáticamente hasta el portal.
- * Si el navegador bloquea el sonido, se ofrece un botón accesible para reproducir.
+/** Dos saludos cinematográficos, seguidos de una invitación clara al recorrido.
+ * El micrófono pertenece al gesto artístico del video, no es un control obligatorio.
+ * La bienvenida continúa automáticamente; también permite avanzar de inmediato.
  */
 export function BienvenidaScreen() {
   const router = useRouter()
@@ -49,8 +49,8 @@ export function BienvenidaScreen() {
     })
   }, [phase])
 
-  // El micrófono sigue siendo un gesto interactivo, pero no detiene la película.
-  // El visitante puede tocarlo o continuar solo tras una breve contemplación.
+  // El micrófono forma parte de la escena filmada: la página no exige tocarlo.
+  // El visitante puede contemplar el plano o comenzar el recorrido inmediatamente.
   useEffect(() => {
     if (phase !== 'microfono') return
     const id = window.setTimeout(() => setPhase('saliendo'), 3500)
@@ -63,9 +63,8 @@ export function BienvenidaScreen() {
     return () => window.clearTimeout(id)
   }, [phase, router])
 
-  const touchMic = () => {
-    if (phase !== 'microfono') return
-    navigator.vibrate?.(40)
+  const beginJourney = () => {
+    if (phase === 'saliendo') return
     setPhase('saliendo')
   }
 
@@ -89,7 +88,7 @@ export function BienvenidaScreen() {
         onPause={() => setPlayback((state) => state === 'error' ? state : 'paused')}
         onEnded={next}
         onError={() => setPlayback('error')}
-        aria-label={isSaludo ? 'Juan Colorao te da la bienvenida' : 'Juan Colorao te invita a tocar el micrófono'}
+        aria-label={isSaludo ? 'Juan Colorao te da la bienvenida' : 'Juan Colorao te invita a conocer San Yallego'}
       />
 
       {(phase === 'saludo' || phase === 'invitacion') && playback !== 'playing' && playback !== 'error' && (
@@ -118,23 +117,23 @@ export function BienvenidaScreen() {
       )}
 
       {phase === 'microfono' && (
-        <div className="animate-sy-fade-in absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-gradient-to-t from-black/75 via-transparent to-black/30 px-5 text-center">
+        <div className="animate-sy-fade-in absolute inset-0 z-20 flex flex-col items-center justify-center gap-5 bg-gradient-to-t from-black/80 via-transparent to-black/35 px-5 text-center">
           <p className="font-display text-[10px] tracking-[0.27em] text-gold/90">
             JUAN COLORAO TE INVITA
           </p>
-          <p className="max-w-sm text-balance text-xl italic text-foreground text-glow md:text-2xl">
-            Toca el micrófono para cruzar el portal, o contempla cómo se abre el camino.
+          <p className="max-w-md text-balance text-xl italic text-foreground text-glow md:text-2xl">
+            Ven y explora mi mundo. Tu aventura en San Yallego está por comenzar.
           </p>
           <button
             type="button"
-            onClick={touchMic}
-            aria-label="Tocar el micrófono para entrar a San Yallego"
-            className="relative flex size-20 items-center justify-center rounded-full border border-gold/70 bg-black/65 text-gold shadow-[0_0_28px_oklch(0.8_0.12_82/0.25)] transition-transform hover:scale-105 md:size-24"
+            onClick={beginJourney}
+            className="inline-flex min-h-12 items-center justify-center rounded-full border border-gold/75 bg-black/75 px-7 py-3 font-display text-xs tracking-[0.16em] text-gold shadow-[0_0_24px_oklch(0.8_0.12_82/0.2)] transition-colors hover:bg-gold/15 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
           >
-            <span className="animate-sy-ripple absolute inset-0 rounded-full border border-gold/45" aria-hidden />
-            <Mic className="size-9" aria-hidden />
+            COMENZAR EL RECORRIDO
           </button>
-          <span className="font-display text-[10px] tracking-[0.25em] text-gold/75">ENTRAR A LA LEYENDA · CONTINÚA AUTOMÁTICAMENTE</span>
+          <p className="max-w-xs text-balance text-xs text-foreground/75">
+            O simplemente contempla: el viaje continúa automáticamente.
+          </p>
         </div>
       )}
 
@@ -166,13 +165,22 @@ export function BienvenidaScreen() {
               {fillScreen ? 'Ver original' : 'Pantalla completa'}
             </button>
           </div>
-          <button
-            type="button"
-            onClick={next}
-            className="pointer-events-auto min-h-10 rounded-full border border-white/25 bg-black/65 px-4 text-xs text-white/85 backdrop-blur-sm"
-          >
-            {isSaludo ? 'Continuar al saludo 2' : 'Continuar al micrófono'}
-          </button>
+          <div className="pointer-events-auto flex flex-wrap items-center justify-end gap-2">
+            <button
+              type="button"
+              onClick={next}
+              className="min-h-10 rounded-full border border-white/25 bg-black/65 px-4 text-xs text-white/85 backdrop-blur-sm"
+            >
+              {isSaludo ? 'Ver siguiente saludo' : 'Continuar la bienvenida'}
+            </button>
+            <button
+              type="button"
+              onClick={beginJourney}
+              className="min-h-10 rounded-full border border-gold/75 bg-black/75 px-4 font-display text-[10px] tracking-[0.12em] text-gold backdrop-blur-sm transition-colors hover:bg-gold/15"
+            >
+              COMENZAR EL RECORRIDO
+            </button>
+          </div>
         </div>
       )}
 

@@ -96,8 +96,12 @@ assert.ok(welcome.includes("phase !== 'microfono'"),
   'El micrófono debe conservar una transición controlada')
 assert.ok(welcome.includes("window.setTimeout(() => setPhase('saliendo'), 3500)"),
   'La pausa ante el micrófono debe continuar sola después de 3.5 segundos')
-assert.ok(welcome.includes("if (phase !== 'microfono') return"),
-  'Pulsar varias veces el micrófono no debe repetir la salida')
+assert.ok(welcome.includes("if (phase === 'saliendo') return"),
+  'Pulsar varias veces Comenzar el recorrido no debe repetir la salida')
+assert.ok(welcome.includes('COMENZAR EL RECORRIDO') && welcome.includes('onClick={beginJourney}'),
+  'El visitante debe encontrar un botón claro para comenzar sin pulsar el micrófono')
+assert.doesNotMatch(welcome, /Toca el micrófono para cruzar el portal/,
+  'La bienvenida no debe exigir comprender el micrófono para poder avanzar')
 assert.ok(portal.includes("onEnded={toEntranceOracle}"),
   'El recorrido aéreo debe conducir automáticamente a la Entrada')
 assert.ok(welcome.includes("onEnded={next}"),
