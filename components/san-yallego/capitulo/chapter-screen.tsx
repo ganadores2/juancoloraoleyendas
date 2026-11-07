@@ -10,6 +10,7 @@ import { ritualButton } from '../ritual'
 import { SealedSite } from '../sealed-site'
 import { Whisper } from '../whisper'
 import { AudioPlayer } from './audio-player'
+import { ChapterPaths } from './chapter-paths'
 
 export function ChapterScreen({ chapter }: { chapter: Chapter }) {
   const { progress, hydrated, completeChapter } = useProgress()
@@ -60,10 +61,12 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
         }}
       />
 
-      {completed && (
+      {completed && (chapter.book === 1 && chapter.number === 1 ? (
+        <ChapterPaths paths={chapter.paths} />
+      ) : (
         <nav aria-label="Caminos" className="animate-sy-fade-in flex flex-col items-center gap-3">
           <p className="mb-1 max-w-md text-balance text-sm italic text-foreground/75">
-            Has escuchado el primer capítulo. Tu aventura en San Yallego apenas comienza.
+            Has escuchado el capítulo. Tu aventura en San Yallego continúa.
           </p>
           <Link href="/mapa" className={ritualButton('secondary', 'w-72')}>
             Regresar al mapa de San Yallego
@@ -85,7 +88,7 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
             ),
           )}
         </nav>
-      )}
+      ))}
 
       <Link href="/mapa" className={ritualButton('quiet', 'absolute left-4 top-4 px-0 md:left-6 md:top-6')}>
         Volver al mapa
