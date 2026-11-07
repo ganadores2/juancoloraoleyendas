@@ -39,9 +39,11 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
   const [fontSize, setFontSize] = useState(20)
   const [resumeIndex, setResumeIndex] = useState<number | null>(null)
   const [progress, setProgress] = useState(0)
+  const [readingVisible, setReadingVisible] = useState(false)
   const [bookmarkMessage, setBookmarkMessage] = useState<string | null>(null)
   const [ready, setReady] = useState(false)
   const readerRef = useRef<HTMLElement>(null)
+  const endingRef = useRef<HTMLElement>(null)
   const articleRef = useRef<HTMLElement>(null)
   const paragraphRefs = useRef<(HTMLParagraphElement | null)[]>([])
   const currentBlockRef = useRef(0)
@@ -95,8 +97,11 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
       window.requestAnimationFrame(() => {
         scheduled = false
         const article = articleRef.current
+        const reader = readerRef.current
         const first = paragraphRefs.current[0]
-        if (!article || !first) return
+        if (!article || !first || !reader) return
+        const readerRect = reader.getBoundingClientRect()
+        setReadingVisible(readerRect.top < window.innerHeight && readerRect.bottom > 0)
         const documentTop = article.getBoundingClientRect().top + window.scrollY
         const viewportReadingLine = window.scrollY + window.innerHeight * 0.38
         const fraction = (viewportReadingLine - documentTop) / Math.max(1, article.offsetHeight)
@@ -119,6 +124,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
     }
     window.addEventListener('scroll', trackReading, { passive: true })
     window.addEventListener('resize', trackReading)
+    trackReading()
     return () => {
       window.removeEventListener('scroll', trackReading)
       window.removeEventListener('resize', trackReading)
@@ -132,6 +138,14 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
     paragraph.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' })
     currentBlockRef.current = index
     setResumeIndex(null)
+  }
+
+  const showEnding = () => {
+    const last = paragraphs.length - 1
+    const paragraph = paragraphRefs.current[last]
+    if (!paragraph) return
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    paragraph.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' })
   }
 
   const markHere = () => {
@@ -154,15 +168,27 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
 
   return (
     <section ref={readerRef} aria-label="Lectura inmersiva de El Primer Grito"
-      className={`relative w-full max-w-3xl overflow-hidden rounded-2xl border shadow-2xl transition-colors duration-200 ${palette.surface} ${palette.ink} ${palette.border}`}>
-      <div className="sticky top-0 z-10 h-[3px] w-full bg-black/10" aria-hidden="true">
-        <div className="h-full bg-[#a84b36] transition-[width] duration-150" style={{ width: `${progress}%` }} />
+      className={`relative w-full max-w-3xl rounded-2xl border shadow-2xl transition-colors duration-200 ${palette.surface} ${palette.ink} ${palette.border}`}>
+      {readingVisible && (
+        <div className="pointer-events-none fixed inset-x-0 top-0 z-[60]" aria-hidden="true">
+          <div className="h-[5px] w-full bg-black/20">
+            <div className="h-full bg-[#c25a3f] transition-[width] duration-150" style={{ width: `${progress}%` }} />
+          </div>
+          <div className="flex justify-end pr-3 pt-2">
+            <span className="rounded-full bg-[#211a18]/90 px-3 py-1 text-xs font-semibold tabular-nums text-[#f1e4d5] shadow-lg">
+              Lectura {progress}%
+            </span>
+          </div>
+        </div>
+      )}
+      <div className="h-[5px] w-full bg-black/10" aria-hidden="true">
+        <div className="h-full bg-[#c25a3f] transition-[width] duration-150" style={{ width: `${progress}%` }} />
       </div>
 
       <div className={`flex flex-col gap-5 border-b px-5 py-6 sm:px-10 ${palette.border}`}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <span className={`font-display text-[10px] tracking-[0.16em] ${palette.muted}`}>
-            LECTURA · CAPÍTULO I
+            LECTURA · CAPÍTULO I · {paragraphs.length} BLOQUES
           </span>
           <span className={`font-display text-[10px] tabular-nums ${palette.muted}`} aria-label={`Progreso aproximado ${progress} por ciento`}>
             {progress}% leído
@@ -192,6 +218,10 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
           <button type="button" onClick={markHere}
             className="flex min-h-11 items-center gap-2 rounded-full border border-current/30 px-4 text-xs hover:border-current">
             <Bookmark size={15} /> Guardar mi lugar
+          </button>
+          <button type="button" onClick={showEnding}
+            className="min-h-11 rounded-full border border-current/30 px-4 text-xs hover:border-current">
+            Ver final del texto
           </button>
         </div>
         {resumeIndex !== null && (
@@ -243,8 +273,9 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
           </button>
         </div>
         <p className={`max-w-md text-xs leading-relaxed ${palette.muted}`}>
-          Texto de la edición de producción del Libro I, páginas 4–8.
-          La grabación puede contener revisiones literarias posteriores.
+          Texto completo del Capítulo I en el PDF de 170 páginas (pp. 4–8).
+          No es una transcripción verificada del MP3; la grabación puede contener
+          revisiones literarias posteriores que aún faltan en esta modalidad.
         </p>
       </footer>
     </section>
