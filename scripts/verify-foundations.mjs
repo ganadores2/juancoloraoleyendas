@@ -239,6 +239,19 @@ assert.ok(reader.includes('Ver final del texto') &&
   reader.includes('No es una transcripción verificada del MP3'),
   'El lector debe permitir comprobar el cierre y distinguir edición PDF de la grabación posterior')
 
+assert.ok(reader.includes("document.addEventListener('scroll', trackReading, true)") &&
+  reader.includes('new IntersectionObserver(trackReading') &&
+  reader.includes('observer?.disconnect()') &&
+  reader.includes('article.getBoundingClientRect()'),
+  'El porcentaje de lectura debe detectar tanto scroll de la página como de paneles interiores')
+assert.ok(reader.includes('Lectura {progress}% · bloque {visibleBlock || 1}/{paragraphs.length}') &&
+  reader.includes('setVisibleBlock(index + 1)'),
+  'El lector debe mostrar un avance observable por porcentaje y por bloques')
+assert.doesNotMatch(reader, /window\.scrollY < documentTop/,
+  'El marcador de lectura no debe depender del scrollY de la ventana')
+
+
+
 assert.ok(bookOneCatalog.includes("LEER / ESCUCHAR"),
   'El menú debe mostrar que el Capítulo I admite lectura y escucha')
 assert.ok(chapterPaths.includes('Has terminado el primer capítulo.'),
