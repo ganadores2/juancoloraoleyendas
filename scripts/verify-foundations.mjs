@@ -23,6 +23,7 @@ const journey = source('components/san-yallego/site-journey.tsx')
 const welcome = source('components/san-yallego/bienvenida/bienvenida-screen.tsx')
 const portal = source('components/san-yallego/portal/portal-screen.tsx')
 const casaJuanito = source('components/san-yallego/casa/casa-juanito-screen.tsx')
+const audioPlayer = source('components/san-yallego/capitulo/audio-player.tsx')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
 assert.ok(videos.length >= 24, `Se esperaban 24 videos de bienvenida y recorridos; encontrados ${videos.length}`)
@@ -118,6 +119,12 @@ assert.ok(welcome.includes("z-0 size-full bg-transparent") && welcome.includes('
   'La imagen congelada debe quedar entre el primer y segundo video')
 assert.ok(welcome.includes("onClick={() => void play()}"),
   'Debe quedar una opción manual si el navegador bloquea el video')
+
+assert.match(audioPlayer, /if \(!soundOn\) \{\s*audio\.muted = false\s*toggleSound\(\)/,
+  'Tocar Reproducir debe activar el sonido cuando el visitante lo había silenciado')
+const missingAudioUI = audioPlayer.match(/\{missing && \([\s\S]*?\n      \)\}/)?.[0] ?? ''
+assert.ok(missingAudioUI && !missingAudioUI.includes('onEnded'),
+  'Un MP3 que no se puede cargar nunca debe marcar el capítulo como escuchado')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
