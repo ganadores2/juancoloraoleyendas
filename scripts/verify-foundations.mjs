@@ -131,6 +131,20 @@ assert.match(audioPlayer, /if \(!soundOn\) \{\s*audio\.muted = false\s*toggleSou
 const missingAudioUI = audioPlayer.match(/\{missing && \([\s\S]*?\n      \)\}/)?.[0] ?? ''
 assert.ok(missingAudioUI && !missingAudioUI.includes('onEnded'),
   'Un MP3 que no se puede cargar nunca debe marcar el capítulo como escuchado')
+assert.ok(audioPlayer.includes('san-yallego:audio:posicion:') &&
+  audioPlayer.includes('window.localStorage.setItem(storageKey') &&
+  audioPlayer.includes('onLoadedMetadata={(event) => restorePosition(event.currentTarget)}'),
+  'El reproductor debe guardar y recuperar el segundo exacto donde quedó la escucha')
+assert.ok(audioPlayer.includes('SAVE_INTERVAL_SECONDS = 5') &&
+  audioPlayer.includes('lastSavedCheckpointRef.current'),
+  'No escribir al almacenamiento local en cada actualización del audio')
+assert.ok(audioPlayer.includes('restartFromBeginning') &&
+  audioPlayer.includes('Escuchar desde el inicio') &&
+  audioPlayer.includes('clearSavedPosition()\n          onEnded()'),
+  'Debe poderse reiniciar la escucha y limpiar la posición al completar el capítulo')
+assert.doesNotMatch(audioPlayer, /autoPlay\s*(?:=|\/>)/,
+  'La escucha del capítulo debe comenzar únicamente por decisión del visitante')
+
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
