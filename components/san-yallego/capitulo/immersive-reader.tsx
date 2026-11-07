@@ -205,7 +205,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
 
       <header className="mx-auto max-w-[62ch] px-6 pb-8 pt-12 text-center sm:px-12">
         <p className={`font-display text-[10px] tracking-[0.22em] ${palette.muted}`}>JUAN COLORAO · LEYENDAS</p>
-        <h2 className="mt-5 font-display text-2xl tracking-[0.08em] sm:text-3xl">EL PRIMER GRITO</h2>
+        <h1 className="mt-5 font-display text-2xl tracking-[0.08em] sm:text-3xl">EL PRIMER GRITO</h1>
         <span className={`mt-5 block text-lg ${palette.accent}`} aria-hidden>◆</span>
       </header>
 
