@@ -69,6 +69,22 @@ Estas comprobaciones no implican aprobación para desplegar, ni prueban que una 
 
 ---
 
+## Integración de lectura de los 33 capítulos — 8 de noviembre de 2026
+
+El autor aprobó continuar con los otros 32 capítulos del Libro I como acompañamiento literario para los visitantes. Se integró la **edición literaria V1 depurada de la transcripción de subtítulos SRT de ElevenLabs**, sin inventar contenido y sin alterar MP3.
+
+- **Fuente**: `EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md`, recuperado de Biblioteca; SRT íntegro y audios maestros permanecen fuera del repositorio.
+- **Texto**: `lib/san-yallego/book-one-reading-v1.json` incorpora los 32 capítulos restantes (2–33) y sus **5.389 párrafos**; Capítulo I sigue desde `chapter-one-text.ts` con 100 párrafos depurados. Verificado inicio y fin de las 33 secciones y que no se incorpora la coda reservada después del capítulo 33.
+- **Entrega**: `chapter-text.ts` se ejecuta **solo del lado del servidor**; cada ruta de capítulo entrega al navegador únicamente los párrafos de esa sección, no toda la novela.
+- **Experiencia**: mismo lector con 3 ambientes, letra variable y medidor; marcadores separados por número de capítulo; el índice ofrece lectura para los 33. Los capítulos 2–33 abren directamente en lectura y marcan sus audios como pendientes. Al terminar, se puede pasar al capítulo anterior/siguiente, al índice, al Archivo de Palabras o al mapa.
+- **Límites**: únicamente el MP3 del Capítulo I está enlazado. **No** se simula reproducción en los otros 32. La edición literaria V1 **todavía no está cotejada palabra por palabra contra los audios finales**; necesita aprobación editorial del autor antes de llamarla edición definitiva.
+- **Seguridad editorial**: rutas /libro/1/capitulo/* con `noindex`; política `robots.ts` de preview impide indexación. Publicar los 33 textos gratuitamente en el futuro requerirá una decisión comercial explícita del autor; esto es integración de beta, **no autorización para promocionar o lanzar toda la obra**.
+- **No cambia**: Oráculos interactivos, llaves, lugares sellados, vuelos cinematográficos, producción ni la Biblia V3.
+
+**Próxima puerta**: prueba manual en Motorola o escritorio de Capítulos II, XVIII y XXXIII (inicio/fin, marcadores separados, regreso al índice), además de la posterior integración de audios por lotes y cotejo editorial.
+
+---
+
 ## Puertas de salida — condición necesaria antes de publicar
 
 - [ ] **Revisión de cambios:** inspeccionar los 103 archivos comparados y separar contenido destinado a `main` de material técnico/editorial no publicable.
