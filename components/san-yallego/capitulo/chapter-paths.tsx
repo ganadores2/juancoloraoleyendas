@@ -180,9 +180,14 @@ export function ChapterPaths({ paths }: { paths: ChapterPath[] }) {
         </article>
       )}
 
-      <Link href="/mapa" className={ritualButton('secondary', 'min-h-11 text-[10px] tracking-[0.17em]')}>
-        Regresar al mapa de San Yallego
-      </Link>
+      <div className="flex flex-wrap justify-center gap-3">
+        <Link href="/glosario" className={ritualButton('secondary', 'min-h-11 text-[10px] tracking-[0.13em]')}>
+          Consultar palabras y personajes
+        </Link>
+        <Link href="/mapa" className={ritualButton('secondary', 'min-h-11 text-[10px] tracking-[0.17em]')}>
+          Regresar al mapa de San Yallego
+        </Link>
+      </div>
     </section>
   )
 }
