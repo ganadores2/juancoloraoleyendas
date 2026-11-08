@@ -8,6 +8,17 @@
 - **Pendiente:** recibir los MP3 y verificar nombres, tamaños, duración, y qué capítulos tienen dos partes. Ningún MP3 2–33 ha sido incorporado al repositorio o a la web.
 - El sitio ahora incluye el índice oficial y señala «MP3 por incorporar» cuando falta el archivo en el servidor.
 
+## Capítulo II recibido — 8 de noviembre de 2026
+
+- **Archivo proporcionado por el autor en el chat:** `01_CAPÍTULO_2_EL_NOMBRE_QUE_QUEMA(2).mp3`.
+- **Etiquetas internas:** título `CAPÍTULO 2: EL NOMBRE QUE QUEMA`, álbum `JUAN COLORAO · LEYENDAS`.
+- **Validación técnica:** MP3 de 636.34 segundos (10:36), 44.1 kHz, mono, 192 kb/s, 15.326.684 bytes. Decodificación FFmpeg sin errores. Se detectó una pausa de 2.2 segundos al comienzo, no un defecto de integridad.
+- **Huella SHA-256:** `a51fc1ffd5171e129b3a7345616335056239b797e3206102a51f963541c3321f`.
+- **Nombre web planificado:** `public/assets/audio/libro-1/capitulo-02-el-nombre-que-quema.mp3`.
+- **Pendiente de confirmar:** el sufijo `(2)` del archivo recibido no identifica necesariamente una parte 2. No afirmar todavía que el MP3 cubre la narración completa ni que coincida palabra por palabra con el SRT; contrastar inicio, desenlace y partes si existieran.
+- **Estado de subida:** recibido y verificado en el entorno de conversación, **todavía no incorporado al repositorio**, ya que la conexión GitHub no admite tomar directamente el archivo binario local. Se preparó paquete de instalación local verificable para la rama beta, que requiere la acción del autor en su Windows; después conectar el manifiesto `ASSETS` y el catálogo `CHAPTERS` y comprobar su reproducción en Vercel Preview.
+- **Control de calidad:** nunca enlazar un MP3 hasta que el archivo exista en la rama y el build lo verifique; no modificar producción para esta entrega.
+
 ## Organización de archivos y secuencia
 
 Identificar siempre **número de capítulo** y, si corresponde, **número de parte**. Preferir nombres estables como:
