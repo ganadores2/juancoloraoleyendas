@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "characterId": "el-ojon",
+  "officialName": "El Ojón",
+  "createdAt": "2026-11-07",
+  "registrationStatus": "CANON DORADO DE RESERVA / PERSONAJE APROBADO PARA EL UNIVERSO EXTENDIDO",
+  "authority": {
+    "confirmedBy": "Autor de Juan Colorao Leyendas (conversación editorial)",
+    "canonicalBasis": "Biblia Maestra V3.0: Canon Dorado incluye series y relatos expandidos compatibles con el Canon Rojo",
+    "notEstablishedIn": "No figura mencionado en la Biblia V3.0 ni en el manuscrito provisional SRT del Libro I consultados para esta ficha; su registro es nueva ampliación del autor.",
+    "scope": "Existencia, nombre, SCH y reserva para expansión aprobados; no equivalen a aprobar hechos o escenas futuras"
+  },
+  "identity": {
+    "role": "Personaje secundario o circunstancial del universo extendido de Juan Colorao.",
+    "narrativePriority": "Secundario y opcional en Libros I–IV; desarrollo importante en series derivadas de XOLO y Don Chema.",
+    "confirmedName": "El Ojón",
+    "confirmedCostumeSymbol": {
+      "letters": "SCH",
+      "meaning": "SUPER CHISMOSO",
+      "appearance": "En la camiseta de la imagen 1",
+      "status": "confirmado por el autor"
+    },
+    "explicitIntent": [
+      "No olvidarlo ni excluirlo de futuras biblias de personajes.",
+      "Puede aparecer en uno, varios o los cuatro libros, sin forzar escenas.",
+      "Tiene un lugar especialmente reservado en la serie de XOLO y la de Don Chema."
+    ]
+  },
+  "characterization": {
+    "approvedCore": [
+      "observador",
+      "curioso",
+      "metiche/chismoso simpático",
+      "humor picaresco con potencial detectivesco"
+    ],
+    "creativeThesis": "Observa mucho, pregunta y se entromete; puede introducir humor o detectar detalles, pero sus hallazgos reales aún no se han escrito.",
+    "guardrails": [
+      "SCH es sello de humor; el atuendo de superhéroe es una referencia visual, no un superpoder declarado.",
+      "El Ojón no conoce automáticamente los secretos de San Yallego.",
+      "El personaje no desplaza a Juan de su saga ni a XOLO o Don Chema de sus series.",
+      "La sátira y el chisme no justifican violar límites entre lo público y lo reservado N4/N5/C100.",
+      "El humor dependerá de relaciones, tono y consecuencias, sin convertirlo en simple burla cruel."
+    ]
+  },
+  "visualIdentity": {
+    "status": "REFERENCIAS APROBADAS PARA CONSERVACIÓN; AVATAR MAESTRO NO APROBADO",
+    "observedAppearance": [
+      "Pequeño personaje de rasgos de roedor estilizado, similar a un conejillo de Indias (la especie narrativa aún NO está fijada).",
+      "Pelaje marrón rojizo/caramelo con franja blanca central en la cara y hocico blanco.",
+      "Ojos negros muy grandes y brillantes; orejas pequeñas redondeadas.",
+      "Figura compacta, corta, expresiva; escala variable según las escenas conceptuales."
+    ],
+    "references": [
+      {
+        "id": "OJ-REF-01",
+        "label": "Super Chismoso con XOLO",
+        "libraryPath": "/Juan Colorao Leyendas/Personajes/El Ojón/01_Ojon_SCH_con_XOLO.jpg",
+        "elements": [
+          "Traje azul y rojo con escudo SCH",
+          "Posa sosteniendo un perro sin pelo tipo XOLO",
+          "Paisaje de ruinas mesoamericanas al atardecer"
+        ],
+        "limits": "La pose sobrehumana y escala son recursos caricaturescos; no son hazaña histórica ni prueba de poderes."
+      },
+      {
+        "id": "OJ-REF-02",
+        "label": "El Ojón detective",
+        "libraryPath": "/Juan Colorao Leyendas/Personajes/El Ojón/02_Ojon_Detective.jpg",
+        "elements": [
+          "Gorra de detective de tela a cuadros",
+          "Lupa dorada",
+          "Mapa con marcas y biblioteca"
+        ],
+        "limits": "El oficio de detective es propuesta estética; ninguna investigación específica es canon."
+      },
+      {
+        "id": "OJ-REF-03",
+        "label": "El Ojón con XOLO al crepúsculo",
+        "libraryPath": "/Juan Colorao Leyendas/Personajes/El Ojón/03_Ojon_XOLO_aviso.jpg",
+        "elements": [
+          "Sombrero de vaquero",
+          "Acompaña a XOLO sobre su lomo",
+          "Ruinas junto al agua y cartel ilustrado"
+        ],
+        "limits": "El texto del cartel y el entorno no quedan incorporados como nombres de sitios o frases oficiales sin aprobación."
+      }
+    ],
+    "consistency": [
+      "Conservar patrón de pelaje, silueta, orejas y ojos al elegir un modelo de animación.",
+      "Conservar las tres imágenes; no mezclar accesorios de distintas facetas como si fueran atuendo habitual.",
+      "Distinguir tamaño caricaturesco de proporciones del modelo maestro cuando se anime junto a XOLO.",
+      "Siete vistas por modelo de personaje animado después de elegir silueta, escala y vestuario, no antes."
+    ]
+  },
+  "narrativeReservations": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "bookAppearancePolicy": "PUEDE APARECER cuando convenga; apariciones NO obligatorias y NINGUNA asignada todavía.",
+    "confirmedBookAppearances": [],
+    "temporalAges": [],
+    "oracleAccess": "No activar preguntas concretas sobre secretos de El Ojón o enlaces a capítulos sin publicación real.",
+    "crossCharacterRelations": [
+      {
+        "otherId": "xolo",
+        "status": "relación visual y potencial creativo; sin episodios canónicos aún",
+        "function": "Curiosidad, humor, aventuras y exploración sin revelar su origen."
+      },
+      {
+        "otherId": "don-chema",
+        "status": "relación de comedia por desarrollar; sin diálogos definitivos",
+        "function": "Contrastes entre chisme e indolencia, curiosidad y evasiva."
+      }
+    ],
+    "futureSeries": [
+      {
+        "id": "xolo-propia",
+        "role": "secundario de potencial importante",
+        "state": "reservado"
+      },
+      {
+        "id": "don-chema-humor",
+        "role": "secundario de potencial importante",
+        "state": "reservado"
+      }
+    ]
+  },
+  "voice": {
+    "voiceId": null,
+    "castingStatus": "sin-voz-aprobada",
+    "expressiveNotes": [
+      "Curiosidad y observación antes que caricatura estridente.",
+      "Humor de confianza y entonación picaresca si el guion lo justifica.",
+      "Guías fonéticas de voz separadas de la ortografía de la novela."
+    ]
+  },
+  "todoBeforeCanonVisual": [
+    "Confirmar especie ficcional (no inferirla de ilustraciones).",
+    "Elegir rostro y proporciones maestras para animación.",
+    "Decidir si SCH es atuendo eventual, insignia recurrente o alter ego cómico.",
+    "Fijar relación canónica con Don Chema y XOLO cuando existan guiones.",
+    "Validar primeras apariciones por libro/capítulo, sin insertarlo retroactivamente a la fuerza.",
+    "Crear siete ángulos de referencia únicamente después de la aprobación visual."
+  ],
+  "legacyV4": {
+    "target": "Biblia Maestra V4",
+    "status": "PENDIENTE DE COMPILACIÓN; la V3 se conserva intacta",
+    "chapter": "Catálogo de personajes secundarios y universo expandido",
+    "changeClass": "ALTA DE PERSONAJE — Canon Dorado de reserva",
+    "mustCarryForward": [
+      "El Ojón",
+      "SCH = Super Chismoso",
+      "tres imágenes de referencia archivadas",
+      "apariciones circunstanciales en libros",
+      "reservado para series de XOLO y Don Chema",
+      "sin episodios ni poderes inventados"
+    ]
+  }
+}
