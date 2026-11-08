@@ -2,22 +2,19 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { useProgress, useWhisper } from '@/hooks/use-san-yallego'
-import { type Chapter } from '@/lib/san-yallego/chapters'
-import { CHAPTER_ONE_TEXT } from '@/lib/san-yallego/chapter-one-text'
-import { getSite, LOCKED_PATH_MESSAGE, siteLabel } from '@/lib/san-yallego/sites'
+import { useProgress } from '@/hooks/use-san-yallego'
+import { type Chapter, chapterHref } from '@/lib/san-yallego/chapters'
+import { getSite, siteLabel } from '@/lib/san-yallego/sites'
 import { ritualButton } from '../ritual'
-import { Whisper } from '../whisper'
 import { AudioPlayer } from './audio-player'
 import { ChapterPaths } from './chapter-paths'
 import { ImmersiveReader } from './immersive-reader'
 
-export function ChapterScreen({ chapter }: { chapter: Chapter }) {
+export function ChapterScreen({ chapter, paragraphs }: { chapter: Chapter; paragraphs: readonly string[] | null }) {
   const { progress, hydrated, completeChapter } = useProgress()
-  const { message, nonce, whisper } = useWhisper()
   const [justFinished, setJustFinished] = useState(false)
-  const [mode, setMode] = useState<'escuchar' | 'leer'>('escuchar')
-  const canRead = chapter.book === 1 && chapter.number === 1
+  const [mode, setMode] = useState<'escuchar' | 'leer'>(chapter.audio ? 'escuchar' : 'leer')
+  const canRead = Boolean(paragraphs?.length)
 
   const chooseMode = (next: 'escuchar' | 'leer') => {
     setMode(next)
@@ -53,10 +50,14 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
 
       {canRead && (
         <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Cómo disfrutar el capítulo">
-          <button type="button" onClick={() => chooseMode('escuchar')} aria-pressed={mode === 'escuchar'}
-            className={`min-h-12 rounded-full border px-6 py-3 font-display text-xs tracking-[0.12em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold ${mode === 'escuchar' ? 'border-gold bg-gold/15 text-gold' : 'border-foreground/30 text-foreground/70 hover:border-gold/60'}`}>
-            Escuchar
-          </button>
+          {chapter.audio ? (
+            <button type="button" onClick={() => chooseMode('escuchar')} aria-pressed={mode === 'escuchar'}
+              className={`min-h-12 rounded-full border px-6 py-3 font-display text-xs tracking-[0.12em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold ${mode === 'escuchar' ? 'border-gold bg-gold/15 text-gold' : 'border-foreground/30 text-foreground/70 hover:border-gold/60'}`}>
+              Escuchar
+            </button>
+          ) : (
+            <span className="self-center font-display text-[10px] tracking-[0.12em] text-foreground/60">Audio por incorporar</span>
+          )}
           <button type="button" onClick={() => chooseMode('leer')} aria-pressed={mode === 'leer'}
             className={`min-h-12 rounded-full border px-6 py-3 font-display text-xs tracking-[0.12em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold ${mode === 'leer' ? 'border-gold bg-gold/15 text-gold' : 'border-foreground/30 text-foreground/70 hover:border-gold/60'}`}>
             Leer
@@ -65,7 +66,10 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
       )}
 
       {canRead && mode === 'leer' ? (
-        <ImmersiveReader paragraphs={CHAPTER_ONE_TEXT} onListen={() => chooseMode('escuchar')} onFinished={markRead} />
+        <ImmersiveReader chapterNumber={chapter.number} chapterTitle={chapter.title}
+          paragraphs={paragraphs ?? []}
+          onListen={chapter.audio ? () => chooseMode('escuchar') : undefined}
+          onFinished={markRead} />
       ) : chapter.audio ? (
         <AudioPlayer
           src={chapter.audio}
@@ -96,29 +100,34 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
           <ChapterPaths paths={chapter.paths} />
         </div>
       ) : (
-        <nav aria-label="Caminos" className="animate-sy-fade-in flex flex-col items-center gap-3">
+        <nav id="caminos-tras-capitulo" aria-label="Continuar después del capítulo"
+          className="animate-sy-fade-in flex flex-col items-center gap-4 scroll-mt-8">
           <p className="mb-1 max-w-md text-balance text-sm italic text-foreground/75">
-            Has escuchado el capítulo. Tu aventura en San Yallego continúa.
+            Has terminado el capítulo {chapter.number}. Tu camino por San Yallego continúa.
           </p>
-          <Link href="/mapa" className={ritualButton('secondary', 'w-72')}>
+          <div className="flex flex-wrap justify-center gap-3">
+            {chapter.number > 1 && (
+              <Link href={chapterHref({ book: chapter.book, number: chapter.number - 1 })}
+                className={ritualButton('secondary', 'min-h-12')}>
+                Capítulo anterior
+              </Link>
+            )}
+            {chapter.number < 33 && (
+              <Link href={chapterHref({ book: chapter.book, number: chapter.number + 1 })}
+                className={ritualButton('primary', 'min-h-12')}>
+                Siguiente capítulo
+              </Link>
+            )}
+          </div>
+          <Link href="/libro/1" className={ritualButton('secondary', 'min-h-12')}>
+            Regresar al índice de los 33 capítulos
+          </Link>
+          <Link href="/glosario" className={ritualButton('secondary', 'min-h-12')}>
+            Consultar palabras y personajes
+          </Link>
+          <Link href="/mapa" className={ritualButton('secondary', 'min-h-12')}>
             Regresar al mapa de San Yallego
           </Link>
-          {chapter.paths.map((path) =>
-            path.href ? (
-              <Link key={path.kind} href={path.href} className={ritualButton('primary', 'w-72')}>
-                {path.label}
-              </Link>
-            ) : (
-              <button
-                key={path.kind}
-                type="button"
-                onClick={() => whisper(LOCKED_PATH_MESSAGE)}
-                className={ritualButton('primary', 'w-72')}
-              >
-                {path.label}
-              </button>
-            ),
-          )}
         </nav>
       ))}
 
@@ -126,7 +135,6 @@ export function ChapterScreen({ chapter }: { chapter: Chapter }) {
         Volver al índice del Libro I
       </Link>
 
-      <Whisper message={message} nonce={nonce} />
     </main>
   )
 }
