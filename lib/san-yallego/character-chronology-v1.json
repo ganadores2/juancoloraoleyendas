@@ -514,6 +514,38 @@
         "El Libro IV no tiene capítulos indexados ni apariencias canónicas en el sistema actual.",
         "No inventar fechas ni edad a partir de una propuesta visual."
       ]
+    },
+    {
+      "id": "el-ojon",
+      "name": "El Ojón",
+      "role": "Secundario/ocasional; humor de curiosidad y chisme, reservado para series de XOLO y Don Chema.",
+      "ageEvents": [],
+      "visualRanges": [],
+      "notes": [
+        "Alta de Canon Dorado de reserva por el autor: no figura aún como aparición confirmada en los capítulos del Libro I recuperado.",
+        "Puede aparecer circunstancialmente en uno, varios o los cuatro libros; ninguna aparición obligatoria ni episodio inventado.",
+        "Destinado a ampliarse en futuras series de XOLO y Don Chema; SCH significa SUPER CHISMOSO.",
+        "Conservar las tres imágenes archivadas en /Juan Colorao Leyendas/Personajes/El Ojón; los trajes son facetas conceptuales, no atuendos permanentes.",
+        "Las edades, voz, especie ficcional y cronología están pendientes de autor; nunca inferir por dibujos."
+      ],
+      "authorConfirmedReservation": {
+        "date": "2026-11-07",
+        "canonClass": "dorado-de-reserva",
+        "cameoOptions": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "futureSeriesIds": [
+          "xolo-propia",
+          "don-chema-humor"
+        ],
+        "emblem": "SCH",
+        "emblemMeaning": "SUPER CHISMOSO",
+        "confirmedVisualReferences": 3,
+        "mandatoryBookAppearance": false
+      }
     }
   ]
 }
