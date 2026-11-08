@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "id": "lupita",
+  "name": "Lupita",
+  "editorialStatus": "PRECANON VISUAL, INTERVENCIONES DEL LIBRO I LOCALIZADAS",
+  "createdAt": "2026-11-07",
+  "identity": {
+    "characterCatalogRole": "amistad, inteligencia y valentía",
+    "narrativeAgency": "Hace preguntas, toma decisiones y observa detalles por sí misma, no es un accesorio de Juan.",
+    "sceneEvidence": [
+      {
+        "book": 1,
+        "chapter": 12,
+        "scene": "Participa en el Paseo de los Espejos Rotos; pregunta, detiene una burla y observa recuerdos.",
+        "source": "SRT V1, Capítulo XII — Los Espejos Niños"
+      }
+    ],
+    "ambiguous": [
+      "La composición de la lámina sugiere en algún momento pareja y familia, pero el libro consultado no confirma como canon esas relaciones futuras."
+    ]
+  },
+  "sourceArt": {
+    "retainAll": true,
+    "references": [
+      "Evolución de Lupita: De niña a abuela.png",
+      "Biblia de Personajes de San Yollego.png"
+    ],
+    "observed": [
+      "Cabello oscuro rizado u ondulado, flor en distintas edades de la lámina.",
+      "Ojos expresivos, transformación de rostro de niña a adulta y vejez en los diseños.",
+      "Vestidos y aretes de distintas edades son propuestas artísticas, no uniforme."
+    ],
+    "unapproved": [
+      "Edad exacta de Lupita en capítulo XII",
+      "Relaciones sentimentales posteriores y supuestos hijos de la ilustración",
+      "Profesión o títulos de liderazgo futuros sin evidencia narrativa"
+    ]
+  },
+  "sceneAnchors": [
+    {
+      "book": 1,
+      "chapter": 12,
+      "context": "escena de aprendizaje y recuerdos"
+    }
+  ],
+  "visualStages": [
+    {
+      "stageId": "L01",
+      "rangeConceptual": "infancia ilustrada (0–10)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    },
+    {
+      "stageId": "L02",
+      "rangeConceptual": "adolescencia ilustrada (11–15)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    },
+    {
+      "stageId": "L03",
+      "rangeConceptual": "juventud ilustrada (16–30)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    },
+    {
+      "stageId": "L04",
+      "rangeConceptual": "madurez y vejez ilustradas (31+)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    }
+  ],
+  "voice": {
+    "voiceId": null,
+    "source": "concepto de voz clara/expresiva; casting sin definir"
+  },
+  "transmedia": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "continuity": "Mantener observación, inteligencia y criterio propio; nuevas edades, romances o responsabilidades solo con texto y aprobación."
+  },
+  "futureAgeEvents": [],
+  "approvalGates": [
+    "No fijar a Lupita como pareja de Tomás por imágenes.",
+    "No imponer edades del folleto como cronología.",
+    "No transformar retratos de anciana en escenas del Libro I."
+  ]
+}
