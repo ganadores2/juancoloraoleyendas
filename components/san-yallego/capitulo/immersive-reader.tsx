@@ -314,7 +314,7 @@ export function ImmersiveReader({ chapterNumber, chapterTitle, paragraphs, onLis
               className="inline-flex min-h-12 items-center gap-2 rounded-full border border-current/40 px-5 py-2 text-sm">
               <BookOpen size={16} /> Escuchar narración
             </button>
-          )
+          )}
           <button type="button" onClick={restart}
             className={`min-h-12 px-3 text-sm underline underline-offset-4 ${palette.muted}`}>
             Leer desde el inicio
