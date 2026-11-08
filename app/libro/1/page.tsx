@@ -23,10 +23,11 @@ export default function LibroUnoPage() {
             EL GRAN CAMBIO
           </h1>
           <p className="max-w-xl text-balance text-sm leading-relaxed text-foreground/75">
-            Índice oficial de los 33 capítulos. Puedes escuchar los episodios
-            disponibles directamente o vivir primero el recorrido cinematográfico
-            de San Yallego. Las demás grabaciones se incorporarán sin alterar
-            el texto ni el orden original del libro.
+            Los 33 capítulos de «El Gran Cambio» están disponibles para leer
+            en la edición literaria depurada de ElevenLabs. Puedes escuchar
+            los audios incorporados o vivir primero el recorrido cinematográfico
+            de San Yallego. Las grabaciones restantes se añadirán progresivamente,
+            sin modificar el orden original ni abrir los Oráculos sellados.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link href="/bienvenida" className={ritualButton('secondary', 'min-h-11 tracking-[0.14em]')}>
@@ -50,16 +51,17 @@ export default function LibroUnoPage() {
                   {chapter.title}
                 </span>
               </div>
-              {chapter.audio ? (
+              <div className="flex flex-wrap items-center justify-end gap-3">
                 <Link href={chapterHref(chapter)}
                   className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-gold/60 px-4 py-2 font-display text-[10px] tracking-[0.12em] text-gold hover:bg-gold/10">
-                  {chapter.number === 1 ? 'LEER / ESCUCHAR' : 'ESCUCHAR'}
+                  {chapter.audio ? 'LEER / ESCUCHAR' : 'LEER'}
                 </Link>
-              ) : (
-                <span className="text-right text-[11px] leading-relaxed text-foreground/55">
-                  MP3 por incorporar
-                </span>
-              )}
+                {!chapter.audio && (
+                  <span className="text-right text-[11px] leading-relaxed text-foreground/55">
+                    MP3 por incorporar
+                  </span>
+                )}
+              </div>
             </li>
           ))}
         </ol>
