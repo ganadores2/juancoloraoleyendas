@@ -18,7 +18,8 @@
     "security": "No incluir contenido de N4/N5/C100 ni detalles de origen reservados.",
     "publication": "Los capítulos de futuro no se recomiendan como audio hasta que estén publicados, verificados y autorizados.",
     "timeline": "No inferir un año de calendario a partir de edad sin establecer fecha del acontecimiento.",
-    "canon": "La cronología real determina los hechos; la de descubrimiento permite saltar en la lectura sin cambiarlos."
+    "canon": "La cronología real determina los hechos; la de descubrimiento permite saltar en la lectura sin cambiarlos.",
+    "relationship": "La diferencia relativa María > Juan es deliberada y canónica. Su mentoría es temporal y complementaria; no convierte a Juan en un protagonista pasivo ni determina edades exactas posteriores."
   },
   "visualPlan": {
     "viewsPerApprovedStage": 7,
@@ -241,7 +242,7 @@
     {
       "id": "maria-de-los-angeles",
       "name": "María de los Ángeles",
-      "role": "sanación, autonomía y crecimiento",
+      "role": "Conocimiento de plantas y sanación, intuición extraordinaria, agencia propia; compañera y mentora temporal de Juan, a quien supera en edad por intención del autor",
       "ageEvents": [
         {
           "stageId": "maria-05",
@@ -266,10 +267,26 @@
         "50+"
       ],
       "notes": [
-        "La edad relativa respecto a Juan necesita auditoría: el SRT indica María de cinco años cuando Juan era recién nacido.",
+        "Canon aprobado por el autor: María es mayor que Juan por diseño; la diferencia es una ventaja narrativa y no una inconsistencia.",
         "Los rangos de la lámina visual son concept art, no una asignación aprobada a los capítulos.",
-        "No deducir la edad de María en el capítulo IV mediante una suma automática hasta confirmar las fechas."
-      ]
+        "No deducir la edad de María en el capítulo IV mediante una suma automática hasta confirmar las fechas.",
+        "Compañera y mentora solo durante una etapa de formación; no perpetuar esa relación ni reducir su agencia propia.",
+        "Edades concretas posteriores a los 5 años del Capítulo II deben verificarse con MP3; no rellenar por extrapolación."
+      ],
+      "authorConfirmedRelationship": {
+        "date": "2026-11-07",
+        "partner": "juan-colorao",
+        "relativeAge": "maria-es-mayor",
+        "intentional": true,
+        "mentorship": "temporal-durante-formacion-de-juan",
+        "benefit": "La experiencia, sabiduría e intuición de María ayudan a Juan a evitar muchas equivocaciones, sin sustituir sus decisiones, tropiezos ni desarrollo.",
+        "knowledge": [
+          "plantas",
+          "sanación",
+          "intuición extraordinaria"
+        ],
+        "ageDifferenceNumerical": "por-fijar; no inferir sin cotejar episodios"
+      }
     },
     {
       "id": "gabriel-vallego",
