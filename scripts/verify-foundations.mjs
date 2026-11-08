@@ -36,6 +36,10 @@ const juanVisual = JSON.parse(source('lib/san-yallego/juan-visual-master-v1.json
 const juanVisualDoc = source('docs/personajes/juan-colorao-ficha-visual-maestra-v1.md')
 const mariaVisual = JSON.parse(source('lib/san-yallego/maria-visual-master-v1.json'))
 const mariaVisualDoc = source('docs/personajes/maria-de-los-angeles-ficha-visual-maestra-v1.md')
+const gabrielVisual = JSON.parse(source('lib/san-yallego/gabriel-visual-master-v1.json'))
+const gabrielVisualDoc = source('docs/personajes/gabriel-ficha-visual-maestra-v1.md')
+const transmediaContinuity = JSON.parse(source('lib/san-yallego/transmedia-continuity-v1.json'))
+const transmediaContinuityDoc = source('docs/personajes/biblia-continuidad-transmedia-v1.md')
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
@@ -589,6 +593,57 @@ assert.ok(mariaVisualDoc.includes('La mentoría es temporal') &&
   mariaVisualDoc.includes('conocimientos y experiencia inusuales') &&
   characterChronologyDesign.includes('María es deliberadamente mayor que Juan'),
   'Ambas biblias deben conservar la explicación canónica del autor')
+
+
+assert.equal(gabrielVisual.identity, 'gabriel-vallego',
+  'Gabriel debe conservar identidad técnica estable aunque su apellido editorial no esté fijado')
+assert.deepEqual(gabrielVisual.naming.variants, ['Gabriel Vallego','Gabriel Yallego'],
+  'No corregir automáticamente ninguna de las dos grafías de Gabriel')
+assert.equal(gabrielVisual.naming.canonicalSpelling, null,
+  'La grafía canónica requiere aprobación expresa del autor')
+assert.equal(gabrielVisual.ageEvidence.length, 1,
+  'No inventar edades del Libro I de Gabriel a partir de ilustraciones')
+assert.ok(gabrielVisual.ageEvidence[0].ageYears === 9 &&
+  gabrielVisual.ageEvidence[0].chapter === 31 &&
+  gabrielVisual.ageEvidence[0].temporalContext === 'recuerdo',
+  'La edad nueve de Gabriel en XXXI corresponde a un recuerdo')
+assert.deepEqual(gabrielVisual.stageSystem.stages.map(x => x.anchorAgeYears),
+  [9, null, null, null],
+  'No inferir edades visuales de Gabriel para juventud o madurez')
+assert.equal(gabrielVisual.stageSystem.stages.reduce((n,x) => n+x.views.length,0),28,
+  'Se necesitan siete ranuras por cada una de cuatro etapas preliminares de Gabriel')
+assert.ok(gabrielVisual.stageSystem.stages.every(x=>x.views.every(v =>
+  v.asset === null && v.approval === 'pendiente')),
+  'Las vistas de Gabriel son conceptos y no avatares aprobados')
+assert.ok(gabrielVisual.sourceArt.retainAll &&
+  gabrielVisual.sourceArt.references.length === 5,
+  'Conservar todas las láminas de Gabriel, incluidas las variantes de apellido')
+assert.ok(gabrielVisualDoc.includes('NO') &&
+  gabrielVisualDoc.includes('nueve años') &&
+  gabrielVisualDoc.includes('Vallego') &&
+  gabrielVisualDoc.includes('Yallego'),
+  'La ficha de Gabriel debe aclarar edad recordada y dos grafías')
+assert.equal(transmediaContinuity.schemaVersion,1,
+  'La continuidad transmedia debe tener esquema versionado')
+assert.deepEqual(transmediaContinuity.series.map(s => s.seriesId),
+  ['don-chema-humor','xolo-propia','maria-propia'],
+  'Conservar las tres futuras series propuestas por el autor')
+const chronologyIds = new Set(characterChronology.characters.map(c => c.id))
+for(const show of transmediaContinuity.series) {
+  assert.ok(show.characterIds.every(id=>chronologyIds.has(id)),
+    'Una serie derivada debe referenciar personajes reales del catálogo')
+  assert.ok(show.status.includes('sin-guiones'),
+    'No declarar producidas series futuras sin guiones aprobados')
+  assert.ok(show.dontInvent.length > 0 && show.preserve.length > 0,
+    'Las series deben conservar voz y continuidad y prohibir detalles inventados')
+}
+assert.ok(transmediaContinuityDoc.includes('Don Chema') &&
+  transmediaContinuityDoc.includes('XOLO') &&
+  transmediaContinuityDoc.includes('María de los Ángeles'),
+  'La Biblia Transmedia debe incluir las tres series futuras')
+assert.ok(transmediaContinuity.coreRules.some(rule => rule.includes('siete vistas')) &&
+  transmediaContinuity.changeProtocol.some(rule => rule.includes('aprobación del autor')),
+  'Las series animadas y los cambios al canon requieren control editorial')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
