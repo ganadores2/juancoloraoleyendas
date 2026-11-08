@@ -63,6 +63,10 @@ Su conocimiento especial de **plantas y sanación**, su sabiduría inusual y su 
 
 Esta aclaración confirma la **relación de edades**, no una resta de años exacta. El dato explícito sigue siendo María con 5 años en el Capítulo II; las edades de otras escenas se corroborarán con el texto y MP3 definitivos.
 
+### El Ojón — alta en el universo extendido
+
+El autor incorporó **El Ojón** como **personaje secundario/circunstancial del Canon Dorado de reserva**, con potencial importante para las futuras series de **XOLO** y **Don Chema**. Puede aparecer en uno, varios o los cuatro libros, pero **no tiene aún ninguna aparición canónica fechada**, ni edad, ni voz definitiva. **SCH significa SUPER CHISMOSO**, según el autor; se conservan tres referencias visuales en `/Juan Colorao Leyendas/Personajes/El Ojón/`. **No deducir especie, año de nacimiento o edad por la ilustración.** La ficha oficial es `docs/personajes/el-ojon-ficha-maestra-oficial-v1.md`.
+
 ## 5. Biblioteca visual por etapa: siete vistas, no siete edades
 
 **Regla:** el mismo personaje puede tener tantas **etapas de edad aprobadas** como la historia necesite. **Cada etapa** que se modele para animación podrá tener un conjunto de **siete imágenes angulares** de referencia. La Biblia visual ya producida contiene ejemplos de etapas y rostros, pero por sí misma **no es la aprobación final de un avatar o de cada uno de sus ángulos**.
