@@ -2,7 +2,7 @@
 
 **Versión V1 — diseño editorial fechado 7 de noviembre de 2026.**
 
-**ESTADO: PROPUESTA.** Se crea el diseño y la matriz de datos, **no** se desbloquean lugares, no se publican nuevos MP3, no se crea un Oráculo GPT operativo y no se modifica la bienvenida aprobada.
+**ESTADO: DISTRIBUCIÓN EDITORIAL APROBADA POR EL AUTOR (7 DE NOVIEMBRE DE 2026).** Se aprueban los diez dominios y la asignación inicial de los 33 capítulos del Libro I. La arquitectura se extenderá a los Libros II, III y IV, respetando conexiones narrativas al presente, pasado y futuro. **La aprobación editorial no desbloquea lugares, no publica MP3 ni activa todavía el Oráculo-GPT.**
 
 > **REGLA DE EXPERIENCIA:** El Oráculo orienta, sugiere una obra o un lugar y despierta nuevas preguntas. La revelación se descubre al escuchar, leer, observar y volver a explorar. El Oráculo nunca reemplaza la experiencia ni impone una sola interpretación.
 
@@ -220,4 +220,4 @@ El archivo de personajes también debe conservar modismos y acentos de la voz, d
 - No dar por definitivo texto SRT sin cotejarlo con MP3.
 - No dar por idéntica la Cueva de los Suspiros Plateados a la Puerta del Mictlán.
 
-**Estado final de este documento:** arquitectura editorial y datos preparados. No es un despliegue de Oráculos, no concede llaves, no cambia los ocho sitios sellados y no crea contenidos de los Libros II o III.
+**Estado final de este documento:** la distribución del Libro I ha sido **aprobada editorialmente**. Su extensión temporal a Libros II–IV se define en `docs/oraculos/arquitectura-temporal-libros-1-4.md` y `lib/san-yallego/oracle-timeline-v2.json`. No es un despliegue de Oráculos, no concede llaves, no cambia los ocho sitios sellados y no crea capítulos ni contenidos inexistentes.
