@@ -127,5 +127,19 @@
     "audio": "Pausas, énfasis y timing del sarcasmo; separar jerga de fonética ElevenLabs; Voice ID pendiente.",
     "animation": "Prioridad gestual/comedia: mirada, silencios, postura; rasgos visuales por aprobar antes de siete vistas.",
     "spinoff": "Serie humorística y sarcástica de Don Chema; El Ojón reservado como secundario y Doña Chavela como contrapunto, sin guiones inventados."
+  },
+  "crossBookContinuity": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "approvedFutureAgeEvents": [],
+    "narrativeLaw": "Un solo personaje y una sola biografía coherente; no inventar cronología, escenas futuras ni rasgos solo por concept art.",
+    "reading": "Priorizar escenas y relaciones narrativas verificadas; descripción física únicamente donde aporte a la historia.",
+    "audio": "Conservar voz, intención y personalidad; casting/Voice ID por aprobación del autor.",
+    "animation": "Elegir un modelo por edad/estado visual efectivamente representado y generar siete vistas coherentes; no aprobar ninguna imagen sin el autor.",
+    "futureSeries": "Reservas conceptuales no son guiones ni autorizan secretos o saltos no publicados."
   }
 }
