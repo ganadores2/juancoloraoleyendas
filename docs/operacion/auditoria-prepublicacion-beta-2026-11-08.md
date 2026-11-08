@@ -34,7 +34,8 @@
 4. En Vercel Preview, una llave deliberadamente falsa produjo «La llave no fue reconocida»: **APROBADO — rechazo de credencial incorrecta**.
 5. Tras varios intentos consecutivos con la clave falsa, el Preview mostró «La puerta está en pausa. Demasiados intentos...» y pidió esperar aproximadamente un minuto: **APROBADO — bloqueo visible al superar el umbral**. La captura de pantalla del autor demuestra la interfaz; **la condición HTTP 429 y su cabecera Retry-After todavía no se inspeccionaron directamente**.
 6. Tras esperar más de un minuto, el autor regresó a la Sala del Creador, introdujo nuevamente la llave falsa y recibió «La llave no fue reconocida», sin la pantalla de pausa: **APROBADO — recuperación del formulario tras el bloqueo temporal**.
-7. **Pendiente:** confirmar el HTTP 429 y Retry-After mediante inspección de red, el conteo exacto, fallos reales de Redis, producción tras publicación y el alcance público de archivos MP4 estáticos. No se introdujo una llave real.
+7. En Chrome incógnito, la URL directa `/assets/video/oraculo/03-Jardines-Plaza-al-Oraculo.mp4` reprodujo fluidamente el vuelo de aproximación al Oráculo de la Plaza: **CONFIRMADO — MP4 accesible públicamente por URL directa**. Esto es **comportamiento intencional y autorizado**, no una vulnerabilidad por sí misma: `docs/tecnico/politica-medios-san-yallego.md` registra la **Opción A aprobada por el autor**, que permite uso público/promocional de los 20 vuelos, sin autorizar secretos, acceso interactivo a Oráculos ni entrada al Taller. No trasladar esos 20 MP4 a almacenamiento privado por esta comprobación.
+8. **Pendiente:** confirmar el HTTP 429 y Retry-After mediante inspección de red, el conteo exacto, fallos reales de Redis, producción tras publicación y revisar cualquier material futuro realmente reservado. No se introdujo una llave real.
 
 Estas comprobaciones no implican aprobación para desplegar, ni prueban que una ruta estática de `public/assets` esté protegida.
 
@@ -45,7 +46,7 @@ Estas comprobaciones no implican aprobación para desplegar, ni prueban que una 
 - [ ] **Revisión de cambios:** inspeccionar los 103 archivos comparados y separar contenido destinado a `main` de material técnico/editorial no publicable.
 - [ ] **Definir alcance de la beta:** confirmar si sale con capítulo 1 disponible y un índice de 33 títulos, o si se esperará a incorporar los restantes 32 MP3. No confundir "rutas generadas" con "audio disponible".
 - [ ] **Autorización y login:** validar clave y firma del creador, límites 5/60s/IP y comportamiento cuando KV/Redis no responde; inspeccionar producción sin mostrar secretos.
-- [ ] **Control de activos:** decidir qué videos/imágenes pueden residir en `public` y qué debe quedar tras autorización real.
+- [x] **Control de vuelos existentes:** confirmada la política Opción A (20 MP4 de descensos/aproximación pueden estar en `public`) y una URL directa reproduce el vuelo de la Plaza. Esta autorización **no** cubre secretos, contenido nuevo reservado, ni interacción de los ocho Oráculos sellados.
 - [ ] **QA móvil y accesibilidad:** recorrido completo en móvil real, texto/contraste, audio, sin saltos de transición y enlaces funcionales.
 - [ ] **Salida a producción:** crear/revisar PR específico desde la rama cinematográfica, validar CI y despliegue preparatorio; solicitar aprobación expresa del titular antes de merge, despliegue o promoción.
 - [ ] **Postlanzamiento:** conservar como fase posterior los Oráculos GPT, ES/EN y TECH-OZ, según `docs/biblia/v4-apartado-despues-del-lanzamiento-resumen-publicable.md`; no activarlos por efecto de publicar la beta.
