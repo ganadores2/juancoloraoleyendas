@@ -6,13 +6,36 @@
   "createdAt": "2026-11-07",
   "editorialStatus": "PRECANON: continuidad literaria aprobada como objetivo, ilustraciones y edades visuales sin aprobar",
   "narrativeIdentity": {
-    "role": "Personaje con historia, voluntad y evolución independientes de Juan. Sanación y fortaleza sin reducirla a apoyo del protagonista.",
+    "role": "María de los Ángeles es mayor que Juan Colorao por decisión deliberada del autor; posee conocimiento singular de plantas y sanación e intuición extraordinaria. Es compañera y mentora de Juan durante un tramo de su formación; ayuda a prevenir muchos errores sin sustituir la voluntad, los tropiezos ni las decisiones del protagonista. Su propia historia, agencia y evolución son independientes.",
     "canonSource": "Biblia Maestra V3.0, sección 16",
     "notAllowed": [
       "Convertirla en figura secundaria sin voz propia",
       "Atribuirle todas las decisiones a Juan",
       "Inventar poderes o revelar secretos de la trilogía en fichas públicas"
-    ]
+    ],
+    "authorConfirmedCanon": {
+      "date": "2026-11-07",
+      "ageRelation": "María es mayor que Juan; la diferencia de edad es intencional y una ventaja para la formación de Juan, no un obstáculo narrativo.",
+      "knowledge": [
+        "plantas",
+        "sanación y remedios tradicionales",
+        "intuición extraordinaria",
+        "experiencia y sabiduría inusuales"
+      ],
+      "rolesTowardsJuan": [
+        "compañera",
+        "mentora durante una etapa de su desarrollo",
+        "consejera que le ayuda a evitar muchas equivocaciones"
+      ],
+      "boundaries": [
+        "No actúa como mentora de Juan durante toda la saga por defecto.",
+        "Juan conserva su responsabilidad, su capacidad de equivocarse y el recorrido propio del Camino del Guerrero.",
+        "La sabiduría de María no elimina su propia evolución, dudas ni decisiones.",
+        "No atribuir automáticamente magia o capacidad de sanar ilimitada por conocer plantas y sanación.",
+        "No calcular edades exactas de cada escena sin cronología aprobada."
+      ],
+      "narrativeFunction": "Su mayor experiencia acelera la comprensión integral del verdadero Colorao sin sustituir la experiencia que Juan debe vivir."
+    }
   },
   "sourceArt": {
     "retainAll": true,
@@ -46,10 +69,11 @@
       }
     ],
     "unresolved": [
-      "La edad relativa de María y Juan debe mantenerse tal como aparece en los capítulos hasta cotejo con MP3 y confirmación editorial.",
+      "La diferencia de edad ES canónica e intencional. Solo falta precisar edades y fechas de escenas posteriores y contrastar el texto del SRT con los MP3.",
       "Las láminas muestran edades por intervalos para animación: no fijan fechas ni edades de María en capítulos posteriores.",
       "Algunas láminas de grupo muestran rostros o edades poco coherentes entre sí; no descartar ninguna, pero auditar antes del avatar maestro."
-    ]
+    ],
+    "authorialClarification": "Canon confirmado por el autor: la mayor edad de María respecto de Juan fue deliberada; NO es una inconsistencia por corregir. Las edades específicas de escenas posteriores requieren cotejo."
   },
   "visualIdentityDraft": {
     "traitsSeenAcrossArt": [
@@ -395,8 +419,9 @@
     "lectura": "Mencionar cambios de edad, apariencia y actos de María cuando aporten a su trayectoria; no llenar el libro de fichas físicas.",
     "audio": "Preservar la narración y dar a María voz e interpretación propias en cada momento; guía fonética separada del manuscrito.",
     "serieAnimada": "Exigir identidad facial, proporciones, vestuario, trenzas/accesorios y siete vistas consistentes por cada edad realmente animada.",
-    "temporalRule": "La edad de María en una escena no se deduce automáticamente de la de Juan; fijar edad solo con texto o aprobación del autor.",
-    "changeLogRule": "Registrar libro/capítulo, edad explícita o inferencia marcada, primera aparición de detalle visible y aprobación."
+    "temporalRule": "La diferencia de edad (María mayor) está aprobada como canon; las edades numéricas de María en escenas posteriores NO se deducen automáticamente de las de Juan.",
+    "changeLogRule": "Registrar libro/capítulo, edad explícita o inferencia marcada, primera aparición de detalle visible y aprobación.",
+    "relationshipCanon": "Al pasar de Libro I a II, III y IV, conservar que María es mayor que Juan y fue durante un tiempo su mentora por conocimiento de plantas, sanación e intuición. Su rol cambia con la historia y nunca se presupone mentoría permanente."
   },
   "futureUse": {
     "oracleKnowledge": "Solo capítulos y pistas autorizadas, sin revelaciones N4/N5/C100",
