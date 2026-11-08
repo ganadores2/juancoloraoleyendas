@@ -96,30 +96,41 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
 
   useEffect(() => {
     if (!ready) return
-    let scheduled = false
+    let frame: number | null = null
     const trackReading = () => {
-      if (scheduled) return
-      scheduled = true
-      window.requestAnimationFrame(() => {
-        scheduled = false
+      if (frame !== null) return
+      frame = window.requestAnimationFrame(() => {
+        frame = null
         const article = articleRef.current
         const reader = readerRef.current
         const first = paragraphRefs.current[0]
-        if (!article || !first || !reader) return
+        const last = paragraphRefs.current[paragraphs.length - 1]
+        if (!article || !first || !last || !reader) return
+
         const readerRect = reader.getBoundingClientRect()
         setReadingVisible(readerRect.top < window.innerHeight && readerRect.bottom > 0)
-        // Funciona independientemente de si se mueve window o un contenedor anidado.
-        const articleRect = article.getBoundingClientRect()
-        const readingLine = window.innerHeight * 0.38
-        const fraction = (readingLine - articleRect.top) / Math.max(1, articleRect.height)
-        setProgress(Math.round(Math.max(0, Math.min(1, fraction)) * 100))
 
-        // Evitar guardar el primer bloque antes de que empiece la lectura.
-        if (articleRect.top > readingLine) return
+        // El avance se mide sobre los PÁRRAFOS efectivamente recorridos.
+        // Sus rectángulos se actualizan tanto al mover la página como un panel
+        // interior o al cambiar el tamaño de la letra en el teléfono.
+        const articleRect = article.getBoundingClientRect()
+        const firstTop = first.getBoundingClientRect().top
+        const lastBottom = last.getBoundingClientRect().bottom
+        const readingLine = window.innerHeight * 0.38
+        const fraction = (readingLine - firstTop) / Math.max(1, lastBottom - firstTop)
+        const clamped = Math.max(0, Math.min(1, fraction))
+        // Una décima evita que el indicador parezca inmóvil en textos largos.
+        setProgress(Math.round(clamped * 1000) / 10)
+
+        // Sin desplazamiento dentro del texto, no sobreescribir marcadores.
+        if (articleRect.top > readingLine) {
+          setVisibleBlock(0)
+          return
+        }
         let index = 0
         for (let i = 0; i < paragraphRefs.current.length; i++) {
           const paragraph = paragraphRefs.current[i]
-          if (paragraph && paragraph.getBoundingClientRect().top <= window.innerHeight * 0.38) {
+          if (paragraph && paragraph.getBoundingClientRect().top <= readingLine) {
             index = i
           } else {
             break
@@ -130,12 +141,18 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
         saveBlock(index)
       })
     }
-    // El evento scroll no burbujea: captura también cambios en paneles internos.
+    // Scroll en ventana, paneles anidados e interacción táctil.
     document.addEventListener('scroll', trackReading, true)
     window.addEventListener('scroll', trackReading, { passive: true })
     window.addEventListener('resize', trackReading)
+    window.addEventListener('touchmove', trackReading, { passive: true })
 
-    // Respaldo que responde al paso real de los párrafos por el visor.
+    // Refrescar mediciones si la tipografía o el ancho cambian.
+    const resizeObserver = typeof ResizeObserver === 'undefined'
+      ? null
+      : new ResizeObserver(trackReading)
+    if (resizeObserver && articleRef.current) resizeObserver.observe(articleRef.current)
+
     const observer = typeof IntersectionObserver === 'undefined'
       ? null
       : new IntersectionObserver(trackReading, { root: null, rootMargin: '0px 0px -55% 0px' })
@@ -150,9 +167,12 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
       document.removeEventListener('scroll', trackReading, true)
       window.removeEventListener('scroll', trackReading)
       window.removeEventListener('resize', trackReading)
+      window.removeEventListener('touchmove', trackReading)
+      resizeObserver?.disconnect()
       observer?.disconnect()
+      if (frame !== null) window.cancelAnimationFrame(frame)
     }
-  }, [ready, saveBlock])
+  }, [ready, saveBlock, paragraphs.length])
 
   const jumpTo = (index: number) => {
     const paragraph = paragraphRefs.current[index]
@@ -199,7 +219,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
           </div>
           <div className="flex justify-end pr-3 pt-2">
             <span className="rounded-full bg-[#211a18]/90 px-3 py-1 text-xs font-semibold tabular-nums text-[#f1e4d5] shadow-lg">
-              Lectura {progress}% · bloque {visibleBlock || 1}/{paragraphs.length}
+              Lectura {progress.toFixed(1)}% · bloque {visibleBlock || 1}/{paragraphs.length}
             </span>
           </div>
         </div>
@@ -213,8 +233,8 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
           <span className={`font-display text-[10px] tracking-[0.16em] ${palette.muted}`}>
             LECTURA · CAPÍTULO I · {paragraphs.length} BLOQUES
           </span>
-          <span className={`font-display text-[10px] tabular-nums ${palette.muted}`} aria-label={`Progreso aproximado ${progress} por ciento`}>
-            {progress}% leído
+          <span className={`font-display text-[10px] tabular-nums ${palette.muted}`} aria-label={`Progreso aproximado ${progress.toFixed(1)} por ciento del texto disponible`}>
+            {progress.toFixed(1)}% leído
           </span>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Ambiente de lectura">
@@ -296,9 +316,10 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
           </button>
         </div>
         <p className={`max-w-md text-xs leading-relaxed ${palette.muted}`}>
-          Texto completo del Capítulo I en el PDF de 170 páginas (pp. 4–8).
+          Esta versión de lectura procede del PDF de 170 páginas (pp. 4–8),
+          pero aún debe cotejarse y completarse con la edición final narrada.
           No es una transcripción verificada del MP3; la grabación puede contener
-          revisiones literarias posteriores que aún faltan en esta modalidad.
+          pasajes y revisiones literarias que todavía faltan aquí.
         </p>
       </footer>
     </section>
