@@ -56,6 +56,19 @@ Estas comprobaciones no implican aprobación para desplegar, ni prueban que una 
 
 ---
 
+## Capítulo I: fuente literaria del SRT depurado — 8 de noviembre de 2026
+
+**Corrección editorial tras QA real:** el autor confirmó en Motorola/Chrome que el medidor de lectura avanza hasta 100% y que los temas, botones y tres miradas funcionan, pero la lectura proveniente del PDF de 170 páginas no correspondía al texto grabado de ElevenLabs.
+
+- **Fuente recuperada de Biblioteca:** `JUAN_COLORAO_·_LEYENDAS (1).srt` (original), `EL_GRAN_CAMBIO_TRANSCRIPCION_INTEGRA_SRT.txt`, `EL_GRAN_CAMBIO_33_CAPITULOS_TEXTO_PROVISIONAL.md` y `EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md` (edición depurada para lectura).
+- **Cambio:** `lib/san-yallego/chapter-one-text.ts` ahora contiene los **100 párrafos completos** de `CAPÍTULO 01 — EL PRIMER GRITO` de la edición V1 derivada del SRT. Empieza «La noche del 8 de marzo de 1969, San Yallego dejó de respirar por un instante.» y termina «Esperando.»; no incluye Capítulo II ni coda.
+- **Integridad:** el ajuste conserva diálogos ensamblados, texto íntegro de esa edición y orden narrativo; `scripts/verify-foundations.mjs` comprueba número de bloques, diálogos, inicio, cierre y exclusión de instrucciones técnicas.
+- **Metadatos:** el pie del lector identifica ahora la fuente correcta y advierte explícitamente que **todavía no hay cotejo palabra por palabra con el MP3 definitivo**.
+- **Sin cambios:** archivos SRT fuente, audio, Oráculos, bienvenida cinematográfica y permisos.
+- **Pendiente:** comprobar con el autor en la nueva beta que se lee ese texto de principio a fin, y hacer cotejo editorial con el MP3 si existieran divergencias.
+
+---
+
 ## Puertas de salida — condición necesaria antes de publicar
 
 - [ ] **Revisión de cambios:** inspeccionar los 103 archivos comparados y separar contenido destinado a `main` de material técnico/editorial no publicable.
