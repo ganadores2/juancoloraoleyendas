@@ -49,11 +49,19 @@ La información estructurada está en `lib/san-yallego/character-chronology-v1.j
 
 | Personaje | Edad o dato | Fuente | Tratamiento |
 |---|---|---|---|
-| **María de los Ángeles** | **5 años** cuando Juan es todavía un bebé | Capítulo **II · El Nombre Que Quema**, pasaje «Durante aquellos mismos días...» | **Posible diferencia frente a las láminas de edades compartidas**. No inferir que María y Juan son coetáneos, ni corregir la obra sin aprobación. |
+| **María de los Ángeles** | **5 años** cuando Juan es todavía un bebé | Capítulo **II · El Nombre Que Quema**, pasaje «Durante aquellos mismos días...» | **La diferencia de edad es intencional y aprobada por el autor**: María es mayor que Juan. Las edades posteriores deben cotejarse; no asumir que son coetáneos. |
 | **Gabriel Vallego/Yallego** | Recuerda que **Geraldo lo llevó con 9 años** | Capítulo **XXXI · La Cueva De Los Suspiros Plateados** | Es una **edad del pasado recordado**, NO la edad actual de Gabriel en el XXXI. La grafía del apellido sigue sin fijarse. |
 | **Nahual** | **10 años** en el relato de Amatlán | Capítulo **XXVII · Los Caminos De Amatlán** | Puede incorporarse como ficha secundaria; su edad no implica la de Juan ni la de María. |
 
 Para **Pancho, Dolores, Tomás, Lupita, XOLO, Doña Chavela/Chabela, Don Chema, Geraldo, Padre Esteban, Doña Rosa, el Alcalde y El Bélico** existen datos de personalidad, función o imágenes conceptuales, pero en esta primera pasada **no quedó fundamentada una edad numérica para el presente de sus escenas**. Mantener celdas vacías hasta contar con fuente narrativa, no usar estereotipos de ancianidad.
+
+### Relación de María y Juan — criterio canónico aprobado
+
+El autor confirma que **María es deliberadamente mayor que Juan**. La diferencia **no es obstáculo ni error de continuidad**: le da a María una ventaja de experiencia que Juan aprovecha durante su formación.
+
+Su conocimiento especial de **plantas y sanación**, su sabiduría inusual y su intuición extraordinaria hacen de ella **compañera y mentora temporal** de Juan. Esa orientación le permite evitar muchas equivocaciones, pero no anula sus decisiones, sus errores, ni su propio Camino del Guerrero. María conserva una evolución independiente y la mentoría **no debe prolongarse automáticamente** a los Libros II–IV sin evidencia.
+
+Esta aclaración confirma la **relación de edades**, no una resta de años exacta. El dato explícito sigue siendo María con 5 años en el Capítulo II; las edades de otras escenas se corroborarán con el texto y MP3 definitivos.
 
 ## 5. Biblioteca visual por etapa: siete vistas, no siete edades
 
