@@ -95,6 +95,18 @@ El módulo `oracle-audio-catalog.ts` tiene `import 'server-only'` para impedir s
 6. Probar que el oráculo propone el capítulo cuando se puede escuchar; si no, ofrece una pista verbal sin fingir que el enlace funciona.
 7. Registrar aprobación del autor antes de activar nuevas sugerencias y comprobar el flujo en teléfono y escritorio.
 
+## 7. Continuidad de apariencia entre libros y medios (decisión del autor)
+
+**Todas las láminas ya creadas se conservarán**. La aprobación de este principio de continuidad **no** convierte ninguna imagen en canon visual definitivo.
+
+La ficha central de Juan —`docs/personajes/juan-colorao-ficha-visual-maestra-v1.md` y `lib/san-yallego/juan-visual-master-v1.json`— mantiene tres grados de precisión:
+
+- **Lectura:** al pasar de un libro a otro, incluir únicamente las descripciones necesarias de evolución física y manifestaciones COLORAO, siempre motivadas por la narración; evitar repetir fichas físicas.
+- **Audio:** narración coherente con esas descripciones, voz e interpretación acordes a la edad y al momento narrativo; instrucciones fonéticas del estudio son independientes del texto final.
+- **Serie animada:** continuidad estricta y auditable de cada modelo por edad, con referencias de todos los ángulos, marcas/coloración en el mismo lado y un evento documentado de primera aparición. La serie requiere más precisión que el libro y su audiolibro.
+
+**En Libros II–IV**, cada nueva etapa de Juan se incorpora solo cuando existe evidencia del texto/audio aprobado; la estructura temporal de los diez Oráculos podrá orientarla sin revelar el secreto físico o simbólico antes de que aparezca en la historia. El registro de la edad del personaje no debe tratar un sueño o recuerdo como su edad presente.
+
 ## 7. Compatibilidad con el lanzamiento
 
 **Se mantiene:** bienvenida cinematográfica aprobada, mapa, los diez identificadores de sitios, ocho sellos, llave, oráculos existentes, lector inmersivo, glosario y reproductor del primer capítulo.
