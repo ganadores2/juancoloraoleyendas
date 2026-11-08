@@ -34,6 +34,8 @@ const characterChronologyServer = source('lib/san-yallego/character-chronology.t
 const characterChronologyDesign = source('docs/oraculos/biblioteca-cronologica-personajes-v1.md')
 const juanVisual = JSON.parse(source('lib/san-yallego/juan-visual-master-v1.json'))
 const juanVisualDoc = source('docs/personajes/juan-colorao-ficha-visual-maestra-v1.md')
+const mariaVisual = JSON.parse(source('lib/san-yallego/maria-visual-master-v1.json'))
+const mariaVisualDoc = source('docs/personajes/maria-de-los-angeles-ficha-visual-maestra-v1.md')
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
@@ -523,6 +525,48 @@ assert.ok(juanVisualDoc.includes('Todas las láminas') === false ||
 assert.ok(temporalDesign.includes('Continuidad de apariencia entre libros y medios') &&
   temporalDesign.includes('Serie animada'),
   'La matriz intertemporal también debe respetar la continuidad visual de Juan')
+
+
+// Maria keeps her own narrative agency and requires no invented ages.
+assert.equal(mariaVisual.identity, 'maria-de-los-angeles',
+  'La ficha visual de María debe conservar identidad única')
+assert.ok(mariaVisual.narrativeIdentity.role.includes('independientes de Juan'),
+  'María debe tener desarrollo propio, no ser solo un apéndice de Juan')
+assert.deepEqual(mariaVisual.sourceText.explicitAges.map(item => [item.ageYears, item.chapter]), [[5, 2]],
+  'La edad explicitada de María es cinco años en el capítulo II; no inferir otras edades')
+assert.ok(mariaVisual.sourceText.relatedScenes.some(scene =>
+  scene.chapter === 4 && scene.referenceCharacter === 'juan-colorao' &&
+  scene.referenceAge === 5),
+  'El capítulo IV fija la edad de Juan, no una edad numérica propia de María')
+assert.equal(mariaVisual.stageSystem.stages.length, 4,
+  'La ficha M01-M04 debe conservar cuatro grupos narrativos, no cuatro edades confirmadas')
+assert.deepEqual(mariaVisual.stageSystem.stages.map(stage => stage.stageId), ['M01','M02','M03','M04'],
+  'Las identidades de etapas deben permanecer estables')
+assert.deepEqual(mariaVisual.stageSystem.stages.map(stage => stage.visualAnchorAgeYears),
+  [5, null, null, null],
+  'No inventar edades ancla para futuras etapas visuales')
+assert.equal(mariaVisual.stageSystem.stages.reduce((n, stage) => n + stage.views.length, 0), 28,
+  'Reservar 7 vistas por cada uno de los cuatro grupos')
+assert.ok(mariaVisual.stageSystem.stages.every(stage =>
+  stage.views.every(view => view.asset === null && view.approval === 'pendiente')),
+  'Ninguna de las 28 vistas se declara creada ni aprobada')
+assert.equal(mariaVisual.sourceArt.retainAll, true,
+  'Conservar íntegramente las referencias de María')
+assert.ok(mariaVisual.sourceArt.referenceTitles.length >= 5,
+  'No borrar láminas visuales de María')
+assert.deepEqual(mariaVisual.crossBookContinuity.books, [1,2,3,4],
+  'La continuidad visual también se extiende a futuros libros')
+assert.deepEqual(mariaVisual.crossBookContinuity.futureStages, [],
+  'No inventar edades ni escenas del Libro II, III y IV')
+assert.ok(mariaVisual.crossBookContinuity.serieAnimada.length > 20 &&
+  mariaVisual.crossBookContinuity.lectura.length > 20 &&
+  mariaVisual.crossBookContinuity.audio.length > 20,
+  'Cada medio tiene exigencias específicas de continuidad')
+assert.ok(mariaVisualDoc.includes('PRECANON') &&
+  mariaVisualDoc.includes('conservar') &&
+  mariaVisualDoc.includes('Capítulo II') &&
+  mariaVisualDoc.includes('Capítulo IV'),
+  'La ficha humana debe explicar las fuentes y las discrepancias cronológicas')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
