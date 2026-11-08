@@ -1,0 +1,317 @@
+{
+  "version": 1,
+  "createdAt": "2026-11-07",
+  "approval": "PRECANON - identidad narrativa documentada; variantes visuales por aprobar",
+  "scope": "Libros I-IV / futuras series",
+  "rules": {
+    "ages": "No inferir edades de láminas conceptuales ni de relaciones familiares.",
+    "art": "Conservar todas las ilustraciones originales; canon visual requiere aprobación expresa del autor.",
+    "audio": "La guía de voz y la pronunciación de ElevenLabs no modifican la ortografía literaria.",
+    "future": "Libros II-IV, nuevas aventuras y cambios físicos sin escenas inventadas.",
+    "secret": "No divulgar reglas N4/N5/C100 ni detalles de origen reservados."
+  },
+  "id": "dolores",
+  "name": "Dolores Colorao",
+  "narrativeAuthority": {
+    "bible": "V3 sección 16: fortaleza familiar, memoria, maternidad, primacía de relación sobre rótulos de concept art",
+    "manuscript": [
+      {
+        "book": 1,
+        "chapter": 1,
+        "fact": "Dolores da a luz a Juan y protege al recién nacido."
+      },
+      {
+        "book": 1,
+        "chapter": 1,
+        "fact": "Lleva una medalla heredada de su madre; su respuesta emocional durante el parto debe conservarse sin explicar secretos."
+      },
+      {
+        "book": 1,
+        "chapter": 0,
+        "fact": "En otra escena del Libro I recuperado, Dolores prohíbe a Juan y María tocar un brote extraño; el capítulo exacto queda por indexar."
+      }
+    ],
+    "relation": "Madre de Juan, no su amiga de infancia; prioridad a texto y canon."
+  },
+  "identity": {
+    "traits": [
+      "maternidad",
+      "fortaleza",
+      "protección familiar",
+      "amor",
+      "criterio firme",
+      "memoria"
+    ],
+    "nonLiteral": [
+      "La lámina «Evolución de Dolores» rotula en 0–5 «amiga de Juanito», lo que contradice que es su madre: no canonizar ese rótulo.",
+      "No interpretar que la apariencia de 0–5 representa su edad en el Libro I.",
+      "Su fortaleza no elimina tristeza, duda ni ambivalencia legítimas."
+    ]
+  },
+  "referenceArt": [
+    {
+      "title": "Evolución de Dolores: Guardiana de la Sabiduría.png",
+      "status": "concept-art",
+      "ageLabels": [
+        "0–5",
+        "6–10",
+        "11–15",
+        "16–20",
+        "21–25",
+        "26–30",
+        "31–40",
+        "41–50",
+        "+50"
+      ],
+      "warning": "La leyenda 0–5 «amiga de Juanito» es incongruente con el canon familiar."
+    },
+    {
+      "title": "Evolución de personajes de San Yallego.png",
+      "status": "concept-art",
+      "ageLabels": [
+        "10–20",
+        "20–30",
+        "30–40",
+        "40–50"
+      ]
+    },
+    {
+      "title": "Biblia de Personajes de San Yollego.png",
+      "status": "concept-art",
+      "ageLabels": [
+        "10–20",
+        "20–30",
+        "30–40",
+        "40–50"
+      ]
+    }
+  ],
+  "appearanceProposal": [
+    "Cabello oscuro ondulado en propuestas de juventud y madurez; encanecimiento posible pero no datado.",
+    "Mirada decidida y expresiva, vestuario regional con bordados y tonos cálidos en láminas.",
+    "Flores, aretes y adornos son variantes conceptuales, no marcas o prendas permanentes."
+  ],
+  "timeline": {
+    "confirmedAgeEvents": [],
+    "sceneAnchors": [
+      {
+        "book": 1,
+        "chapter": 1,
+        "type": "parto-de-juan"
+      }
+    ],
+    "ageRangesAreArtOnly": true,
+    "unresolved": [
+      "Edad de Dolores al nacer Juan",
+      "Evolución facial y vestuario por capítulo",
+      "Lámina «amiga de Juanito» requiere nota de corrección, NO cambio del parentesco"
+    ]
+  },
+  "visualStages": [
+    {
+      "id": "D01",
+      "range": "infancia ilustrada (precuela eventual)",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    },
+    {
+      "id": "D02",
+      "range": "joven adulta",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    },
+    {
+      "id": "D03",
+      "range": "maternidad y madurez",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    },
+    {
+      "id": "D04",
+      "range": "edad mayor",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    }
+  ],
+  "media": {
+    "reading": "Maternidad, decisiones propias y memoria: identidad por encima de leyendas erróneas.",
+    "audio": "Preservar fuerza y matices emotivos, Voice ID pendiente.",
+    "animation": "No usar modelos de «amiga» infantil como compañera de Juan; mantener edad relativa y parentesco aprobado."
+  }
+}
