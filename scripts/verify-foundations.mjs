@@ -43,6 +43,8 @@ const transmediaContinuityDoc = source('docs/personajes/biblia-continuidad-trans
 const elOjon = JSON.parse(source('lib/san-yallego/el-ojon-character-v1.json'))
 const elOjonDoc = source('docs/personajes/el-ojon-ficha-maestra-oficial-v1.md')
 const pendingV4 = source('docs/biblia/registro-cambios-candidatos-v4.md')
+const warriorRoadmap = JSON.parse(source('lib/san-yallego/camino-del-guerrero-roadmap-v1.json'))
+const warriorRoadmapDoc = source('docs/saga/camino-del-guerrero-y-escuelas-miticas-libros-1-4-v1.md')
 const characterVisualIndex = JSON.parse(source('lib/san-yallego/character-visual-index-v1.json'))
 const panchoVisual = JSON.parse(source('lib/san-yallego/pancho-visual-master-v1.json'))
 const panchoVisualDoc = source('docs/personajes/abuelo-pancho-ficha-visual-maestra-v1.md')
@@ -768,6 +770,46 @@ assert.ok(['donaChavela','tomas','lupita','geraldo']
 assert.ok(['V4-016','V4-017','V4-018','V4-019']
   .every(v=>pendingV4.includes(v)),
   'El registro editorial V4 debe conservar las cuatro altas nuevas')
+
+
+// Libro II confirmado por el autor: escuelas míticas, nuevos personajes y camino prolongado.
+assert.equal(warriorRoadmap.schemaVersion, 1,
+  'La arquitectura del Camino del Guerrero debe tener versión propia')
+assert.deepEqual(warriorRoadmap.phases.map(p=>p.phaseId),
+  ['LIBRO-I','LIBRO-II-A','LIBRO-II-B','LIBRO-II-C',
+    'LIBRO-III-A','LIBRO-III-B','LIBRO-III-C','CONVERGENCIA-100','CICLO-101+'],
+  'La formación debe recorrer los libros sin inventar episodios ni resolver todo en el II')
+assert.ok(warriorRoadmap.phases.find(p=>p.phaseId==='LIBRO-I')
+  .ending.juanTravelers.includes('gabriel-vallego') &&
+  warriorRoadmap.phases.find(p=>p.phaseId==='LIBRO-I')
+  .ending.juanTravelers.includes('xolo'),
+  'El capítulo 33 termina con Juan acompañado de Gabriel y XOLO')
+assert.equal(warriorRoadmap.phases.find(p=>p.phaseId==='LIBRO-I')
+  .ending.mariaPath.startsWith('Tzinzunzan'), true,
+  'María conserva su camino independiente al acabar Libro I')
+assert.equal(warriorRoadmap.schoolsPolicy.schoolRecords.length, 0,
+  'No fabricar nombres, maestros o capítulos de escuelas míticas aún no aprobadas')
+assert.deepEqual(warriorRoadmap.schoolsPolicy.schoolNamesApproved, [],
+  'No bautizar escuelas sin decisión del autor')
+assert.deepEqual(warriorRoadmap.schoolsPolicy.newCharactersApproved, [],
+  'Reservar personajes nuevos sin inventarlos')
+assert.ok(warriorRoadmap.phases.filter(p=>p.book===2).every(p=>
+  p.evidenceStatus.includes('propuesta')) &&
+  warriorRoadmap.phases.filter(p=>p.book===3&&p.phaseId!=='CONVERGENCIA-100')
+    .every(p=>p.evidenceStatus.includes('propuesta')),
+  'La distribución detallada de II–III NO debe declararse canon ya escrito')
+assert.equal(warriorRoadmap.phases.find(p=>p.phaseId==='CONVERGENCIA-100').chapterRange.first, 100,
+  'El capítulo 100 conserva su función de convergencia de la trilogía')
+assert.equal(warriorRoadmap.phases.find(p=>p.phaseId==='CICLO-101+').chapterRange.first,101,
+  'El Bélico mantiene su puente al ciclo 101+ sin inventar edades de Juan')
+assert.ok(warriorRoadmap.castPolicy.fromBookOne.homeTownCameos.includes('Cameos') &&
+  warriorRoadmap.castPolicy.maria.includes('propia'),
+  'La población de San Yallego conserva vida propia y solo cameos pertinentes')
+assert.ok(warriorRoadmapDoc.includes('escuelas míticas') &&
+  warriorRoadmapDoc.includes('Capítulo XXXIII') &&
+  pendingV4.includes('V4-020') &&
+  temporalDesign.includes('Camino del Guerrero y escuelas míticas'),
+  'La ruta de escuelas debe figurar en la Biblia V4 y la arquitectura temporal')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
