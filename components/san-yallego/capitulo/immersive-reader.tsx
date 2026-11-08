@@ -316,10 +316,10 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
           </button>
         </div>
         <p className={`max-w-md text-xs leading-relaxed ${palette.muted}`}>
-          Esta versión de lectura procede del PDF de 170 páginas (pp. 4–8),
-          pero aún debe cotejarse y completarse con la edición final narrada.
-          No es una transcripción verificada del MP3; la grabación puede contener
-          pasajes y revisiones literarias que todavía faltan aquí.
+          Edición literaria V1 depurada de los subtítulos SRT de ElevenLabs
+          del Capítulo I. Se limpiaron marcas de tiempo y se recompusieron diálogos.
+          No es una transcripción verificada del MP3 palabra por palabra:
+          las diferencias puntuales se revisarán con la grabación original.
         </p>
       </footer>
     </section>
