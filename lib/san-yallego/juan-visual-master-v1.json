@@ -663,5 +663,67 @@
       "V06",
       "V07"
     ]
+  },
+  "crossBookContinuity": {
+    "editorialDecisionDate": "2026-11-07",
+    "retainAllExistingReferenceArt": true,
+    "selectionPolicy": "Conservar íntegramente todas las láminas y variantes existentes como referencias. Ninguna queda descartada por no ser la seleccionada como avatar maestro y ninguna se convierte en canon solo por su belleza o procedencia.",
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "commonIdentity": "Juan mantiene la misma identidad aunque cambien edad, apariencia, atuendo y voz. Todo cambio debe tener una causa y su primera aparición documentada en el capítulo; nunca improvisar cicatrices, marcas coloradas, coloración u otros atributos.",
+    "modes": {
+      "lectura": {
+        "requirement": "continuidad-literaria",
+        "guidance": "Mencionar la apariencia y los cambios colorados cuando tengan valor narrativo; no repetir una descripción completa en cada capítulo. Precisar primera aparición y causa, si el autor las aprueba.",
+        "requireSevenViews": false,
+        "check": [
+          "Rasgos ya descritos no se contradicen sin explicación",
+          "Las manifestaciones coloradas mantienen el significado y momento narrativo aprobados",
+          "Evolución hacia libros II–IV sustentada en el texto definitivo, no en concept art"
+        ]
+      },
+      "audio": {
+        "requirement": "continuidad-narrativa-y-vocal",
+        "guidance": "La referencia a la apariencia o al cambio colorado se comunica por la narración y la interpretación; la guía fonética de ElevenLabs nunca sustituye la ortografía literaria.",
+        "requireSevenViews": false,
+        "check": [
+          "El texto narrado mantiene los mismos hechos y su cronología",
+          "Timbre y edad percibida se desarrollan coherentemente con la etapa",
+          "Cambios de narrador o actor se registran por personaje y etapa sin asumir nuevos Voice IDs",
+          "El énfasis pronunciado no se convierte en nueva escritura canónica"
+        ]
+      },
+      "serie_animada": {
+        "requirement": "continuidad-visual-estricta",
+        "guidance": "Cada etapa/edad efectivamente animada requiere rostro maestro aprobado y juego de siete vistas del mismo modelo. Mantener geometría, lateralidad de marcas, peinado, proporciones, atuendo, movimiento y variaciones de iluminación entre planos.",
+        "requireSevenViews": true,
+        "check": [
+          "Corresponde el mismo individuo en primer plano y cuerpo completo",
+          "La marca/coloración aparece por primera vez en la escena autorizada, nunca antes",
+          "El lado exacto de cada marca permanece fijo al rotar la cámara",
+          "Vestuario, edades, crecimiento corporal y referencias visuales se cotejan en cada libro",
+          "Ningún elemento nuevo de una escena sustituye sin aprobación un rasgo permanente",
+          "Pruebas de expresión, iluminación y giro antes del sello de avatar maestro"
+        ]
+      }
+    },
+    "newBookWorkflow": [
+      "Incorporar Libro II, III o IV solo al recibir capítulo y edición final; no inventar edades ni cambios.",
+      "Registrar capítulo y evidencia textual del cambio de aspecto, coloración, marcas, peinado, ropa o voz; diferenciar hecho de metáfora y sueño.",
+      "Relacionar el cambio con la ficha de edad, evento canónico y la versión del personaje que aparece en esa escena.",
+      "Para lectura y audio, validar descripción e interpretación; no exigir nuevas imágenes.",
+      "Para la serie animada, elegir entre todas las referencias conservadas la imagen base por edad, validar diferencias y construir las siete vistas, bajo aprobación expresa.",
+      "No publicar nuevos avatares ni acceso a material reservado N4/N5/C100 sin autorización."
+    ],
+    "futureStages": [],
+    "pending": [
+      "Primera aparición y naturaleza de la coloración/marcas COLORAO: pendiente de auditoría capítulo-audio.",
+      "Cambios físicos y vestuarios de Juan en Libros II–IV: pendientes de textos y aprobación.",
+      "Modelo facial y siete vistas de cada edad destinada a la serie: pendientes de aprobación visual."
+    ]
   }
 }
