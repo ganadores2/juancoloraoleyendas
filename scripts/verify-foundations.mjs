@@ -427,7 +427,7 @@ assert.ok(juanDreams.every((event) => event.chapter === 29),
 const maria = characterChronology.characters.find((person) => person.id === 'maria-de-los-angeles')
 assert.ok(maria && maria.ageEvents[0].ageYears === 5 &&
   maria.ageEvents[0].chapter === 2,
-  'Conservar la edad textual de María y marcar la discordancia sin alterarla')
+  'Conservar el dato de cinco años en el capítulo II sin tratar la diferencia con Juan como error')
 const gabriel = characterChronology.characters.find((person) => person.id === 'gabriel-vallego')
 assert.ok(gabriel && gabriel.ageEvents[0].ageYears === 9 &&
   gabriel.ageEvents[0].chapter === 31 &&
