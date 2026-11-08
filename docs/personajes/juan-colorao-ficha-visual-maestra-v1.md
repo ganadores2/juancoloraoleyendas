@@ -43,6 +43,8 @@
 
 Los intervalos son **rangos de trabajo para animación**, no pruebas de que exista una escena en cada edad del intervalo. El capítulo XXIX muestra edades evocadas mediante sueño; **no debe alterar la edad real de Juan durante ese capítulo**.
 
+**PRECISIÓN TÉCNICA:** las cuatro etapas son **agrupaciones narrativas**; un único turnaround de siete vistas siempre representa **una edad exacta elegida como ancla**, no a un bebé y a un niño de cinco años indistintamente. Anclas provisionales para el primer lote: **J01 = 5 años, J02 = 9, J03 = 14, J04 = 16**. Si necesitamos animar a Juan recién nacido, a los 3, 7, 10, 11, 15 o 17 años con diferencias visibles, se crearán variantes adicionales con su propio juego de vistas aprobado. Las anclas no son aprobaciones de canon visual.
+
 ### J01 · Juanito de 0 a 5 años
 
 - **Imagen de referencia candidata:** primeras columnas de «Evolución de Juan Colorao.png» (0–2 y 3–5).
@@ -89,7 +91,7 @@ Los intervalos son **rangos de trabajo para animación**, no pruebas de que exis
 
 **Regla:** «izquierda» y «derecha» son **los lados del personaje**, no los del espectador. Cualquier cicatriz aprobada se mantiene en el mismo lado físico al cambiar la cámara.
 
-**28 ranuras creadas en datos, cero imágenes declaradas aprobadas.** Una lámina con siete poses distintas no significa necesariamente siete imágenes oficiales independientes. Una vez elegido un modelo por etapa, generar cada vista con la **misma referencia base**, mismas proporciones, paleta, peinado, atuendo, fondo neutro y luz comparables.
+**28 ranuras iniciales creadas en datos (7 por edad ancla), cero imágenes declaradas aprobadas.** Un bebé y un niño de cinco años necesitan modelos distintos cuando se representan en detalle. Una lámina con siete poses distintas no significa necesariamente siete imágenes oficiales independientes. Una vez elegido un modelo por etapa, generar cada vista con la **misma referencia base**, mismas proporciones, paleta, peinado, atuendo, fondo neutro y luz comparables.
 
 ## 5. Archivo y nomenclatura
 
