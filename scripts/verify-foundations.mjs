@@ -28,6 +28,9 @@ const chapterScreen = source('components/san-yallego/capitulo/chapter-screen.tsx
 const chapterPaths = source('components/san-yallego/capitulo/chapter-paths.tsx')
 const chaptersData = source('lib/san-yallego/chapters.ts')
 const oracleMatrix = JSON.parse(source('lib/san-yallego/oracle-matrix-v1.json'))
+const oracleTimeline = JSON.parse(source('lib/san-yallego/oracle-timeline-v2.json'))
+const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
+const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
 const reader = source('components/san-yallego/capitulo/immersive-reader.tsx')
 const chapterOneText = source('lib/san-yallego/chapter-one-text.ts')
@@ -314,8 +317,10 @@ assert.ok(bookOneCatalog.includes('href="/glosario"') &&
 
 // Matrix is a safe design draft, not an unlock rule or a secret knowledge store.
 assert.equal(oracleMatrix.sites.length, 10, 'Se requieren exactamente 10 Oráculos propuestos')
-assert.match(oracleMatrix.status ?? oracleMatrix.version, /PROPUESTA|propuesta/,
-  'Los Oráculos no pueden declararse publicados antes de su implementación')
+assert.equal(oracleMatrix.editorialApproval?.status, 'aprobada',
+  'La Matriz Maestra del Libro I debe registrar la aprobación explícita del autor')
+assert.ok(oracleMatrix.editorialApproval.scope.includes('sin autorización de publicación'),
+  'Aprobación editorial no significa abrir archivos, llaves ni Oráculos')
 const chapterRecommendations = oracleMatrix.sites.flatMap((oracle) =>
   oracle.chapterRecommendations.map((chapter) => chapter.chapter))
 assert.equal(chapterRecommendations.length, 33,
@@ -341,6 +346,58 @@ assert.ok(oracleMatrix.policy.neverDisclose.includes('N5') &&
   oracleMatrix.policy.neverDisclose.includes('C100') &&
   oracleMatrix.policy.future.includes('sin enlaces'),
   'La matriz debe conservar secretos y evitar links prematuros a libros futuros')
+
+
+assert.equal(oracleTimeline.schemaVersion, 2,
+  'La extensión temporal debe usar un esquema versionado separado del Libro I')
+assert.equal(oracleTimeline.editorialStatus, 'aprobada-estructura-temporal; solo-libro-1-curado',
+  'La estructura de cuatro libros debe registrar aprobación sin afirmar contenido de futuros libros')
+assert.deepEqual(oracleTimeline.volumes.map((volume) => volume.book), [1, 2, 3, 4],
+  'El mismo motor de los diez Oráculos debe admitir los Libros I–IV')
+assert.equal(oracleTimeline.oracleCollections.length, oracleMatrix.sites.length,
+  'El catálogo temporal debe conservar los diez Oráculos sin añadir otros')
+const pendingChapters = []
+for (const [index, collection] of oracleTimeline.oracleCollections.entries()) {
+  assert.equal(collection.siteId, oracleMatrix.sites[index].siteId,
+    'La expansión no debe cambiar el orden ni los IDs de los lugares aprobados')
+  assert.deepEqual(collection.bookChapters['1'].map((ref) => ref.chapter),
+    oracleMatrix.sites[index].chapterRecommendations.map((ref) => ref.chapter),
+    'Los 33 capítulos aprobados del Libro I deben conservar sus asignaciones')
+  for (const book of ['2', '3', '4']) {
+    assert.deepEqual(collection.bookChapters[book], [],
+      'No inventar episodios para libros que aún no están registrados: Libro ' + book)
+  }
+  pendingChapters.push(...collection.bookChapters['1'].map((ref) => ref.chapter))
+}
+assert.equal(new Set(pendingChapters).size, 33,
+  'El esquema temporal debe preservar los 33 capítulos sin duplicados principales')
+assert.ok(oracleTimeline.temporalEdges.some((e) => e.kind === 'regresar-al-origen') &&
+  oracleTimeline.temporalEdges.some((e) => e.kind === 'brincar-al-futuro') &&
+  oracleTimeline.temporalEdges.some((e) => e.kind === 'seguir-secuencia'),
+  'Los Oráculos deben disponer de las tres clases de conexión temporal')
+for (const edge of oracleTimeline.temporalEdges) {
+  for (const ref of [edge.from, edge.to]) {
+    assert.equal(ref.book, 1, 'No inventar enlaces a Libros II, III o IV')
+    assert.ok(Number.isInteger(ref.chapter) && ref.chapter >= 1 && ref.chapter <= 33,
+      'Todo vínculo temporal de prueba debe referirse a un capítulo real del Libro I')
+  }
+}
+assert.ok(oracleAudioCatalog.includes("import 'server-only'") &&
+  oracleAudioCatalog.includes('record.published') &&
+  oracleAudioCatalog.includes('!mayAccess(record)') &&
+  oracleAudioCatalog.includes('record.audioParts.length === 0') &&
+  oracleAudioCatalog.includes('record.href !=='),
+  'Una sugerencia de audio no es escuchable sin publicación, autorización, partes MP3 y ruta real')
+assert.ok(oracleAudioCatalog.includes('getPublishedOracleAudio(') &&
+  oracleAudioCatalog.includes('getPublishedTemporalLinks('),
+  'Debe poderse consultar audio por Oráculo y enlaces al origen/futuro')
+assert.ok(temporalDesign.includes('LIBROS I, II, III Y IV') &&
+  temporalDesign.includes('Matriz Maestra V1') &&
+  temporalDesign.includes('Convergencia') &&
+  temporalDesign.includes('La Biblia Maestra V3.0'),
+  'El contrato documental debe identificar los cuatro libros, la continuidad y el canon')
+assert.ok(!('apiKey' in oracleTimeline) && !('secretPrompt' in oracleTimeline),
+  'El catálogo no debe transportar credenciales o material reservado')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
