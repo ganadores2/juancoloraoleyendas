@@ -4,6 +4,7 @@ import { CHAPTERS, chapterHref } from '@/lib/san-yallego/chapters'
 import { ritualButton } from '@/components/san-yallego/ritual'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/libro/1' },
   title: 'El Gran Cambio — 33 capítulos | Juan Colorao Leyendas',
   description: 'Índice oficial del Libro I de Juan Colorao Leyendas, El Gran Cambio.',
 }
