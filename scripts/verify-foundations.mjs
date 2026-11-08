@@ -40,6 +40,9 @@ const gabrielVisual = JSON.parse(source('lib/san-yallego/gabriel-visual-master-v
 const gabrielVisualDoc = source('docs/personajes/gabriel-ficha-visual-maestra-v1.md')
 const transmediaContinuity = JSON.parse(source('lib/san-yallego/transmedia-continuity-v1.json'))
 const transmediaContinuityDoc = source('docs/personajes/biblia-continuidad-transmedia-v1.md')
+const elOjon = JSON.parse(source('lib/san-yallego/el-ojon-character-v1.json'))
+const elOjonDoc = source('docs/personajes/el-ojon-ficha-maestra-oficial-v1.md')
+const pendingV4 = source('docs/biblia/registro-cambios-candidatos-v4.md')
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
@@ -413,9 +416,9 @@ assert.ok(!('apiKey' in oracleTimeline) && !('secretPrompt' in oracleTimeline),
 
 assert.equal(characterChronology.schemaVersion, 1,
   'La biblioteca cronológica debe tener esquema versionado')
-assert.equal(characterChronology.characters.length, 16,
-  'El primer catálogo debe conservar sus 16 fichas de personajes')
-assert.equal(new Set(characterChronology.characters.map((person) => person.id)).size, 16,
+assert.equal(characterChronology.characters.length, 17,
+  'El catálogo debe conservar los 16 personajes originales y El Ojón')
+assert.equal(new Set(characterChronology.characters.map((person) => person.id)).size, 17,
   'Cada personaje debe tener identidad estable para avatar y oráculos')
 const juan = characterChronology.characters.find((person) => person.id === 'juan-colorao')
 assert.ok(juan, 'Juan debe tener ficha cronológica')
@@ -644,6 +647,48 @@ assert.ok(transmediaContinuityDoc.includes('Don Chema') &&
 assert.ok(transmediaContinuity.coreRules.some(rule => rule.includes('siete vistas')) &&
   transmediaContinuity.changeProtocol.some(rule => rule.includes('aprobación del autor')),
   'Las series animadas y los cambios al canon requieren control editorial')
+
+
+// Anti-olvido de El Ojón: alta canónica de reserva y archivo persistente.
+assert.equal(elOjon.characterId, 'el-ojon',
+  'La ficha oficial debe declarar la identidad estable de El Ojón')
+assert.ok(elOjon.registrationStatus.includes('CANON DORADO DE RESERVA') &&
+  elOjon.legacyV4.status.includes('PENDIENTE'),
+  'El Ojón pertenece al Canon Dorado y la Biblia V4 todavía no está publicada')
+assert.equal(elOjon.identity.confirmedCostumeSymbol.letters, 'SCH',
+  'Conservar las letras SCH de la camiseta ilustrada')
+assert.equal(elOjon.identity.confirmedCostumeSymbol.meaning, 'SUPER CHISMOSO',
+  'SCH debe significar SUPER CHISMOSO')
+assert.ok(elOjon.visualIdentity.references.length === 3 &&
+  elOjon.visualIdentity.references.every(ref =>
+    ref.libraryPath.startsWith('/Juan Colorao Leyendas/Personajes/El Ojón/')),
+  'Las tres imágenes originales deben figurar en la Biblioteca y la ficha del personaje')
+assert.equal(elOjon.narrativeReservations.confirmedBookAppearances.length, 0,
+  'No inventar capítulos donde aparezca El Ojón')
+assert.deepEqual(elOjon.narrativeReservations.books, [1,2,3,4],
+  'El personaje puede aparecer circunstancialmente en cualquiera de los cuatro libros')
+assert.ok(elOjon.narrativeReservations.futureSeries.some(s=>s.id==='xolo-propia') &&
+  elOjon.narrativeReservations.futureSeries.some(s=>s.id==='don-chema-humor'),
+  'La reserva de El Ojón debe vincularse a las series de XOLO y Don Chema')
+const elOjonChronology = characterChronology.characters.find(x=>x.id==='el-ojon')
+assert.ok(elOjonChronology &&
+  elOjonChronology.ageEvents.length === 0 &&
+  elOjonChronology.authorConfirmedReservation?.emblemMeaning === 'SUPER CHISMOSO',
+  'El Ojón nunca debe perderse del catálogo ni recibir edades inventadas')
+for (const id of ['xolo-propia','don-chema-humor']) {
+  const show = transmediaContinuity.series.find(s=>s.seriesId === id)
+  assert.ok(show?.characterIds.includes('el-ojon'),
+    'El Ojón debe mantenerse en el reparto reservado de ' + id)
+}
+assert.equal(transmediaContinuity.sharedContinuityData.elOjon,
+  'lib/san-yallego/el-ojon-character-v1.json',
+  'La arquitectura transmedia debe enlazar la ficha formal de El Ojón')
+assert.ok(elOjonDoc.includes('SUPER CHISMOSO') &&
+  elOjonDoc.includes('CANON DORADO DE RESERVA') &&
+  elOjonDoc.includes('NO implica') &&
+  pendingV4.includes('V4-001') &&
+  pendingV4.includes('no sustituye la V3'),
+  'La ficha oficial y el registro V4 deben preservar estado y procedencia')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
