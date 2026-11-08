@@ -32,6 +32,8 @@ const oracleTimeline = JSON.parse(source('lib/san-yallego/oracle-timeline-v2.jso
 const characterChronology = JSON.parse(source('lib/san-yallego/character-chronology-v1.json'))
 const characterChronologyServer = source('lib/san-yallego/character-chronology.ts')
 const characterChronologyDesign = source('docs/oraculos/biblioteca-cronologica-personajes-v1.md')
+const juanVisual = JSON.parse(source('lib/san-yallego/juan-visual-master-v1.json'))
+const juanVisualDoc = source('docs/personajes/juan-colorao-ficha-visual-maestra-v1.md')
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
@@ -461,6 +463,37 @@ assert.ok(characterChronologyDesign.includes('cronología real') &&
   'Documentar doble cronología, hallazgos y continuidad visual')
 assert.doesNotMatch(JSON.stringify(characterChronology), /N5.*?:.*?fecha futura exacta|C100.*?:.*?secreto/,
   'No incluir revelaciones de núcleo en la biblioteca de personajes')
+
+
+assert.equal(juanVisual.identity, 'juan-colorao', 'La ficha visual maestra debe corresponder a Juan Colorao')
+assert.equal(juanVisual.stageSystem.stages.length, 4, 'Las cuatro etapas narrativas del Libro I deben estar presentes')
+assert.deepEqual(juanVisual.stageSystem.stages.map((stage) => stage.stageId),
+  ['J01','J02','J03','J04'],
+  'Los IDs de la ficha visual deben ser estables de la infancia a los 17 años')
+assert.deepEqual(juanVisual.stageSystem.stages.map((stage) => stage.anchorAgeYears),
+  [5, 9, 14, 16],
+  'Cada juego de vistas debe tener una edad visual ancla, no confundir un bebé con un niño de cinco')
+assert.equal(juanVisual.stageSystem.stages.reduce((n,stage) => n+stage.views.length,0), 28,
+  'Deben reservarse 7 vistas para cada una de las 4 edades ancla')
+for(const stage of juanVisual.stageSystem.stages){
+  assert.equal(new Set(stage.views.map(view => view.code)).size, 7,
+    'Cada etapa debe registrar 7 ángulos distintos')
+  assert.ok(stage.views.every(view => view.asset === null && view.approval === 'pendiente'),
+    'No presentar imágenes inexistentes o conceptuales como canon visual aprobado')
+  assert.ok(stage.evidence.every(event => characterChronology.characters
+    .find(person => person.id === 'juan-colorao')?.ageEvents.some(age =>
+      age.ageYears === event.age && age.chapter === event.chapter && age.temporalContext === 'escena')),
+    'Cada etapa debe enlazar solamente a edades verificables por capítulo y escena')
+}
+assert.ok(juanVisual.visualPlan.sameSevenViewsCannotRepresentWholeAgeRange &&
+  juanVisual.visualPlan.stageApprovalRequired &&
+  juanVisual.visualPlan.referenceArtIsNotApprovedCharacterMaster,
+  'No declarar aprobadas las siete vistas antes de elegir una edad y una imagen maestra')
+assert.ok(juanVisualDoc.includes('ESTADO DE LA FICHA: PRECANON') &&
+  juanVisualDoc.includes('no lo ha completado') &&
+  juanVisualDoc.includes('cicatriz') &&
+  juanVisualDoc.includes('Siete vistas'),
+  'La ficha debe documentar el canon provisional y no completar antes de tiempo el camino de Juan')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
