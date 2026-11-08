@@ -77,6 +77,15 @@ El papel de Gabriel se mantiene ligado a figura paterna, investigación, memoria
 | **Serie animada** | Mostrar caras, cuerpos, edades, accesorios y gestos coherentes | Avatar aprobado por edad, siete vistas, continuidad de ángulos y luz |
 | **Series derivadas** | Ampliar tramas, no contradicciones no autorizadas | Ubicar cada historia en la cronología real y en la de descubrimiento |
 
+## 4.1. Nuevas fichas maestras de preproducción (Pancho, Dolores, XOLO, Chema)
+
+- **Abuelo Pancho:** `docs/personajes/abuelo-pancho-ficha-visual-maestra-v1.md`. Mantener su autoridad familiar, memoria, humor y vocación de trabajador. Las edades y frases impresas en concept art no se convierten en canon sin respaldo.
+- **Dolores Colorao:** `docs/personajes/dolores-ficha-visual-maestra-v1.md`. En el Libro I **es madre de Juan**; un rótulo de la lámina de evolución la llama «amiga de Juanito» en una edad infantil, **error conceptual que no modifica parentesco ni cronología**.
+- **XOLO:** `docs/personajes/xolo-ficha-visual-maestra-v1.md`. Las ilustraciones de cachorro/joven/adulto y ojos brillantes son referencias, **no cronología biológica ni prueba de poderes**. Su origen permanece sujeto al misterio narrativo.
+- **Don Chema:** `docs/personajes/don-chema-ficha-visual-maestra-v1.md`. Su comedia se ancla en la cantina El Desengaño y en el remate evasivo «¡NO SÉ!». No aparece una lámina individual inequívoca en la búsqueda actual: **no inventar avatar maestro**, y reservar su relación futura con El Ojón sin diálogos ficticios.
+
+Estas cuatro fichas ya se enlazan al catálogo cronológico existente. Las siete vistas son **ranuras sin imágenes nuevas**, y solo se elaborarán cuando el autor apruebe modelos concretos para la serie animada.
+
 ## 5. Registro obligatorio de cambios
 
 Antes de modificar la biografía de cualquier personaje:
