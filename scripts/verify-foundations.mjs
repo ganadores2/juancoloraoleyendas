@@ -29,6 +29,9 @@ const chapterPaths = source('components/san-yallego/capitulo/chapter-paths.tsx')
 const chaptersData = source('lib/san-yallego/chapters.ts')
 const oracleMatrix = JSON.parse(source('lib/san-yallego/oracle-matrix-v1.json'))
 const oracleTimeline = JSON.parse(source('lib/san-yallego/oracle-timeline-v2.json'))
+const characterChronology = JSON.parse(source('lib/san-yallego/character-chronology-v1.json'))
+const characterChronologyServer = source('lib/san-yallego/character-chronology.ts')
+const characterChronologyDesign = source('docs/oraculos/biblioteca-cronologica-personajes-v1.md')
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
@@ -398,6 +401,66 @@ assert.ok(temporalDesign.includes('LIBROS I, II, III Y IV') &&
   'El contrato documental debe identificar los cuatro libros, la continuidad y el canon')
 assert.ok(!('apiKey' in oracleTimeline) && !('secretPrompt' in oracleTimeline),
   'El catálogo no debe transportar credenciales o material reservado')
+
+
+assert.equal(characterChronology.schemaVersion, 1,
+  'La biblioteca cronológica debe tener esquema versionado')
+assert.equal(characterChronology.characters.length, 16,
+  'El primer catálogo debe conservar sus 16 fichas de personajes')
+assert.equal(new Set(characterChronology.characters.map((person) => person.id)).size, 16,
+  'Cada personaje debe tener identidad estable para avatar y oráculos')
+const juan = characterChronology.characters.find((person) => person.id === 'juan-colorao')
+assert.ok(juan, 'Juan debe tener ficha cronológica')
+const juanReal = juan.ageEvents.filter((event) => event.temporalContext !== 'sueno')
+const juanDreams = juan.ageEvents.filter((event) => event.temporalContext === 'sueno')
+assert.deepEqual(juanReal.map((event) => event.ageYears),
+  [0, 3, 5, 7, 9, 10, 11, 14, 15, 16, 17, 17],
+  'Registrar solo las edades de Juan sustentadas por capítulos, sin inventar etapas futuras')
+assert.deepEqual(juanDreams.map((event) => event.ageYears), [5, 7, 15],
+  'Las edades soñadas del capítulo XXIX NO pueden sustituir edades reales')
+assert.ok(juanDreams.every((event) => event.chapter === 29),
+  'El sueño es parte de la cronología de descubrimiento, no de la escena presente')
+const maria = characterChronology.characters.find((person) => person.id === 'maria-de-los-angeles')
+assert.ok(maria && maria.ageEvents[0].ageYears === 5 &&
+  maria.ageEvents[0].chapter === 2,
+  'Conservar la edad textual de María y marcar la discordancia sin alterarla')
+const gabriel = characterChronology.characters.find((person) => person.id === 'gabriel-vallego')
+assert.ok(gabriel && gabriel.ageEvents[0].ageYears === 9 &&
+  gabriel.ageEvents[0].chapter === 31 &&
+  gabriel.ageEvents[0].temporalContext === 'recuerdo',
+  'No presentar la edad de Gabriel en un recuerdo como si fuera la actual')
+assert.ok(characterChronology.characters.find((person) => person.id === 'xolo')
+  ?.ageEvents.length === 0,
+  'No inventar la edad biológica ni los secretos del XOLO')
+assert.equal(characterChronology.visualPlan.viewsPerApprovedStage, 7,
+  'Cada etapa visual aprobada debe admitir siete vistas')
+assert.equal(characterChronology.visualPlan.referenceArtIsNotApprovedCharacterMaster, true,
+  'El arte conceptual no debe elevarse automáticamente a canon visual')
+assert.ok(characterChronology.futureVolumes.every((volume) =>
+  [2, 3, 4].includes(volume.book) && volume.status.includes('sin')),
+  'Los Libros II–IV deben permanecer sin cronologías inventadas')
+for (const person of characterChronology.characters) {
+  for (const event of person.ageEvents) {
+    assert.ok(event.book === 1 && event.chapter >= 1 && event.chapter <= 33,
+      'Una edad textual nueva debe citar capítulo real; libros futuros no pueden inventarse')
+    assert.ok(event.review === 'cotejo-MP3-pendiente',
+      'Ninguna edad del SRT debe declararse definitiva sin cotejo con MP3')
+  }
+}
+assert.ok(characterChronologyServer.includes("import 'server-only'") &&
+  characterChronologyServer.includes('findCharacterMoments(') &&
+  characterChronologyServer.includes('findPublishedCharacterMoments(') &&
+  characterChronologyServer.includes("moment.temporalContext !== 'sueno'") &&
+  characterChronologyServer.includes('audio.published') &&
+  characterChronologyServer.includes('canAccess(audio)'),
+  'El catálogo de edades debe ser consultable solo en servidor y con enlaces autorizados')
+assert.ok(characterChronologyDesign.includes('cronología real') &&
+  characterChronologyDesign.includes('cronología de descubrimiento') &&
+  characterChronologyDesign.includes('capítulo II') &&
+  characterChronologyDesign.includes('siete vistas'),
+  'Documentar doble cronología, hallazgos y continuidad visual')
+assert.doesNotMatch(JSON.stringify(characterChronology), /N5.*?:.*?fecha futura exacta|C100.*?:.*?secreto/,
+  'No incluir revelaciones de núcleo en la biblioteca de personajes')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
