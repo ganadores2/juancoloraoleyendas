@@ -43,6 +43,14 @@ const transmediaContinuityDoc = source('docs/personajes/biblia-continuidad-trans
 const elOjon = JSON.parse(source('lib/san-yallego/el-ojon-character-v1.json'))
 const elOjonDoc = source('docs/personajes/el-ojon-ficha-maestra-oficial-v1.md')
 const pendingV4 = source('docs/biblia/registro-cambios-candidatos-v4.md')
+const panchoVisual = JSON.parse(source('lib/san-yallego/pancho-visual-master-v1.json'))
+const panchoVisualDoc = source('docs/personajes/abuelo-pancho-ficha-visual-maestra-v1.md')
+const doloresVisual = JSON.parse(source('lib/san-yallego/dolores-visual-master-v1.json'))
+const doloresVisualDoc = source('docs/personajes/dolores-ficha-visual-maestra-v1.md')
+const xoloVisual = JSON.parse(source('lib/san-yallego/xolo-visual-master-v1.json'))
+const xoloVisualDoc = source('docs/personajes/xolo-ficha-visual-maestra-v1.md')
+const chemaVisual = JSON.parse(source('lib/san-yallego/don-chema-visual-master-v1.json'))
+const chemaVisualDoc = source('docs/personajes/don-chema-ficha-visual-maestra-v1.md')
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
@@ -689,6 +697,53 @@ assert.ok(elOjonDoc.includes('SUPER CHISMOSO') &&
   pendingV4.includes('V4-001') &&
   pendingV4.includes('no sustituye la V3'),
   'La ficha oficial y el registro V4 deben preservar estado y procedencia')
+
+
+const newMasters = [panchoVisual, doloresVisual, xoloVisual, chemaVisual]
+assert.deepEqual(newMasters.map(master=>master.id),
+  ['abuelo-pancho','dolores','xolo','don-chema'],
+  'Las cuatro fichas maestras deben conservar identidades reales del catálogo')
+for (const master of newMasters) {
+  assert.ok(master.visualStages.length > 0 &&
+    master.visualStages.every(stage => stage.views.length === 7 &&
+      stage.views.every(view => view.asset === null && view.approval === 'pendiente')),
+    'Las siete vistas por modelo deben continuar vacías hasta aprobación del autor')
+  assert.equal(master.timeline.confirmedAgeEvents.length, 0,
+    'No inferir edades exactas a partir de concept art ni humor')
+  assert.ok(master.crossBookContinuity?.books?.join(',') === '1,2,3,4',
+    'Cada identidad debe mantener continuidad por los cuatro libros')
+  const person = characterChronology.characters.find(p=>p.id===master.id)
+  assert.ok(person?.visualMasterFile &&
+    person.visualMasterFile.startsWith('lib/san-yallego/') &&
+    person.sceneAnchors?.length > 0,
+    'La ficha debe estar enlazada al catálogo cronológico sin personajes duplicados')
+}
+assert.equal(characterChronology.characters.length, 17,
+  'Estas cuatro fichas amplían a los 17 personajes ya registrados; no los duplican')
+assert.ok(panchoVisual.referenceArt.some(a=>a.title.includes('Sabio Eterno')) &&
+  panchoVisual.visualStages.length === 4,
+  'Conservar concepto de Pancho joven y mayor sin inferir inmortalidad ni edad')
+assert.ok(doloresVisual.narrativeAuthority.relation.includes('Madre de Juan') &&
+  doloresVisual.identity.nonLiteral.some(x=>x.includes('amiga de Juanito')) &&
+  doloresVisualDoc.includes('NO se incorpora al canon'),
+  'El rótulo de arte sobre Dolores no puede cambiar su parentesco con Juan')
+assert.ok(xoloVisual.identity.nonLiteral.some(x=>x.includes('ojos')) &&
+  xoloVisual.timeline.confirmedAgeEvents.length === 0 &&
+  xoloVisualDoc.includes('NO') &&
+  xoloVisualDoc.includes('misterio'),
+  'No inventar biología, efectos o secretos del XOLO a partir de ilustraciones')
+assert.ok(chemaVisual.referenceArt.length === 0 &&
+  chemaVisual.timeline.sceneAnchors[0].chapter === null &&
+  chemaVisualDoc.includes('El Desengaño'),
+  'No inventar avatar o número de capítulo de Don Chema')
+assert.ok(panchoVisualDoc.includes('Don Chema') &&
+  chemaVisualDoc.includes('¡NO SÉ!'),
+  'El humor de Pancho y el de Chema requieren identidades distintas')
+for (const code of ['V4-012','V4-013','V4-014','V4-015'])
+  assert.ok(pendingV4.includes(code), 'La Biblia V4 debe incorporar la referencia ' + code)
+for (const key of ['pancho','dolores','xolo','donChema'])
+  assert.ok(transmediaContinuity.sharedContinuityData[key],
+    'La continuidad transmedia debe indexar cada ficha principal nueva: ' + key)
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
