@@ -6,7 +6,8 @@
     "Biblia Maestra V3.0 y Biblioteca Cronológica de Personajes",
     "Definiciones y reglas de humor aportadas por el autor",
     "Confirmación del autor: María mayor y mentora temporal de Juan",
-    "Confirmación del autor: potencial de futuras series de Don Chema, XOLO y María"
+    "Confirmación del autor: potencial de futuras series de Don Chema, XOLO y María",
+    "Nueva decisión del autor: El Ojón es personaje secundario del universo extendido con emblema SCH = SUPER CHISMOSO, reservado para XOLO y Don Chema."
   ],
   "mission": "Primero enamorar al visitante de San Yallego, después profundizar en sus personajes. Cada serie derivada expande sin reescribir la línea de acontecimientos.",
   "coreRules": [
@@ -18,7 +19,8 @@
     "El humor de confianza no es intercambiable con ofensa; conservar relaciones y contexto.",
     "El público puede reconocer personajes en distintos tiempos sin que las revelaciones de N4, N5 y C100 queden en material accesible.",
     "Las siete vistas son exigibles por modelo visual usado en animación, no por cada aparición textual o sonora.",
-    "No proponer enlaces a series, tiendas ni audios que no estén publicados y autorizados."
+    "No proponer enlaces a series, tiendas ni audios que no estén publicados y autorizados.",
+    "El personaje el-ojon debe permanecer referenciado en futuras Biblias y en las series conceptuales de XOLO y Don Chema sin inventar episodios."
   ],
   "series": [
     {
@@ -26,7 +28,8 @@
       "provisionalTitle": "Historias y humor de Don Chema",
       "characterIds": [
         "don-chema",
-        "dona-chavela"
+        "dona-chavela",
+        "el-ojon"
       ],
       "status": "serie-futura-concepto-del-autor-sin-guiones",
       "genre": "comedia sarcástica y humor de pueblo",
@@ -35,12 +38,21 @@
       "preserve": [
         "Don Chema no se vuelve idiota por el chiste: la pereza y la evasiva son recursos expresivos, no una discapacidad.",
         "Chavela conserva humor incisivo, autonomía y autoridad; «pelado» y «burrín» se interpretan según relación y tono.",
-        "Los modismos y la picardía se adaptan a audio y doblaje sin eliminar el sentido cultural."
+        "Los modismos y la picardía se adaptan a audio y doblaje sin eliminar el sentido cultural.",
+        "El Ojón está reservado por el autor como secundario de desarrollo importante: ojos grandes, curiosidad, humor, SCH = SUPER CHISMOSO y tres referencias visuales archivadas."
       ],
       "dontInvent": [
         "Episodios, nuevos habitantes, fechas y conflictos específicos",
         "Edad exacta de Chema o Chavela",
-        "Origen oculto de algún oráculo"
+        "Origen oculto de algún oráculo",
+        "No inventar apariciones, edades, poderes, identidad de voz o episodios ya aprobados para El Ojón."
+      ],
+      "plannedCharacterLinks": [
+        {
+          "characterId": "el-ojon",
+          "purpose": "potencial cómico y contraste con la evasiva de Don Chema; sin guiones aprobados",
+          "approval": "RESERVA DEL AUTOR"
+        }
       ]
     },
     {
@@ -48,7 +60,8 @@
       "provisionalTitle": "Las historias del XOLO",
       "characterIds": [
         "xolo",
-        "juan-colorao"
+        "juan-colorao",
+        "el-ojon"
       ],
       "status": "serie-futura-concepto-del-autor-sin-guiones",
       "genre": "aventura, misterio y vínculo afectivo",
@@ -57,12 +70,21 @@
       "preserve": [
         "Continuidad de aspecto y conducta cuando se trata del mismo XOLO.",
         "La elección, la lealtad y la relación con Juan se construyen con escenas verificadas; el Capítulo XI sirve como ancla de vínculo.",
-        "El Capítulo XXIX sugiere una búsqueda sobre el primer XOLO, pero no demuestra que el público conozca su verdad completa."
+        "El Capítulo XXIX sugiere una búsqueda sobre el primer XOLO, pero no demuestra que el público conozca su verdad completa.",
+        "El Ojón está reservado por el autor como secundario de desarrollo importante: ojos grandes, curiosidad, humor, SCH = SUPER CHISMOSO y tres referencias visuales archivadas."
       ],
       "dontInvent": [
         "Edad biológica definitiva del XOLO",
         "Origen sobrenatural explicado o genealogía revelada",
-        "Multiplicaciones del personaje o capacidades nuevas por simple estilo visual"
+        "Multiplicaciones del personaje o capacidades nuevas por simple estilo visual",
+        "No inventar apariciones, edades, poderes, identidad de voz o episodios ya aprobados para El Ojón."
+      ],
+      "plannedCharacterLinks": [
+        {
+          "characterId": "el-ojon",
+          "purpose": "complemento observador y curioso de XOLO; sin revelar secretos ni episodios",
+          "approval": "RESERVA DEL AUTOR"
+        }
       ]
     },
     {
@@ -95,7 +117,8 @@
     "gabriel": "lib/san-yallego/gabriel-visual-master-v1.json",
     "oracleTimeline": "lib/san-yallego/oracle-timeline-v2.json",
     "glossary": "lib/san-yallego/glossary.ts",
-    "spoilerPolicy": "Sin secretos N4/N5/C100 en registros públicos o renderizados"
+    "spoilerPolicy": "Sin secretos N4/N5/C100 en registros públicos o renderizados",
+    "elOjon": "lib/san-yallego/el-ojon-character-v1.json"
   },
   "changeProtocol": [
     "Registrar qué hecho se modifica, qué personajes toca y en qué libro/capítulo se originó.",
