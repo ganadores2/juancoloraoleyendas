@@ -277,5 +277,19 @@
     "audio": "Diseño sonoro de pasos, respiración, ladridos y otros sonidos solo según escena; no atribuirle voz hablada sin decisión del autor.",
     "animation": "Siete vistas por modelo aprobado, orejas, ojos, cola, proporciones, marcha, variaciones de luz y los efectos solo donde corresponden.",
     "spinoff": "Serie futura propia; El Ojón es secundario reservado, sin episodios inventados."
+  },
+  "crossBookContinuity": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "approvedFutureAgeEvents": [],
+    "narrativeLaw": "Un solo personaje y una sola biografía coherente; no inventar cronología, escenas futuras ni rasgos solo por concept art.",
+    "reading": "Priorizar escenas y relaciones narrativas verificadas; descripción física únicamente donde aporte a la historia.",
+    "audio": "Conservar voz, intención y personalidad; casting/Voice ID por aprobación del autor.",
+    "animation": "Elegir un modelo por edad/estado visual efectivamente representado y generar siete vistas coherentes; no aprobar ninguna imagen sin el autor.",
+    "futureSeries": "Reservas conceptuales no son guiones ni autorizan secretos o saltos no publicados."
   }
 }
