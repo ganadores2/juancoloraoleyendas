@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - chore/quality-checks
+      - feature/recorrido-cinematografico-10-sitios
   pull_request:
 
 permissions:
