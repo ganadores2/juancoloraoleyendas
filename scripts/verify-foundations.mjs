@@ -330,7 +330,7 @@ for (const chapterNumber of remainingNumbers) {
     /MAPA DE BLOQUES PARA ELEVENLABS/.test(paragraph)),
   `El capítulo ${chapterNumber} incluye otro capítulo o instrucciones editoriales`)
 }
-assert.equal(bookOneReading.chapters['2'][0].slice(0, 17), 'Siete días después',
+assert.ok(bookOneReading.chapters['2'][0].startsWith('Siete días después'),
   'El capítulo II debe iniciar con su texto narrativo depurado')
 assert.equal(bookOneReading.chapters['33'].at(-1), 'Y Siguió… caminando…',
   'El capítulo XXXIII debe finalizar antes de la coda reservada del audio')
