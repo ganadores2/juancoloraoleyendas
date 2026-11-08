@@ -43,7 +43,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `entrada`. **Dominio propuesto:** Identidad, nombres, preguntas.
 - **Personajes para indexar:** Juan, Pancho, Gabriel.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **II — «El Nombre Que Quema»**
   - **III — «La Cicatriz Que Canta»**
   - **XVI — «La Escuela De Los Cazadores De Nombres»**
@@ -55,7 +55,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `casa-de-juanito`. **Dominio propuesto:** Infancia, familia y compañía.
 - **Personajes para indexar:** Juan, Dolores, Pancho, María, XOLO.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **I — «El Primer Grito»**
   - **IV — «El Reflejo Que Respira»**
   - **V — «Las Lágrimas Que Germinan»**
@@ -68,7 +68,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `sitio-03`. **Dominio propuesto:** Fiestas, infancia, memoria colectiva.
 - **Personajes para indexar:** Juan, María, Gabriel, Lupita, Tomás.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **IX — «El Primer Colorao»**
   - **XII — «Los Espejos Niños»**
   - **XIV — «La Lección De Los Pequeños»**
@@ -81,7 +81,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `sitio-04`. **Dominio propuesto:** Conciencia, fe, elección y responsabilidad.
 - **Personajes para indexar:** Juan, María, Gabriel.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **X — «La Esencia Del Colorao»**
   - **XXIII — «El Don Del Colorao»**
   - **XXIV — «La Sombra Propia»**
@@ -93,7 +93,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `sitio-05`. **Dominio propuesto:** Transformación, oficio y memoria.
 - **Personajes para indexar:** Juan, Gabriel, María.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **XIII — «El Maestro Desplateado»**
   - **XVII — «La Tinta De Las Memorias»**
   - **XXVIII — «El Tejido De Las Verdades»**
@@ -105,7 +105,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `sitio-06`. **Dominio propuesto:** Sueños, nombre y reflejo.
 - **Personajes para indexar:** Juan, Dolores, María, Gabriel.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **VI — «Los Sueños Plateados»**
   - **VII — «El Nombre En Los Sueños»**
   - **VIII — «La Puerta Del Reflejo»**
@@ -117,7 +117,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `sitio-07`. **Dominio propuesto:** Decidir, partir, regresar.
 - **Personajes para indexar:** Juan, María, Pancho, Lupita.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **XXV — «El Umbral De Los Dieciséis»**
   - **XXVI — «El Año Del Puente»**
   - **XXVII — «Los Caminos De Amatlán»**
@@ -129,7 +129,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `sitio-08`. **Dominio propuesto:** Umbral, límites y memoria.
 - **Personajes para indexar:** Juan, María, Gabriel, XOLO.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **XVIII — «La Puerta Del Mictlán»**
   - **XXX — «Las Dos Mitades Del Cabello»**
   - **XXXI — «La Cueva De Los Suspiros Plateados»**
@@ -141,7 +141,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `sitio-09`. **Dominio propuesto:** Tiempo, memoria y orígenes.
 - **Personajes para indexar:** Juan, XOLO, María, Gabriel.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **XXIX — «La Búsqueda Del Primer Xolo»**
   - **XXXII — «La Flor De La Memoria»**
   - **XXXIII — «El Último Corrido Del Libro Primero»**
@@ -153,7 +153,7 @@ La sección de diez lugares de la Biblia V3.0 inicia en Ceiba, Río, Lago, Cueva
 
 - **ID web:** `sitio-10`. **Dominio propuesto:** Raíces, memoria, cuidado.
 - **Personajes para indexar:** Juan, María, Gabriel, Lupita.
-- **Capítulos para leer/escuchar (sugerencia temática):
+- **Capítulos para leer/escuchar (sugerencia temática):**
   - **XIX — «La Sombra Y La Savia»**
   - **XX — «El Canto De Las Raíces»**
   - **XXI — «El Lamento Del Ahuehuete»**
