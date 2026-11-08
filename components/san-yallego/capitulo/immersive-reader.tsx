@@ -23,18 +23,21 @@ const THEMES: Record<ThemeName, { label: string; surface: string; ink: string; m
   },
 }
 
-const BOOKMARK_KEY = 'san-yallego:lectura:v1:libro-1-capitulo-1'
 const SETTINGS_KEY = 'san-yallego:lectura:preferencias:v1'
 const SIZE_MIN = 18
 const SIZE_MAX = 26
 
 interface ImmersiveReaderProps {
+  chapterNumber: number
+  chapterTitle: string
   paragraphs: readonly string[]
-  onListen: () => void
+  onListen?: () => void
   onFinished: () => void
 }
 
-export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveReaderProps) {
+export function ImmersiveReader({ chapterNumber, chapterTitle, paragraphs, onListen, onFinished }: ImmersiveReaderProps) {
+  // Un marcador por capítulo; los ambientes y tamaños sí son compartidos.
+  const BOOKMARK_KEY = `san-yallego:lectura:v1:libro-1-capitulo-${chapterNumber}`
   const [theme, setTheme] = useState<ThemeName>('papel')
   const [fontSize, setFontSize] = useState(20)
   const [resumeIndex, setResumeIndex] = useState<number | null>(null)
@@ -73,7 +76,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
       setReady(true)
     })
     return () => window.cancelAnimationFrame(frame)
-  }, [paragraphs.length])
+  }, [BOOKMARK_KEY, paragraphs.length])
 
   useEffect(() => {
     if (!ready) return
@@ -92,7 +95,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
     } catch {
       // La memoria de lectura es local y opcional.
     }
-  }, [])
+  }, [BOOKMARK_KEY])
 
   useEffect(() => {
     if (!ready) return
@@ -210,7 +213,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
   const palette = THEMES[theme]
 
   return (
-    <section ref={readerRef} aria-label="Lectura inmersiva de El Primer Grito"
+    <section ref={readerRef} aria-label={`Lectura inmersiva de ${chapterTitle}`}
       className={`relative w-full max-w-3xl rounded-2xl border shadow-2xl transition-colors duration-200 ${palette.surface} ${palette.ink} ${palette.border}`}>
       {readingVisible && (
         <div className="pointer-events-none fixed inset-x-0 top-0 z-[60]" aria-hidden="true">
@@ -231,7 +234,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
       <div className={`flex flex-col gap-5 border-b px-5 py-6 sm:px-10 ${palette.border}`}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <span className={`font-display text-[10px] tracking-[0.16em] ${palette.muted}`}>
-            LECTURA · CAPÍTULO I · {paragraphs.length} BLOQUES
+            LECTURA · CAPÍTULO {chapterNumber} · {paragraphs.length} BLOQUES
           </span>
           <span className={`font-display text-[10px] tabular-nums ${palette.muted}`} aria-label={`Progreso aproximado ${progress.toFixed(1)} por ciento del texto disponible`}>
             {progress.toFixed(1)}% leído
@@ -278,13 +281,13 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
 
       <header className="mx-auto max-w-[62ch] px-6 pb-8 pt-12 text-center sm:px-12">
         <p className={`font-display text-[10px] tracking-[0.22em] ${palette.muted}`}>JUAN COLORAO · LEYENDAS</p>
-        <h1 className="mt-5 font-display text-2xl tracking-[0.08em] sm:text-3xl">EL PRIMER GRITO</h1>
+        <h1 className="mt-5 font-display text-2xl tracking-[0.08em] sm:text-3xl">{chapterTitle.toUpperCase()}</h1>
         <span className={`mt-5 block text-lg ${palette.accent}`} aria-hidden>◆</span>
       </header>
 
       <article ref={articleRef}
         className="mx-auto max-w-[62ch] px-6 pb-16 text-left font-serif sm:px-12"
-        aria-label="Texto del Capítulo I"
+        aria-label={`Texto del Capítulo ${chapterNumber}`}
         style={{ fontSize, lineHeight: 1.7 }}>
         {paragraphs.map((paragraph, index) => (
           <p key={index} ref={(element) => { paragraphRefs.current[index] = element }}
@@ -297,7 +300,7 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
       </article>
 
       <footer className={`flex flex-col items-center gap-4 border-t px-5 py-9 text-center sm:px-10 ${palette.border}`}>
-        <p className="font-display text-sm tracking-[0.1em]">FIN DEL CAPÍTULO I</p>
+        <p className="font-display text-sm tracking-[0.1em]">FIN DEL CAPÍTULO {chapterNumber}</p>
         <p className={`max-w-md text-sm ${palette.muted}`}>
           Tu lectura también cuenta como parte del viaje. Elige cómo deseas continuar.
         </p>
@@ -306,10 +309,12 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
             className="inline-flex min-h-12 items-center gap-2 rounded-full border border-current px-5 py-2 text-sm font-semibold">
             <Check size={17} /> Terminé de leer
           </button>
-          <button type="button" onClick={onListen}
-            className="inline-flex min-h-12 items-center gap-2 rounded-full border border-current/40 px-5 py-2 text-sm">
-            <BookOpen size={16} /> Escuchar narración
-          </button>
+          {onListen && (
+            <button type="button" onClick={onListen}
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-current/40 px-5 py-2 text-sm">
+              <BookOpen size={16} /> Escuchar narración
+            </button>
+          )
           <button type="button" onClick={restart}
             className={`min-h-12 px-3 text-sm underline underline-offset-4 ${palette.muted}`}>
             Leer desde el inicio
@@ -317,9 +322,9 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
         </div>
         <p className={`max-w-md text-xs leading-relaxed ${palette.muted}`}>
           Edición literaria V1 depurada de los subtítulos SRT de ElevenLabs
-          del Capítulo I. Se limpiaron marcas de tiempo y se recompusieron diálogos.
-          No es una transcripción verificada del MP3 palabra por palabra:
-          las diferencias puntuales se revisarán con la grabación original.
+          del Libro I. Se limpiaron marcas de tiempo y se recompusieron diálogos.
+          No es una transcripción verificada de los MP3 palabra por palabra;
+          las diferencias puntuales se revisarán con las grabaciones originales.
         </p>
       </footer>
     </section>
