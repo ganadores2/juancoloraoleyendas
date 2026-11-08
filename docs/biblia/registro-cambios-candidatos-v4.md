@@ -40,6 +40,8 @@
 
 **Principio común:** estos personajes ya están incluidos en el catálogo de 17 habitantes/personajes; las nuevas fichas **no crean otros cuatro personajes duplicados**. Cualquier episodio futuro de serie, relación, edad o avatar requiere fuente y aprobación independiente.
 
+**Índice de implementación visual:** `lib/san-yallego/character-visual-index-v1.json` conecta estas cuatro fichas por ID sin modificar el catálogo cronológico estable que utiliza la aplicación.
+
 ## 3. Asuntos pendientes: no resolverlos por inferencia
 
 - **Apellido de Gabriel:** Vallego / Yallego, pendiente de decisión del autor. Preservar ambas láminas.
