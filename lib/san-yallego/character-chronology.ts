@@ -110,8 +110,11 @@ export function findCharacterMoments(
     }
   })
 
-  // Una evocación nunca se confunde con la edad presente del capítulo.
-  return moments.sort((a, b) =>
+  // Los sueños son parte del orden de descubrimiento, NO de la cronología real.
+  const eligible = route === 'cronologia-real'
+    ? moments.filter((moment) => moment.temporalContext !== 'sueno')
+    : moments
+  return eligible.sort((a, b) =>
     route === 'cronologia-real'
       ? a.ageYears - b.ageYears || a.chapter - b.chapter
       : a.book - b.book || a.chapter - b.chapter)
