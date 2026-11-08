@@ -52,6 +52,14 @@ const xoloVisual = JSON.parse(source('lib/san-yallego/xolo-visual-master-v1.json
 const xoloVisualDoc = source('docs/personajes/xolo-ficha-visual-maestra-v1.md')
 const chemaVisual = JSON.parse(source('lib/san-yallego/don-chema-visual-master-v1.json'))
 const chemaVisualDoc = source('docs/personajes/don-chema-ficha-visual-maestra-v1.md')
+const chavelaVisual = JSON.parse(source('lib/san-yallego/dona-chavela-visual-master-v1.json'))
+const chavelaVisualDoc = source('docs/personajes/dona-chavela-ficha-visual-maestra-v1.md')
+const tomasVisual = JSON.parse(source('lib/san-yallego/tomas-visual-master-v1.json'))
+const tomasVisualDoc = source('docs/personajes/tomas-ficha-visual-maestra-v1.md')
+const lupitaVisual = JSON.parse(source('lib/san-yallego/lupita-visual-master-v1.json'))
+const lupitaVisualDoc = source('docs/personajes/lupita-ficha-visual-maestra-v1.md')
+const geraldoVisual = JSON.parse(source('lib/san-yallego/geraldo-visual-master-v1.json'))
+const geraldoVisualDoc = source('docs/personajes/geraldo-ficha-visual-maestra-v1.md')
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
@@ -704,7 +712,8 @@ assert.ok(elOjonDoc.includes('SUPER CHISMOSO') &&
 assert.equal(characterVisualIndex.primaryChronology,
   'lib/san-yallego/character-chronology-v1.json',
   'El índice visual no puede sustituir el catálogo cronológico aprobado')
-const masters = [panchoVisual, doloresVisual, xoloVisual, chemaVisual]
+const masters = [panchoVisual, doloresVisual, xoloVisual, chemaVisual,
+  chavelaVisual, tomasVisual, lupitaVisual, geraldoVisual]
 assert.deepEqual(characterVisualIndex.characterVisualMappings.map(x=>x.characterId),
   masters.map(x=>x.id),
   'Las cuatro fichas deben estar indexadas por los mismos IDs de los personajes')
@@ -722,6 +731,43 @@ assert.ok(doloresVisual.identity.nonLiteral.some(x=>x.includes('amiga de Juanito
 assert.ok(pendingV4.includes('V4-012') && pendingV4.includes('V4-013') &&
   pendingV4.includes('V4-014') && pendingV4.includes('V4-015'),
   'La futura Biblia V4 debe incorporar las cuatro fichas sin reemplazar la V3')
+
+
+// Nueva fase del canon: Chavela, Tomás, Lupita y Geraldo.
+assert.deepEqual(chavelaVisual.generationLegend.countsMentioned, [5,6,7],
+  'La leyenda de las cinco/seis/siete generaciones debe conservar las tres versiones')
+assert.equal(chavelaVisual.generationLegend.countCanonical, null,
+  'El autor confirma que Chavela nunca aclara el número: no fijar uno como canon')
+assert.equal(chavelaVisual.generationLegend.ageYears, null,
+  'No calcular una edad a partir del rumor de las generaciones')
+assert.equal(chavelaVisual.generationLegend.authorApprovedAmbiguity, true,
+  'La ambigüedad de Chavela es intencional, no un fallo que corregir')
+assert.ok(chavelaVisualDoc.includes('seis generaciones') &&
+  chavelaVisualDoc.includes('Tal vez cinco') &&
+  chavelaVisualDoc.includes('Tal vez siete'),
+  'La ficha humana debe conservar el humor del pasaje original')
+assert.ok(chavelaVisual.preferredName === 'Doña Chavela' &&
+  chavelaVisual.manuscriptVariant === 'Doña Chabela',
+  'Respetar las grafías de conversación y SRT sin forzar una corrección')
+assert.ok(tomasVisual.identity.nameCaveat.includes('Tomás Villaseñor') &&
+  tomasVisual.sceneAnchors.length === 0 &&
+  tomasVisualDoc.includes('Homónimos'),
+  'No fusionar personajes distintos llamados Tomás sin cotejo')
+assert.ok(lupitaVisual.sceneAnchors.some(x=>x.book===1&&x.chapter===12) &&
+  lupitaVisual.sourceArt.unapproved.some(x=>x.includes('sentimentales')) &&
+  lupitaVisualDoc.includes('Los Espejos Niños'),
+  'Lupita debe preservar su agencia sin inventar romance o edades')
+assert.ok(geraldoVisual.sceneAnchors.some(x=>x.chapter===31) &&
+  geraldoVisual.identity.sceneEvidence[0].scene.includes('Gabriel') &&
+  geraldoVisual.timeline === undefined &&
+  geraldoVisualDoc.includes('no fija la edad de Geraldo'),
+  'El recuerdo de Gabriel a los nueve años no es una edad de Geraldo')
+assert.ok(['donaChavela','tomas','lupita','geraldo']
+  .every(k=>transmediaContinuity.sharedContinuityData[k]),
+  'El registro transmedia debe enlazar las cuatro nuevas fichas')
+assert.ok(['V4-016','V4-017','V4-018','V4-019']
+  .every(v=>pendingV4.includes(v)),
+  'El registro editorial V4 debe conservar las cuatro altas nuevas')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
