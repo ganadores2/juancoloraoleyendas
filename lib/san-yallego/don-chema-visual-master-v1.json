@@ -17,13 +17,15 @@
     "manuscript": [
       {
         "book": 1,
-        "chapter": 0,
-        "fact": "El manuscrito sitúa a Don Chema en la cantina El Desengaño; atiende a Juan y María y ofrece agua de jamaica; el capítulo exacto se indexará después."
+        "chapter": null,
+        "fact": "El manuscrito sitúa a Don Chema en la cantina El Desengaño; atiende a Juan y María y ofrece agua de jamaica; el capítulo exacto se indexará después.",
+        "chapterStatus": "escena localizada en texto SRT, numeración exacta no verificada"
       },
       {
         "book": 1,
-        "chapter": 0,
-        "fact": "Bromea sobre un espejo roto, contesta con sarcasmo a Juan y evita explicar lo que no corresponde."
+        "chapter": null,
+        "fact": "Bromea sobre un espejo roto, contesta con sarcasmo a Juan y evita explicar lo que no corresponde.",
+        "chapterStatus": "escena localizada en texto SRT, numeración exacta no verificada"
       }
     ],
     "relation": "Habitante del pueblo, humor sarcástico y evasiva «¡NO SÉ!»; futura serie humorística aprobada como concepto."
@@ -54,8 +56,9 @@
     "sceneAnchors": [
       {
         "book": 1,
-        "chapter": 0,
-        "type": "escena-localizada-pendiente-numero"
+        "chapter": null,
+        "type": "escena-localizada-pendiente-numero",
+        "chapterStatus": "pendiente de indexación de capítulo"
       }
     ],
     "ageRangesAreArtOnly": true,
