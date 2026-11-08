@@ -1,0 +1,337 @@
+{
+  "version": "v1-propuesta-2026-11-07",
+  "sourceOfSiteIds": "lib/san-yallego/sites.ts",
+  "sourceOfChapters": "lib/san-yallego/chapters.ts",
+  "narrativeBasis": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, derivado SRT, pendiente de cotejo con MP3",
+  "canonBasis": "Biblia Maestra del Universo V3.0, 03 octubre 2026",
+  "scope": "Sugerencias de escucha/lectura; no cambia siteId, disponibilidad de MP3, llaves, rutas ni estado de los sitios",
+  "policy": {
+    "public": "N0",
+    "gated": "N1 N2 N3 (permisos confirmados servidor)",
+    "hintsOnly": "N4",
+    "neverDisclose": "N5 C100",
+    "future": "Libros II y III sin enlaces antes de publicación y permisos",
+    "answers": "Citar capítulo verificado, orientar sin revelar, no inventar hechos ni spoilers",
+    "security": "Material reservado solo en servidor; localStorage no autoriza secretos"
+  },
+  "unresolved": [
+    "La Biblia V3.0 tiene orden y selección de 10 dominios distinta del mapa implementado.",
+    "Sendero del XOLO figura en V3.0; Bifurcación en web; no equipararlos.",
+    "Convergencia V3.0 no se introduce como undécimo sitio sin decisión del autor.",
+    "No dar por definitivo texto SRT sin cotejarlo con MP3.",
+    "No dar por idéntica la Cueva de los Suspiros Plateados a la Puerta del Mictlán."
+  ],
+  "sites": [
+    {
+      "siteId": "entrada",
+      "order": 1,
+      "siteName": "Entrada a San Yallego",
+      "chapterRecommendations": [
+        {
+          "chapter": 2,
+          "title": "El Nombre Que Quema"
+        },
+        {
+          "chapter": 3,
+          "title": "La Cicatriz Que Canta"
+        },
+        {
+          "chapter": 16,
+          "title": "La Escuela De Los Cazadores De Nombres"
+        }
+      ],
+      "domainProposal": "Identidad, nombres, preguntas",
+      "characterIndexProposal": [
+        "Juan",
+        "Pancho",
+        "Gabriel"
+      ],
+      "sampleQuestion": "¿Por qué un nombre importa?",
+      "safeResponseExample": "Un nombre puede abrir preguntas. Comienza por el Capítulo II; lo demás te toca descubrir.",
+      "continuityCaution": "temático",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "casa-de-juanito",
+      "order": 2,
+      "siteName": "Casa de Juanito Colorao",
+      "chapterRecommendations": [
+        {
+          "chapter": 1,
+          "title": "El Primer Grito"
+        },
+        {
+          "chapter": 4,
+          "title": "El Reflejo Que Respira"
+        },
+        {
+          "chapter": 5,
+          "title": "Las Lágrimas Que Germinan"
+        },
+        {
+          "chapter": 11,
+          "title": "La Elección Del Xolo"
+        }
+      ],
+      "domainProposal": "Infancia, familia y compañía",
+      "characterIndexProposal": [
+        "Juan",
+        "Dolores",
+        "Pancho",
+        "María",
+        "XOLO"
+      ],
+      "sampleQuestion": "¿Cómo era Juan pequeño y por qué el XOLO lo acompaña?",
+      "safeResponseExample": "La historia comienza aquí. Conoce al Juan que nace en el I y regresa al XI para mirar de otra forma a su compañero.",
+      "continuityCaution": "Capítulo I asociado a Casa en la web",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "sitio-03",
+      "order": 3,
+      "siteName": "Plaza y Jardines del Pueblo",
+      "chapterRecommendations": [
+        {
+          "chapter": 9,
+          "title": "El Primer Colorao"
+        },
+        {
+          "chapter": 12,
+          "title": "Los Espejos Niños"
+        },
+        {
+          "chapter": 14,
+          "title": "La Lección De Los Pequeños"
+        },
+        {
+          "chapter": 15,
+          "title": "El Baile De Los Nombres Verdaderos"
+        }
+      ],
+      "domainProposal": "Fiestas, infancia, memoria colectiva",
+      "characterIndexProposal": [
+        "Juan",
+        "María",
+        "Gabriel",
+        "Lupita",
+        "Tomás"
+      ],
+      "sampleQuestion": "¿Qué saben los niños que los adultos ignoran?",
+      "safeResponseExample": "Hay cosas que aprende todo un pueblo. Escucha la fiesta del IX y la lección del XIV.",
+      "continuityCaution": "varios vínculos son temáticos",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "sitio-04",
+      "order": 4,
+      "siteName": "Iglesia del Pueblo",
+      "chapterRecommendations": [
+        {
+          "chapter": 10,
+          "title": "La Esencia Del Colorao"
+        },
+        {
+          "chapter": 23,
+          "title": "El Don Del Colorao"
+        },
+        {
+          "chapter": 24,
+          "title": "La Sombra Propia"
+        }
+      ],
+      "domainProposal": "Conciencia, fe, elección y responsabilidad",
+      "characterIndexProposal": [
+        "Juan",
+        "María",
+        "Gabriel"
+      ],
+      "sampleQuestion": "¿Juan siempre hace lo correcto?",
+      "safeResponseExample": "Nadie es un solo color. Escucha al Juan del XXIII y observa el costo de sus elecciones.",
+      "continuityCaution": "simbólico: no afirmar escenas en la iglesia",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "sitio-05",
+      "order": 5,
+      "siteName": "La Casa del Herrero",
+      "chapterRecommendations": [
+        {
+          "chapter": 13,
+          "title": "El Maestro Desplateado"
+        },
+        {
+          "chapter": 17,
+          "title": "La Tinta De Las Memorias"
+        },
+        {
+          "chapter": 28,
+          "title": "El Tejido De Las Verdades"
+        }
+      ],
+      "domainProposal": "Transformación, oficio y memoria",
+      "characterIndexProposal": [
+        "Juan",
+        "Gabriel",
+        "María"
+      ],
+      "sampleQuestion": "¿Qué puede transformar una herramienta?",
+      "safeResponseExample": "La forja del XVII y el tejido del XXVIII hablan de transformar, aunque no ocurren en el mismo lugar.",
+      "continuityCaution": "el XXVIII ocurre en Amatlán, no en la herrería",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "sitio-06",
+      "order": 6,
+      "siteName": "El Río de los Sueños",
+      "chapterRecommendations": [
+        {
+          "chapter": 6,
+          "title": "Los Sueños Plateados"
+        },
+        {
+          "chapter": 7,
+          "title": "El Nombre En Los Sueños"
+        },
+        {
+          "chapter": 8,
+          "title": "La Puerta Del Reflejo"
+        }
+      ],
+      "domainProposal": "Sueños, nombre y reflejo",
+      "characterIndexProposal": [
+        "Juan",
+        "Dolores",
+        "María",
+        "Gabriel"
+      ],
+      "sampleQuestion": "¿El sueño recuerda o anuncia?",
+      "safeResponseExample": "Un sueño puede ser memoria, posibilidad o símbolo. Prueba el VI sin confundir imagen y respuesta.",
+      "continuityCaution": "temático: no afirmar cada escena en el río",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "sitio-07",
+      "order": 7,
+      "siteName": "La Bifurcación y Salida del Pueblo",
+      "chapterRecommendations": [
+        {
+          "chapter": 25,
+          "title": "El Umbral De Los Dieciséis"
+        },
+        {
+          "chapter": 26,
+          "title": "El Año Del Puente"
+        },
+        {
+          "chapter": 27,
+          "title": "Los Caminos De Amatlán"
+        }
+      ],
+      "domainProposal": "Decidir, partir, regresar",
+      "characterIndexProposal": [
+        "Juan",
+        "María",
+        "Pancho",
+        "Lupita"
+      ],
+      "sampleQuestion": "¿Cómo es Juan a los dieciséis años?",
+      "safeResponseExample": "El Capítulo XXV te permite conocerlo a esa edad. Puedes seguir el XXVI; el futuro de otros libros aún no está abierto.",
+      "continuityCaution": "no equiparar Bifurcación con Sendero del XOLO",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "sitio-08",
+      "order": 8,
+      "siteName": "La Puerta hacia el Inframundo",
+      "chapterRecommendations": [
+        {
+          "chapter": 18,
+          "title": "La Puerta Del Mictlán"
+        },
+        {
+          "chapter": 30,
+          "title": "Las Dos Mitades Del Cabello"
+        },
+        {
+          "chapter": 31,
+          "title": "La Cueva De Los Suspiros Plateados"
+        }
+      ],
+      "domainProposal": "Umbral, límites y memoria",
+      "characterIndexProposal": [
+        "Juan",
+        "María",
+        "Gabriel",
+        "XOLO"
+      ],
+      "sampleQuestion": "¿Qué existe detrás de la Puerta del Mictlán?",
+      "safeResponseExample": "Ponerle nombre a un umbral no es comprenderlo. Busca el XVIII; el resto se revela al vivirlo.",
+      "continuityCaution": "XVIII confirmado: Puerta del Mictlán; XXXI es otra cueva, no igualarlas",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "sitio-09",
+      "order": 9,
+      "siteName": "El Lago Mítico del Tiempo",
+      "chapterRecommendations": [
+        {
+          "chapter": 29,
+          "title": "La Búsqueda Del Primer Xolo"
+        },
+        {
+          "chapter": 32,
+          "title": "La Flor De La Memoria"
+        },
+        {
+          "chapter": 33,
+          "title": "El Último Corrido Del Libro Primero"
+        }
+      ],
+      "domainProposal": "Tiempo, memoria y orígenes",
+      "characterIndexProposal": [
+        "Juan",
+        "XOLO",
+        "María",
+        "Gabriel"
+      ],
+      "sampleQuestion": "¿Cuál es el origen del primer XOLO?",
+      "safeResponseExample": "El Capítulo XXIX comienza esa búsqueda. Ningún relato por sí solo entrega toda su naturaleza.",
+      "continuityCaution": "relaciones simbólicas, no visitas físicas confirmadas",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    },
+    {
+      "siteId": "sitio-10",
+      "order": 10,
+      "siteName": "El Árbol de la Ceiba",
+      "chapterRecommendations": [
+        {
+          "chapter": 19,
+          "title": "La Sombra Y La Savia"
+        },
+        {
+          "chapter": 20,
+          "title": "El Canto De Las Raíces"
+        },
+        {
+          "chapter": 21,
+          "title": "El Lamento Del Ahuehuete"
+        },
+        {
+          "chapter": 22,
+          "title": "El Concilio De Los Árboles"
+        }
+      ],
+      "domainProposal": "Raíces, memoria, cuidado",
+      "characterIndexProposal": [
+        "Juan",
+        "María",
+        "Gabriel",
+        "Lupita"
+      ],
+      "sampleQuestion": "¿Qué recuerda un árbol?",
+      "safeResponseExample": "Escucha la savia del XIX y después el canto del XX. Los demás árboles también tienen memoria.",
+      "continuityCaution": "XXI alude a otro árbol; no unir geográficamente",
+      "status": "PROPUESTA - no activa permisos ni enlaces"
+    }
+  ]
+}
