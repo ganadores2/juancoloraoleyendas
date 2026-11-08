@@ -50,23 +50,29 @@ export function ImmersiveReader({ paragraphs, onListen, onFinished }: ImmersiveR
   const lastSavedBlockRef = useRef(-1)
 
   useEffect(() => {
-    try {
-      const settings = JSON.parse(window.localStorage.getItem(SETTINGS_KEY) || '{}') as {
-        theme?: ThemeName; fontSize?: number
+    // Las preferencias proceden del navegador, no del HTML servido.
+    // Restaurarlas en el próximo fotograma evita actualizar estado
+    // sincrónicamente dentro del efecto durante la hidratación.
+    const frame = window.requestAnimationFrame(() => {
+      try {
+        const settings = JSON.parse(window.localStorage.getItem(SETTINGS_KEY) || '{}') as {
+          theme?: ThemeName; fontSize?: number
+        }
+        if (settings.theme && settings.theme in THEMES) setTheme(settings.theme)
+        if (typeof settings.fontSize === 'number' && Number.isFinite(settings.fontSize)) {
+          setFontSize(Math.max(SIZE_MIN, Math.min(SIZE_MAX, settings.fontSize)))
+        }
+        const stored = Number(window.localStorage.getItem(BOOKMARK_KEY))
+        if (Number.isInteger(stored) && stored > 0 && stored < paragraphs.length) {
+          setResumeIndex(stored)
+          lastSavedBlockRef.current = stored
+        }
+      } catch {
+        // La lectura sigue funcionando en navegación privada o sin almacenamiento.
       }
-      if (settings.theme && settings.theme in THEMES) setTheme(settings.theme)
-      if (typeof settings.fontSize === 'number' && Number.isFinite(settings.fontSize)) {
-        setFontSize(Math.max(SIZE_MIN, Math.min(SIZE_MAX, settings.fontSize)))
-      }
-      const stored = Number(window.localStorage.getItem(BOOKMARK_KEY))
-      if (Number.isInteger(stored) && stored > 0 && stored < paragraphs.length) {
-        setResumeIndex(stored)
-        lastSavedBlockRef.current = stored
-      }
-    } catch {
-      // La lectura sigue funcionando en navegación privada o sin almacenamiento.
-    }
-    setReady(true)
+      setReady(true)
+    })
+    return () => window.cancelAnimationFrame(frame)
   }, [paragraphs.length])
 
   useEffect(() => {
