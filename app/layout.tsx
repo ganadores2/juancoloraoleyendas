@@ -23,7 +23,23 @@ export const metadata: Metadata = {
   title: 'Juan Colorao · Leyendas — San Yallego',
   description:
     'Bienvenido a San Yallego. Aquí las leyendas no se cuentan. Se descubren.',
-  generator: 'v0.app',
+  metadataBase: new URL('https://www.juancoloraoleyendas.com'),
+  applicationName: 'Juan Colorao Leyendas',
+  openGraph: {
+    type: 'website',
+    locale: 'es_MX',
+    siteName: 'Juan Colorao Leyendas',
+    title: 'Juan Colorao Leyendas — Descubre San Yallego',
+    description: 'Explora San Yallego: sus leyendas, su mapa fantástico y el primer libro El Gran Cambio.',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Juan Colorao Leyendas — San Yallego',
+    description: 'Un pueblo por descubrir. Leyendas, personajes y caminos que te invitan a explorar.',
+  },
+  robots: process.env.VERCEL_ENV === 'production'
+    ? { index: true, follow: true }
+    : { index: false, follow: false, noarchive: true },
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
