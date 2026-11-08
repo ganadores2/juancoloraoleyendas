@@ -3,7 +3,13 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const root = process.cwd()
-const source = (path) => readFileSync(join(root, path), 'utf8')
+// Git may check out files with CRLF on Windows and LF on Linux/Vercel.
+// Normalize line endings only for source-inspection assertions (never edit application files).
+const normalizeLineEndings = (value) => value.replace(/\r\n?/g, '\n')
+const source = (path) => normalizeLineEndings(readFileSync(join(root, path), 'utf8'))
+
+assert.equal(normalizeLineEndings('a\r\nb\rc'), 'a\nb\nc',
+  'Las pruebas deben reconocer LF y CRLF de Windows por igual')
 
 const assets = source('lib/san-yallego/assets.ts')
 const siteConfig = source('lib/san-yallego/sites.ts')
