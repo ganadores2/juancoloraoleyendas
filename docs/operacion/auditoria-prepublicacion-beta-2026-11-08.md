@@ -41,13 +41,28 @@ Estas comprobaciones no implican aprobación para desplegar, ni prueban que una 
 
 ---
 
+## Prueba real en Motorola Edge — vertical y horizontal (8 de noviembre de 2026)
+
+**Validación manual comunicada por el autor** en teléfono Motorola Edge, desde la beta. No equivale a una medición de laboratorio ni garantiza el mismo rendimiento en todos los dispositivos.
+
+- **Horizontal:** experiencia visual casi completa (apreciación del autor, «casi 100%»); portada y vuelos se ven especialmente bien.
+- **Vertical:** los extremos de bienvenida y portada quedan recortados; el resto de la experiencia se ve en su mayor parte (apreciación del autor, «más del 90%»), y el mapa admite movimiento para explorar detalles.
+- **Flujo recorrido en móvil:** bienvenida → Entrada → Oráculo → preguntas → llave → descenso a Casa de Juanito → Oráculo → lectura o escucha del capítulo → opciones de finalización → glosario/Archivo de Palabras → biblioteca e índice de capítulos. Fluidez y funcionamiento confirmados por el autor.
+- **Lector:** comprobó cambios de ambiente, color y tamaño; controles visibles y funcionales en la prueba.
+- **Detalle de seguimiento no bloqueante por ahora:** confirmar que el recorte vertical no oculte texto esencial, botones, subtítulos o puntos de interacción; valorar encuadre responsive específico más adelante solo si afecta la comprensión. No cambiar cinematografía aprobada por un recorte lateral esperable de un video horizontal.
+- **Cobertura pendiente:** varios modelos de Android/iOS, conexiones lentas, accesibilidad (teclado, lector de pantalla, contraste) y pruebas en diferentes anchos de pantalla.
+
+**Decisión operativa:** QA manual de Motorola Edge en ambas orientaciones satisfactoria; sin modificaciones de código por este resultado. Mantener la aprobación final de publicación condicionada a los demás controles.
+
+---
+
 ## Puertas de salida — condición necesaria antes de publicar
 
 - [ ] **Revisión de cambios:** inspeccionar los 103 archivos comparados y separar contenido destinado a `main` de material técnico/editorial no publicable.
 - [ ] **Definir alcance de la beta:** confirmar si sale con capítulo 1 disponible y un índice de 33 títulos, o si se esperará a incorporar los restantes 32 MP3. No confundir "rutas generadas" con "audio disponible".
 - [ ] **Autorización y login:** validar clave y firma del creador, límites 5/60s/IP y comportamiento cuando KV/Redis no responde; inspeccionar producción sin mostrar secretos.
 - [x] **Control de vuelos existentes:** confirmada la política Opción A (20 MP4 de descensos/aproximación pueden estar en `public`) y una URL directa reproduce el vuelo de la Plaza. Esta autorización **no** cubre secretos, contenido nuevo reservado, ni interacción de los ocho Oráculos sellados.
-- [ ] **QA móvil y accesibilidad:** recorrido completo en móvil real, texto/contraste, audio, sin saltos de transición y enlaces funcionales.
+- [ ] **QA móvil y accesibilidad:** **Motorola Edge validado** en vertical y horizontal para recorrido, audio, navegación y lector; **pendiente** cobertura multi-dispositivo, accesibilidad y confirmar que el recorte vertical no oculte elementos esenciales.
 - [ ] **Salida a producción:** crear/revisar PR específico desde la rama cinematográfica, validar CI y despliegue preparatorio; solicitar aprobación expresa del titular antes de merge, despliegue o promoción.
 - [ ] **Postlanzamiento:** conservar como fase posterior los Oráculos GPT, ES/EN y TECH-OZ, según `docs/biblia/v4-apartado-despues-del-lanzamiento-resumen-publicable.md`; no activarlos por efecto de publicar la beta.
 
