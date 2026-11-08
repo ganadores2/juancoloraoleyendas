@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "id": "geraldo",
+  "name": "Geraldo",
+  "editorialStatus": "PRECANON VISUAL; NÚCLEOS DE MISTERIO PROTEGIDOS",
+  "createdAt": "2026-11-07",
+  "identity": {
+    "characterCatalogRole": "figura del pasado de Gabriel y presencia asociada a los Plateados",
+    "source": "SRT V1: Gabriel narra haber sido llevado por Geraldo cuando tenía nueve años; las referencias de otras escenas son delicadas.",
+    "sceneEvidence": [
+      {
+        "book": 1,
+        "chapter": 31,
+        "scene": "Gabriel recuerda haber ido con Geraldo a un lugar siendo niño de nueve años; NO establece edad de Geraldo."
+      }
+    ],
+    "avoidSpoilers": [
+      "No explicar públicamente genealogías ni identidades ocultas.",
+      "No asumir que 'antagonista/líder' del concept art es una caracterización moral cerrada de cada etapa.",
+      "No convertir recuerdos de otros personajes en fechas de nacimiento propias."
+    ]
+  },
+  "sourceArt": {
+    "retainAll": true,
+    "references": [
+      "Evolución de personajes de San Yallego.png",
+      "Biblia de Personajes de San Yollego.png"
+    ],
+    "observed": [
+      "Retratos de hombre con cabello largo gris plateado y expresión fría o austera.",
+      "Las etiquetas de las láminas proponen edades adultas en rangos de 25–55 y relación con los Plateados.",
+      "Los detalles de vestuario y cualquier signo metálico requieren aprobación de capítulo."
+    ],
+    "unapproved": [
+      "Edad de Geraldo durante el recuerdo de Gabriel",
+      "Fecha y naturaleza de evolución de Geraldo",
+      "Vestuario canónico, poderes o historia secreta"
+    ]
+  },
+  "sceneAnchors": [
+    {
+      "book": 1,
+      "chapter": 31,
+      "context": "Geraldo aparece en relato de memoria de Gabriel, no necesariamente como actor presente en la escena."
+    }
+  ],
+  "visualStages": [
+    {
+      "stageId": "GEL01",
+      "rangeConceptual": "joven adulto conceptual (25–35)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    },
+    {
+      "stageId": "GEL02",
+      "rangeConceptual": "adulto conceptual (35–45)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    },
+    {
+      "stageId": "GEL03",
+      "rangeConceptual": "madurez conceptual (45–55)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    }
+  ],
+  "voice": {
+    "voiceId": null,
+    "source": "propuesta de voz fría y controlada en arte; no voz oficial"
+  },
+  "transmedia": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "continuity": "Su presencia en la memoria de Gabriel se registra sin revelar la verdad de los Plateados ni reescribir historia posterior.",
+    "restrictedThemes": [
+      "N4",
+      "N5",
+      "C100"
+    ]
+  },
+  "futureAgeEvents": [],
+  "approvalGates": [
+    "No fijar edad de Geraldo por el nueve de Gabriel.",
+    "No revelar ni fijar biografía secreta a partir del concept art.",
+    "No producir oráculo público con secretos protegidos.",
+    "Revisar eventual conciliación de retratos antes de avatar maestro."
+  ]
+}
