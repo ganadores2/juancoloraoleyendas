@@ -27,6 +27,7 @@ const audioPlayer = source('components/san-yallego/capitulo/audio-player.tsx')
 const chapterScreen = source('components/san-yallego/capitulo/chapter-screen.tsx')
 const chapterPaths = source('components/san-yallego/capitulo/chapter-paths.tsx')
 const chaptersData = source('lib/san-yallego/chapters.ts')
+const oracleMatrix = JSON.parse(source('lib/san-yallego/oracle-matrix-v1.json'))
 const bookOneCatalog = source('app/libro/1/page.tsx')
 const reader = source('components/san-yallego/capitulo/immersive-reader.tsx')
 const chapterOneText = source('lib/san-yallego/chapter-one-text.ts')
@@ -309,6 +310,37 @@ assert.ok(bookOneCatalog.includes('href="/glosario"') &&
   mapScreen.includes('href="/glosario"') &&
   chapterPaths.includes('href="/glosario"'),
   'El Archivo de Palabras debe encontrarse desde el libro, el mapa y tras el Capítulo I')
+
+
+// Matrix is a safe design draft, not an unlock rule or a secret knowledge store.
+assert.equal(oracleMatrix.sites.length, 10, 'Se requieren exactamente 10 Oráculos propuestos')
+assert.match(oracleMatrix.status ?? oracleMatrix.version, /PROPUESTA|propuesta/,
+  'Los Oráculos no pueden declararse publicados antes de su implementación')
+const chapterRecommendations = oracleMatrix.sites.flatMap((oracle) =>
+  oracle.chapterRecommendations.map((chapter) => chapter.chapter))
+assert.equal(chapterRecommendations.length, 33,
+  'Los 10 Oráculos deben repartir los 33 capítulos en grupos de 3 o 4')
+assert.equal(new Set(chapterRecommendations).size, 33,
+  'No se debe duplicar ningún capítulo en la asignación primaria')
+const chapterTitles = [...chapterList.matchAll(/^\s*'([^']+)'/gm)].map((item) => item[1])
+for (const oracle of oracleMatrix.sites) {
+  assert.ok(oracle.chapterRecommendations.length >= 3 &&
+    oracle.chapterRecommendations.length <= 4,
+    'Cada Oráculo debe ofrecer 3 o 4 capítulos')
+  assert.ok(siteConfig.includes("id: '" + oracle.siteId + "'"),
+    'Un Oráculo propuesto no debe inventar nuevos IDs del mapa: ' + oracle.siteId)
+  for (const recommendation of oracle.chapterRecommendations) {
+    assert.equal(recommendation.title, chapterTitles[recommendation.chapter - 1],
+      'El título recomendado debe coincidir con el índice oficial')
+  }
+}
+assert.ok(oracleMatrix.unresolved.some((item) => item.includes('Sendero del XOLO')) &&
+  oracleMatrix.unresolved.some((item) => item.includes('Convergencia')),
+  'No resolver silenciosamente la divergencia entre Biblia y mapa')
+assert.ok(oracleMatrix.policy.neverDisclose.includes('N5') &&
+  oracleMatrix.policy.neverDisclose.includes('C100') &&
+  oracleMatrix.policy.future.includes('sin enlaces'),
+  'La matriz debe conservar secretos y evitar links prematuros a libros futuros')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
