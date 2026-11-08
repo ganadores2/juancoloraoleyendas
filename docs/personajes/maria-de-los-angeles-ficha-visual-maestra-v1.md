@@ -5,6 +5,21 @@
 
 > **María es protagonista de su propia transformación.** La Biblia Maestra V3.0 establece que tiene agencia, sanación, liderazgo y crecimiento independientes de Juan. Su recorrido no es un apéndice de la biografía de él.
 
+## DECISIÓN CANÓNICA DEL AUTOR · MARÍA ES MAYOR QUE JUAN
+
+**Confirmación editorial, 7 de noviembre de 2026.** La diferencia de edad entre María de los Ángeles y Juan Colorao es **deliberada y beneficiosa para la historia**. **No es una inconsistencia que debamos corregir.**
+
+María posee conocimientos y experiencia inusuales en **plantas, sanación y remedios**, junto con una **intuición extraordinaria**. Al ser mayor que Juan, aporta una perspectiva y una prudencia que él todavía está desarrollando. **Lo acompaña como compañera y también como mentora durante una parte de su formación**; su guía le ayuda a evitar muchas equivocaciones mientras él descubre qué significa ser el verdadero COLORAO.
+
+**Equilibrio narrativo irrenunciable:**
+- **María aporta** sabiduría, experiencia, intuición, conocimiento de plantas y sanación, acompañamiento y consejos.
+- **Juan aporta** su propia curiosidad, iniciativa, capacidad de decisión, errores, esfuerzo y crecimiento; ninguna enseñanza sustituye su experiencia.
+- **La mentoría es temporal**, no permanente ni una jerarquía fija de los cuatro libros: la relación puede transformarse conforme ambos crecen.
+- **María conserva su vida y evolución propias**. No reducirla a herramienta para perfeccionar a Juan ni atribuirle infalibilidad, magia ilimitada o conocimiento de todos los secretos.
+- El Camino del Guerrero **no se completa en el Libro I**; la guía de María lo ayuda a prepararse para recorrerlo, no a saltarse sus pruebas.
+
+**Cronología:** la frase «María tenía cinco años» en el Capítulo II es coherente con la intención de que sea mayor. El Capítulo IV indica la edad de Juan, no la edad exacta de María. **Conservar la diferencia como hecho del canon; las fechas y edades específicas posteriores siguen pendientes de cotejo con los MP3.**
+
 ## 1. Fuentes recuperadas (sin descartar ninguna)
 
 | Material | Lo que aporta | Nivel de autoridad |
@@ -27,12 +42,12 @@
 
 **Para el público:** primero conocer sus gestos, emociones y decisiones en el libro y el audiolibro; solo más adelante hacer que la animación comunique esa misma personalidad con el rostro, el cuerpo y el movimiento.
 
-## 3. Inconsistencia cronológica documentada, NO corregida
+## 3. Diferencia de edad intencional, edades exactas aún por cotejar
 
 - **Capítulo II — «El Nombre Que Quema»:** el texto dice que María de los Ángeles **tenía cinco años**, en los días que rodean el nacimiento de Juan.
 - **Capítulo IV — «El Reflejo Que Respira»:** Juan **tenía cinco años** cuando conoció a María en persona. **No dice la edad de María en esa escena.**
-- **No se debe presentar a María como coetánea de Juan** por el aspecto juvenil de una lámina, ni fijar automáticamente que María tenía diez años en el IV sin verificar fechas y continuidad narrativa.
-- La edición procede de subtítulos; se revisará contra el audio final y luego el autor decidirá si esas edades permanecen o requieren corrección narrativa.
+- **María es mayor que Juan por decisión canónica del autor**. No presentarla como coetánea por el aspecto juvenil de una lámina, ni fijar automáticamente su edad numérica en el IV sin verificar fechas y continuidad narrativa.
+- **La diferencia de edad ya está confirmada y no requiere corrección narrativa.** La edición procede de subtítulos; solo debemos verificar los pasajes y determinar las edades precisas que aún falten.
 
 Por ello **solo la edad cinco años en el Capítulo II** es un ancla textual registrada para María en la versión actual; las demás edades que aparecen debajo son **rangos visuales propuestos**, no declaraciones del canon.
 
@@ -94,7 +109,7 @@ No hace falta producir cuatro hojas de personaje ahora. Son **ranuras de referen
 | Voz de la etapa cotejada | Pendiente | Pendiente | Pendiente | Pendiente |
 | **Canon visual aprobado por el autor** | **NO** | **NO** | **NO** | **NO** |
 
-**Próxima revisión del personaje:** comprobar los pasajes de María del Libro I para construir una línea de acontecimientos independiente de Juan, contrastar edad con el audio y clasificar las referencias de la Biblioteca por etapas. No es necesario terminar esa revisión para seguir publicando el texto y audio de capítulos aprobados.
+**Próxima revisión del personaje:** comprobar los pasajes de María del Libro I para construir una línea de acontecimientos independiente de Juan, identificar su aprendizaje y sus períodos de mentoría, cotejar edades con el audio y clasificar las referencias visuales por etapas. No es necesario terminar esa revisión para seguir publicando el texto y audio de capítulos aprobados.
 
 ---
 
