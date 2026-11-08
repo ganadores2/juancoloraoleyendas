@@ -85,6 +85,14 @@ El módulo `oracle-audio-catalog.ts` tiene `import 'server-only'` para impedir s
 
 **Estado actual:** el motor de Oráculo-GPT aún **no está conectado** a estas estructuras; esto solo prepara las referencias y los filtros del catálogo. La existencia de la matriz NO habilita sitios sellados.
 
+### 5.1. Camino del Guerrero y escuelas míticas (Libro II)
+
+**Nueva decisión del autor:** Juan, tras partir de San Yallego en el final del Capítulo XXXIII acompañado de Gabriel y XOLO, **visitará escuelas míticas de otros pueblos por invitación** en el Libro II, y encontrará allí nuevos personajes. María tomó un camino independiente hacia Tzinzunzan al cerrar el Libro I. Los demás habitantes de San Yallego pueden tener **cameos episódicos**, sin que todos deban salir del pueblo. **La lista de escuelas, nuevos personajes y su reparto por capítulos aún no se ha definido.**
+
+**El Camino del Guerrero se desarrollará gradualmente**: I prepara, II amplía/aprende, III exige aplicar y reparar, 100 converge y el ciclo 101+ permite ver la herencia de valores en El Bélico sin reescribir la biografía de Juan. La distribución editorial propuesta se guarda en `docs/saga/camino-del-guerrero-y-escuelas-miticas-libros-1-4-v1.md` y `lib/san-yallego/camino-del-guerrero-roadmap-v1.json`.
+
+**No añadir un onceavo Oráculo por las escuelas exteriores:** un futuro capítulo del Libro II sobre una escuela podrá tener afinidad con uno de los diez Oráculos de San Yallego, pero **su escenario físico estará fuera del mapa principal**, y la relación no estará disponible hasta que exista capítulo/audio publicado y autorizado. Los nombres de escuelas, maestros y sus niveles de revelación no se pueden inferir a partir de los nombres de pueblos ya mencionados en el Libro I.
+
 ## 6. Cómo incorporar cada libro cuando el autor lo termine
 
 1. Registrar el capítulo completo con su número aprobado y título final, sin asumir que Libro IV empieza en un número específico.
