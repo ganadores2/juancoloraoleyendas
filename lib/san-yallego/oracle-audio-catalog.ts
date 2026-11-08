@@ -108,7 +108,7 @@ export function getPublishedTemporalLinks(
   const known = new Set<string>()
   return timeline.temporalEdges.flatMap((edge) => {
     if (edge.from.book !== from.book || edge.from.chapter !== from.chapter) return []
-    const id = key(edge.to)
+    const id = key(edge.to as ChapterRef)
     if (known.has(id)) return []
     known.add(id)
     const chapter = resolvePublished(edge.to as ChapterRef, catalog, mayAccess)
