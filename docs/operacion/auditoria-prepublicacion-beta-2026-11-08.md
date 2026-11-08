@@ -24,6 +24,21 @@
 | PR existentes | PR #1, #2 y #6 abiertos y en borrador desde **otras ramas**. | Ninguno es el PR de la rama cinematográfica actual; no fusionar el PR equivocado. |
 | Riesgos narrativos | `docs/biblia` y `docs/oraculos` incluyen material editorial preparatorio. | Auditar spoilers / exposición de referencias antes de fusionar a un repo público y desplegar; los detalles estratégicos privados de TECH-OZ no deben incorporarse. |
 
+## Pruebas manuales de acceso confirmadas — 8 de noviembre de 2026
+
+**Ambiente:** localhost y Vercel Preview de la rama cinematográfica. **Producción no probada ni modificada.**
+
+1. En Chrome incógnito, `/guardian/mapa` redirigió al formulario de Llave Maestra: **APROBADO — bloqueo de página**.
+2. En Chrome incógnito, `/guardian/sitio/sitio-03` redirigió al formulario: **APROBADO — bloqueo de página**.
+3. En Chrome incógnito, `/sitio/sitio-03` mostró «San Yallego todavía no te ha mostrado este camino» y «Volver al mapa»: **APROBADO — sitio público sellado**.
+4. En Vercel Preview, una llave deliberadamente falsa produjo «La llave no fue reconocida»: **APROBADO — rechazo de credencial incorrecta**.
+5. Tras varios intentos consecutivos con la clave falsa, el Preview mostró «La puerta está en pausa. Demasiados intentos...» y pidió esperar aproximadamente un minuto: **APROBADO — bloqueo visible al superar el umbral**. La captura de pantalla del autor demuestra la interfaz; **la condición HTTP 429 y su cabecera Retry-After todavía no se inspeccionaron directamente**.
+6. **Pendiente:** comprobar la recuperación al vencer el plazo, el conteo de intentos exacto, fallos reales del proveedor Redis, producción tras publicación y si MP4 estáticos reservados requieren autorización de descarga directa.
+
+Estas comprobaciones no implican aprobación para desplegar, ni prueban que una ruta estática de `public/assets` esté protegida.
+
+---
+
 ## Puertas de salida — condición necesaria antes de publicar
 
 - [ ] **Revisión de cambios:** inspeccionar los 103 archivos comparados y separar contenido destinado a `main` de material técnico/editorial no publicable.
