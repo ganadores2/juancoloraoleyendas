@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 2,
+  "editorialStatus": "aprobada-estructura-temporal; solo-libro-1-curado",
+  "approvedDate": "2026-11-07",
+  "sourceMatrix": "lib/san-yallego/oracle-matrix-v1.json",
+  "description": "Diez oráculos con pistas de escucha por libro y conexiones temporales verificables. No da permisos ni inventa capítulos.",
+  "volumes": [
+    {
+      "book": 1,
+      "label": "El Gran Cambio",
+      "range": {
+        "from": 1,
+        "to": 33
+      },
+      "status": "asignacion-editorial-aprobada"
+    },
+    {
+      "book": 2,
+      "label": "Libro II",
+      "range": {
+        "from": 34,
+        "to": 66
+      },
+      "status": "sin-capitulos-indexados"
+    },
+    {
+      "book": 3,
+      "label": "Libro III",
+      "range": {
+        "from": 67,
+        "to": 99
+      },
+      "status": "sin-capitulos-indexados"
+    },
+    {
+      "book": 4,
+      "label": "Libro IV / ciclo 101",
+      "range": null,
+      "status": "numeracion-y-contenido-por-fijar"
+    }
+  ],
+  "oracleCollections": [
+    {
+      "siteId": "entrada",
+      "siteName": "Entrada a San Yallego",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 2,
+            "editorialRelation": "principal",
+            "relationToPlace": "temático"
+          },
+          {
+            "book": 1,
+            "chapter": 3,
+            "editorialRelation": "principal",
+            "relationToPlace": "temático"
+          },
+          {
+            "book": 1,
+            "chapter": 16,
+            "editorialRelation": "principal",
+            "relationToPlace": "temático"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Identidad, nombres, preguntas",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "casa-de-juanito",
+      "siteName": "Casa de Juanito Colorao",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 1,
+            "editorialRelation": "principal",
+            "relationToPlace": "Capítulo I asociado a Casa en la web"
+          },
+          {
+            "book": 1,
+            "chapter": 4,
+            "editorialRelation": "principal",
+            "relationToPlace": "Capítulo I asociado a Casa en la web"
+          },
+          {
+            "book": 1,
+            "chapter": 5,
+            "editorialRelation": "principal",
+            "relationToPlace": "Capítulo I asociado a Casa en la web"
+          },
+          {
+            "book": 1,
+            "chapter": 11,
+            "editorialRelation": "principal",
+            "relationToPlace": "Capítulo I asociado a Casa en la web"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Infancia, familia y compañía",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "sitio-03",
+      "siteName": "Plaza y Jardines del Pueblo",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 9,
+            "editorialRelation": "principal",
+            "relationToPlace": "varios vínculos son temáticos"
+          },
+          {
+            "book": 1,
+            "chapter": 12,
+            "editorialRelation": "principal",
+            "relationToPlace": "varios vínculos son temáticos"
+          },
+          {
+            "book": 1,
+            "chapter": 14,
+            "editorialRelation": "principal",
+            "relationToPlace": "varios vínculos son temáticos"
+          },
+          {
+            "book": 1,
+            "chapter": 15,
+            "editorialRelation": "principal",
+            "relationToPlace": "varios vínculos son temáticos"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Fiestas, infancia, memoria colectiva",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "sitio-04",
+      "siteName": "Iglesia del Pueblo",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 10,
+            "editorialRelation": "principal",
+            "relationToPlace": "simbólico: no afirmar escenas en la iglesia"
+          },
+          {
+            "book": 1,
+            "chapter": 23,
+            "editorialRelation": "principal",
+            "relationToPlace": "simbólico: no afirmar escenas en la iglesia"
+          },
+          {
+            "book": 1,
+            "chapter": 24,
+            "editorialRelation": "principal",
+            "relationToPlace": "simbólico: no afirmar escenas en la iglesia"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Conciencia, fe, elección y responsabilidad",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "sitio-05",
+      "siteName": "La Casa del Herrero",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 13,
+            "editorialRelation": "principal",
+            "relationToPlace": "el XXVIII ocurre en Amatlán, no en la herrería"
+          },
+          {
+            "book": 1,
+            "chapter": 17,
+            "editorialRelation": "principal",
+            "relationToPlace": "el XXVIII ocurre en Amatlán, no en la herrería"
+          },
+          {
+            "book": 1,
+            "chapter": 28,
+            "editorialRelation": "principal",
+            "relationToPlace": "el XXVIII ocurre en Amatlán, no en la herrería"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Transformación, oficio y memoria",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "sitio-06",
+      "siteName": "El Río de los Sueños",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 6,
+            "editorialRelation": "principal",
+            "relationToPlace": "temático: no afirmar cada escena en el río"
+          },
+          {
+            "book": 1,
+            "chapter": 7,
+            "editorialRelation": "principal",
+            "relationToPlace": "temático: no afirmar cada escena en el río"
+          },
+          {
+            "book": 1,
+            "chapter": 8,
+            "editorialRelation": "principal",
+            "relationToPlace": "temático: no afirmar cada escena en el río"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Sueños, nombre y reflejo",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "sitio-07",
+      "siteName": "La Bifurcación y Salida del Pueblo",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 25,
+            "editorialRelation": "principal",
+            "relationToPlace": "no equiparar Bifurcación con Sendero del XOLO"
+          },
+          {
+            "book": 1,
+            "chapter": 26,
+            "editorialRelation": "principal",
+            "relationToPlace": "no equiparar Bifurcación con Sendero del XOLO"
+          },
+          {
+            "book": 1,
+            "chapter": 27,
+            "editorialRelation": "principal",
+            "relationToPlace": "no equiparar Bifurcación con Sendero del XOLO"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Decidir, partir, regresar",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "sitio-08",
+      "siteName": "La Puerta hacia el Inframundo",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 18,
+            "editorialRelation": "principal",
+            "relationToPlace": "XVIII confirmado: Puerta del Mictlán; XXXI es otra cueva, no igualarlas"
+          },
+          {
+            "book": 1,
+            "chapter": 30,
+            "editorialRelation": "principal",
+            "relationToPlace": "XVIII confirmado: Puerta del Mictlán; XXXI es otra cueva, no igualarlas"
+          },
+          {
+            "book": 1,
+            "chapter": 31,
+            "editorialRelation": "principal",
+            "relationToPlace": "XVIII confirmado: Puerta del Mictlán; XXXI es otra cueva, no igualarlas"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Umbral, límites y memoria",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "sitio-09",
+      "siteName": "El Lago Mítico del Tiempo",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 29,
+            "editorialRelation": "principal",
+            "relationToPlace": "relaciones simbólicas, no visitas físicas confirmadas"
+          },
+          {
+            "book": 1,
+            "chapter": 32,
+            "editorialRelation": "principal",
+            "relationToPlace": "relaciones simbólicas, no visitas físicas confirmadas"
+          },
+          {
+            "book": 1,
+            "chapter": 33,
+            "editorialRelation": "principal",
+            "relationToPlace": "relaciones simbólicas, no visitas físicas confirmadas"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Tiempo, memoria y orígenes",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    },
+    {
+      "siteId": "sitio-10",
+      "siteName": "El Árbol de la Ceiba",
+      "bookChapters": {
+        "1": [
+          {
+            "book": 1,
+            "chapter": 19,
+            "editorialRelation": "principal",
+            "relationToPlace": "XXI alude a otro árbol; no unir geográficamente"
+          },
+          {
+            "book": 1,
+            "chapter": 20,
+            "editorialRelation": "principal",
+            "relationToPlace": "XXI alude a otro árbol; no unir geográficamente"
+          },
+          {
+            "book": 1,
+            "chapter": 21,
+            "editorialRelation": "principal",
+            "relationToPlace": "XXI alude a otro árbol; no unir geográficamente"
+          },
+          {
+            "book": 1,
+            "chapter": 22,
+            "editorialRelation": "principal",
+            "relationToPlace": "XXI alude a otro árbol; no unir geográficamente"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": []
+      },
+      "theme": "Raíces, memoria, cuidado",
+      "lockedKnowledge": [
+        "N4",
+        "N5",
+        "C100"
+      ]
+    }
+  ],
+  "temporalEdges": [
+    {
+      "from": {
+        "book": 1,
+        "chapter": 1
+      },
+      "to": {
+        "book": 1,
+        "chapter": 11
+      },
+      "kind": "brincar-al-futuro",
+      "theme": "Juan y el XOLO",
+      "evidence": "Capítulos I y XI",
+      "verification": "editorial-pendiente-audio"
+    },
+    {
+      "from": {
+        "book": 1,
+        "chapter": 11
+      },
+      "to": {
+        "book": 1,
+        "chapter": 1
+      },
+      "kind": "regresar-al-origen",
+      "theme": "Juan y el XOLO",
+      "evidence": "Capítulos XI e I",
+      "verification": "editorial-pendiente-audio"
+    },
+    {
+      "from": {
+        "book": 1,
+        "chapter": 25
+      },
+      "to": {
+        "book": 1,
+        "chapter": 1
+      },
+      "kind": "regresar-al-origen",
+      "theme": "Juan desde los dieciséis años hasta el nacimiento",
+      "evidence": "Capítulos XXV e I",
+      "verification": "editorial-pendiente-audio"
+    },
+    {
+      "from": {
+        "book": 1,
+        "chapter": 1
+      },
+      "to": {
+        "book": 1,
+        "chapter": 25
+      },
+      "kind": "brincar-al-futuro",
+      "theme": "Evolución de Juan hacia los dieciséis años",
+      "evidence": "Capítulos I y XXV",
+      "verification": "editorial-pendiente-audio"
+    },
+    {
+      "from": {
+        "book": 1,
+        "chapter": 29
+      },
+      "to": {
+        "book": 1,
+        "chapter": 11
+      },
+      "kind": "regresar-al-origen",
+      "theme": "Historia y vínculo del XOLO",
+      "evidence": "Capítulos XXIX y XI",
+      "verification": "editorial-pendiente-audio"
+    },
+    {
+      "from": {
+        "book": 1,
+        "chapter": 11
+      },
+      "to": {
+        "book": 1,
+        "chapter": 29
+      },
+      "kind": "brincar-al-futuro",
+      "theme": "Búsqueda del primer XOLO",
+      "evidence": "Capítulos XI y XXIX",
+      "verification": "editorial-pendiente-audio"
+    },
+    {
+      "from": {
+        "book": 1,
+        "chapter": 18
+      },
+      "to": {
+        "book": 1,
+        "chapter": 17
+      },
+      "kind": "regresar-al-origen",
+      "theme": "Antecedentes de la Forja Plateada",
+      "evidence": "Capítulos XVIII y XVII",
+      "verification": "editorial-pendiente-audio"
+    },
+    {
+      "from": {
+        "book": 1,
+        "chapter": 17
+      },
+      "to": {
+        "book": 1,
+        "chapter": 18
+      },
+      "kind": "seguir-secuencia",
+      "theme": "De la memoria a la Puerta",
+      "evidence": "Capítulos XVII y XVIII",
+      "verification": "editorial-pendiente-audio"
+    }
+  ],
+  "rules": {
+    "allReferencesMustExistBeforeEnabled": true,
+    "audioOnlyWhenHostedAndVerified": true,
+    "accessServerValidated": true,
+    "crossBookLinksOnlyAfterPublication": true,
+    "neverPutSecretCanonInClient": true,
+    "noPlaceholderURL": true,
+    "spoilerGuidance": "La recomendación conecta obra y personajes, pero la revelación se descubre al experimentar.",
+    "timelineMeaning": "El orden de los capítulos no determina por sí mismo la cronología de cada escena; exigir evidencia narrativa."
+  },
+  "provisionalNotes": [
+    "El Libro IV no se numera automáticamente 100 o 101: el capítulo 100 está reservado para la Convergencia y el ciclo 101 requiere aprobación editorial.",
+    "El reparto actual del Libro I queda fijo por aprobación; nuevas relaciones secundarias pueden mencionar capítulos de otros sitios sin cambiar su asignación principal.",
+    "Las listas vacías en Libros II, III y IV no significan que sus historias sean inexistentes, solo que todavía no tienen entradas verificadas en este repositorio.",
+    "Un oráculo no debería dar una respuesta definitiva de origen, destino o trama reservada; debe invitar al capítulo disponible sin revelar.",
+    "Los capítulos 2–33 del Libro I aún no están alojados como MP3 verificados en el repositorio."
+  ]
+}
