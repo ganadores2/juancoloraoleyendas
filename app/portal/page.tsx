@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { PortalScreen } from '@/components/san-yallego/portal/portal-screen'
 import { introAssetsReady } from '@/lib/san-yallego/intro-ready'
 
-export const metadata: Metadata = { title: 'Portal — San Yallego' }
+export const metadata: Metadata = { title: 'Portal — San Yallego', robots: { index: false, follow: false } }
 
 export default function Page() {
   if (!introAssetsReady()) redirect('/mapa')
