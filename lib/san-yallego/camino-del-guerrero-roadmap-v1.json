@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-07",
+  "status": "ARQUITECTURA MIXTA: CIERRE LIBRO I Y PARTIDA CONFIRMADOS; ESCUELAS MÍTICAS DEL LIBRO II CONFIRMADAS POR AUTOR; DISTRIBUCIÓN DE PRUEBAS PROPUESTA, NO CANON NARRATIVO CERRADO",
+  "authority": {
+    "baseline": "Biblia Maestra V3.0: Libro I 1-33, Libro II 34-66, Libro III 67-99, Convergencia 100, Ciclo 101+ / proto Libro IV",
+    "bookOneEnding": "Capítulo XXXIII El Último Corrido del Libro Primero: Juan, Gabriel y XOLO parten; María se dirige a Tzinzunzan por su propia invitación y se separan en la bifurcación.",
+    "authorConfirmedNew": "Libro II: Juan visita escuelas míticas de otros pueblos a los que ha sido invitado; surgirán nuevos personajes de esos viajes; Camino del Guerrero distribuido entre libros y no concentrado en uno o dos.",
+    "bookFour": "La V3 sitúa a El Bélico y el puente al mundo contemporáneo a partir del 101; la participación activa de Juan en Libro IV no está fijada.",
+    "notes": [
+      "El Libro I ya incluye viajes y contactos con otros pueblos; las escuelas del II representan una nueva etapa y no la primera vez que Juan sale de San Yallego.",
+      "No deducir que una escuela está en Amatlán, Xochicalco o Tzinzunzan: son localidades mencionadas en Libro I, pero las invitaciones y escuelas concretas de Libro II no tienen emplazamiento aprobado.",
+      "La palabra «escuela mítica» no obliga a suponer hechicería ni poderes: la pedagogía, límites y metafísica necesitan aprobación."
+    ]
+  },
+  "moralCore": {
+    "colorado": "Reconocer, sentir, recordar, amar, elegir, actuar y reparar; no significa invulnerabilidad ni ausencia de errores",
+    "guerrero": "Fuerza con criterio, templanza, servicio, conciencia de consecuencias, límites y capacidad de regreso",
+    "counterforce": "Coraza Plateada no es maldad irreparable: la frontera ética sigue siendo la libertad para reconocer y elegir."
+  },
+  "phases": [
+    {
+      "phaseId": "LIBRO-I",
+      "book": 1,
+      "chapterRange": {
+        "first": 1,
+        "last": 33
+      },
+      "phaseName": "Raíces y preparación",
+      "evidenceStatus": "ya narrado / el texto SRT definitivo requiere cotejo audio",
+      "juanChange": "De infancia a joven de 17 años; gana una base ética, vínculos, memoria, preguntas y aceptación de no saberlo todo.",
+      "dominantTask": "Despertar a la responsabilidad personal sin proclamarse guerrero formado.",
+      "notYet": [
+        "Completar el Camino del Guerrero",
+        "Dominar todas las disciplinas",
+        "Entender todos los secretos"
+      ],
+      "ending": {
+        "juanTravelers": [
+          "gabriel-vallego",
+          "xolo"
+        ],
+        "mariaPath": "Tzinzunzan, trayecto propio",
+        "travelStatus": "salida ya narrada al cierre del XXXIII"
+      }
+    },
+    {
+      "phaseId": "LIBRO-II-A",
+      "book": 2,
+      "chapterRange": {
+        "first": 34,
+        "last": 43
+      },
+      "phaseName": "Llegada y desaprendizaje",
+      "evidenceStatus": "propuesta de diseño; sin capítulos escritos aportados",
+      "juanChange": "Confronta que las reglas de su pueblo no bastan para comprender otras comunidades.",
+      "dominantTask": "Escuchar antes de juzgar, conocer límites, aceptar que ser invitado no equivale a tener derecho a imponer su criterio.",
+      "possibleFunction": "Llegada a escuelas míticas solo cuando lugares, invitaciones y maestros se aprueben.",
+      "gate": "Distinguir observación de intervención; sin rango heroico"
+    },
+    {
+      "phaseId": "LIBRO-II-B",
+      "book": 2,
+      "chapterRange": {
+        "first": 44,
+        "last": 55
+      },
+      "phaseName": "Aprendizajes divergentes",
+      "evidenceStatus": "propuesta de diseño; sin capítulos escritos aportados",
+      "juanChange": "Aprende prácticas, disciplinas y perspectivas contradictorias; toma decisiones propias con costo.",
+      "dominantTask": "Aprender de maestros y compañeros de otros pueblos sin perder identidad ni apropiarse de sus conocimientos.",
+      "possibleFunction": "Variedad de métodos educativos y personajes con metas independientes.",
+      "gate": "Ninguna escuela resuelve por sí sola todas las respuestas"
+    },
+    {
+      "phaseId": "LIBRO-II-C",
+      "book": 2,
+      "chapterRange": {
+        "first": 56,
+        "last": 66
+      },
+      "phaseName": "Primeras pruebas fuera del hogar",
+      "evidenceStatus": "propuesta de diseño; sin capítulos escritos aportados",
+      "juanChange": "Aplica solo parte de lo aprendido; descubre límites, errores, consecuencias y nuevas preguntas.",
+      "dominantTask": "Asumir costo de una elección y reparar cuando corresponda.",
+      "possibleFunction": "Cierre parcial de aprendizaje: transición al siguiente libro, NO graduación final.",
+      "gate": "Dejar conflicto moral vivo y camino abierto"
+    },
+    {
+      "phaseId": "LIBRO-III-A",
+      "book": 3,
+      "chapterRange": {
+        "first": 67,
+        "last": 77
+      },
+      "phaseName": "Contradicción interior y retorno de preguntas",
+      "evidenceStatus": "propuesta de diseño; sin capítulos escritos aportados",
+      "juanChange": "La experiencia del mundo contradice una certeza previa; reconoce su propia sombra sin volverse cínico.",
+      "dominantTask": "Diferenciar fortaleza de endurecimiento o dominio.",
+      "possibleFunction": "Ecos de Libros I–II, no una colección de retos ajenos entre sí.",
+      "gate": "El rival interno exige decisiones, no una victoria espectacular"
+    },
+    {
+      "phaseId": "LIBRO-III-B",
+      "book": 3,
+      "chapterRange": {
+        "first": 78,
+        "last": 88
+      },
+      "phaseName": "Responsabilidad compartida",
+      "evidenceStatus": "propuesta de diseño; sin capítulos escritos aportados",
+      "juanChange": "Aprende cuándo liderar, cuándo acompañar y cuándo ceder iniciativa a otros.",
+      "dominantTask": "Reparar daños y negociar con consecuencias reales; practicar justicia y templanza.",
+      "possibleFunction": "Convergencia de personajes y conflictos previamente sembrados.",
+      "gate": "María, Gabriel, XOLO y nuevos personajes conservan agencia y trayectorias propias"
+    },
+    {
+      "phaseId": "LIBRO-III-C",
+      "book": 3,
+      "chapterRange": {
+        "first": 89,
+        "last": 99
+      },
+      "phaseName": "Integración y decisión costosa",
+      "evidenceStatus": "propuesta de diseño; sin capítulos escritos aportados",
+      "juanChange": "Integra aprendizajes sin dominar el mundo; es capaz de elegir con incertidumbre.",
+      "dominantTask": "Aplicar el código Colorao cuando no hay recompensa clara.",
+      "possibleFunction": "Preparación final de la convergencia del 100.",
+      "gate": "No resolver todos los misterios ni convertir a Juan en héroe invencible"
+    },
+    {
+      "phaseId": "CONVERGENCIA-100",
+      "book": 3,
+      "chapterRange": {
+        "first": 100,
+        "last": 100
+      },
+      "phaseName": "Cierre de Leyendas, no fin absoluto del crecimiento",
+      "evidenceStatus": "función del capítulo confirmada por V3; pruebas concretas propuestas",
+      "juanChange": "Una decisión que demuestre su transformación y permita cerrar la trilogía sin declarar concluida toda su vida.",
+      "dominantTask": "Honrar consecuencias, libertad ajena y responsabilidad.",
+      "possibleFunction": "Convergencia de líneas principales y paso al umbral contemporáneo.",
+      "gate": "No confirmar qué elige, quién vive o qué se revela sin manuscrito"
+    },
+    {
+      "phaseId": "CICLO-101+",
+      "book": 4,
+      "chapterRange": {
+        "first": 101,
+        "last": null
+      },
+      "phaseName": "Herencia y espejo contemporáneo: El Bélico",
+      "evidenceStatus": "V3 vincula el ciclo al puente con El Bélico; arco exacto pendiente",
+      "juanChange": "Juan puede ser referente narrativo a través de sus historias y decisiones; no imponer su presencia física ni su edad.",
+      "dominantTask": "Mostrar cómo alguien de otro tiempo interpreta el sentido del COLORAO en la realidad contemporánea.",
+      "possibleFunction": "El Bélico interioriza una filosofía y afronta su propia prueba de fortaleza sin volverse piedra.",
+      "gate": "No transformar el Libro IV en un Libro III repetido, ni hacer del Bélico Juan reencarnado; evitar celebrar violencia"
+    }
+  ],
+  "schoolsPolicy": {
+    "confirmedByAuthor": "Juan recibirá invitaciones y viajará a escuelas míticas de otros pueblos durante el Libro II.",
+    "schoolRecords": [],
+    "schoolNamesApproved": [],
+    "townAssignmentsApproved": [],
+    "invitationsDetailed": [],
+    "newCharactersApproved": [],
+    "guardrails": [
+      "Ningún nombre de escuela, fundador, disciplina, conflicto o alumno queda aprobado hasta que exista decisión o manuscrito.",
+      "Cada invitación debe aportar propósito formativo, no una excusa de teletransporte.",
+      "Una escuela no da poderes gratuitos, títulos automáticos ni secretos de la cosmología.",
+      "Cada nuevo personaje tiene agencia, pasado y conflictos propios; no existe únicamente para educar a Juan.",
+      "Las culturas y localidades mencionadas en Libro I no se presentan como sede de una escuela sin evidencia."
+    ],
+    "schoolIntakeFields": [
+      "schoolId",
+      "townName",
+      "invitationIssuer",
+      "invitationReason",
+      "disciplineOrQuestion",
+      "teacherCharacterIds",
+      "studentCharacterIds",
+      "narrativeCost",
+      "lessonLearned",
+      "limits",
+      "book",
+      "chapterFirstMention",
+      "chapterFirstVisit",
+      "timelineContext",
+      "oracleEcho",
+      "revelationLevel",
+      "editorialStatus",
+      "sourceEvidence"
+    ]
+  },
+  "castPolicy": {
+    "fromBookOne": {
+      "departureContinuity": [
+        "juan-colorao",
+        "gabriel-vallego",
+        "xolo"
+      ],
+      "parallelPath": [
+        "maria-de-los-angeles"
+      ],
+      "homeTownCameos": "Cameos y ecos ocasionales; no imponer a todos los habitantes un viaje conjunto.",
+      "cameoModes": [
+        "cartas",
+        "recuerdos",
+        "consecuencias",
+        "mensajes",
+        "visitas puntuales"
+      ],
+      "noObligationToAppear": [
+        "don-chema",
+        "dona-chavela",
+        "el-ojon",
+        "tomas",
+        "lupita",
+        "abuelo-pancho",
+        "dolores"
+      ]
+    },
+    "newCharacters": "No crear personas, identidades o vínculos hasta que se estructuren las escuelas y capítulos; cada alta se registra en Biblioteca y V4.",
+    "maria": "Camino propio hacia Tzinzunzan ya establecido; su mayor edad y mentoría temporal no la obligan a seguir a Juan ni a sacrificar su formación.",
+    "gabriel": "Partió con Juan según el cierre del I; su permanencia, separación o papel de guía en II están POR DEFINIR.",
+    "xolo": "Partió con Juan según el cierre del I; su naturaleza y límites protegidos."
+  },
+  "oracleLinks": {
+    "stage": "documentación sin publicación",
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "rules": [
+      "No asignar capítulos nuevos a los 10 oráculos antes de tener textos/audio final y permisos.",
+      "Cada escuela y etapa podrá conectarse temáticamente con un oráculo sin ampliar automáticamente los 10 sitios de San Yallego.",
+      "Un vínculo a pasado/futuro nunca se muestra como audio escuchable hasta confirmarse publicación y acceso.",
+      "No exponer secretos N4/N5/C100."
+    ]
+  },
+  "approvalGates": [
+    "Aprobar el papel de las escuelas y su número antes de crear pueblos/maestros.",
+    "Registrar edad, duración de trayecto y calendario real en cada libro antes de asignar escenas.",
+    "Evitar que toda enseñanza ética termine en el Libro II; los conflictos deben exigir práctica posterior.",
+    "No afirmar que Juan concluyó por completo el Camino del Guerrero en Libro III o IV sin decisión expresa.",
+    "Book IV centrado en El Bélico no obliga a retratar a Juan como protagonista físico.",
+    "No modificar la Biblia V3 ni capítulos/MP3 ya publicados por un esquema de propuesta."
+  ]
+}
