@@ -43,6 +43,7 @@ const transmediaContinuityDoc = source('docs/personajes/biblia-continuidad-trans
 const elOjon = JSON.parse(source('lib/san-yallego/el-ojon-character-v1.json'))
 const elOjonDoc = source('docs/personajes/el-ojon-ficha-maestra-oficial-v1.md')
 const pendingV4 = source('docs/biblia/registro-cambios-candidatos-v4.md')
+const characterVisualIndex = JSON.parse(source('lib/san-yallego/character-visual-index-v1.json'))
 const panchoVisual = JSON.parse(source('lib/san-yallego/pancho-visual-master-v1.json'))
 const panchoVisualDoc = source('docs/personajes/abuelo-pancho-ficha-visual-maestra-v1.md')
 const doloresVisual = JSON.parse(source('lib/san-yallego/dolores-visual-master-v1.json'))
@@ -699,14 +700,28 @@ assert.ok(elOjonDoc.includes('SUPER CHISMOSO') &&
   'La ficha oficial y el registro V4 deben preservar estado y procedencia')
 
 
-// Continuidad de personajes: referencias cargadas; pruebas detalladas en pausa mientras
-// se comprueba la compilación de toda la aplicación tras ampliar el catálogo.
-assert.ok(panchoVisual.id === 'abuelo-pancho' &&
-  doloresVisual.id === 'dolores' &&
-  xoloVisual.id === 'xolo' &&
-  chemaVisual.id === 'don-chema' &&
-  pendingV4.includes('V4-015'),
-  'Las cuatro fichas deben mantener identidad y estar presentes en el registro V4')
+// Mantener el catálogo cronológico estable mientras se amplían las fichas visuales.
+assert.equal(characterVisualIndex.primaryChronology,
+  'lib/san-yallego/character-chronology-v1.json',
+  'El índice visual no puede sustituir el catálogo cronológico aprobado')
+const masters = [panchoVisual, doloresVisual, xoloVisual, chemaVisual]
+assert.deepEqual(characterVisualIndex.characterVisualMappings.map(x=>x.characterId),
+  masters.map(x=>x.id),
+  'Las cuatro fichas deben estar indexadas por los mismos IDs de los personajes')
+assert.ok(masters.every(x=>x.visualStages.length>0 &&
+  x.visualStages.every(s=>s.views.length===7 && s.views.every(v=>v.asset===null))),
+  'No declarar siete vistas de animación generadas o aprobadas antes de tiempo')
+assert.ok(characterVisualIndex.characterVisualMappings.every(x=>
+  characterChronology.characters.some(c=>c.id===x.characterId) &&
+  x.ageEvidence.length===0),
+  'No duplicar personajes ni inventar edades de fichas conceptuales')
+assert.ok(doloresVisual.identity.nonLiteral.some(x=>x.includes('amiga de Juanito')) &&
+  xoloVisual.identity.nonLiteral.some(x=>x.includes('ojos')) &&
+  chemaVisual.referenceArt.length===0,
+  'Preservar parentesco de Dolores, misterio de XOLO y rostro pendiente de Chema')
+assert.ok(pendingV4.includes('V4-012') && pendingV4.includes('V4-013') &&
+  pendingV4.includes('V4-014') && pendingV4.includes('V4-015'),
+  'La futura Biblia V4 debe incorporar las cuatro fichas sin reemplazar la V3')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
