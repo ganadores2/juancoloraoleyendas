@@ -29,6 +29,17 @@
 | V4-010 | Puerta del Mictlán | Puerta del Mictlán equivale a puerta de entrada al Inframundo en el mapa; no equiparar sin prueba a cualquier otra cueva | `docs/oraculos/matriz-maestra-10-oraculos-v1.md` | **Correspondencia confirmada** |
 | V4-011 | Protección del misterio | El Oráculo no revela el secreto; invita a escuchar, leer y descubrir la experiencia, aplicando políticas por nivel y permisos de servidor | `docs/oraculos/matriz-maestra-10-oraculos-v1.md` | **Política editorial y de seguridad** |
 
+## 2.1. Nuevas fichas de continuidad añadidas al inventario V4
+
+| ID | Personaje | Hechos establecidos que se protegen | Referencias nuevas | Estado |
+|---|---|---|---|---|
+| V4-012 | **Abuelo Pancho** | Tradición, prudencia, memoria y humor; presente en nacimiento de Juan y escena del XOLO con la mariposa. No fijar edades numéricas por láminas. | `docs/personajes/abuelo-pancho-ficha-visual-maestra-v1.md`; `lib/san-yallego/pancho-visual-master-v1.json` | Precanon visual, relación narrativa documentada |
+| V4-013 | **Dolores Colorao** | **Madre de Juan**, fortaleza familiar, memoria y protección. La etiqueta de «amiga de Juanito» en la lámina de su infancia es **incompatible con la maternidad** y NO debe convertirse en canon. | `docs/personajes/dolores-ficha-visual-maestra-v1.md`; `lib/san-yallego/dolores-visual-master-v1.json` | Corrección de interpretación visual; no reescribir el manuscrito |
+| V4-014 | **XOLO** | Guardia, guía y vínculo con Juan; escenas de Libro I y preguntas abiertas sobre el primer XOLO. No inferir edades biológicas ni poderes de ojos luminosos en concept art. | `docs/personajes/xolo-ficha-visual-maestra-v1.md`; `lib/san-yallego/xolo-visual-master-v1.json` | Precanon visual; secretos protegidos |
+| V4-015 | **Don Chema** | Humor sarcástico, «¡NO SÉ!» y diálogo con Juan y María en la cantina **El Desengaño**; futura serie de humor. No mezclarlo con Pancho ni asignarle un rostro imaginado. | `docs/personajes/don-chema-ficha-visual-maestra-v1.md`; `lib/san-yallego/don-chema-visual-master-v1.json` | Ficha narrativa registrada; sin rostro maestro ni edad aprobados |
+
+**Principio común:** estos personajes ya están incluidos en el catálogo de 17 habitantes/personajes; las nuevas fichas **no crean otros cuatro personajes duplicados**. Cualquier episodio futuro de serie, relación, edad o avatar requiere fuente y aprobación independiente.
+
 ## 3. Asuntos pendientes: no resolverlos por inferencia
 
 - **Apellido de Gabriel:** Vallego / Yallego, pendiente de decisión del autor. Preservar ambas láminas.
