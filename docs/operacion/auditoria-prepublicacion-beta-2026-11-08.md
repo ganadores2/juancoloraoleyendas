@@ -33,7 +33,8 @@
 3. En Chrome incógnito, `/sitio/sitio-03` mostró «San Yallego todavía no te ha mostrado este camino» y «Volver al mapa»: **APROBADO — sitio público sellado**.
 4. En Vercel Preview, una llave deliberadamente falsa produjo «La llave no fue reconocida»: **APROBADO — rechazo de credencial incorrecta**.
 5. Tras varios intentos consecutivos con la clave falsa, el Preview mostró «La puerta está en pausa. Demasiados intentos...» y pidió esperar aproximadamente un minuto: **APROBADO — bloqueo visible al superar el umbral**. La captura de pantalla del autor demuestra la interfaz; **la condición HTTP 429 y su cabecera Retry-After todavía no se inspeccionaron directamente**.
-6. **Pendiente:** comprobar la recuperación al vencer el plazo, el conteo de intentos exacto, fallos reales del proveedor Redis, producción tras publicación y si MP4 estáticos reservados requieren autorización de descarga directa.
+6. Tras esperar más de un minuto, el autor regresó a la Sala del Creador, introdujo nuevamente la llave falsa y recibió «La llave no fue reconocida», sin la pantalla de pausa: **APROBADO — recuperación del formulario tras el bloqueo temporal**.
+7. **Pendiente:** confirmar el HTTP 429 y Retry-After mediante inspección de red, el conteo exacto, fallos reales de Redis, producción tras publicación y el alcance público de archivos MP4 estáticos. No se introdujo una llave real.
 
 Estas comprobaciones no implican aprobación para desplegar, ni prueban que una ruta estática de `public/assets` esté protegida.
 
