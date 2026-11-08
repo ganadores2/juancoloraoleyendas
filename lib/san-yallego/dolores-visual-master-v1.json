@@ -314,5 +314,19 @@
     "reading": "Maternidad, decisiones propias y memoria: identidad por encima de leyendas erróneas.",
     "audio": "Preservar fuerza y matices emotivos, Voice ID pendiente.",
     "animation": "No usar modelos de «amiga» infantil como compañera de Juan; mantener edad relativa y parentesco aprobado."
+  },
+  "crossBookContinuity": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "approvedFutureAgeEvents": [],
+    "narrativeLaw": "Un solo personaje y una sola biografía coherente; no inventar cronología, escenas futuras ni rasgos solo por concept art.",
+    "reading": "Priorizar escenas y relaciones narrativas verificadas; descripción física únicamente donde aporte a la historia.",
+    "audio": "Conservar voz, intención y personalidad; casting/Voice ID por aprobación del autor.",
+    "animation": "Elegir un modelo por edad/estado visual efectivamente representado y generar siete vistas coherentes; no aprobar ninguna imagen sin el autor.",
+    "futureSeries": "Reservas conceptuales no son guiones ni autorizan secretos o saltos no publicados."
   }
 }
