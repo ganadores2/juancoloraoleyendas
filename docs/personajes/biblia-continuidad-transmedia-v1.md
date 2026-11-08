@@ -47,6 +47,20 @@ Cada personaje tendrá una **identidad única** registrada por `character_id`. U
 
 **Ninguna de las tres series tiene aún fechas, temporadas, episodios, narraciones finales ni URLs de exhibición.** No se crearán enlaces promocionales a destinos no publicados.
 
+## 2.1. Nueva incorporación aprobada: El Ojón (SCH = Super Chismoso)
+
+**Registro canónico del autor — 7 de noviembre de 2026.** El Ojón es un **personaje secundario o circunstancial** del universo extendido, cuya presencia en los Libros I–IV será opcional y dependerá de la historia. **No está obligado a aparecer en los cuatro.**
+
+Su relevancia futura está **reservada específicamente** para las series de **XOLO** y **Don Chema**. La combinación del chismoso curioso con el XOLO guardián y el Don Chema evasivo tiene potencial creativo, pero **no hay escenas o guiones aprobados** para esa combinación.
+
+**Señal visual que el autor ha fijado:** **SCH = SUPER CHISMOSO**, letras del escudo de su camisa en la primera imagen. Se conservarán **tres referencias** en la Biblioteca `/Juan Colorao Leyendas/Personajes/El Ojón/`: OJ-REF-01 (SCH con XOLO), OJ-REF-02 (detective con lupa) y OJ-REF-03 (sombrero vaquero con XOLO). El rostro de detective está guardado como referencia visual reutilizable bajo el nombre **«El Ojón»**.
+
+Las imágenes sugieren un pequeño personaje de grandes ojos negros y pelaje caramelo/blanco, semejante a un cuyo estilizado, pero **la especie ficticia exacta aún no es canon**. Un traje de superhéroe no concede poderes; sostener a XOLO en una pose no prueba hechos históricos y el texto de un letrero ilustrado no nombra un sitio oficial del pueblo.
+
+**Fichas obligatorias en nuevas revisiones:** `docs/personajes/el-ojon-ficha-maestra-oficial-v1.md` y `lib/san-yallego/el-ojon-character-v1.json`. Identidad estable: `el-ojon`. **Ninguna Biblia futura debe omitirlo**, incluso cuando todavía no se hayan escrito escenas.
+
+**Nivel editorial:** **Canon Dorado de reserva**, siguiendo las categorías de la Biblia Maestra V3.0. No añade hechos retroactivos al Canon Rojo.
+
 ## 3. Gabriel: continuidad de identidad antes de expansión
 
 La Biblia Maestra deja abierta la grafía **Gabriel Vallego / Yallego**, y existen láminas de evolución que utilizan ambas. **Se conservan las dos.** El Capítulo XXXI contiene un recuerdo en que Gabriel tenía **nueve años** cuando Geraldo lo llevó a un lugar; no corresponde a su edad en el capítulo donde habla. La ficha `docs/personajes/gabriel-ficha-visual-maestra-v1.md` permite seguir su evolución sin anticipar misterios.
