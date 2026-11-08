@@ -27,8 +27,9 @@
       },
       {
         "book": 1,
-        "chapter": 0,
-        "fact": "En otra escena del Libro I recuperado, Dolores prohíbe a Juan y María tocar un brote extraño; el capítulo exacto queda por indexar."
+        "chapter": null,
+        "fact": "En otra escena del Libro I recuperado, Dolores prohíbe a Juan y María tocar un brote extraño; el capítulo exacto queda por indexar.",
+        "chapterStatus": "escena localizada en texto SRT, numeración exacta no verificada"
       }
     ],
     "relation": "Madre de Juan, no su amiga de infancia; prioridad a texto y canon."
