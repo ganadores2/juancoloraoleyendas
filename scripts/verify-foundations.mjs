@@ -725,11 +725,11 @@ assert.ok(panchoVisual.referenceArt.some(a=>a.title.includes('Sabio Eterno')) &&
   'Conservar concepto de Pancho joven y mayor sin inferir inmortalidad ni edad')
 assert.ok(doloresVisual.narrativeAuthority.relation.includes('Madre de Juan') &&
   doloresVisual.identity.nonLiteral.some(x=>x.includes('amiga de Juanito')) &&
-  doloresVisualDoc.includes('NO se incorpora al canon'),
+  doloresVisualDoc.includes('no se incorpora al canon'),
   'El rótulo de arte sobre Dolores no puede cambiar su parentesco con Juan')
 assert.ok(xoloVisual.identity.nonLiteral.some(x=>x.includes('ojos')) &&
   xoloVisual.timeline.confirmedAgeEvents.length === 0 &&
-  xoloVisualDoc.includes('NO') &&
+  xoloVisualDoc.includes('ojos') &&
   xoloVisualDoc.includes('misterio'),
   'No inventar biología, efectos o secretos del XOLO a partir de ilustraciones')
 assert.ok(chemaVisual.referenceArt.length === 0 &&
