@@ -85,7 +85,23 @@
 8. Generar la **Biblia Maestra V4** como nueva versión (PDF/archivo editorial) **solo al cerrar este proceso**, con aprobación del autor; archivar la V3 **sin borrarla**.
 9. Añadir pruebas de regresión para los cambios de mayor impacto: María mayor/mentora, El Ojón/SCH, Gabriel pendiente, canon visual y acceso a material futuro.
 
-## 5. Archivo vivo / futuras altas
+## 5. Después del lanzamiento: expansión controlada de San Yallego (V4-021)
+
+**Decisión nueva confirmada por el autor (7 de noviembre de 2026):** una vez terminados QA, seguridad y publicación beta de `juancoloraoleyendas.com`, incorporar a la futura Biblia Maestra V4.0 un apartado **posterior al lanzamiento** con tres líneas de proyecto: **motor de diez Oráculos GPT**, **edición multilingüe** de la obra y **TECH-OZ**, una operación de agentes IA coordinada por un Jefe de Personal bajo mando humano.
+
+**Ejecución en fases aprobada en orientación (NO implementada):** arranque con métricas y agentes internos supervisados; pilotos del Oráculo de Entrada/Casa de Juanito y Capítulo I en ES/EN; ampliación gradual solo tras pruebas; después distribución, comunidades y patrocinios controlados. La ambición de **1.000.000 de suscriptores auténticos en doce meses** es una meta aspiracional, no promesa ni cifra proyectada. Es necesario definir audiencia, presupuesto, consentimiento y criterios de avance.
+
+**Régimen editorial y de seguridad:** este plan se clasifica como **Canon de Proyecto**, nunca como Canon Rojo de la historia. No autoriza publicar capítulos futuros, revelar secretos N4/N5/C100, liberar accesos mediante GPT, gastar presupuesto, firmar contratos ni generar seguidores artificiales. El nombre «TECH-OZ INC.» no implica que exista una sociedad jurídicamente constituida.
+
+**Registro público resumido:** `docs/biblia/v4-apartado-despues-del-lanzamiento-resumen-publicable.md`.  
+**Anexo editorial completo reservado al autor:** `BIBLIA_V4_0_Anexo_Despues_del_Lanzamiento.pdf`.  
+**Reporte operativo completo reservado al autor:** `TECH_OZ_INC_Reporte_Postlanzamiento_2026.pdf`.
+
+**Estado de incorporación:** referenciado y preservado para la compilación final de V4. La Biblia Maestra V3.0 sigue vigente y no se modifica. Los PDF completos no se publican en el repositorio abierto.
+
+---
+
+## 6. Archivo vivo / futuras altas
 
 A medida que terminemos fichas de Pancho, Dolores, XOLO, Don Chema, Doña Chavela, y sus cruces con los Libros II–IV, registrar aquí nuevas decisiones aprobadas antes de incorporarlas a V4.
 
