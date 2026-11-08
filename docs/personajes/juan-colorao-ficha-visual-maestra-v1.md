@@ -151,7 +151,32 @@ Para la futura **serie animada**, probar la identidad en movimiento, luz lateral
 4. **Qué rasgo familiar no debe cambiar de J01 a J04** cuando Juan crece: forma de ojos, nariz, perfil, cabello y energía del personaje.
 5. **Cómo migrarán los rasgos de la juventud al Juan adulto** de los próximos libros: el atuendo de charro, aventurero y cotidiano queda reservado para esas etapas hasta que se fije su edad y capítulo.
 
-## 9. Integración con la web
+## 9. Decisión del autor: conservar todas las referencias y distinguir medios
+
+**Aprobada como política de producción el 7 de noviembre de 2026.** Las láminas e ilustraciones anteriores **se conservan todas** como referencias válidas de exploración: ninguna se elimina, sustituye ni descarta ahora, y ninguna queda declarada avatar definitivo por esta decisión. No es necesario escoger inmediatamente una imagen única para Juan. Las cuatro etapas narrativas y los juegos de siete vistas son una estructura para cuando se produzca la serie, no una obligación para publicar los libros.
+
+**Diferencia de exigencia según el medio:**
+
+| Medio | Criterio de continuidad | Lo que NO exige |
+|---|---|---|
+| **Libro digital y lectura** | Describir de forma natural y solo cuando importe los cambios de edad, aspecto, vestuario o manifestaciones COLORAO; conservar la coherencia de su primera aparición y de su significado. | No necesita descripción física completa en cada capítulo ni siete imágenes de cada etapa. |
+| **Audiolibro / ElevenLabs** | Mantener los mismos hechos del texto, la edad narrativa y evolución vocal apropiada; utilizar indicaciones de actuación o pronunciación fuera del manuscrito literario cuando hagan falta. | No necesita un modelo visual completo ni convertir grafías fonéticas de ElevenLabs en ortografía del libro. |
+| **Serie animada futura** | Seguir al mismo personaje cuadro a cuadro con modelo aprobado por edad, geometría facial estable, marcas en el mismo lado, vestuario consistente y siete vistas maestras del modelo realmente animado. | No puede improvisar cambios físicos ni tomar todas las láminas conceptuales como imágenes oficiales simultáneas. |
+
+**COLORAO / coloración / marcas:** la aparición concreta de una marca, cicatriz, brillo o coloración solo se fijará cuando esté documentada en el capítulo y confirmada con el autor. No confundir «ser Colorao» (identidad narrativa) con la obligación de mostrar una marca física continua. En los libros siguientes, cada nueva manifestación se registra con **libro + capítulo + edad/contexto + primera aparición + causa narrativa aprobada + permanencia o transformación**. La ausencia de esos datos obliga a dejarlo pendiente, no a inventarlo.
+
+### Protocolo para los Libros II, III y IV
+
+1. Al incorporar el manuscrito y audio final del nuevo libro, indexar escenas con Juan, edad verificable, cambios de apariencia o manifestaciones COLORAO y contexto (escena, recuerdo, sueño).
+2. Contrastar el nuevo estado con la última descripción válida del libro anterior: **un salto temporal no es permiso para cambiar de identidad sin explicación**.
+3. En lectura, añadir solo referencias significativas que sirvan a la historia; en audio, preservar la actuación y voz de la etapa. **No alterar los MP3 ya aprobados por motivos puramente visuales.**
+4. Para la serie animada, revisar **todas las referencias existentes** antes de aprobar un rostro base, conservar las alternativas archivadas y derivar siete vistas consistentes para cada edad que aparezca en pantalla.
+5. Registrar aprobación expresa de cada modelo y evento visual. Ninguna imagen de trabajo ni generación futura se declarará canon sin esa aprobación.
+6. Proteger los misterios N4/N5/C100: no convertir un diseño visual en revelación anticipada.
+
+**Estado del proyecto tras esta decisión:** política de continuidad aprobada; imágenes conservadas; modelos faciales y siete vistas **pendientes de aprobación**. Los datos estructurados de esta política están en `lib/san-yallego/juan-visual-master-v1.json` → `crossBookContinuity`.
+
+## 10. Integración con la web
 
 Esta ficha alimentará el futuro **Catálogo de Personajes** y las recomendaciones de los diez Oráculos. Se enlazará a capítulos mediante **edad verificada** y se ofrecerán audio/lectura **solo cuando existan archivos publicados y autorización**.
 
