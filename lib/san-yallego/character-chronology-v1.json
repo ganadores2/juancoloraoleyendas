@@ -186,6 +186,39 @@
           "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 28",
           "review": "cotejo-MP3-pendiente",
           "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-sueno-05",
+          "ageYears": 5,
+          "book": 1,
+          "chapter": 29,
+          "temporalContext": "sueno",
+          "evidence": "En el capítulo XXIX, Juan sueña con imágenes de sí mismo de 5 años; no es su edad real durante ese capítulo.",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 29",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-sueno-07",
+          "ageYears": 7,
+          "book": 1,
+          "chapter": 29,
+          "temporalContext": "sueno",
+          "evidence": "En el capítulo XXIX, Juan sueña con imágenes de sí mismo de 7 años; no es su edad real durante ese capítulo.",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 29",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-sueno-15",
+          "ageYears": 15,
+          "book": 1,
+          "chapter": 29,
+          "temporalContext": "sueno",
+          "evidence": "En el capítulo XXIX, Juan sueña con imágenes de sí mismo de 15 años; no es su edad real durante ese capítulo.",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 29",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
         }
       ],
       "visualRanges": [
@@ -201,7 +234,8 @@
       "notes": [
         "Los rangos de edades de concept art no son el canon de capítulos y podrían diferir.",
         "El 17 en capítulos XXVI y XXVIII es evidencia de dos momentos del mismo período; no atribuir automáticamente edad al XXXIII.",
-        "El Libro I prepara la siguiente etapa de Juan, no certifica que su Camino del Guerrero esté terminado."
+        "El Libro I prepara la siguiente etapa de Juan, no certifica que su Camino del Guerrero esté terminado.",
+        "El capítulo XXIX evoca edades 5, 7 y 15 mediante un sueño: estos registros no deben cambiar su cronología real."
       ]
     },
     {
