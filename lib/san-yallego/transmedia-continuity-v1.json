@@ -20,7 +20,9 @@
     "El público puede reconocer personajes en distintos tiempos sin que las revelaciones de N4, N5 y C100 queden en material accesible.",
     "Las siete vistas son exigibles por modelo visual usado en animación, no por cada aparición textual o sonora.",
     "No proponer enlaces a series, tiendas ni audios que no estén publicados y autorizados.",
-    "El personaje el-ojon debe permanecer referenciado en futuras Biblias y en las series conceptuales de XOLO y Don Chema sin inventar episodios."
+    "El personaje el-ojon debe permanecer referenciado en futuras Biblias y en las series conceptuales de XOLO y Don Chema sin inventar episodios.",
+    "Dolores es madre de Juan: un rótulo de concept art que diga «amiga de Juanito» no reescribe la relación.",
+    "Las láminas de XOLO con ojos brillantes o etiquetas de edad no prueban poderes ni cronología biológica."
   ],
   "series": [
     {
@@ -39,13 +41,15 @@
         "Don Chema no se vuelve idiota por el chiste: la pereza y la evasiva son recursos expresivos, no una discapacidad.",
         "Chavela conserva humor incisivo, autonomía y autoridad; «pelado» y «burrín» se interpretan según relación y tono.",
         "Los modismos y la picardía se adaptan a audio y doblaje sin eliminar el sentido cultural.",
-        "El Ojón está reservado por el autor como secundario de desarrollo importante: ojos grandes, curiosidad, humor, SCH = SUPER CHISMOSO y tres referencias visuales archivadas."
+        "El Ojón está reservado por el autor como secundario de desarrollo importante: ojos grandes, curiosidad, humor, SCH = SUPER CHISMOSO y tres referencias visuales archivadas.",
+        "El humor de Chema se sustenta en diálogo canónico de la cantina El Desengaño y en su evasiva «¡NO SÉ!»; no confundir su identidad con la de Pancho."
       ],
       "dontInvent": [
         "Episodios, nuevos habitantes, fechas y conflictos específicos",
         "Edad exacta de Chema o Chavela",
         "Origen oculto de algún oráculo",
-        "No inventar apariciones, edades, poderes, identidad de voz o episodios ya aprobados para El Ojón."
+        "No inventar apariciones, edades, poderes, identidad de voz o episodios ya aprobados para El Ojón.",
+        "No asignar avatar, edad o atuendo definitivo a Don Chema hasta contar con material aprobado."
       ],
       "plannedCharacterLinks": [
         {
@@ -71,13 +75,15 @@
         "Continuidad de aspecto y conducta cuando se trata del mismo XOLO.",
         "La elección, la lealtad y la relación con Juan se construyen con escenas verificadas; el Capítulo XI sirve como ancla de vínculo.",
         "El Capítulo XXIX sugiere una búsqueda sobre el primer XOLO, pero no demuestra que el público conozca su verdad completa.",
-        "El Ojón está reservado por el autor como secundario de desarrollo importante: ojos grandes, curiosidad, humor, SCH = SUPER CHISMOSO y tres referencias visuales archivadas."
+        "El Ojón está reservado por el autor como secundario de desarrollo importante: ojos grandes, curiosidad, humor, SCH = SUPER CHISMOSO y tres referencias visuales archivadas.",
+        "La silueta, orejas y ojos de XOLO se basan en referencias visuales todavía precanónicas; no oficializar edades de la ilustración ni revelar origen, sucesión o poderes."
       ],
       "dontInvent": [
         "Edad biológica definitiva del XOLO",
         "Origen sobrenatural explicado o genealogía revelada",
         "Multiplicaciones del personaje o capacidades nuevas por simple estilo visual",
-        "No inventar apariciones, edades, poderes, identidad de voz o episodios ya aprobados para El Ojón."
+        "No inventar apariciones, edades, poderes, identidad de voz o episodios ya aprobados para El Ojón.",
+        "El brillo de los ojos o distintas etapas de las láminas no confirman cambio biológico ni poderes."
       ],
       "plannedCharacterLinks": [
         {
@@ -118,7 +124,11 @@
     "oracleTimeline": "lib/san-yallego/oracle-timeline-v2.json",
     "glossary": "lib/san-yallego/glossary.ts",
     "spoilerPolicy": "Sin secretos N4/N5/C100 en registros públicos o renderizados",
-    "elOjon": "lib/san-yallego/el-ojon-character-v1.json"
+    "elOjon": "lib/san-yallego/el-ojon-character-v1.json",
+    "pancho": "lib/san-yallego/pancho-visual-master-v1.json",
+    "dolores": "lib/san-yallego/dolores-visual-master-v1.json",
+    "xolo": "lib/san-yallego/xolo-visual-master-v1.json",
+    "donChema": "lib/san-yallego/don-chema-visual-master-v1.json"
   },
   "changeProtocol": [
     "Registrar qué hecho se modifica, qué personajes toca y en qué libro/capítulo se originó.",
