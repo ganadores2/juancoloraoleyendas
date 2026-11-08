@@ -61,7 +61,7 @@
           "book": 1,
           "chapter": 1,
           "temporalContext": "escena",
-          "evidence": "Juan nació al amanecer del 8 de marzo de 1969; capítulo I.",
+          "evidence": "La narración sitúa su nacimiento al amanecer, tras comenzar la noche del 8 de marzo de 1969; el día exacto del nacimiento no se explicita.",
           "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 1",
           "review": "cotejo-MP3-pendiente",
           "visualApproval": "pendiente"
