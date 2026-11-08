@@ -16,6 +16,15 @@ const rateLimiter = source('lib/san-yallego/guardian-rate-limit.mjs')
 const logoutRoute = source('app/guardian/logout/route.ts')
 const guardianIndex = source('app/guardian/page.tsx')
 const nextConfig = source('next.config.mjs')
+const robotsSeo = source('app/robots.ts')
+const sitemapSeo = source('app/sitemap.ts')
+const rootSeo = source('app/layout.tsx')
+const publicLandingSeo = source('app/page.tsx')
+const publicIndexSeo = source('app/libro/1/page.tsx')
+const publicMapSeo = source('app/mapa/page.tsx')
+const publicGlossarySeo = source('app/glosario/page.tsx')
+const sealedSiteSeo = source('app/sitio/[slug]/page.tsx')
+const chapterPageSeo = source('app/libro/[libro]/capitulo/[capitulo]/page.tsx')
 const guardianPage = source('app/guardian/sitio/[slug]/page.tsx')
 const mapScreen = source('components/san-yallego/mapa/mapa-screen.tsx')
 const navMenu = source('components/san-yallego/traveler-map-nav.tsx')
@@ -810,6 +819,39 @@ assert.ok(warriorRoadmapDoc.includes('escuelas míticas') &&
   pendingV4.includes('V4-020') &&
   temporalDesign.includes('Camino del Guerrero y escuelas míticas'),
   'La ruta de escuelas debe figurar en la Biblia V4 y la arquitectura temporal')
+
+
+// Lanzamiento público: indexación sólo de rutas seguras y canónicas.
+assert.ok(robotsSeo.includes("process.env.VERCEL_ENV !== 'production'") &&
+  robotsSeo.includes("disallow: '/'"),
+  'Las previews deben impedir indexación pública')
+for (const denied of ['/guardian','/sitio/','/libro/1/capitulo/','/bienvenida','/portal']) {
+  assert.ok(robotsSeo.includes("'" + denied + "'"),
+    'El rastreador no debe entrar por rutas inmersivas o privadas: ' + denied)
+}
+assert.ok(sitemapSeo.includes('https://www.juancoloraoleyendas.com') &&
+  rootSeo.includes('https://www.juancoloraoleyendas.com') &&
+  robotsSeo.includes('https://www.juancoloraoleyendas.com'),
+  'Sitemap, robots y metadatos deben compartir el dominio canónico verificado')
+for (const allowed of ['/', '/mapa', '/libro/1', '/glosario']) {
+  assert.ok(sitemapSeo.includes("ORIGIN + '" + allowed + "'"),
+    'El sitemap sólo incluye rutas públicas estables: ' + allowed)
+}
+assert.doesNotMatch(sitemapSeo, /guardian|\bsitio\b|capitulo|\bbienvenida\b|\bportal\b/,
+  'El sitemap jamás debe anunciar puertas, capítulos privados o experiencias condicionadas')
+assert.ok(rootSeo.includes('metadataBase:') &&
+  rootSeo.includes("locale: 'es_MX'") &&
+  rootSeo.includes('noarchive: true') &&
+  !rootSeo.includes("generator: 'v0.app'"),
+  'Los metadatos deben ser de Juan Colorao y previews no indexables')
+assert.ok(publicLandingSeo.includes("canonical: '/'") &&
+  publicMapSeo.includes("canonical: '/mapa'") &&
+  publicIndexSeo.includes("canonical: '/libro/1'") &&
+  publicGlossarySeo.includes("canonical: '/glosario'"),
+  'Cada ruta pública debe identificar correctamente su URL canónica')
+assert.ok(sealedSiteSeo.includes('robots: { index: false, follow: false }') &&
+  chapterPageSeo.includes('robots: { index: false, follow: false }'),
+  'Páginas de oráculos y capítulos no deben indexarse sin contexto')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
