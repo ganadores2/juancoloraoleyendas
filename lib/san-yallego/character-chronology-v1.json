@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "editorialStatus": "borrador-fichas; pendiente de cotejo con MP3 y aprobación visual",
+  "createdAt": "2026-11-07",
+  "sourceOfTruth": [
+    "Biblia Maestra V3.0, sección 16 (personajes, edades y voces)",
+    "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capítulos citados; SRT todavía no cotejado con MP3",
+    "Biblia de Personajes de San Yollego.png y Evolución de personajes de Juan Colorao.png (referencia visual, no canon aprobado)"
+  ],
+  "rules": {
+    "chronologies": [
+      "cronologia-real",
+      "cronologia-de-descubrimiento"
+    ],
+    "recollection": "Los recuerdos/sueños no se tratan como edad actual del personaje.",
+    "voice": "Pronunciación de ElevenLabs no altera ortografía de libro.",
+    "visual": "Siete vistas por etapa solo cuando el autor apruebe el modelo. Los rangos visuales son propuestas, no edades verificadas.",
+    "security": "No incluir contenido de N4/N5/C100 ni detalles de origen reservados.",
+    "publication": "Los capítulos de futuro no se recomiendan como audio hasta que estén publicados, verificados y autorizados.",
+    "timeline": "No inferir un año de calendario a partir de edad sin establecer fecha del acontecimiento.",
+    "canon": "La cronología real determina los hechos; la de descubrimiento permite saltar en la lectura sin cambiarlos."
+  },
+  "visualPlan": {
+    "viewsPerApprovedStage": 7,
+    "slots": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07"
+    ],
+    "stageApprovalRequired": true,
+    "referenceArtIsNotApprovedCharacterMaster": true,
+    "assetLinksCreated": false
+  },
+  "futureVolumes": [
+    {
+      "book": 2,
+      "status": "sin edades ni personajes por capítulo indexados"
+    },
+    {
+      "book": 3,
+      "status": "sin edades ni personajes por capítulo indexados"
+    },
+    {
+      "book": 4,
+      "status": "sin edades ni personajes por capítulo indexados"
+    }
+  ],
+  "characters": [
+    {
+      "id": "juan-colorao",
+      "name": "Juan Colorao",
+      "role": "protagonista",
+      "ageEvents": [
+        {
+          "stageId": "juan-00",
+          "ageYears": 0,
+          "book": 1,
+          "chapter": 1,
+          "temporalContext": "escena",
+          "evidence": "Juan nació al amanecer del 8 de marzo de 1969; capítulo I.",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 1",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-03",
+          "ageYears": 3,
+          "book": 1,
+          "chapter": 3,
+          "temporalContext": "escena",
+          "evidence": "El capítulo III inicia «A los tres años, Juan...»",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 3",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-05",
+          "ageYears": 5,
+          "book": 1,
+          "chapter": 4,
+          "temporalContext": "escena",
+          "evidence": "El capítulo IV declara que Juan conoció en persona a María cuando tenía cinco años.",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 4",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-07",
+          "ageYears": 7,
+          "book": 1,
+          "chapter": 5,
+          "temporalContext": "escena",
+          "evidence": "El capítulo V inicia «A los siete años, Juan...»",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 5",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-09",
+          "ageYears": 9,
+          "book": 1,
+          "chapter": 9,
+          "temporalContext": "escena",
+          "evidence": "El capítulo IX declara «Cuando Juan cumplió nueve años...»",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 9",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-10",
+          "ageYears": 10,
+          "book": 1,
+          "chapter": 11,
+          "temporalContext": "escena",
+          "evidence": "El capítulo XI sitúa a Juan con diez años al observar la conducta del XOLO.",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 11",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-11",
+          "ageYears": 11,
+          "book": 1,
+          "chapter": 12,
+          "temporalContext": "escena",
+          "evidence": "El capítulo XII declara «Juan tenía once años».",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 12",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-14",
+          "ageYears": 14,
+          "book": 1,
+          "chapter": 23,
+          "temporalContext": "escena",
+          "evidence": "El capítulo XXIII comienza con «A los catorce años, Juan...»",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 23",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-15",
+          "ageYears": 15,
+          "book": 1,
+          "chapter": 24,
+          "temporalContext": "escena",
+          "evidence": "El capítulo XXIV comienza con «A los quince años, Juan...»",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 24",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-16",
+          "ageYears": 16,
+          "book": 1,
+          "chapter": 25,
+          "temporalContext": "escena",
+          "evidence": "El capítulo XXV declara «Cuando Juan cumplió dieciséis años...»",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 25",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-17",
+          "ageYears": 17,
+          "book": 1,
+          "chapter": 26,
+          "temporalContext": "escena",
+          "evidence": "El capítulo XXVI declara «Tenía diecisiete años cuando comenzó el último tramo de preparación».",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 26",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        },
+        {
+          "stageId": "juan-17-confirmacion",
+          "ageYears": 17,
+          "book": 1,
+          "chapter": 28,
+          "temporalContext": "escena",
+          "evidence": "El capítulo XXVIII habla de «El de diecisiete años».",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 28",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        }
+      ],
+      "visualRanges": [
+        "0-5",
+        "6-10",
+        "11-15",
+        "16-17",
+        "20-25",
+        "30-35",
+        "40-50",
+        "50+"
+      ],
+      "notes": [
+        "Los rangos de edades de concept art no son el canon de capítulos y podrían diferir.",
+        "El 17 en capítulos XXVI y XXVIII es evidencia de dos momentos del mismo período; no atribuir automáticamente edad al XXXIII.",
+        "El Libro I prepara la siguiente etapa de Juan, no certifica que su Camino del Guerrero esté terminado."
+      ]
+    },
+    {
+      "id": "maria-de-los-angeles",
+      "name": "María de los Ángeles",
+      "role": "sanación, autonomía y crecimiento",
+      "ageEvents": [
+        {
+          "stageId": "maria-05",
+          "ageYears": 5,
+          "book": 1,
+          "chapter": 2,
+          "temporalContext": "escena",
+          "evidence": "El capítulo II dice que María tenía cinco años en aquellos mismos días del nacimiento de Juan.",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 2",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        }
+      ],
+      "visualRanges": [
+        "0-5",
+        "6-10",
+        "11-15",
+        "16-20",
+        "20-30",
+        "30-40",
+        "40-50",
+        "50+"
+      ],
+      "notes": [
+        "La edad relativa respecto a Juan necesita auditoría: el SRT indica María de cinco años cuando Juan era recién nacido.",
+        "Los rangos de la lámina visual son concept art, no una asignación aprobada a los capítulos.",
+        "No deducir la edad de María en el capítulo IV mediante una suma automática hasta confirmar las fechas."
+      ]
+    },
+    {
+      "id": "gabriel-vallego",
+      "name": "Gabriel Vallego / Yallego",
+      "role": "figura paterna, investigación y memoria",
+      "ageEvents": [
+        {
+          "stageId": "gabriel-09-recuerdo",
+          "ageYears": 9,
+          "book": 1,
+          "chapter": 31,
+          "temporalContext": "recuerdo",
+          "evidence": "Gabriel relata en el capítulo XXXI que Geraldo lo llevó a ese lugar cuando tenía nueve años.",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 31",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        }
+      ],
+      "visualRanges": [
+        "0-5",
+        "6-10",
+        "11-15",
+        "16-25",
+        "25-40",
+        "40-50",
+        "50+"
+      ],
+      "notes": [
+        "La grafía Gabriel Vallego/Yallego queda pendiente de auditoría canónica según Biblia V3.0.",
+        "Su edad nueve años en XXXI es un recuerdo anterior, NO su edad en el presente del capítulo.",
+        "No inferir fechas, origen oculto ni líneas familiares a partir de las imágenes."
+      ]
+    },
+    {
+      "id": "abuelo-pancho",
+      "name": "Abuelo Pancho",
+      "role": "tradición, memoria y prudencia",
+      "ageEvents": [],
+      "visualRanges": [
+        "joven-trabajador",
+        "30-40",
+        "50-60",
+        "65-75",
+        "75+"
+      ],
+      "notes": [
+        "Biblia V3.0 solicita versiones juveniles y ancianas; no proporciona fechas verificables.",
+        "La edad durante el nacimiento de Juan no está fijada."
+      ]
+    },
+    {
+      "id": "dolores",
+      "name": "Dolores",
+      "role": "maternidad y fortaleza familiar",
+      "ageEvents": [],
+      "visualRanges": [
+        "joven",
+        "20-30",
+        "30-40",
+        "40-50",
+        "50+"
+      ],
+      "notes": [
+        "No asignar edades numéricas basadas solamente en ilustraciones."
+      ]
+    },
+    {
+      "id": "tomas",
+      "name": "Tomás",
+      "role": "amistad y lealtad",
+      "ageEvents": [],
+      "visualRanges": [
+        "5-10",
+        "11-15",
+        "16-25",
+        "25-35",
+        "35+"
+      ],
+      "notes": [
+        "Continuidad de infancia a adultez según láminas, sin equivalencia cronológica a capítulos verificada."
+      ]
+    },
+    {
+      "id": "lupita",
+      "name": "Lupita",
+      "role": "amistad, inteligencia y valentía",
+      "ageEvents": [],
+      "visualRanges": [
+        "5-10",
+        "11-15",
+        "16-25",
+        "25-35",
+        "35+"
+      ],
+      "notes": [
+        "Evolución visual referencial, edades por capítulo pendientes."
+      ]
+    },
+    {
+      "id": "xolo",
+      "name": "XOLO",
+      "role": "guía y guardián",
+      "ageEvents": [],
+      "visualRanges": [
+        "cachorro",
+        "joven",
+        "adulto"
+      ],
+      "notes": [
+        "La Biblia V3.0 dice que los cambios físicos se justifican solo si lo hace el canon.",
+        "La edad biológica del XOLO no está establecida; NO equiparar sueños y ancestros con su edad.",
+        "No revelar su función cosmológica reservada ni responder al misterio de su origen."
+      ]
+    },
+    {
+      "id": "dona-chavela",
+      "name": "Doña Chavela / Chabela",
+      "role": "partera, narración y humor",
+      "ageEvents": [],
+      "visualRanges": [],
+      "notes": [
+        "La grafía Chabela/Chavela está pendiente de fijación editorial.",
+        "Sus anécdotas de generaciones no son una edad cronológica fiable; conservar el humor.",
+        "Conservar modismos del pueblo sin introducir grafías fonéticas de ElevenLabs en la novela."
+      ]
+    },
+    {
+      "id": "don-chema",
+      "name": "Don Chema",
+      "role": "humor y sabiduría popular",
+      "ageEvents": [],
+      "visualRanges": [],
+      "notes": [
+        "No asignar edad cronológica por humor o apariencia de referencias.",
+        "La voz y expresiones populares se catalogan aparte de edad biológica."
+      ]
+    },
+    {
+      "id": "geraldo",
+      "name": "Geraldo",
+      "role": "figura del pasado de Gabriel",
+      "ageEvents": [],
+      "visualRanges": [
+        "25-35",
+        "35-45",
+        "45-55"
+      ],
+      "notes": [
+        "Rangos ilustrados conceptuales, no evidencia de años o escenas cronológicas precisas.",
+        "Evitar divulgar hechos reservados de su arco narrativo."
+      ]
+    },
+    {
+      "id": "padre-esteban",
+      "name": "Padre Esteban",
+      "role": "orientación espiritual",
+      "ageEvents": [],
+      "visualRanges": [
+        "20-30",
+        "30-50",
+        "50+"
+      ],
+      "notes": [
+        "La edad del personaje en escenas del Libro I no está confirmada."
+      ]
+    },
+    {
+      "id": "dona-rosa",
+      "name": "Doña Rosa",
+      "role": "sabiduría popular",
+      "ageEvents": [],
+      "visualRanges": [
+        "30-50",
+        "50-65",
+        "65+"
+      ],
+      "notes": [
+        "La edad del personaje en escenas del Libro I no está confirmada."
+      ]
+    },
+    {
+      "id": "el-alcalde",
+      "name": "El Alcalde",
+      "role": "autoridad local",
+      "ageEvents": [],
+      "visualRanges": [
+        "30-40",
+        "40-50",
+        "50+"
+      ],
+      "notes": [
+        "La edad del personaje en escenas del Libro I no está confirmada."
+      ]
+    },
+    {
+      "id": "nahual",
+      "name": "Nahual",
+      "role": "personaje de Amatlán",
+      "ageEvents": [
+        {
+          "stageId": "nahual-10",
+          "ageYears": 10,
+          "book": 1,
+          "chapter": 27,
+          "temporalContext": "escena",
+          "evidence": "El capítulo XXVII dice «Nahual tenía diez años».",
+          "proof": "EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md, capitulo 27",
+          "review": "cotejo-MP3-pendiente",
+          "visualApproval": "pendiente"
+        }
+      ],
+      "visualRanges": [],
+      "notes": [
+        "No vincular automáticamente su edad al nacimiento de Juan; el Capítulo XXVII transcurre en otro período."
+      ]
+    },
+    {
+      "id": "el-belico",
+      "name": "El Bélico",
+      "role": "personaje contemporáneo y futuro ciclo extendido",
+      "ageEvents": [],
+      "visualRanges": [],
+      "notes": [
+        "La Biblia V3.0 sitúa su encarnación pública prevista en 2027; no confundirla con su nacimiento.",
+        "El Libro IV no tiene capítulos indexados ni apariencias canónicas en el sistema actual.",
+        "No inventar fechas ni edad a partir de una propuesta visual."
+      ]
+    }
+  ]
+}
