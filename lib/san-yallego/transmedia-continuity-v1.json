@@ -22,7 +22,9 @@
     "No proponer enlaces a series, tiendas ni audios que no estén publicados y autorizados.",
     "El personaje el-ojon debe permanecer referenciado en futuras Biblias y en las series conceptuales de XOLO y Don Chema sin inventar episodios.",
     "Dolores es madre de Juan: un rótulo de concept art que diga «amiga de Juanito» no reescribe la relación.",
-    "Las láminas de XOLO con ojos brillantes o etiquetas de edad no prueban poderes ni cronología biológica."
+    "Las láminas de XOLO con ojos brillantes o etiquetas de edad no prueban poderes ni cronología biológica.",
+    "La historia de Doña Chavela menciona cinco, seis o siete generaciones y ella nunca aclaró cuál: preservar la ambigüedad intencional; no derivar edad o inmortalidad.",
+    "No fusionar homónimos Tomás ni inventar romances de Lupita ni revelar biografía reservada de Geraldo por láminas conceptuales."
   ],
   "series": [
     {
@@ -42,14 +44,16 @@
         "Chavela conserva humor incisivo, autonomía y autoridad; «pelado» y «burrín» se interpretan según relación y tono.",
         "Los modismos y la picardía se adaptan a audio y doblaje sin eliminar el sentido cultural.",
         "El Ojón está reservado por el autor como secundario de desarrollo importante: ojos grandes, curiosidad, humor, SCH = SUPER CHISMOSO y tres referencias visuales archivadas.",
-        "El humor de Chema se sustenta en diálogo canónico de la cantina El Desengaño y en su evasiva «¡NO SÉ!»; no confundir su identidad con la de Pancho."
+        "El humor de Chema se sustenta en diálogo canónico de la cantina El Desengaño y en su evasiva «¡NO SÉ!»; no confundir su identidad con la de Pancho.",
+        "La partera Doña Chavela no aclaraba si eran cinco, seis o siete generaciones que había visto pasar; la incertidumbre deliberada forma parte del humor y no determina edad."
       ],
       "dontInvent": [
         "Episodios, nuevos habitantes, fechas y conflictos específicos",
         "Edad exacta de Chema o Chavela",
         "Origen oculto de algún oráculo",
         "No inventar apariciones, edades, poderes, identidad de voz o episodios ya aprobados para El Ojón.",
-        "No asignar avatar, edad o atuendo definitivo a Don Chema hasta contar con material aprobado."
+        "No asignar avatar, edad o atuendo definitivo a Don Chema hasta contar con material aprobado.",
+        "No calcular cuántos años vivió Doña Chavela ni hacerla literalmente inmortal para justificar el chiste de las generaciones."
       ],
       "plannedCharacterLinks": [
         {
@@ -128,7 +132,11 @@
     "pancho": "lib/san-yallego/pancho-visual-master-v1.json",
     "dolores": "lib/san-yallego/dolores-visual-master-v1.json",
     "xolo": "lib/san-yallego/xolo-visual-master-v1.json",
-    "donChema": "lib/san-yallego/don-chema-visual-master-v1.json"
+    "donChema": "lib/san-yallego/don-chema-visual-master-v1.json",
+    "donaChavela": "lib/san-yallego/dona-chavela-visual-master-v1.json",
+    "tomas": "lib/san-yallego/tomas-visual-master-v1.json",
+    "lupita": "lib/san-yallego/lupita-visual-master-v1.json",
+    "geraldo": "lib/san-yallego/geraldo-visual-master-v1.json"
   },
   "changeProtocol": [
     "Registrar qué hecho se modifica, qué personajes toca y en qué libro/capítulo se originó.",
