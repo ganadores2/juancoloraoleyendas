@@ -30,6 +30,9 @@ const chaptersData = source('lib/san-yallego/chapters.ts')
 const bookOneCatalog = source('app/libro/1/page.tsx')
 const reader = source('components/san-yallego/capitulo/immersive-reader.tsx')
 const chapterOneText = source('lib/san-yallego/chapter-one-text.ts')
+const glossary = source('lib/san-yallego/glossary.ts')
+const glossaryPage = source('app/glosario/page.tsx')
+const glossaryExplorer = source('components/san-yallego/glossary-explorer.tsx')
 
 const videos = [...assets.matchAll(/['"](\/assets\/video\/[^'"]+\.mp4)['"]/g)].map((match) => match[1])
 assert.ok(videos.length >= 24, `Se esperaban 24 videos de bienvenida y recorridos; encontrados ${videos.length}`)
@@ -276,6 +279,36 @@ assert.ok(chapterScreen.includes(": chapter.audio ? (") &&
   'El modo lectura no debe intentar reproducir archivos MP3 que aún no están en el servidor')
 assert.ok(chapterPaths.includes('href="/libro/1"'),
   'Al terminar el interludio debe poderse abrir el índice oficial del libro')
+
+
+const glossaryEntries = [...glossary.matchAll(/\{ term: "([^"]+)", category: "(universo|habla|lenguas|personajes)", definition: "([^"]+)", source:/g)]
+assert.equal(glossaryEntries.length, 42,
+  'El Archivo de Palabras debe conservar las 42 entradas culturales y sus definiciones')
+for (const category of ['universo','habla','lenguas','personajes']) {
+  assert.ok(glossaryEntries.some((entry) => entry[2] === category),
+    'Falta una categoría del Archivo de Palabras: ' + category)
+}
+for (const term of ['Pelado', 'Pelao', 'Burrín', 'Hijas del maíz', 'Tzinzunzan', 'Xoloitzcuintle']) {
+  assert.ok(glossary.includes('term: "' + term + '"'),
+    'No debe faltar la palabra cultural ' + term)
+}
+assert.ok(glossary.includes('Definición aportada por el autor') &&
+  glossary.includes('Biblia Maestra V3.0') &&
+  glossary.includes('Gran Diccionario Náhuatl (UNAM)'),
+  'El glosario debe distinguir definiciones del autor, canon y fuentes lingüísticas')
+assert.ok(glossary.includes('aún requieren cotejo') && glossary.includes('pendiente confirmar'),
+  'No se deben inventar significados donde las fuentes de pronunciación no los definen')
+assert.doesNotMatch(glossary, /Sholoitscuíntle|SHÓLO|N5_Revelacion|Secreto_del_Narrador/,
+  'El glosario público no debe confundir alias fonéticos con ortografía ni publicar secretos')
+assert.ok(glossaryPage.includes('<GlossaryExplorer />') &&
+  glossaryExplorer.includes('aria-label="Buscar y filtrar palabras"') &&
+  glossaryExplorer.includes('fold(entry.term') &&
+  glossaryExplorer.includes("filter !== 'todos'"),
+  'Debe existir la página /glosario con buscador y filtros funcionales')
+assert.ok(bookOneCatalog.includes('href="/glosario"') &&
+  mapScreen.includes('href="/glosario"') &&
+  chapterPaths.includes('href="/glosario"'),
+  'El Archivo de Palabras debe encontrarse desde el libro, el mapa y tras el Capítulo I')
 
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
