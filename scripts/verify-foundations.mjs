@@ -803,10 +803,10 @@ assert.equal(warriorRoadmap.phases.find(p=>p.phaseId==='CONVERGENCIA-100').chapt
 assert.equal(warriorRoadmap.phases.find(p=>p.phaseId==='CICLO-101+').chapterRange.first,101,
   'El Bélico mantiene su puente al ciclo 101+ sin inventar edades de Juan')
 assert.ok(warriorRoadmap.castPolicy.fromBookOne.homeTownCameos.includes('Cameos') &&
-  warriorRoadmap.castPolicy.maria.includes('propia'),
+  warriorRoadmap.castPolicy.maria.includes('Camino propio'),
   'La población de San Yallego conserva vida propia y solo cameos pertinentes')
 assert.ok(warriorRoadmapDoc.includes('escuelas míticas') &&
-  warriorRoadmapDoc.includes('Capítulo XXXIII') &&
+  warriorRoadmapDoc.includes('capítulo XXXIII') &&
   pendingV4.includes('V4-020') &&
   temporalDesign.includes('Camino del Guerrero y escuelas míticas'),
   'La ruta de escuelas debe figurar en la Biblia V4 y la arquitectura temporal')
