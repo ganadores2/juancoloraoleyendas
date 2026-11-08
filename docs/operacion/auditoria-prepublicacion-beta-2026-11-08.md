@@ -85,6 +85,19 @@ El autor aprobó continuar con los otros 32 capítulos del Libro I como acompañ
 
 ---
 
+## Validación manual de lectura de capítulos 2–33 — 8 de noviembre de 2026
+
+**Prueba reportada por el autor en Chrome, Vercel Preview:** leyó una muestra de capítulos escogidos al azar, incluido el capítulo XXXIII, y confirmó que cada uno de los probados presenta correctamente su texto. Esta muestra **no equivale a una inspección manual individual de los 33**.
+
+- El autor destaca y **aprueba explícitamente** las barras verticales a la izquierda de los párrafos de diálogo: a la vez delimitan las intervenciones y aportan un adorno elegante. **Conservar ese tratamiento visual** en las siguientes iteraciones; no quitarlo durante ajustes de audio o navegación.
+- Captura suministrada: indicador de progreso `Lectura 63.4% · bloque 64/103`; apariencia de papel, tamaño legible, diálogos con líneas verticales y avance activo.
+- El catálogo señala claramente `MP3 por incorporar` para los capítulos que todavía no tienen grabación instalada. No mostrar reproductores vacíos ni simular audio.
+- Resultado: **QA manual por muestreo de lectura satisfactoria**; quedan pendientes el cotejo completo SRT/MP3, la integración de archivos de audio reales por partes y la decisión explícita de si el texto íntegro será gratuito en producción.
+
+**Siguiente lote**: preparar inventario de 32 capítulos MP3 del autor (tamaños, nombre, capítulos con varias partes); no inventar enlaces ni subir materiales maestros sin verificación.
+
+---
+
 ## Puertas de salida — condición necesaria antes de publicar
 
 - [ ] **Revisión de cambios:** inspeccionar los 103 archivos comparados y separar contenido destinado a `main` de material técnico/editorial no publicable.
