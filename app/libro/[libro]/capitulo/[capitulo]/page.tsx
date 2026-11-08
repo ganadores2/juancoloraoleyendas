@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ChapterScreen } from '@/components/san-yallego/capitulo/chapter-screen'
 import { CHAPTERS, getChapter } from '@/lib/san-yallego/chapters'
+import { getChapterText } from '@/lib/san-yallego/chapter-text'
 
 type Props = { params: Promise<{ libro: string; capitulo: string }> }
 
@@ -25,5 +26,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   const chapter = await resolve(params)
   if (!chapter) notFound()
-  return <ChapterScreen chapter={chapter} />
+  return <ChapterScreen key={chapter.id} chapter={chapter} paragraphs={getChapterText(chapter.book, chapter.number)} />
 }
