@@ -27,9 +27,14 @@ export default function LibroUnoPage() {
             de San Yallego. Las demás grabaciones se incorporarán sin alterar
             el texto ni el orden original del libro.
           </p>
-          <Link href="/bienvenida" className={ritualButton('secondary', 'min-h-11 tracking-[0.14em]')}>
-            Vivir el recorrido cinematográfico
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link href="/bienvenida" className={ritualButton('secondary', 'min-h-11 tracking-[0.14em]')}>
+              Vivir el recorrido cinematográfico
+            </Link>
+            <Link href="/glosario" className={ritualButton('secondary', 'min-h-11 tracking-[0.12em]')}>
+              Consultar el Archivo de Palabras
+            </Link>
+          </div>
         </header>
 
         <ol className="grid gap-3" aria-label="Capítulos del Libro I">
