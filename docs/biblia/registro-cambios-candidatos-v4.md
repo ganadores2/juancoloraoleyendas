@@ -42,6 +42,17 @@
 
 **Índice de implementación visual:** `lib/san-yallego/character-visual-index-v1.json` conecta estas cuatro fichas por ID sin modificar el catálogo cronológico estable que utiliza la aplicación.
 
+## 2.2. Nuevas fichas: partera, amistades y memoria Plateada
+
+| ID | Personaje | Regla aprobada o hecho documentado | Referencia | Estado |
+|---|---|---|---|---|
+| **V4-016** | **Doña Chavela / Chabela** | El Capítulo I dice que había visto pasar **seis generaciones… tal vez cinco, tal vez siete**, y nunca aclaraba esas cosas. **Ambigüedad intencional confirmada por el autor**, no edad factual, contradicción a arreglar ni inmortalidad canónica. «Chavela» es la forma usada por el autor; «Chabela» la grafía del SRT consultado. | `docs/personajes/dona-chavela-ficha-visual-maestra-v1.md`; `lib/san-yallego/dona-chavela-visual-master-v1.json` | Narrativa y humor confirmados; nombre editorial y avatar pendientes |
+| **V4-017** | **Tomás** | Amistad y lealtad. Conservar lámina «Amigo Eterno»; no fusionar al amigo de Juan con **Tomás Villaseñor** de un listado ni con otro Tomás que participa en debate de carretera sin verificar identidad. | `docs/personajes/tomas-ficha-visual-maestra-v1.md`; `lib/san-yallego/tomas-visual-master-v1.json` | Precanon visual; homónimos por auditar |
+| **V4-018** | **Lupita** | Inteligencia y agencia propias; aparece en el **Capítulo XII, Los Espejos Niños**. Las escenas de pareja, familia o liderato insinuadas en la lámina no establecen hechos futuros. | `docs/personajes/lupita-ficha-visual-maestra-v1.md`; `lib/san-yallego/lupita-visual-master-v1.json` | Escena literaria documentada; edades y futuros pendientes |
+| **V4-019** | **Geraldo** | Asociado a memorias de Gabriel. En el **Capítulo XXXI** Gabriel recuerda que **él mismo tenía nueve años** cuando Geraldo lo llevó a un lugar. No convertir ese dato en edad de Geraldo ni adelantar secretos. | `docs/personajes/geraldo-ficha-visual-maestra-v1.md`; `lib/san-yallego/geraldo-visual-master-v1.json` | Referencia del pasado; misterio y apariencia protegidos |
+
+**Arquitectura de continuidad:** las ocho fichas visuales actualmente elaboradas desde Pancho hasta Geraldo se vinculan mediante `lib/san-yallego/character-visual-index-v1.json`. Se conserva el esquema del catálogo cronológico original que usa la web y los oráculos, sin duplicar habitantes ni calcular edades a partir de dibujos.
+
 ## 3. Asuntos pendientes: no resolverlos por inferencia
 
 - **Apellido de Gabriel:** Vallego / Yallego, pendiente de decisión del autor. Preservar ambas láminas.
