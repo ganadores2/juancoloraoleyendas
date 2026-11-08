@@ -82,6 +82,9 @@ const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md
 const bookOneCatalog = source('app/libro/1/page.tsx')
 const reader = source('components/san-yallego/capitulo/immersive-reader.tsx')
 const chapterOneText = source('lib/san-yallego/chapter-one-text.ts')
+const bookOneReading = JSON.parse(source('lib/san-yallego/book-one-reading-v1.json'))
+const chapterTextServer = source('lib/san-yallego/chapter-text.ts')
+const chapterRoute = source('app/libro/[libro]/capitulo/[capitulo]/page.tsx')
 const glossary = source('lib/san-yallego/glossary.ts')
 const glossaryPage = source('app/glosario/page.tsx')
 const glossaryExplorer = source('components/san-yallego/glossary-explorer.tsx')
@@ -271,10 +274,11 @@ assert.equal(readingBlocks.filter((p) => p.startsWith('—')).length, 34,
 assert.doesNotMatch(chapterOneText, /MAPA DE BLOQUES PARA ELEVENLABS|FIN DEL LIBRO PRIMERO/,
   'La versión de lectura debe excluir instrucciones técnicas y texto de capítulos posteriores')
 assert.ok(chapterScreen.includes("setMode(next)") &&
-  chapterScreen.includes("<ImmersiveReader paragraphs={CHAPTER_ONE_TEXT}") &&
-  chapterScreen.includes('onListen={() => chooseMode(\'escuchar\')}') &&
+  chapterScreen.includes("<ImmersiveReader chapterNumber={chapter.number}") &&
+  chapterScreen.includes("paragraphs={paragraphs ?? []}") &&
+  chapterScreen.includes("onListen={chapter.audio ? () => chooseMode('escuchar') : undefined}") &&
   chapterScreen.includes('onFinished={markRead}'),
-  'El Capítulo I debe ofrecer lectura y escucha como opciones en la misma página')
+  'Los 33 capítulos deben permitir lectura, y escucha solamente cuando existe MP3')
 assert.ok(reader.includes("Papel Vallego") && reader.includes("Noche de Mictlán") &&
   reader.includes("Colorao") && reader.includes('setFontSize'),
   'La lectura inmersiva debe respetar los tres ambientes y el control de tamaño')
@@ -291,8 +295,8 @@ assert.ok(reader.includes('pointer-events-none fixed inset-x-0 top-0') &&
   'La barra de avance debe permanecer visible y actualizarse al desplazarse por la lectura')
 assert.ok(reader.includes('Ver final del texto') &&
   reader.includes('paragraphRefs.current[last]') &&
-  reader.includes('No es una transcripción verificada del MP3'),
-  'El lector debe permitir comprobar el cierre y distinguir edición PDF de la grabación posterior')
+  reader.includes('No es una transcripción verificada de los MP3'),
+  'El lector debe distinguir la edición SRT literaria de la verificación final de los MP3')
 
 assert.ok(reader.includes("document.addEventListener('scroll', trackReading, true)") &&
   reader.includes('new IntersectionObserver(trackReading') &&
@@ -312,6 +316,38 @@ assert.doesNotMatch(reader, /window\.scrollY < documentTop/,
   'El marcador de lectura no debe depender del scrollY de la ventana')
 
 
+
+// Los 32 nuevos capítulos provienen de la edición literaria depurada del SRT.
+const remainingNumbers = Object.keys(bookOneReading.chapters).map(Number).sort((a, b) => a - b)
+assert.deepEqual(remainingNumbers, Array.from({ length: 32 }, (_, i) => i + 2),
+  'La edición SRT debe contener una y solo una sección para cada capítulo 2–33')
+for (const chapterNumber of remainingNumbers) {
+  const paragraphs = bookOneReading.chapters[String(chapterNumber)]
+  assert.ok(Array.isArray(paragraphs) && paragraphs.length > 20 &&
+    paragraphs.every((paragraph) => typeof paragraph === 'string' && paragraph.trim().length > 0),
+  `Falta contenido o hay bloques vacíos en el capítulo ${chapterNumber}`)
+  assert.ok(!paragraphs.some((paragraph) => /^## CAPÍTULO/.test(paragraph) ||
+    /MAPA DE BLOQUES PARA ELEVENLABS/.test(paragraph)),
+  `El capítulo ${chapterNumber} incluye otro capítulo o instrucciones editoriales`)
+}
+assert.equal(bookOneReading.chapters['2'][0].slice(0, 17), 'Siete días después',
+  'El capítulo II debe iniciar con su texto narrativo depurado')
+assert.equal(bookOneReading.chapters['33'].at(-1), 'Y Siguió… caminando…',
+  'El capítulo XXXIII debe finalizar antes de la coda reservada del audio')
+assert.ok(chapterTextServer.includes("import 'server-only'") &&
+  chapterTextServer.includes('chapter === 1') &&
+  chapterTextServer.includes('remainingChapters[String(chapter)]') &&
+  chapterRoute.includes('getChapterText(chapter.book, chapter.number)'),
+  'El texto debe entregarse por capítulo desde servidor, no como un paquete completo al móvil')
+assert.ok(reader.includes('libro-1-capitulo-${chapterNumber}') &&
+  reader.includes('window.localStorage.setItem(BOOKMARK_KEY') &&
+  reader.includes('chapterTitle.toUpperCase()'),
+  'Cada capítulo debe tener su marcador y título independientes')
+assert.ok(chapterScreen.includes("chapter.audio ? 'escuchar' : 'leer'") &&
+  chapterScreen.includes('Capítulo anterior') &&
+  chapterScreen.includes('Siguiente capítulo') &&
+  chapterScreen.includes('Regresar al índice de los 33 capítulos'),
+  'Los capítulos sin MP3 deben iniciar en lectura y ofrecer navegación cronológica')
 
 assert.ok(bookOneCatalog.includes("LEER / ESCUCHAR"),
   'El menú debe mostrar que el Capítulo I admite lectura y escucha')
