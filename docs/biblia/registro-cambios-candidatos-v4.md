@@ -53,6 +53,14 @@
 
 **Arquitectura de continuidad:** las ocho fichas visuales actualmente elaboradas desde Pancho hasta Geraldo se vinculan mediante `lib/san-yallego/character-visual-index-v1.json`. Se conserva el esquema del catálogo cronológico original que usa la web y los oráculos, sin duplicar habitantes ni calcular edades a partir de dibujos.
 
+## 2.3. Nuevo eje de planificación: el Camino del Guerrero no termina en un solo libro
+
+| ID | Nueva decisión | Hechos confirmados | Distribución aún propuesta | Archivo |
+|---|---|---|---|---|
+| **V4-020** | **Libro II: escuelas míticas y formación prolongada del COLORAO** | El autor confirma que **Juan visitará, por invitación, escuelas míticas de otros pueblos** durante el Libro II; surgirán nuevos personajes de esos viajes. La formación del Camino del Guerrero no debe concentrarse en Libro I ni II. La partida con Gabriel y XOLO y el camino separado de María hacia Tzinzunzan ya aparecen en el Capítulo XXXIII. | Libro II: aprendizajes y primeras responsabilidades; Libro III: contradicción, reparación e integración; Capítulo 100: convergencia sin obligación de perfección; Libro IV / 101+: El Bélico examina el legado en su propio contexto. **La distribución por capítulos 34–99 es propuesta, NO trama final aprobada.** | `docs/saga/camino-del-guerrero-y-escuelas-miticas-libros-1-4-v1.md`; `lib/san-yallego/camino-del-guerrero-roadmap-v1.json` |
+
+**Continuidad de reparto:** Gabriel y XOLO parten con Juan según el texto; María tiene su propia invitación y ruta. El resto del pueblo puede aparecer en cameos si corresponde, no se obliga a todos a viajar. **Las escuelas y nuevos personajes todavía no tienen nombres o historias asignados.** Los diez Oráculos mantendrán su configuración, relacionando futuros capítulos solo cuando se publiquen y autoricen.
+
 ## 3. Asuntos pendientes: no resolverlos por inferencia
 
 - **Apellido de Gabriel:** Vallego / Yallego, pendiente de decisión del autor. Preservar ambas láminas.
