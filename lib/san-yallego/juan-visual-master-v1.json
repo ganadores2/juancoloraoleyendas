@@ -63,7 +63,7 @@
     ]
   },
   "stageSystem": {
-    "type": "RANGOS DE PRODUCCIÓN, NO EDADES EXCLUSIVAS",
+    "type": "RANGOS NARRATIVOS; cada turnaround de siete vistas fija una sola edad ancla, no todo el intervalo",
     "stages": [
       {
         "stageId": "J01",
@@ -197,6 +197,11 @@
             "status": "no-creado",
             "approval": "pendiente"
           }
+        ],
+        "anchorAgeYears": 5,
+        "alternativeAgesRequiringSeparateModel": [
+          0,
+          3
         ]
       },
       {
@@ -330,6 +335,11 @@
             "status": "no-creado",
             "approval": "pendiente"
           }
+        ],
+        "anchorAgeYears": 9,
+        "alternativeAgesRequiringSeparateModel": [
+          7,
+          10
         ]
       },
       {
@@ -464,6 +474,11 @@
             "status": "no-creado",
             "approval": "pendiente"
           }
+        ],
+        "anchorAgeYears": 14,
+        "alternativeAgesRequiringSeparateModel": [
+          11,
+          15
         ]
       },
       {
@@ -598,6 +613,10 @@
             "status": "no-creado",
             "approval": "pendiente"
           }
+        ],
+        "anchorAgeYears": 16,
+        "alternativeAgesRequiringSeparateModel": [
+          17
         ]
       }
     ]
@@ -619,6 +638,7 @@
     "adultWardrobe": "Explorador / charro / cotidiano son propuestas de biblioteca, no canon del Libro I"
   },
   "qualityGates": [
+    "Una etapa agrupa edades narrativas; sus siete vistas muestran un único modelo de edad ancla (J01=5; J02=9; J03=14; J04=16), salvo nueva aprobación.",
     "Aprobar una imagen base por etapa antes de renderizar los siete ángulos",
     "Conservar identidad facial al cambiar perspectiva, iluminación y edad",
     "Vista posterior debe corresponder exactamente al mismo atuendo de la frontal",
@@ -626,5 +646,9 @@
     "No poner etiquetas de edad inferidas en imágenes destinadas a publicación",
     "Registrar aprobación del autor para cada etapa y para cada lámina maestra",
     "No incorporar en interfaz pública ni en motor GPT secretos N4/N5/C100"
-  ]
+  ],
+  "visualPlan": {
+    "referenceAgePerStage": "5, 9, 14 y 16 años como anclas propuestas; recién nacido, 3, 7, 10, 11, 15 y 17 requerirán variantes propias si se animan con detalle",
+    "sameSevenViewsCannotRepresentWholeAgeRange": true
+  }
 }
