@@ -86,6 +86,18 @@ El papel de Gabriel se mantiene ligado a figura paterna, investigación, memoria
 
 Estas cuatro fichas están enlazadas **por ID estable de personaje** mediante `lib/san-yallego/character-visual-index-v1.json`. El catálogo cronológico que utiliza la aplicación permanece sin cambios para preservar la compatibilidad. Las siete vistas son **ranuras sin imágenes nuevas**, y solo se elaborarán cuando el autor apruebe modelos concretos para la serie animada.
 
+## 4.2. La partera de generaciones imprecisas y el siguiente reparto
+
+**Doña Chavela / Chabela.** En el Capítulo I de `El Gran Cambio` corre el rumor de que había visto nacer y morir a seis generaciones. Tal vez cinco. Tal vez siete. **Ella jamás lo aclaraba.** El autor confirma que **esa incertidumbre es deliberada**: una marca oral de su carácter, no una cifra que la producción deba cerrar. El próximo audiovisual no debe calcularle edad o conferirle inmortalidad para justificarlo. El apellido/variante de nombre se verificará con la edición definitiva sin alterar los MP3. La futura serie sarcástica de Don Chema ya contempla a Chavela, sin episodios escritos.
+
+**Tomás.** Se preserva su amistad y evolución conceptual. Los nombres homónimos del SRT no deben fusionarse sin prueba; su retrato «Amigo Eterno» no declara edad, inmortalidad ni biografía futura.
+
+**Lupita.** El Capítulo XII la presenta como persona que observa, pregunta y decide. En la serie, sus decisiones y silencio tendrán peso propio; dibujos de pareja o familia son hipotéticos hasta aprobación.
+
+**Geraldo.** El recuerdo del Capítulo XXXI sitúa a **Gabriel** a los nueve años con Geraldo; **no determina la edad de Geraldo**. Su evolución conceptual como figura Plateada exige separar lo que el visitante sabe de lo que se reserva a futuros libros.
+
+**Fichas:** `docs/personajes/dona-chavela-ficha-visual-maestra-v1.md`, `docs/personajes/tomas-ficha-visual-maestra-v1.md`, `docs/personajes/lupita-ficha-visual-maestra-v1.md`, `docs/personajes/geraldo-ficha-visual-maestra-v1.md`. Sus referencias están registradas en `lib/san-yallego/character-visual-index-v1.json`; el catálogo cronológico de producción permanece intacto.
+
 ## 5. Registro obligatorio de cambios
 
 Antes de modificar la biografía de cualquier personaje:
