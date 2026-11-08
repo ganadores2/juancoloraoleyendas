@@ -495,6 +495,35 @@ assert.ok(juanVisualDoc.includes('ESTADO DE LA FICHA: PRECANON') &&
   juanVisualDoc.includes('Siete vistas'),
   'La ficha debe documentar el canon provisional y no completar antes de tiempo el camino de Juan')
 
+
+// Approved 7 Nov 2026: preserve every Juan artwork reference and apply per-medium continuity.
+assert.equal(juanVisual.crossBookContinuity?.retainAllExistingReferenceArt, true,
+  'No descartar ninguna de las referencias visuales de Juan')
+assert.deepEqual(juanVisual.crossBookContinuity.books, [1, 2, 3, 4],
+  'La coherencia de apariencia debe extenderse a todos los libros')
+assert.ok(juanVisual.references.filter((ref) =>
+  ref.type === 'concepto-visual' || ref.type === 'concepto-de-vestuario-adulto').length >= 4,
+  'Mantener todas las láminas de referencia previas, sin escoger solo una')
+for(const medium of ['lectura','audio','serie_animada']) {
+  assert.ok(juanVisual.crossBookContinuity.modes[medium]?.requirement &&
+    juanVisual.crossBookContinuity.modes[medium].check?.length > 0,
+    'La continuidad debe tener criterios específicos para: ' + medium)
+}
+assert.equal(juanVisual.crossBookContinuity.modes.lectura.requireSevenViews, false,
+  'La novela no necesita siete vistas ni descripciones repetidas')
+assert.equal(juanVisual.crossBookContinuity.modes.audio.requireSevenViews, false,
+  'El audiolibro no requiere hojas visuales completas')
+assert.equal(juanVisual.crossBookContinuity.modes.serie_animada.requireSevenViews, true,
+  'La futura serie animada sí requiere modelos visuales y ángulos aprobados')
+assert.deepEqual(juanVisual.crossBookContinuity.futureStages, [],
+  'No inventar apariencia de Juan en Libros II, III y IV')
+assert.ok(juanVisualDoc.includes('Todas las láminas') === false ||
+  juanVisualDoc.includes('se conservan todas'),
+  'La guía debe preservar todas las referencias como material de exploración')
+assert.ok(temporalDesign.includes('Continuidad de apariencia entre libros y medios') &&
+  temporalDesign.includes('Serie animada'),
+  'La matriz intertemporal también debe respetar la continuidad visual de Juan')
+
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
   'El Taller debe tener un enlace al recorrido público dentro de la misma preview')
