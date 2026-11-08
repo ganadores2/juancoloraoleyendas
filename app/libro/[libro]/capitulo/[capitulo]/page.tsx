@@ -16,7 +16,10 @@ async function resolve(params: Props['params']) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const chapter = await resolve(params)
-  return { title: chapter ? `Capítulo ${chapter.number} — ${chapter.title}` : 'San Yallego' }
+  return {
+    title: chapter ? `Capítulo ${chapter.number} — ${chapter.title}` : 'San Yallego',
+    robots: { index: false, follow: false },
+  }
 }
 
 export default async function Page({ params }: Props) {
