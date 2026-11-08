@@ -84,7 +84,7 @@ El papel de Gabriel se mantiene ligado a figura paterna, investigación, memoria
 - **XOLO:** `docs/personajes/xolo-ficha-visual-maestra-v1.md`. Las ilustraciones de cachorro/joven/adulto y ojos brillantes son referencias, **no cronología biológica ni prueba de poderes**. Su origen permanece sujeto al misterio narrativo.
 - **Don Chema:** `docs/personajes/don-chema-ficha-visual-maestra-v1.md`. Su comedia se ancla en la cantina El Desengaño y en el remate evasivo «¡NO SÉ!». No aparece una lámina individual inequívoca en la búsqueda actual: **no inventar avatar maestro**, y reservar su relación futura con El Ojón sin diálogos ficticios.
 
-Estas cuatro fichas ya se enlazan al catálogo cronológico existente. Las siete vistas son **ranuras sin imágenes nuevas**, y solo se elaborarán cuando el autor apruebe modelos concretos para la serie animada.
+Estas cuatro fichas están enlazadas **por ID estable de personaje** mediante `lib/san-yallego/character-visual-index-v1.json`. El catálogo cronológico que utiliza la aplicación permanece sin cambios para preservar la compatibilidad. Las siete vistas son **ranuras sin imágenes nuevas**, y solo se elaborarán cuando el autor apruebe modelos concretos para la serie animada.
 
 ## 5. Registro obligatorio de cambios
 
