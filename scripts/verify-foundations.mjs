@@ -260,14 +260,14 @@ assert.ok(siteConfig.includes("name: 'La Puerta hacia el Inframundo'") &&
 
 const readingBlocksRaw = chapterOneText.match(/export const CHAPTER_ONE_TEXT: readonly string\[\] = (\[[\s\S]*?\]) as const/)?.[1] ?? '[]'
 const readingBlocks = JSON.parse(readingBlocksRaw)
-assert.equal(readingBlocks.length, 137,
-  'La edición digital del capítulo I debe contener sus 137 bloques narrativos completos (PDF pp. 4-8)')
-assert.equal(readingBlocks[0], 'La noche del 8 de marzo de 1969, San Yallego olía a tierra mojada aunque no había llovido en semanas.',
-  'La primera frase debe coincidir con el manuscrito')
-assert.equal(readingBlocks[readingBlocks.length - 1], 'Y luego silencio.',
-  'No incorporar material de producción ni perder el cierre del capítulo')
+assert.equal(readingBlocks.length, 100,
+  'El Capítulo I depurado del SRT de ElevenLabs debe contener 100 párrafos de lectura')
+assert.equal(readingBlocks[0], 'La noche del 8 de marzo de 1969, San Yallego dejó de respirar por un instante.',
+  'El inicio debe corresponder a la edición literaria derivada de los subtítulos SRT')
+assert.equal(readingBlocks[readingBlocks.length - 1], 'Esperando.',
+  'Conservar el final SRT depurado del capítulo I, antes del Capítulo II')
 assert.equal(readingBlocks.filter((p) => p.startsWith('—')).length, 34,
-  'Conservar los 34 bloques de diálogo del Capítulo I')
+  'Conservar los 34 párrafos de diálogo del Capítulo I depurado')
 assert.doesNotMatch(chapterOneText, /MAPA DE BLOQUES PARA ELEVENLABS|FIN DEL LIBRO PRIMERO/,
   'La versión de lectura debe excluir instrucciones técnicas y texto de capítulos posteriores')
 assert.ok(chapterScreen.includes("setMode(next)") &&
