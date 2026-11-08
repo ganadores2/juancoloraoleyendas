@@ -568,6 +568,28 @@ assert.ok(mariaVisualDoc.includes('PRECANON') &&
   mariaVisualDoc.includes('Capítulo IV'),
   'La ficha humana debe explicar las fuentes y las discrepancias cronológicas')
 
+
+assert.equal(mariaVisual.narrativeIdentity.authorConfirmedCanon?.ageRelation
+  ?.includes('María es mayor que Juan'), true,
+  'María debe ser mayor que Juan por decisión del autor; NO es un error por corregir')
+assert.deepEqual(mariaVisual.narrativeIdentity.authorConfirmedCanon.knowledge,
+  ['plantas','sanación y remedios tradicionales','intuición extraordinaria','experiencia y sabiduría inusuales'],
+  'El canon de María debe incluir plantas, sanación, intuición y sabiduría')
+assert.ok(mariaVisual.narrativeIdentity.authorConfirmedCanon.rolesTowardsJuan
+  .some(role => role.includes('mentora durante una etapa')) &&
+  mariaVisual.narrativeIdentity.authorConfirmedCanon.boundaries
+  .some(rule => rule.includes('No actúa como mentora')),
+  'La mentoría de María debe ser temporal y no retirar a Juan su agencia')
+assert.equal(mariaVisual.sourceText.explicitAges.length, 1,
+  'No inferir edades exactas a partir de que María sea mayor')
+assert.equal(characterChronology.characters.find(c => c.id === 'maria-de-los-angeles')
+  ?.authorConfirmedRelationship?.intentional, true,
+  'La cronología debe indicar expresamente que la diferencia de edad es intencional')
+assert.ok(mariaVisualDoc.includes('La mentoría es temporal') &&
+  mariaVisualDoc.includes('conocimientos y experiencia inusuales') &&
+  characterChronologyDesign.includes('María es deliberadamente mayor que Juan'),
+  'Ambas biblias deben conservar la explicación canónica del autor')
+
 const workshop = source('app/guardian/sitio/[slug]/page.tsx')
 assert.ok(workshop.includes('href="/sitio/casa-de-juanito"'),
   'El Taller debe tener un enlace al recorrido público dentro de la misma preview')
