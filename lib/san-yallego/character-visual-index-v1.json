@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "status": "INDICE DE PREPRODUCCION, SIN EDICIONES AL CATALOGO CRONOLOGICO ESTABLE",
+  "createdAt": "2026-11-07",
+  "primaryChronology": "lib/san-yallego/character-chronology-v1.json",
+  "bibleV3": "BIBLIA_MAESTRA_UNIVERSO_JUAN_COLORAO_V3_0.pdf",
+  "candidateV4": "docs/biblia/registro-cambios-candidatos-v4.md",
+  "sourcePolicy": "Separar mapeos de arte/escena del JSON de cronología que utiliza el lector; no cambiar schema ni inferir edades.",
+  "mediaPolicy": {
+    "lectura": "Solo rasgos relevantes documentados.",
+    "audio": "Interpretación vocal y texto sin inventar edades.",
+    "animacion": "Siete vistas por modelo a edad concreta y aprobación del autor."
+  },
+  "characterVisualMappings": [
+    {
+      "characterId": "abuelo-pancho",
+      "master": "lib/san-yallego/pancho-visual-master-v1.json",
+      "document": "docs/personajes/abuelo-pancho-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 1
+        },
+        {
+          "book": 1,
+          "chapter": 2
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 28,
+      "flags": [
+        "Pancho y Don Chema poseen recursos humorísticos distintos; no duplicar su personalidad."
+      ]
+    },
+    {
+      "characterId": "dolores",
+      "master": "lib/san-yallego/dolores-visual-master-v1.json",
+      "document": "docs/personajes/dolores-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 1
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 28,
+      "flags": [
+        "Es madre de Juan; rótulo 'amiga de Juanito' en concept art no es canon."
+      ]
+    },
+    {
+      "characterId": "xolo",
+      "master": "lib/san-yallego/xolo-visual-master-v1.json",
+      "document": "docs/personajes/xolo-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 1
+        },
+        {
+          "book": 1,
+          "chapter": 2
+        },
+        {
+          "book": 1,
+          "chapter": 11
+        },
+        {
+          "book": 1,
+          "chapter": 29
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 21,
+      "flags": [
+        "No deducir edad biológica, naturaleza oculta ni habilidades del brillo de ojos de ilustraciones.",
+        "El Ojón tiene participación futura reservada, sin episodios escritos."
+      ]
+    },
+    {
+      "characterId": "don-chema",
+      "master": "lib/san-yallego/don-chema-visual-master-v1.json",
+      "document": "docs/personajes/don-chema-ficha-visual-maestra-v1.md",
+      "sceneRefs": [],
+      "unindexedScenes": [
+        "Cantina El Desengaño; diálogo con Juan y María sobre espejo roto; capítulo del SRT por indexar."
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 7,
+      "flags": [
+        "Sin retrato individual confirmado; no inventar rostro.",
+        "Serie humorística futura con El Ojón, sin guiones."
+      ]
+    }
+  ]
+}
