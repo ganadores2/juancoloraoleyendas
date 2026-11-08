@@ -285,7 +285,7 @@ assert.ok(reader.includes("paragraph.startsWith('—')") &&
   reader.includes('max-w-[62ch]') && reader.includes('lineHeight: 1.7'),
   'Mantener diálogos aislados y columna de lectura con espaciado legible')
 assert.ok(reader.includes('pointer-events-none fixed inset-x-0 top-0') &&
-  reader.includes('Lectura {progress}%') &&
+  reader.includes('Lectura {progress.toFixed(1)}%') &&
   reader.includes('setReadingVisible(readerRect.top < window.innerHeight && readerRect.bottom > 0)') &&
   reader.includes('window.addEventListener(\'scroll\', trackReading'),
   'La barra de avance debe permanecer visible y actualizarse al desplazarse por la lectura')
@@ -299,9 +299,15 @@ assert.ok(reader.includes("document.addEventListener('scroll', trackReading, tru
   reader.includes('observer?.disconnect()') &&
   reader.includes('article.getBoundingClientRect()'),
   'El porcentaje de lectura debe detectar tanto scroll de la página como de paneles interiores')
-assert.ok(reader.includes('Lectura {progress}% · bloque {visibleBlock || 1}/{paragraphs.length}') &&
+assert.ok(reader.includes('Lectura {progress.toFixed(1)}% · bloque {visibleBlock || 1}/{paragraphs.length}') &&
   reader.includes('setVisibleBlock(index + 1)'),
   'El lector debe mostrar un avance observable por porcentaje y por bloques')
+assert.ok(reader.includes('const firstTop = first.getBoundingClientRect().top') &&
+  reader.includes('const lastBottom = last.getBoundingClientRect().bottom') &&
+  reader.includes('setProgress(Math.round(clamped * 1000) / 10)') &&
+  reader.includes("window.addEventListener('touchmove', trackReading") &&
+  reader.includes('new ResizeObserver(trackReading'),
+  'El avance debe medir el texto real y responder al tacto y cambios de maquetación')
 assert.doesNotMatch(reader, /window\.scrollY < documentTop/,
   'El marcador de lectura no debe depender del scrollY de la ventana')
 
