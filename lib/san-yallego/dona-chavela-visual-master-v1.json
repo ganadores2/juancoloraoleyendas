@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "dona-chavela",
+  "preferredName": "Doña Chavela",
+  "manuscriptVariant": "Doña Chabela",
+  "editorialStatus": "NARRATIVA DEL PERSONAJE CONFIRMADA; EDAD Y ROSTRO NO DETERMINADOS",
+  "createdAt": "2026-11-07",
+  "identity": {
+    "roles": [
+      "partera de San Yallego",
+      "memoria oral del pueblo",
+      "voz humorística irónica y aguda"
+    ],
+    "traits": [
+      "carácter firme",
+      "ingenio",
+      "picardía verbal",
+      "criterio práctico",
+      "manejo del silencio ante el misterio"
+    ],
+    "verifiedScene": "Asiste el nacimiento de Juan en capítulo I. Interviene ante vecinos curiosos y rumores.",
+    "identityNotes": [
+      "No confundir la autoridad de una partera con saber todo.",
+      "Su locución popular es una faceta cultural del universo; insultos en confianza dependen de escena y relación.",
+      "Doña Chavela es el nombre preferido en el diálogo del autor; el manuscrito SRT escribe Doña Chabela. Mantener ambas grafías como variantes hasta cotejo de edición final."
+    ]
+  },
+  "generationLegend": {
+    "type": "RELATO DE TRADICION ORAL CON AMBIGUEDAD INTENCIONAL",
+    "source": {
+      "book": 1,
+      "chapter": 1,
+      "textEvidence": "Decían que había visto nacer y morir a seis generaciones. Tal vez eran cinco. Tal vez siete. Doña Chabela jamás aclaraba esas cosas."
+    },
+    "countsMentioned": [
+      5,
+      6,
+      7
+    ],
+    "countCanonical": null,
+    "exactBirthYear": null,
+    "ageYears": null,
+    "authorApprovedAmbiguity": true,
+    "literaryMeaning": "La indefinición forma parte de su voz y leyenda. Nunca convertir esa cantidad de generaciones en una edad, inmortalidad o biografía cerrada.",
+    "protect": [
+      "No escoger cinco, seis ni siete como número exacto.",
+      "No calcular años vividos por multiplicación de generaciones.",
+      "No confirmar inmortalidad ni poderes por rumor.",
+      "Conservar la incertidumbre y su humor en futuros Libros II-IV y series."
+    ]
+  },
+  "sceneAnchors": [
+    {
+      "book": 1,
+      "chapter": 1,
+      "context": "partera",
+      "notes": "Nacimiento de Juan; voz firme, humor y rumor sobre generaciones."
+    }
+  ],
+  "references": {
+    "retainAll": true,
+    "visualArtFound": [],
+    "artStatus": "No hay retrato individual verificado en la Biblioteca consultada; se conserva la necesidad de rastrear diseños previos y solicitar aprobación antes de generar."
+  },
+  "visualStages": [
+    {
+      "stageId": "CH01",
+      "rangeConceptual": "Edad y aspecto por aprobar; no representar 5/6/7 generaciones como cifra exacta",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "voiceId": null,
+    "voiceStatus": "por-cotejar-en-capitulo-I",
+    "expressiveRules": [
+      "Humor seco, autoridad y picardía; voz no necesariamente de persona centenaria.",
+      "Usar formas contextuales del habla sin alterar grafías literarias por ElevenLabs."
+    ]
+  },
+  "transmedia": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "candidateSeries": [
+      "don-chema-humor"
+    ],
+    "reservedStatus": "personaje ya existente; derivación cómica futura sin guiones",
+    "notes": [
+      "En serie de Don Chema puede ser contrapunto irónico, pero no tiene edad cerrada.",
+      "La incertidumbre narrativa es rasgo protegido, no error de continuidad."
+    ]
+  },
+  "approvalGates": [
+    "No fijar año de nacimiento.",
+    "Mantener manuscrito 'Chabela' como variante hasta auditoría.",
+    "Imagen, edad y voz definitivas requieren aprobación explícita."
+  ],
+  "futureAgeEvents": []
+}
