@@ -335,7 +335,21 @@
       "notes": [
         "Biblia V3.0 solicita versiones juveniles y ancianas; no proporciona fechas verificables.",
         "La edad durante el nacimiento de Juan no está fijada."
-      ]
+      ],
+      "visualMasterFile": "lib/san-yallego/pancho-visual-master-v1.json",
+      "sceneAnchors": [
+        {
+          "book": 1,
+          "chapter": 1,
+          "scope": "escena de nacimiento de Juan"
+        },
+        {
+          "book": 1,
+          "chapter": 2,
+          "scope": "escena con mariposa y XOLO"
+        }
+      ],
+      "visualApprovalStatus": "precanon"
     },
     {
       "id": "dolores",
@@ -350,8 +364,23 @@
         "50+"
       ],
       "notes": [
+        "Madre de Juan; la lámina 0–5 «amiga de Juanito» es arte incorrectamente rotulado y no canon.",
         "No asignar edades numéricas basadas solamente en ilustraciones."
-      ]
+      ],
+      "visualMasterFile": "lib/san-yallego/dolores-visual-master-v1.json",
+      "sceneAnchors": [
+        {
+          "book": 1,
+          "chapter": 1,
+          "scope": "Dolores es madre de Juan; parto"
+        },
+        {
+          "book": 1,
+          "chapter": null,
+          "scope": "limita a Juan y María con la planta; capítulo por indexar"
+        }
+      ],
+      "visualApprovalStatus": "precanon"
     },
     {
       "id": "tomas",
@@ -396,10 +425,35 @@
         "adulto"
       ],
       "notes": [
+        "No inferir edad biológica, poderes ni secretos de las láminas.",
         "La Biblia V3.0 dice que los cambios físicos se justifican solo si lo hace el canon.",
         "La edad biológica del XOLO no está establecida; NO equiparar sueños y ancestros con su edad.",
         "No revelar su función cosmológica reservada ni responder al misterio de su origen."
-      ]
+      ],
+      "visualMasterFile": "lib/san-yallego/xolo-visual-master-v1.json",
+      "sceneAnchors": [
+        {
+          "book": 1,
+          "chapter": 1,
+          "scope": "presente en el nacimiento"
+        },
+        {
+          "book": 1,
+          "chapter": 2,
+          "scope": "mariposa y familia"
+        },
+        {
+          "book": 1,
+          "chapter": 11,
+          "scope": "elección y vínculo"
+        },
+        {
+          "book": 1,
+          "chapter": 29,
+          "scope": "preguntas sobre primer XOLO; no revelar origen"
+        }
+      ],
+      "visualApprovalStatus": "precanon"
     },
     {
       "id": "dona-chavela",
@@ -422,7 +476,17 @@
       "notes": [
         "No asignar edad cronológica por humor o apariencia de referencias.",
         "La voz y expresiones populares se catalogan aparte de edad biológica."
-      ]
+      ],
+      "visualMasterFile": "lib/san-yallego/don-chema-visual-master-v1.json",
+      "sceneAnchors": [
+        {
+          "book": 1,
+          "chapter": null,
+          "scope": "cantina El Desengaño, ironía del espejo; numeración exacta pendiente"
+        }
+      ],
+      "visualApprovalStatus": "precanon",
+      "futureSeriesId": "don-chema-humor"
     },
     {
       "id": "geraldo",
