@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "identity": "gabriel-vallego",
+  "displayName": "Gabriel Vallego / Yallego",
+  "createdAt": "2026-11-07",
+  "editorialStatus": "PRECANON; nombre definitivo, edades visuales y avatares por aprobar",
+  "naming": {
+    "variants": [
+      "Gabriel Vallego",
+      "Gabriel Yallego"
+    ],
+    "canonicalSpelling": null,
+    "source": "El Gran Cambio SRT V1 usa Vallego; Biblia Maestra V3.0 exige auditar Yallego/Vallego; las láminas usan ambas.",
+    "technicalIdNote": "El ID de sistema no decide la grafía pública."
+  },
+  "narrativeIdentity": {
+    "role": "Padre, investigador, memoria y misterio según Biblia Maestra V3.0.",
+    "limits": [
+      "No inferir sus secretos o cronología familiar a partir de dibujos.",
+      "Su relato de cuando tenía nueve años no fija su edad en el capítulo XXXI.",
+      "Respetar personajes y decisiones sin adelantar descubrimientos futuros."
+    ]
+  },
+  "ageEvidence": [
+    {
+      "book": 1,
+      "chapter": 31,
+      "ageYears": 9,
+      "temporalContext": "recuerdo",
+      "evidence": "Geraldo me trajo cuando tenía nueve años.",
+      "audioReview": "cotejo-MP3-pendiente"
+    }
+  ],
+  "sourceArt": {
+    "retainAll": true,
+    "references": [
+      "Evolución de Gabriel Vallego en San Yallego.png",
+      "Evolución de Gabriel Yallego.png",
+      "Biblia de Personajes de San Yollego.png",
+      "Evolución de personajes de San Yallego.png",
+      "Evolución de personajes de Juan Colorao.png"
+    ],
+    "canonVisualApproved": false
+  },
+  "physicalTraitsProposal": {
+    "visible": [
+      "cabello oscuro, abundante, ondulado/rizado en juventud",
+      "mirada atenta y reservada",
+      "rasgos que maduran gradualmente",
+      "barba y canas en algunas propuestas adultas"
+    ],
+    "unresolved": [
+      "color exacto de ojos y piel",
+      "edad de barba y primeras canas",
+      "perfil y relación entre propuestas faciales",
+      "vestuario de escenas concretas",
+      "voz por edad"
+    ]
+  },
+  "stageSystem": {
+    "description": "Cuatro bloques narrativos para producción; una hoja de siete vistas siempre necesita una edad ancla exacta, no todo el rango.",
+    "stages": [
+      {
+        "stageId": "G01",
+        "ageRange": "0–10",
+        "anchorAgeYears": 9,
+        "title": "Gabriel niño · observa y pregunta",
+        "textEvidence": [
+          {
+            "book": 1,
+            "chapter": 31,
+            "ageYears": 9,
+            "temporalContext": "recuerdo",
+            "excerpt": "Geraldo me trajo cuando tenía nueve años.",
+            "audioReview": "pendiente"
+          }
+        ],
+        "visualEvidence": "Evolución de Gabriel Vallego en San Yallego.png; Evolución de Gabriel Yallego.png",
+        "caution": "La edad de nueve años es un recuerdo del capítulo XXXI; no su edad durante ese capítulo.",
+        "approvalStatus": "precanon-no-aprobado",
+        "views": [
+          {
+            "code": "V01",
+            "angle": "rostro-frontal",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V02",
+            "angle": "tres-cuartos-izquierdo",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V03",
+            "angle": "perfil-izquierdo",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V04",
+            "angle": "tres-cuartos-derecho",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V05",
+            "angle": "perfil-derecho",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V06",
+            "angle": "cuerpo-frontal",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V07",
+            "angle": "cuerpo-posterior",
+            "asset": null,
+            "approval": "pendiente"
+          }
+        ]
+      },
+      {
+        "stageId": "G02",
+        "ageRange": "11–20",
+        "anchorAgeYears": null,
+        "title": "Gabriel adolescente y joven · indagación",
+        "textEvidence": [],
+        "visualEvidence": "Evolución de Gabriel Vallego en San Yallego.png; Evolución de Gabriel Yallego.png",
+        "caution": "No existe una edad textual exacta para estas ilustraciones.",
+        "approvalStatus": "precanon-no-aprobado",
+        "views": [
+          {
+            "code": "V01",
+            "angle": "rostro-frontal",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V02",
+            "angle": "tres-cuartos-izquierdo",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V03",
+            "angle": "perfil-izquierdo",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V04",
+            "angle": "tres-cuartos-derecho",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V05",
+            "angle": "perfil-derecho",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V06",
+            "angle": "cuerpo-frontal",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V07",
+            "angle": "cuerpo-posterior",
+            "asset": null,
+            "approval": "pendiente"
+          }
+        ]
+      },
+      {
+        "stageId": "G03",
+        "ageRange": "21–40",
+        "anchorAgeYears": null,
+        "title": "Gabriel adulto · responsabilidades y memoria",
+        "textEvidence": [],
+        "visualEvidence": "Evolución de Gabriel Vallego en San Yallego.png; Evolución de Gabriel Yallego.png",
+        "caution": "No se conocen edades por capítulo; barba y atuendo son variantes visuales.",
+        "approvalStatus": "precanon-no-aprobado",
+        "views": [
+          {
+            "code": "V01",
+            "angle": "rostro-frontal",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V02",
+            "angle": "tres-cuartos-izquierdo",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V03",
+            "angle": "perfil-izquierdo",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V04",
+            "angle": "tres-cuartos-derecho",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V05",
+            "angle": "perfil-derecho",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V06",
+            "angle": "cuerpo-frontal",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V07",
+            "angle": "cuerpo-posterior",
+            "asset": null,
+            "approval": "pendiente"
+          }
+        ]
+      },
+      {
+        "stageId": "G04",
+        "ageRange": "41+",
+        "anchorAgeYears": null,
+        "title": "Gabriel maduro · legado",
+        "textEvidence": [],
+        "visualEvidence": "Evolución de Gabriel Vallego en San Yallego.png; Evolución de Gabriel Yallego.png",
+        "caution": "Canas, vejez y rol de consejero proceden de concept art, no de una cronología textual verificada.",
+        "approvalStatus": "precanon-no-aprobado",
+        "views": [
+          {
+            "code": "V01",
+            "angle": "rostro-frontal",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V02",
+            "angle": "tres-cuartos-izquierdo",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V03",
+            "angle": "perfil-izquierdo",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V04",
+            "angle": "tres-cuartos-derecho",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V05",
+            "angle": "perfil-derecho",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V06",
+            "angle": "cuerpo-frontal",
+            "asset": null,
+            "approval": "pendiente"
+          },
+          {
+            "code": "V07",
+            "angle": "cuerpo-posterior",
+            "asset": null,
+            "approval": "pendiente"
+          }
+        ]
+      }
+    ]
+  },
+  "sevenViewsPolicy": {
+    "viewsPerExactAge": 7,
+    "requiresAuthorApproval": true,
+    "emptySlots": 28
+  },
+  "crossBookContinuity": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "reading": "Describir cambios físicos solo cuando la escena lo pida.",
+    "audio": "Distinguir voz del recuerdo de voz en presente, sin imponer Voice ID inventado.",
+    "animation": "Validar edad exacta, rostro, peinado, barba, atuendo y todas las vistas antes de cada plano.",
+    "futureAgeEvents": [],
+    "mysteries": "Mantener N4/N5/C100 en material protegido."
+  },
+  "qualityGates": [
+    "Conservar todas las imágenes y grafías de origen.",
+    "Resolver ortografía oficial del apellido antes de material público nuevo.",
+    "Cotejar el recuerdo de nueve años con MP3 del XXXI.",
+    "No convertir una edad recordada en edad presente.",
+    "No declarar oficiales ilustraciones ni edades futuras sin autor.",
+    "No añadir enlaces audiovisuales inexistentes."
+  ]
+}

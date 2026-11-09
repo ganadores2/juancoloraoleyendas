@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "status": "INDICE DE PREPRODUCCION, SIN EDICIONES AL CATALOGO CRONOLOGICO ESTABLE",
+  "createdAt": "2026-11-07",
+  "primaryChronology": "lib/san-yallego/character-chronology-v1.json",
+  "bibleV3": "BIBLIA_MAESTRA_UNIVERSO_JUAN_COLORAO_V3_0.pdf",
+  "candidateV4": "docs/biblia/registro-cambios-candidatos-v4.md",
+  "sourcePolicy": "Separar mapeos de arte/escena del JSON de cronología que utiliza el lector; no cambiar schema ni inferir edades.",
+  "mediaPolicy": {
+    "lectura": "Solo rasgos relevantes documentados.",
+    "audio": "Interpretación vocal y texto sin inventar edades.",
+    "animacion": "Siete vistas por modelo a edad concreta y aprobación del autor."
+  },
+  "characterVisualMappings": [
+    {
+      "characterId": "abuelo-pancho",
+      "master": "lib/san-yallego/pancho-visual-master-v1.json",
+      "document": "docs/personajes/abuelo-pancho-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 1
+        },
+        {
+          "book": 1,
+          "chapter": 2
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 28,
+      "flags": [
+        "Pancho y Don Chema poseen recursos humorísticos distintos; no duplicar su personalidad."
+      ]
+    },
+    {
+      "characterId": "dolores",
+      "master": "lib/san-yallego/dolores-visual-master-v1.json",
+      "document": "docs/personajes/dolores-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 1
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 28,
+      "flags": [
+        "Es madre de Juan; rótulo 'amiga de Juanito' en concept art no es canon."
+      ]
+    },
+    {
+      "characterId": "xolo",
+      "master": "lib/san-yallego/xolo-visual-master-v1.json",
+      "document": "docs/personajes/xolo-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 1
+        },
+        {
+          "book": 1,
+          "chapter": 2
+        },
+        {
+          "book": 1,
+          "chapter": 11
+        },
+        {
+          "book": 1,
+          "chapter": 29
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 21,
+      "flags": [
+        "No deducir edad biológica, naturaleza oculta ni habilidades del brillo de ojos de ilustraciones.",
+        "El Ojón tiene participación futura reservada, sin episodios escritos."
+      ]
+    },
+    {
+      "characterId": "don-chema",
+      "master": "lib/san-yallego/don-chema-visual-master-v1.json",
+      "document": "docs/personajes/don-chema-ficha-visual-maestra-v1.md",
+      "sceneRefs": [],
+      "unindexedScenes": [
+        "Cantina El Desengaño; diálogo con Juan y María sobre espejo roto; capítulo del SRT por indexar."
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 7,
+      "flags": [
+        "Sin retrato individual confirmado; no inventar rostro.",
+        "Serie humorística futura con El Ojón, sin guiones."
+      ]
+    },
+    {
+      "characterId": "dona-chavela",
+      "master": "lib/san-yallego/dona-chavela-visual-master-v1.json",
+      "document": "docs/personajes/dona-chavela-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 1
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 7,
+      "flags": [
+        "Cinco, seis o siete generaciones es rumor deliberadamente ambiguo, NO cronología ni edad.",
+        "La grafía Chavela / Chabela requiere auditoría editorial."
+      ]
+    },
+    {
+      "characterId": "tomas",
+      "master": "lib/san-yallego/tomas-visual-master-v1.json",
+      "document": "docs/personajes/tomas-ficha-visual-maestra-v1.md",
+      "sceneRefs": [],
+      "ageEvidence": [],
+      "viewsProposed": 28,
+      "flags": [
+        "No mezclar al amigo Tomás con Tomás Villaseñor ni con el interlocutor de la carretera hasta comprobar identidad."
+      ],
+      "unindexedScenes": [
+        "Tomás Villaseñor (nombre en listado) y Tomás en debate sobre carretera: relación con personaje central NO verificada."
+      ]
+    },
+    {
+      "characterId": "lupita",
+      "master": "lib/san-yallego/lupita-visual-master-v1.json",
+      "document": "docs/personajes/lupita-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 12
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 28,
+      "flags": [
+        "No tratar romance o hijos de concept art como canon.",
+        "No usar rangos 0-5, 6-10 etc como edad real de Capítulo XII."
+      ]
+    },
+    {
+      "characterId": "geraldo",
+      "master": "lib/san-yallego/geraldo-visual-master-v1.json",
+      "document": "docs/personajes/geraldo-ficha-visual-maestra-v1.md",
+      "sceneRefs": [
+        {
+          "book": 1,
+          "chapter": 31,
+          "type": "mencion-en-recuerdo"
+        }
+      ],
+      "ageEvidence": [],
+      "viewsProposed": 21,
+      "flags": [
+        "Gabriel tenía nueve en el recuerdo; no Geraldo.",
+        "Proteger revelaciones y distinguir concept art de hechos."
+      ]
+    }
+  ],
+  "indexNote": "Índice visual desacoplado del catálogo de cronología. Las ocho fichas actuales son preproducción; ninguna etapa tiene edad ancla confirmada a partir de arte."
+}

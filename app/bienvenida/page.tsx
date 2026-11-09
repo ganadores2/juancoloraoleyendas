@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { BienvenidaScreen } from '@/components/san-yallego/bienvenida/bienvenida-screen'
 import { introAssetsReady } from '@/lib/san-yallego/intro-ready'
 
-export const metadata: Metadata = { title: 'Bienvenida — San Yallego' }
+export const metadata: Metadata = { title: 'Bienvenida — San Yallego', robots: { index: false, follow: false } }
 
 export default function Page() {
   if (!introAssetsReady()) redirect('/mapa')

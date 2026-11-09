@@ -23,7 +23,9 @@ type Phase = 'descenso' | 'llegada' | 'hacia-oraculo' | 'oraculo'
 
 export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boolean } = {}) {
   const { progress, hydrated, visitSite } = useProgress()
-  const [phase, setPhase] = useState<Phase>(skipDescenso ? 'llegada' : 'descenso')
+  // Si SiteJourney ya reprodujo descenso y aproximación, mostrar el Oráculo directamente.
+  // No reproducir el video de aproximación una segunda vez.
+  const [phase, setPhase] = useState<Phase>(skipDescenso ? 'oraculo' : 'descenso')
   const unlocked = hydrated && isSiteUnlocked(site, progress)
 
   useEffect(() => {
@@ -76,7 +78,9 @@ export function CasaJuanitoScreen({ skipDescenso = false }: { skipDescenso?: boo
 
       {phase === 'oraculo' && (
         <div className="animate-sy-fade-in fixed inset-x-0 bottom-0 z-20 flex flex-col items-center gap-4 bg-gradient-to-t from-black via-black/70 to-transparent px-6 pb-10 pt-24 [animation-delay:1.2s]">
-          <p className="text-center text-xs tracking-[0.15em] text-foreground/70">La historia continúa con la voz de Juan Colorao.</p>
+          <p className="max-w-lg text-balance text-center text-sm italic text-foreground/80">
+            Has llegado a la Casa de Juanito. Tu siguiente paso es escuchar el primer capítulo de la leyenda.
+          </p>
           <Link href={chapterHref(firstChapter)} className={ritualButton('secondary')}>
             Escuchar Capítulo {firstChapter.number} — {firstChapter.title}
           </Link>

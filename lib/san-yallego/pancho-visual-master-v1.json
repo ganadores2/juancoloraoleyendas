@@ -1,0 +1,329 @@
+{
+  "version": 1,
+  "createdAt": "2026-11-07",
+  "approval": "PRECANON - identidad narrativa documentada; variantes visuales por aprobar",
+  "scope": "Libros I-IV / futuras series",
+  "rules": {
+    "ages": "No inferir edades de láminas conceptuales ni de relaciones familiares.",
+    "art": "Conservar todas las ilustraciones originales; canon visual requiere aprobación expresa del autor.",
+    "audio": "La guía de voz y la pronunciación de ElevenLabs no modifican la ortografía literaria.",
+    "future": "Libros II-IV, nuevas aventuras y cambios físicos sin escenas inventadas.",
+    "secret": "No divulgar reglas N4/N5/C100 ni detalles de origen reservados."
+  },
+  "id": "abuelo-pancho",
+  "name": "Abuelo Pancho",
+  "narrativeAuthority": {
+    "bible": "V3 sección 16: tradición, prudencia, memoria; versiones juveniles y ancianas",
+    "manuscript": [
+      {
+        "book": 1,
+        "chapter": 1,
+        "fact": "Participa en el nacimiento de Juan y apoya a Dolores y Doña Chabela."
+      },
+      {
+        "book": 1,
+        "chapter": 2,
+        "fact": "Bromea con XOLO que intenta atrapar una mariposa."
+      }
+    ],
+    "relation": "Abuelo de Juan en el Libro I; edad numérica sin confirmar."
+  },
+  "identity": {
+    "traits": [
+      "trabajador",
+      "observador",
+      "prudente",
+      "apego a la tradición",
+      "humor afectuoso"
+    ],
+    "nonLiteral": [
+      "No confundir el «No sé» expresado por Pancho en algunas escenas con la identidad humorística propia de Don Chema.",
+      "Su madurez no implica omnisciencia ni conocimiento de los secretos N4/N5/C100.",
+      "La etiqueta «sabio eterno» es título de arte conceptual, no afirmación de inmortalidad."
+    ]
+  },
+  "referenceArt": [
+    {
+      "title": "Evolución de Abuelo Pancho: Sabio Eterno.png",
+      "status": "concept-art",
+      "ageLabels": [
+        "15–20",
+        "21–30",
+        "31–40",
+        "41–50",
+        "51–60",
+        "61–70",
+        "71–80",
+        "+80"
+      ]
+    },
+    {
+      "title": "Evolución de personajes de San Yallego.png",
+      "status": "concept-art",
+      "ageLabels": [
+        "30–40",
+        "40–50",
+        "50–65",
+        "65+"
+      ]
+    },
+    {
+      "title": "Biblia de Personajes de San Yollego.png",
+      "status": "concept-art",
+      "ageLabels": [
+        "10–20",
+        "20–35",
+        "35–50",
+        "50–65",
+        "65+"
+      ]
+    }
+  ],
+  "appearanceProposal": [
+    "Cabello oscuro que encanece progresivamente en láminas; barba variable.",
+    "Sombrero de paja y vestuario de trabajador/tradición, pero no prenda obligatoria en cada escena.",
+    "Rostro cálido, expresivo; manos de oficio y postura que cambia según edad representada."
+  ],
+  "timeline": {
+    "confirmedAgeEvents": [],
+    "sceneAnchors": [
+      {
+        "book": 1,
+        "chapter": 1,
+        "type": "escena"
+      },
+      {
+        "book": 1,
+        "chapter": 2,
+        "type": "escena"
+      }
+    ],
+    "ageRangesAreArtOnly": true,
+    "unresolved": [
+      "Edad de Pancho durante el nacimiento de Juan",
+      "Árbol familiar/parentescos adicionales por cotejar",
+      "Cuándo aparecen canas, barba y vestuario específico"
+    ]
+  },
+  "visualStages": [
+    {
+      "id": "P01",
+      "range": "juventud trabajadora",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    },
+    {
+      "id": "P02",
+      "range": "adultez con familia",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    },
+    {
+      "id": "P03",
+      "range": "madurez y consejo",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    },
+    {
+      "id": "P04",
+      "range": "vejez",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    }
+  ],
+  "media": {
+    "reading": "Tradición se demuestra en actos y decisiones; apariencia solo cuando importa.",
+    "audio": "Timbre propuesto cálido y con humor; Voice ID pendiente.",
+    "animation": "Modelo de edad precisa, siete vistas, manos, barba, sombrero y continuidad corporal."
+  },
+  "crossBookContinuity": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "approvedFutureAgeEvents": [],
+    "narrativeLaw": "Un solo personaje y una sola biografía coherente; no inventar cronología, escenas futuras ni rasgos solo por concept art.",
+    "reading": "Priorizar escenas y relaciones narrativas verificadas; descripción física únicamente donde aporte a la historia.",
+    "audio": "Conservar voz, intención y personalidad; casting/Voice ID por aprobación del autor.",
+    "animation": "Elegir un modelo por edad/estado visual efectivamente representado y generar siete vistas coherentes; no aprobar ninguna imagen sin el autor.",
+    "futureSeries": "Reservas conceptuales no son guiones ni autorizan secretos o saltos no publicados."
+  }
+}

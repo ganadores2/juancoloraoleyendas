@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "createdAt": "2026-11-07",
+  "approval": "PRECANON - identidad narrativa documentada; variantes visuales por aprobar",
+  "scope": "Libros I-IV / futuras series",
+  "rules": {
+    "ages": "No inferir edades de láminas conceptuales ni de relaciones familiares.",
+    "art": "Conservar todas las ilustraciones originales; canon visual requiere aprobación expresa del autor.",
+    "audio": "La guía de voz y la pronunciación de ElevenLabs no modifican la ortografía literaria.",
+    "future": "Libros II-IV, nuevas aventuras y cambios físicos sin escenas inventadas.",
+    "secret": "No divulgar reglas N4/N5/C100 ni detalles de origen reservados."
+  },
+  "id": "don-chema",
+  "name": "Don Chema",
+  "narrativeAuthority": {
+    "bible": "No hay ficha individual confirmada en la tabla de personajes de V3; se basa en manuscrito SRT y canon transmedia posterior del autor.",
+    "manuscript": [
+      {
+        "book": 1,
+        "chapter": null,
+        "fact": "El manuscrito sitúa a Don Chema en la cantina El Desengaño; atiende a Juan y María y ofrece agua de jamaica; el capítulo exacto se indexará después.",
+        "chapterStatus": "escena localizada en texto SRT, numeración exacta no verificada"
+      },
+      {
+        "book": 1,
+        "chapter": null,
+        "fact": "Bromea sobre un espejo roto, contesta con sarcasmo a Juan y evita explicar lo que no corresponde.",
+        "chapterStatus": "escena localizada en texto SRT, numeración exacta no verificada"
+      }
+    ],
+    "relation": "Habitante del pueblo, humor sarcástico y evasiva «¡NO SÉ!»; futura serie humorística aprobada como concepto."
+  },
+  "identity": {
+    "traits": [
+      "sarcasmo",
+      "ironía",
+      "picardía de pueblo",
+      "respuesta evasiva «¡No sé!»",
+      "humor seco"
+    ],
+    "nonLiteral": [
+      "No convertirlo en ignorante absoluto por usar «¡No sé!».",
+      "No confundir «burrín» y «pelado» con insultos universales; su sentido depende de confianza y contexto.",
+      "No declarar que ocupa permanentemente la barra, hamaca o un lugar concreto hasta revisar escenas.",
+      "No asignarle edad de anciano por humor o voz aparente."
+    ]
+  },
+  "referenceArt": [],
+  "referenceStatus": "No se localizó una lámina individual específica de Don Chema en la búsqueda actual de Biblioteca; no inventar avatar ni enlaces.",
+  "appearanceProposal": [
+    "Rostro, edad y atuendo maestro SIN DETERMINAR.",
+    "Cualquier sombrero, bigote, hamaca, ropa o accesorios tendrán que anclarse a una referencia aprobada y a la escena."
+  ],
+  "timeline": {
+    "confirmedAgeEvents": [],
+    "sceneAnchors": [
+      {
+        "book": 1,
+        "chapter": null,
+        "type": "escena-localizada-pendiente-numero",
+        "chapterStatus": "pendiente de indexación de capítulo"
+      }
+    ],
+    "ageRangesAreArtOnly": true,
+    "unresolved": [
+      "Edad y fecha de nacimiento",
+      "Diseño visual maestro y vestuario",
+      "Voz/Voice ID para audiolibro y serie",
+      "Número exacto del capítulo de la escena de la cantina",
+      "Primera escena junto a El Ojón cuando se escriba"
+    ]
+  },
+  "visualStages": [
+    {
+      "id": "C01",
+      "range": "edad narrativa por fijar",
+      "anchorAge": null,
+      "views": [
+        {
+          "viewId": "V01",
+          "angle": "frontal-rostro",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V06",
+          "angle": "frontal-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "viewId": "V07",
+          "angle": "posterior-cuerpo-completo",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ],
+      "status": "precanon"
+    }
+  ],
+  "media": {
+    "reading": "El diálogo y el remate seco forman el personaje; no explicar el chiste en exceso.",
+    "audio": "Pausas, énfasis y timing del sarcasmo; separar jerga de fonética ElevenLabs; Voice ID pendiente.",
+    "animation": "Prioridad gestual/comedia: mirada, silencios, postura; rasgos visuales por aprobar antes de siete vistas.",
+    "spinoff": "Serie humorística y sarcástica de Don Chema; El Ojón reservado como secundario y Doña Chavela como contrapunto, sin guiones inventados."
+  },
+  "crossBookContinuity": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "approvedFutureAgeEvents": [],
+    "narrativeLaw": "Un solo personaje y una sola biografía coherente; no inventar cronología, escenas futuras ni rasgos solo por concept art.",
+    "reading": "Priorizar escenas y relaciones narrativas verificadas; descripción física únicamente donde aporte a la historia.",
+    "audio": "Conservar voz, intención y personalidad; casting/Voice ID por aprobación del autor.",
+    "animation": "Elegir un modelo por edad/estado visual efectivamente representado y generar siete vistas coherentes; no aprobar ninguna imagen sin el autor.",
+    "futureSeries": "Reservas conceptuales no son guiones ni autorizan secretos o saltos no publicados."
+  }
+}

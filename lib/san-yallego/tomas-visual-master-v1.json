@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "id": "tomas",
+  "name": "Tomás",
+  "editorialStatus": "PRECANON DE APARIENCIA; APARICIONES TEXTUALES POR DESAMBIGUAR",
+  "createdAt": "2026-11-07",
+  "identity": {
+    "characterCatalogRole": "amistad y lealtad",
+    "traits": [
+      "lealtad",
+      "ánimo aventurero",
+      "amistad como construcción que cambia con el tiempo"
+    ],
+    "source": "Biblia V3 §16: evolución vital coherente; las láminas proponen amigo de Juan.",
+    "nameCaveat": "El manuscrito SRT incluye varios nombres 'Tomás', entre ellos Tomás Villaseñor en una lista y un interlocutor llamado Tomás en un debate sobre una carretera. No se ha demostrado que sean el mismo Tomás amigo de Juan. Nunca fusionarlos sin cotejo del autor."
+  },
+  "sourceArt": {
+    "retainAll": true,
+    "references": [
+      "Evolución de Tomás: Amigo Eterno.png",
+      "Biblia de Personajes de San Yollego.png"
+    ],
+    "observed": [
+      "Cabello castaño muy oscuro ondulado, ojos vivaces y rostro infantil que madura gradualmente en la lámina individual.",
+      "Sombrero en distintas etapas; vello facial en versiones adultas; representan propuestas.",
+      "La etiqueta de amistad eterna es motivo de concepto, no inmortalidad."
+    ],
+    "unapproved": [
+      "Edad real en escena",
+      "Primer momento de barba",
+      "Vínculos románticos o familiares sugeridos por escenas ilustradas",
+      "Todas las frases sobre un Tomás no identificado"
+    ]
+  },
+  "sceneAnchors": [],
+  "possibleTextMatches": [
+    {
+      "book": 1,
+      "chapter": null,
+      "description": "Tomás Villaseñor aparece en listado de nombres; identidad con Tomás amigo NO confirmada."
+    },
+    {
+      "book": 1,
+      "chapter": null,
+      "description": "Personaje Tomás interviene en debate sobre carretera y ceiba; identidad con Tomás amigo NO confirmada."
+    }
+  ],
+  "visualStages": [
+    {
+      "stageId": "T01",
+      "rangeConceptual": "infancia ilustrada (0–10)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    },
+    {
+      "stageId": "T02",
+      "rangeConceptual": "adolescencia ilustrada (11–15)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    },
+    {
+      "stageId": "T03",
+      "rangeConceptual": "juventud ilustrada (16–30)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    },
+    {
+      "stageId": "T04",
+      "rangeConceptual": "madurez y vejez ilustradas (31+)",
+      "anchorAgeYears": null,
+      "verifiedAgeEvents": [],
+      "status": "PRECANON SIN EDAD FIJA",
+      "views": [
+        {
+          "code": "V01",
+          "angle": "rostro-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V02",
+          "angle": "tres-cuartos-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V03",
+          "angle": "perfil-izquierdo",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V04",
+          "angle": "tres-cuartos-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V05",
+          "angle": "perfil-derecho",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V06",
+          "angle": "cuerpo-entero-frontal",
+          "asset": null,
+          "approval": "pendiente"
+        },
+        {
+          "code": "V07",
+          "angle": "cuerpo-entero-posterior",
+          "asset": null,
+          "approval": "pendiente"
+        }
+      ]
+    }
+  ],
+  "voice": {
+    "voiceId": null,
+    "source": "concepto de voz cálida, divertida y leal, no Voice ID ni casting"
+  },
+  "transmedia": {
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "continuity": "Al confirmar sus escenas, registrar por nombre completo/contexto antes de asignarle hechos de cualquier Tomás homónimo.",
+    "unpublishedStories": []
+  },
+  "futureAgeEvents": [],
+  "approvalGates": [
+    "Confirmar identidades y capítulo de aparición antes de conectar a oráculos.",
+    "Conservar todas las imágenes; no dar por oficiales las edades de la lámina.",
+    "No crear parentesco/romance no confirmado ni declararlo «eterno» en sentido biológico."
+  ]
+}

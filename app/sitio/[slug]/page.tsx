@@ -14,7 +14,10 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const site = getSite((await params).slug)
-  return { title: site ? `${siteLabel(site)} — San Yallego` : 'San Yallego' }
+  return {
+    title: site ? `${siteLabel(site)} — San Yallego` : 'San Yallego',
+    robots: { index: false, follow: false },
+  }
 }
 
 export default async function Page({ params }: Props) {

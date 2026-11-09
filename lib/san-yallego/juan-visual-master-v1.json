@@ -1,0 +1,729 @@
+{
+  "schemaVersion": 1,
+  "identity": "juan-colorao",
+  "name": "Juan Colorao",
+  "bookScope": 1,
+  "editorialStatus": "FICHA VISUAL PROPUESTA / AÚN NO CANON APROBADO",
+  "approvedNarrativeRole": "Eje central de San Yallego y protagonista del Libro I",
+  "createdAt": "2026-11-07",
+  "references": [
+    {
+      "title": "Biblia Maestra del Universo Juan Colorao V3.0",
+      "type": "canon-escrito",
+      "scope": "Sección 16, edades, voces e identidad; el arte anterior requiere aprobación explícita"
+    },
+    {
+      "title": "Biblioteca Cronológica de Personajes V1",
+      "type": "referencias-temporales",
+      "scope": "Edades por capítulo del SRT; cotejo MP3 pendiente"
+    },
+    {
+      "title": "Evolución de Juan Colorao.png",
+      "type": "concepto-visual",
+      "scope": "Lámina con rostro, edades 0–2, 3–5, 6–10, 11–15, 16–20 y etapas futuras"
+    },
+    {
+      "title": "Evolución de personajes de Juan Colorao.png",
+      "type": "concepto-visual",
+      "scope": "Lámina de continuidad entre personajes con Juan 0–5, 6–10, 11–15, 16–17"
+    },
+    {
+      "title": "Biblia de personajes de Juan Colorao.png",
+      "type": "concepto-visual",
+      "scope": "Rostro juvenil y posible marca rojiza; necesita confirmar edades y lateralidad"
+    },
+    {
+      "title": "Biblia Visual de Juan Colorao.png",
+      "type": "concepto-de-vestuario-adulto",
+      "scope": "Atuendos aventurero, charro y cotidiano para adulto; no se heredan automáticamente por joven del Libro I"
+    }
+  ],
+  "visualIdentityDraft": {
+    "consistentFromReferences": [
+      "Cabello castaño muy oscuro o negro, abundante, con ondas o rizos sueltos",
+      "Ojos oscuros, expresivos; intensidad de mirada aumenta con la edad",
+      "Continuidad de proporciones del rostro de niño a adolescente, sin reemplazar facciones",
+      "Esencia: curiosidad, empatía, valentía imperfecta, humanidad y perseverancia"
+    ],
+    "paletteProposal": [
+      "tierra",
+      "ocre",
+      "colorado ladrillo",
+      "crema",
+      "negro de cabello"
+    ],
+    "styleProposal": "realismo cinematográfico estilizado, textura orgánica, iluminación de San Yallego, coherencia con dibujos de biblioteca",
+    "notYetApproved": [
+      "Tonalidad exacta de ojos y piel",
+      "Ubicación/lateralidad/edad de primera aparición de cicatriz y marcas rojas",
+      "Cortes de ropa y emblemas por etapa",
+      "Relación precisa entre rostro adolescente y atuendos de Juan adulto",
+      "Canon de siete imágenes angulares por etapa",
+      "Acento/Voice ID y interpretación por edad"
+    ]
+  },
+  "stageSystem": {
+    "type": "RANGOS NARRATIVOS; cada turnaround de siete vistas fija una sola edad ancla, no todo el intervalo",
+    "stages": [
+      {
+        "stageId": "J01",
+        "ageRange": "0–5",
+        "label": "Juanito · nacimiento y primeros descubrimientos",
+        "status": "precanon-por-validar",
+        "evidence": [
+          {
+            "age": 0,
+            "chapter": 1
+          },
+          {
+            "age": 3,
+            "chapter": 3
+          },
+          {
+            "age": 5,
+            "chapter": 4
+          }
+        ],
+        "narrativeMovement": "De recién nacido a niño curioso y sensible; vínculo familiar y descubrimientos.",
+        "appearanceDraft": "De bebé a niño de cara redondeada, cabello oscuro abundante y ondulado-rizado; expresión vivaz y espontánea. La fisonomía cambia de forma infantil sin alterar la identidad base.",
+        "wardrobeDraft": "Ropa infantil sencilla y cotidiana de San Yallego; telas neutras, sin incorporar vestuario de charro adulto.",
+        "keyExpression": "Curiosidad abierta y alegría natural",
+        "visualReference": "Evolución de Juan Colorao.png · 0–2 y 3–5; Biblia de Personajes de San Yollego.png · Juan 0–5",
+        "restrictions": [
+          "No presentar a Juanito de 5 como adolescente",
+          "Marcas COLORAO, manchas y cicatrices: no fijar sin confirmar su aparición narrativa",
+          "No introducir armas, atuendos heroicos adultos ni accesorios de futuros libros"
+        ],
+        "views": [
+          {
+            "code": "V01",
+            "label": "Rostro frontal",
+            "framing": "Primer plano de frente",
+            "checks": [
+              "simetría facial",
+              "ojos",
+              "cejas",
+              "nariz",
+              "boca",
+              "línea de nacimiento del cabello"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V02",
+            "label": "Tres cuartos izquierdo",
+            "framing": "Busto girado 45° hacia su izquierda",
+            "checks": [
+              "forma de pómulo",
+              "silueta de nariz",
+              "volumen de cabello",
+              "oreja",
+              "marcas aprobadas"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V03",
+            "label": "Perfil izquierdo",
+            "framing": "Perfil estricto del lado izquierdo",
+            "checks": [
+              "frente",
+              "nariz",
+              "barbilla",
+              "mandíbula",
+              "oreja"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V04",
+            "label": "Tres cuartos derecho",
+            "framing": "Busto girado 45° hacia su derecha",
+            "checks": [
+              "misma estructura facial",
+              "textura de cabello",
+              "marcas aprobadas"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V05",
+            "label": "Perfil derecho",
+            "framing": "Perfil estricto del lado derecho",
+            "checks": [
+              "nariz",
+              "mandíbula",
+              "oreja",
+              "consistencia con perfil opuesto"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V06",
+            "label": "Cuerpo completo frontal",
+            "framing": "Figura de pie, neutral, frontal",
+            "checks": [
+              "proporción cabeza/cuerpo",
+              "estatura relativa",
+              "calzado",
+              "ropa de base"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V07",
+            "label": "Cuerpo completo posterior",
+            "framing": "Figura de pie, espalda completa",
+            "checks": [
+              "silueta",
+              "costuras",
+              "peinado posterior",
+              "ropa de base",
+              "continuidad de accesorios"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          }
+        ],
+        "anchorAgeYears": 5,
+        "alternativeAgesRequiringSeparateModel": [
+          0,
+          3
+        ]
+      },
+      {
+        "stageId": "J02",
+        "ageRange": "6–10",
+        "label": "Juan niño · curiosidad y vínculo con el pueblo",
+        "status": "precanon-por-validar",
+        "evidence": [
+          {
+            "age": 7,
+            "chapter": 5
+          },
+          {
+            "age": 9,
+            "chapter": 9
+          },
+          {
+            "age": 10,
+            "chapter": 11
+          }
+        ],
+        "narrativeMovement": "Observa, pregunta, siente y aprende de las contradicciones del pueblo; acompaña al XOLO sin presuponer su origen secreto.",
+        "appearanceDraft": "Niño de cabello oscuro despeinado, con ondas densas. Ojos oscuros expresivos y rasgos que empiezan a definirse; complexión todavía infantil.",
+        "wardrobeDraft": "Ropa sencilla para correr y explorar, colores tierra y detalles discretos; mismo vestuario en las siete vistas de una misma etapa.",
+        "keyExpression": "Mirada atenta, sorpresa y ternura",
+        "visualReference": "Evolución de Juan Colorao.png · 6–10; Evolución de personajes de Juan Colorao.png · 6–10",
+        "restrictions": [
+          "No convertir el vínculo con XOLO en prueba de una biología o cosmología",
+          "La cicatriz y cualquier marca roja requieren fecha de aparición confirmada"
+        ],
+        "views": [
+          {
+            "code": "V01",
+            "label": "Rostro frontal",
+            "framing": "Primer plano de frente",
+            "checks": [
+              "simetría facial",
+              "ojos",
+              "cejas",
+              "nariz",
+              "boca",
+              "línea de nacimiento del cabello"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V02",
+            "label": "Tres cuartos izquierdo",
+            "framing": "Busto girado 45° hacia su izquierda",
+            "checks": [
+              "forma de pómulo",
+              "silueta de nariz",
+              "volumen de cabello",
+              "oreja",
+              "marcas aprobadas"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V03",
+            "label": "Perfil izquierdo",
+            "framing": "Perfil estricto del lado izquierdo",
+            "checks": [
+              "frente",
+              "nariz",
+              "barbilla",
+              "mandíbula",
+              "oreja"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V04",
+            "label": "Tres cuartos derecho",
+            "framing": "Busto girado 45° hacia su derecha",
+            "checks": [
+              "misma estructura facial",
+              "textura de cabello",
+              "marcas aprobadas"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V05",
+            "label": "Perfil derecho",
+            "framing": "Perfil estricto del lado derecho",
+            "checks": [
+              "nariz",
+              "mandíbula",
+              "oreja",
+              "consistencia con perfil opuesto"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V06",
+            "label": "Cuerpo completo frontal",
+            "framing": "Figura de pie, neutral, frontal",
+            "checks": [
+              "proporción cabeza/cuerpo",
+              "estatura relativa",
+              "calzado",
+              "ropa de base"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V07",
+            "label": "Cuerpo completo posterior",
+            "framing": "Figura de pie, espalda completa",
+            "checks": [
+              "silueta",
+              "costuras",
+              "peinado posterior",
+              "ropa de base",
+              "continuidad de accesorios"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          }
+        ],
+        "anchorAgeYears": 9,
+        "alternativeAgesRequiringSeparateModel": [
+          7,
+          10
+        ]
+      },
+      {
+        "stageId": "J03",
+        "ageRange": "11–15",
+        "label": "Juan adolescente · dudas y aprendizaje",
+        "status": "precanon-por-validar",
+        "evidence": [
+          {
+            "age": 11,
+            "chapter": 12
+          },
+          {
+            "age": 14,
+            "chapter": 23
+          },
+          {
+            "age": 15,
+            "chapter": 24
+          }
+        ],
+        "narrativeMovement": "La mirada infantil gana profundidad. Aprende que fuerza y certeza no son lo mismo; puede equivocarse y cambiar.",
+        "appearanceDraft": "Adolescente delgado, cabello oscuro grueso y rebelde, rostro más anguloso, mirada penetrante; mantener continuidad reconocible con J02.",
+        "wardrobeDraft": "Ropa práctica del pueblo y exploración, con desgaste verosímil y sin añadir insignias mágicas arbitrarias.",
+        "keyExpression": "Curiosidad acompañada de duda y determinación emergente",
+        "visualReference": "Evolución de Juan Colorao.png · 11–15; Biblia de personajes de Juan Colorao.png · Juan joven",
+        "restrictions": [
+          "No representar edad adulta con barba plena",
+          "Las marcas COLORAO de láminas varían: posición e intensidad sin aprobar",
+          "No hacer de su carácter una versión plenamente resuelta de sí mismo"
+        ],
+        "views": [
+          {
+            "code": "V01",
+            "label": "Rostro frontal",
+            "framing": "Primer plano de frente",
+            "checks": [
+              "simetría facial",
+              "ojos",
+              "cejas",
+              "nariz",
+              "boca",
+              "línea de nacimiento del cabello"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V02",
+            "label": "Tres cuartos izquierdo",
+            "framing": "Busto girado 45° hacia su izquierda",
+            "checks": [
+              "forma de pómulo",
+              "silueta de nariz",
+              "volumen de cabello",
+              "oreja",
+              "marcas aprobadas"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V03",
+            "label": "Perfil izquierdo",
+            "framing": "Perfil estricto del lado izquierdo",
+            "checks": [
+              "frente",
+              "nariz",
+              "barbilla",
+              "mandíbula",
+              "oreja"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V04",
+            "label": "Tres cuartos derecho",
+            "framing": "Busto girado 45° hacia su derecha",
+            "checks": [
+              "misma estructura facial",
+              "textura de cabello",
+              "marcas aprobadas"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V05",
+            "label": "Perfil derecho",
+            "framing": "Perfil estricto del lado derecho",
+            "checks": [
+              "nariz",
+              "mandíbula",
+              "oreja",
+              "consistencia con perfil opuesto"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V06",
+            "label": "Cuerpo completo frontal",
+            "framing": "Figura de pie, neutral, frontal",
+            "checks": [
+              "proporción cabeza/cuerpo",
+              "estatura relativa",
+              "calzado",
+              "ropa de base"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V07",
+            "label": "Cuerpo completo posterior",
+            "framing": "Figura de pie, espalda completa",
+            "checks": [
+              "silueta",
+              "costuras",
+              "peinado posterior",
+              "ropa de base",
+              "continuidad de accesorios"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          }
+        ],
+        "anchorAgeYears": 14,
+        "alternativeAgesRequiringSeparateModel": [
+          11,
+          15
+        ]
+      },
+      {
+        "stageId": "J04",
+        "ageRange": "16–17",
+        "label": "Juan joven · el umbral",
+        "status": "precanon-por-validar",
+        "evidence": [
+          {
+            "age": 16,
+            "chapter": 25
+          },
+          {
+            "age": 17,
+            "chapter": 26
+          },
+          {
+            "age": 17,
+            "chapter": 28
+          }
+        ],
+        "narrativeMovement": "Se prepara para comenzar su Camino del Guerrero. El Libro I no lo muestra como héroe ya completado ni como anciano.",
+        "appearanceDraft": "Joven ágil, rostro definido que conserva estructura de J03; cabello oscuro ondulado y abundante, mirada segura sin perder humanidad. Vello facial solo si una referencia aprobada de esta edad lo establece.",
+        "wardrobeDraft": "Vestuario joven de viaje, práctico, sobrio, con toques colorados; no trasladar sin criterio el traje de charro de versiones adultas.",
+        "keyExpression": "Firmeza, compasión y expectación ante el destino",
+        "visualReference": "Evolución de personajes de Juan Colorao.png · 16–17; Evolución de Juan Colorao.png · 16–20",
+        "restrictions": [
+          "No confundir la etapa 16–17 con 20–30 de ilustraciones futuras",
+          "No mostrar su Viaje del Héroe como ya concluido",
+          "No asumir barba, cicatriz o insignias que no estén aprobadas para esta etapa"
+        ],
+        "views": [
+          {
+            "code": "V01",
+            "label": "Rostro frontal",
+            "framing": "Primer plano de frente",
+            "checks": [
+              "simetría facial",
+              "ojos",
+              "cejas",
+              "nariz",
+              "boca",
+              "línea de nacimiento del cabello"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V02",
+            "label": "Tres cuartos izquierdo",
+            "framing": "Busto girado 45° hacia su izquierda",
+            "checks": [
+              "forma de pómulo",
+              "silueta de nariz",
+              "volumen de cabello",
+              "oreja",
+              "marcas aprobadas"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V03",
+            "label": "Perfil izquierdo",
+            "framing": "Perfil estricto del lado izquierdo",
+            "checks": [
+              "frente",
+              "nariz",
+              "barbilla",
+              "mandíbula",
+              "oreja"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V04",
+            "label": "Tres cuartos derecho",
+            "framing": "Busto girado 45° hacia su derecha",
+            "checks": [
+              "misma estructura facial",
+              "textura de cabello",
+              "marcas aprobadas"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V05",
+            "label": "Perfil derecho",
+            "framing": "Perfil estricto del lado derecho",
+            "checks": [
+              "nariz",
+              "mandíbula",
+              "oreja",
+              "consistencia con perfil opuesto"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V06",
+            "label": "Cuerpo completo frontal",
+            "framing": "Figura de pie, neutral, frontal",
+            "checks": [
+              "proporción cabeza/cuerpo",
+              "estatura relativa",
+              "calzado",
+              "ropa de base"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          },
+          {
+            "code": "V07",
+            "label": "Cuerpo completo posterior",
+            "framing": "Figura de pie, espalda completa",
+            "checks": [
+              "silueta",
+              "costuras",
+              "peinado posterior",
+              "ropa de base",
+              "continuidad de accesorios"
+            ],
+            "asset": null,
+            "status": "no-creado",
+            "approval": "pendiente"
+          }
+        ],
+        "anchorAgeYears": 16,
+        "alternativeAgesRequiringSeparateModel": [
+          17
+        ]
+      }
+    ]
+  },
+  "audioIdentity": {
+    "chapterOnePublished": true,
+    "ageSpecificVoiceMasters": false,
+    "voiceId": null,
+    "status": "por-verificar; no fingir voces por edad"
+  },
+  "futureWorks": {
+    "books": [
+      2,
+      3,
+      4
+    ],
+    "stagesBeyond17": "No fijadas; etapas adultas de láminas son conceptuales",
+    "cartoonSeries": "Solo después de sitio público y aprobación de avatars",
+    "adultWardrobe": "Explorador / charro / cotidiano son propuestas de biblioteca, no canon del Libro I"
+  },
+  "qualityGates": [
+    "Una etapa agrupa edades narrativas; sus siete vistas muestran un único modelo de edad ancla (J01=5; J02=9; J03=14; J04=16), salvo nueva aprobación.",
+    "Aprobar una imagen base por etapa antes de renderizar los siete ángulos",
+    "Conservar identidad facial al cambiar perspectiva, iluminación y edad",
+    "Vista posterior debe corresponder exactamente al mismo atuendo de la frontal",
+    "Rasgos físicos y marcas deben estar sostenidos por capítulo o aprobación expresa",
+    "No poner etiquetas de edad inferidas en imágenes destinadas a publicación",
+    "Registrar aprobación del autor para cada etapa y para cada lámina maestra",
+    "No incorporar en interfaz pública ni en motor GPT secretos N4/N5/C100"
+  ],
+  "visualPlan": {
+    "referenceAgePerStage": "5, 9, 14 y 16 años como anclas propuestas; recién nacido, 3, 7, 10, 11, 15 y 17 requerirán variantes propias si se animan con detalle",
+    "sameSevenViewsCannotRepresentWholeAgeRange": true,
+    "viewsPerApprovedStage": 7,
+    "stageApprovalRequired": true,
+    "referenceArtIsNotApprovedCharacterMaster": true,
+    "assetLinksCreated": false,
+    "slots": [
+      "V01",
+      "V02",
+      "V03",
+      "V04",
+      "V05",
+      "V06",
+      "V07"
+    ]
+  },
+  "crossBookContinuity": {
+    "editorialDecisionDate": "2026-11-07",
+    "retainAllExistingReferenceArt": true,
+    "selectionPolicy": "Conservar íntegramente todas las láminas y variantes existentes como referencias. Ninguna queda descartada por no ser la seleccionada como avatar maestro y ninguna se convierte en canon solo por su belleza o procedencia.",
+    "books": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "commonIdentity": "Juan mantiene la misma identidad aunque cambien edad, apariencia, atuendo y voz. Todo cambio debe tener una causa y su primera aparición documentada en el capítulo; nunca improvisar cicatrices, marcas coloradas, coloración u otros atributos.",
+    "modes": {
+      "lectura": {
+        "requirement": "continuidad-literaria",
+        "guidance": "Mencionar la apariencia y los cambios colorados cuando tengan valor narrativo; no repetir una descripción completa en cada capítulo. Precisar primera aparición y causa, si el autor las aprueba.",
+        "requireSevenViews": false,
+        "check": [
+          "Rasgos ya descritos no se contradicen sin explicación",
+          "Las manifestaciones coloradas mantienen el significado y momento narrativo aprobados",
+          "Evolución hacia libros II–IV sustentada en el texto definitivo, no en concept art"
+        ]
+      },
+      "audio": {
+        "requirement": "continuidad-narrativa-y-vocal",
+        "guidance": "La referencia a la apariencia o al cambio colorado se comunica por la narración y la interpretación; la guía fonética de ElevenLabs nunca sustituye la ortografía literaria.",
+        "requireSevenViews": false,
+        "check": [
+          "El texto narrado mantiene los mismos hechos y su cronología",
+          "Timbre y edad percibida se desarrollan coherentemente con la etapa",
+          "Cambios de narrador o actor se registran por personaje y etapa sin asumir nuevos Voice IDs",
+          "El énfasis pronunciado no se convierte en nueva escritura canónica"
+        ]
+      },
+      "serie_animada": {
+        "requirement": "continuidad-visual-estricta",
+        "guidance": "Cada etapa/edad efectivamente animada requiere rostro maestro aprobado y juego de siete vistas del mismo modelo. Mantener geometría, lateralidad de marcas, peinado, proporciones, atuendo, movimiento y variaciones de iluminación entre planos.",
+        "requireSevenViews": true,
+        "check": [
+          "Corresponde el mismo individuo en primer plano y cuerpo completo",
+          "La marca/coloración aparece por primera vez en la escena autorizada, nunca antes",
+          "El lado exacto de cada marca permanece fijo al rotar la cámara",
+          "Vestuario, edades, crecimiento corporal y referencias visuales se cotejan en cada libro",
+          "Ningún elemento nuevo de una escena sustituye sin aprobación un rasgo permanente",
+          "Pruebas de expresión, iluminación y giro antes del sello de avatar maestro"
+        ]
+      }
+    },
+    "newBookWorkflow": [
+      "Incorporar Libro II, III o IV solo al recibir capítulo y edición final; no inventar edades ni cambios.",
+      "Registrar capítulo y evidencia textual del cambio de aspecto, coloración, marcas, peinado, ropa o voz; diferenciar hecho de metáfora y sueño.",
+      "Relacionar el cambio con la ficha de edad, evento canónico y la versión del personaje que aparece en esa escena.",
+      "Para lectura y audio, validar descripción e interpretación; no exigir nuevas imágenes.",
+      "Para la serie animada, elegir entre todas las referencias conservadas la imagen base por edad, validar diferencias y construir las siete vistas, bajo aprobación expresa.",
+      "No publicar nuevos avatares ni acceso a material reservado N4/N5/C100 sin autorización."
+    ],
+    "futureStages": [],
+    "pending": [
+      "Primera aparición y naturaleza de la coloración/marcas COLORAO: pendiente de auditoría capítulo-audio.",
+      "Cambios físicos y vestuarios de Juan en Libros II–IV: pendientes de textos y aprobación.",
+      "Modelo facial y siete vistas de cada edad destinada a la serie: pendientes de aprobación visual."
+    ]
+  }
+}

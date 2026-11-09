@@ -1,6 +1,6 @@
 'use client'
 
-import { Compass, X } from 'lucide-react'
+import { Compass, KeyRound, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useProgress, useWhisper } from '@/hooks/use-san-yallego'
@@ -36,7 +36,11 @@ export function MapaScreen() {
                   site={site}
                   unlocked={isSiteUnlocked(site, progress)}
                   visited={progress.visitedSites.includes(site.id)}
-                  onLocked={() => whisper(LOCKED_PATH_MESSAGE)}
+                  onLocked={() => whisper(
+                    site.id === 'casa-de-juanito'
+                      ? 'Primero visita la Entrada, completa las preguntas del Oráculo y descubre la llave.'
+                      : LOCKED_PATH_MESSAGE,
+                  )}
                 />
               </li>
             ))}
@@ -77,8 +81,8 @@ export function MapaScreen() {
           </div>
           <p className="mb-4 text-pretty text-base leading-snug italic text-foreground/90">
             {needsFirstPath
-              ? 'Todo viaje comienza en una entrada. Sigue las luces doradas y escucha lo que el pueblo quiera contarte.'
-              : 'La llave ha abierto un nuevo camino. Una pequeña casa guarda el comienzo de una gran historia.'}
+              ? 'Comienza en la Entrada, escucha las tres preguntas del Oráculo (puedes guardar silencio) y descubre la llave para visitar a Juanito.'
+              : 'Tu llave ha abierto la Casa de Juanito. Haz sus dos vuelos y descubre el capítulo 1: El primer grito.'}
           </p>
           <Link
             href={needsFirstPath ? '/sitio/entrada' : '/sitio/casa-de-juanito'}
@@ -91,6 +95,33 @@ export function MapaScreen() {
           </p>
         </aside>
       )}
+
+      {/* Acceso cultural público; no afecta la Llave ni el progreso de los sitios. */}
+      <nav aria-label="Biblioteca de San Yallego"
+        className="fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] left-4 z-30 md:bottom-6 md:left-6">
+        <Link href="/glosario"
+          className="inline-flex min-h-11 max-w-[calc(100vw-2rem)] items-center rounded-full border border-gold/40 bg-black/75 px-4 py-2 text-[11px] tracking-[0.09em] text-gold/90 shadow-lg backdrop-blur-md transition-colors hover:border-gold hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
+          Archivo de Palabras
+        </Link>
+      </nav>
+
+      {/*
+        Entrada visible pero discreta; la autorización se verifica en el servidor
+        dentro de /guardian. Esta ruta NO modifica progreso ni desbloquea sitios.
+      */}
+      <nav
+        aria-label="Acceso privado del creador"
+        className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 z-30 md:bottom-6 md:right-6"
+      >
+        <Link
+          href="/guardian"
+          title="Entrada privada · requiere Llave Maestra"
+          className="inline-flex min-h-11 max-w-[calc(100vw-2rem)] items-center gap-2 rounded-full border border-copper/35 bg-black/75 px-4 py-2 text-[11px] tracking-[0.09em] text-foreground/75 shadow-lg backdrop-blur-md transition-colors hover:border-gold/60 hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+        >
+          <KeyRound className="size-4 shrink-0 text-copper" aria-hidden="true" />
+          <span>El Taller del Creador</span>
+        </Link>
+      </nav>
 
       <Whisper message={message} nonce={nonce} />
     </main>

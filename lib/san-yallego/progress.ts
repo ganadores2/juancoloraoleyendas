@@ -32,18 +32,31 @@ export const INITIAL_PROGRESS: Progress = {
   oracleAnswers: {},
 }
 
+/** Las tres preguntas son una puerta narrativa; guardar silencio cuenta como respuesta. */
+export const ENTRANCE_QUESTION_COUNT = 3
+
+export function hasCompletedEntranceOracle(p: Progress): boolean {
+  const answers = p.oracleAnswers['oraculo-entrada']
+  return Array.from({ length: ENTRANCE_QUESTION_COUNT }, (_, index) =>
+    answers !== undefined && Object.prototype.hasOwnProperty.call(answers, index),
+  ).every(Boolean)
+}
+
 const addUnique = <T>(list: T[], value: T) => (list.includes(value) ? list : [...list, value])
 
 /** Transiciones puras: reutilizables en cliente hoy y en servidor/Supabase mañana. */
 export const transitions = {
   crossPortal: (p: Progress): Progress => ({ ...p, portalCrossed: true }),
 
-  findKey: (p: Progress): Progress => ({
-    ...p,
-    items: addUnique(p.items, 'llave-san-yallego'),
-    passIssuedAt: p.passIssuedAt ?? new Date().toISOString(),
-    unlockedSites: addUnique(p.unlockedSites, 'casa-de-juanito'),
-  }),
+  findKey: (p: Progress): Progress =>
+    hasCompletedEntranceOracle(p)
+      ? {
+          ...p,
+          items: addUnique(p.items, 'llave-san-yallego'),
+          passIssuedAt: p.passIssuedAt ?? new Date().toISOString(),
+          unlockedSites: addUnique(p.unlockedSites, 'casa-de-juanito'),
+        }
+      : p,
 
   visitSite: (siteId: SiteId) => (p: Progress): Progress => ({
     ...p,
@@ -71,7 +84,7 @@ export function isSiteUnlocked(site: MythicSite, p: Progress): boolean {
     case 'open':
       return true
     case 'requires-item':
-      return hasItem(p, site.unlock.item) || p.unlockedSites.includes(site.id)
+      return hasItem(p, site.unlock.item)
     case 'sealed':
       return false
   }

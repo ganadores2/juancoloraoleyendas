@@ -1,0 +1,21 @@
+
+# Dependencias instaladas
+node_modules/
+
+# Archivos generados por Next.js
+.next/
+out/
+build/
+next-env.d.ts
+# Caché de TypeScript
+*.tsbuildinfo
+
+# Archivos temporales
+*.log
+.DS_Store
+
+# Variables de entorno y secretos locales
+.env
+.env.*
+!.env.example
+!.env.sample

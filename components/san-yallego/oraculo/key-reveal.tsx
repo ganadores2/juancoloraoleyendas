@@ -44,7 +44,7 @@ export function KeyReveal({ justFound }: KeyRevealProps) {
           <KeyArt />
         </div>
 
-        <div className="sy-key-content animate-sy-fade-in flex min-w-0 flex-col items-center gap-4 [animation-delay:1.6s]">
+        <div className="sy-key-content animate-sy-fade-in flex min-w-0 flex-col items-center gap-4 ">
         <h2 className="sy-key-title text-balance font-display text-xl tracking-[0.08em] text-gold text-glow md:text-3xl">
           Has encontrado la Llave de San Yallego.
         </h2>
@@ -56,9 +56,12 @@ export function KeyReveal({ justFound }: KeyRevealProps) {
           <p className="text-lg italic text-gold/80">No expira.</p>
         </div>
 
+        <p className="max-w-xl text-balance text-sm italic text-foreground/85">
+          Tu primer destino se ha revelado: la Casa de Juanito. Allí comienza «El primer grito».
+        </p>
         <div className="sy-key-actions flex flex-wrap items-center justify-center gap-2 sm:gap-4">
           <Link href="/sitio/casa-de-juanito" className={ritualButton('primary', 'max-w-full px-4 py-3 text-[11px] tracking-[0.15em] sm:px-6')}>
-            Ir a la Casa de Juanito
+            Continuar a la Casa de Juanito
           </Link>
           <Link href="/mapa" className={ritualButton('secondary', 'px-4 py-3 tracking-[0.16em]')}>
             Volver al mapa

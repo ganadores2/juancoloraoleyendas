@@ -49,7 +49,7 @@ export function OracleQuestions({ questions, closingLine, onAnswer, onDiscover }
               advance(draft.trim())
             }}
           >
-            <p className="font-display text-[10px] tracking-[0.5em] text-gold/70">EL ORÁCULO PREGUNTA</p>
+            <p className="font-display text-[10px] tracking-[0.4em] text-gold/70">EL ORÁCULO PREGUNTA · {index + 1} DE {questions.length}</p>
             <label htmlFor="oracle-answer" className="text-balance text-2xl italic text-foreground text-glow md:text-3xl">
               {questions[index]}
             </label>

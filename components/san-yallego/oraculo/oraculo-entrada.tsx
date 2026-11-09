@@ -1,11 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useProgress } from '@/hooks/use-san-yallego'
 import { STAGE_ASPECT } from '@/lib/san-yallego/assets'
 import { ORACLES } from '@/lib/san-yallego/oracles'
-import { hasItem } from '@/lib/san-yallego/progress'
+import { hasCompletedEntranceOracle, hasItem } from '@/lib/san-yallego/progress'
 import { CinematicImage } from '../cinematic-image'
 import { ritualButton } from '../ritual'
 import { Stage } from '../stage'
@@ -14,7 +14,7 @@ import { KeyReveal } from './key-reveal'
 import { OracleQuestions } from './oracle-questions'
 
 const oracle = ORACLES['oraculo-entrada']
-const REVEAL_DURATION_MS = 1800
+const REVEAL_DURATION_MS = 450
 
 type Phase = 'explorando' | 'despertando' | 'llave'
 
@@ -22,18 +22,28 @@ export function OraculoEntrada() {
   const { progress, hydrated, findKey, visitSite, answerOracle } = useProgress()
   const [phase, setPhase] = useState<Phase>('explorando')
   const [showPass, setShowPass] = useState(false)
+  const discoveryStarted = useRef(false)
+  const revealTimer = useRef<number | null>(null)
   const alreadyHasKey = hydrated && hasItem(progress, 'llave-san-yallego')
+  const questionsComplete = hydrated && hasCompletedEntranceOracle(progress)
 
   useEffect(() => {
     visitSite('entrada')
   }, [visitSite])
 
+  useEffect(() => () => {
+    if (revealTimer.current !== null) window.clearTimeout(revealTimer.current)
+  }, [])
+
   const touchRing = () => {
+    if (discoveryStarted.current || alreadyHasKey || !questionsComplete) return
+    discoveryStarted.current = true
     setPhase('despertando')
     navigator.vibrate?.([30, 40, 30])
-    window.setTimeout(() => {
+    revealTimer.current = window.setTimeout(() => {
       findKey()
       setPhase('llave')
+      revealTimer.current = null
     }, REVEAL_DURATION_MS)
   }
 
@@ -44,7 +54,7 @@ export function OraculoEntrada() {
       <h1 className="sr-only">Oráculo de la Entrada a San Yallego</h1>
       <Stage aspectRatio={STAGE_ASPECT.oraculo}>
         <CinematicImage src={oracle.image} alt={oracle.imageAlt} />
-        {oracle.hiddenRing && hydrated && (
+        {oracle.hiddenRing && hydrated && (questionsComplete || alreadyHasKey) && (
           <HiddenRing {...oracle.hiddenRing} state={ringState} onTouch={touchRing} />
         )}
       </Stage>
@@ -62,6 +72,14 @@ export function OraculoEntrada() {
           onAnswer={(index, answer) => answerOracle(oracle.id, index, answer)}
           onDiscover={touchRing}
         />
+      )}
+
+      {phase === 'despertando' && (
+        <div role="status" aria-live="polite" className="pointer-events-none fixed inset-x-0 bottom-10 z-30 flex justify-center px-4">
+          <p className="rounded-lg border border-gold/50 bg-black/85 px-5 py-3 text-center text-sm text-gold shadow-lg">
+            La piedra ha respondido…
+          </p>
+        </div>
       )}
 
       {phase === 'llave' && <KeyReveal justFound />}
