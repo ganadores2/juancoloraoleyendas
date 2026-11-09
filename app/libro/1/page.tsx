@@ -23,11 +23,7 @@ export default function LibroUnoPage() {
             EL GRAN CAMBIO
           </h1>
           <p className="max-w-xl text-balance text-sm leading-relaxed text-foreground/75">
-            Los 33 capítulos de «El Gran Cambio» están disponibles para leer
-            en la edición literaria depurada de ElevenLabs. Puedes escuchar
-            los audios incorporados o vivir primero el recorrido cinematográfico
-            de San Yallego. Los 33 capítulos de «El Gran Cambio» están disponibles para leer y escuchar. Puedes abrir cualquier capítulo desde el índice o vivir primero el recorrido cinematográfico de San Yallego. se añadirán progresivamente,
-            sin modificar el orden original ni abrir los Oráculos sellados.
+            Los 33 capítulos de «El Gran Cambio» están disponibles para leer y escuchar. Puedes abrir cualquier capítulo desde el índice o vivir primero el recorrido cinematográfico de San Yallego.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link href="/bienvenida" className={ritualButton('secondary', 'min-h-11 tracking-[0.14em]')}>
