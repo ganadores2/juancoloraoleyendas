@@ -330,11 +330,12 @@ export function AudioPlayer({ src, parts, title, onEnded }: AudioPlayerProps) {
         }}
         onLoadedMetadata={(event) => restorePosition(event.currentTarget)}
         onError={() => setMissing(true)}
-        onEnded={() => {
-          const audio = audioRef.current
-          const nextPart = activePartRef.current + 1
-          if (audio && nextPart < playlist.length) {
-            // Mismo elemento de audio: continuar sin hacer completar el capítulo.
+   onEnded={async () => {
+  const audio = audioRef.current
+  const nextPart = activePartRef.current + 1
+  if (audio && nextPart < playlist.length) {
+    await new Promise<void>((resolve) => window.setTimeout(resolve, 1000))
+    if (audioRef.current !== audio || !audio.ended || activePartRef.current + 1 !== nextPart) return
             activePartRef.current = nextPart
             setPartIndex(nextPart)
             setCurrent(0)

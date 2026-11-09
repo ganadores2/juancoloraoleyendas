@@ -221,7 +221,7 @@ assert.ok(audioPlayer.includes('JSON.stringify({ part, seconds })') &&
   'El reproductor debe mostrar la parte actual y reanudar por parte y segundo')
 assert.ok(audioPlayer.includes('window.localStorage.setItem(storageKey, JSON.stringify({ part: nextPart, seconds: 0 }))'),
   'La transición entre partes debe registrar el avance antes de cargar la siguiente')
-const playlistEnd = audioPlayer.match(/onEnded=\{\(\) => \{([\s\S]*?)\n        \}\}/)?.[1] ?? ''
+const playlistEnd = audioPlayer.match(/onEnded=\{(?:async )?\(\) => \{([\s\S]*?)\n        \}\}/)?.[1] ?? ''
 assert.ok(playlistEnd.includes('if (audio && nextPart < playlist.length)') &&
   playlistEnd.includes('return') &&
   playlistEnd.includes('clearSavedPosition()\n          onEnded()'),
@@ -361,10 +361,25 @@ assert.equal(chapterTitleLines.length, 33,
 assert.ok(chapterList.includes("'El Nombre Que Quema'") &&
   chapterList.includes("'El Último Corrido Del Libro Primero'"),
   'Los títulos del índice deben corresponder al manuscrito oficial')
-assert.ok(chaptersData.includes('firstAudio = number === 1 ? ASSETS.audio.libro1Capitulo1 : null') &&
-  chaptersData.includes('audioParts: firstAudio ? [firstAudio] : []'),
-  'No deben publicarse rutas de MP3 para capítulos que todavía no se han incorporado')
-assert.ok(bookOneCatalog.includes('CHAPTERS.filter((chapter) => chapter.book === 1)') &&
+const { existsSync: mp3Exists } = await import('node:fs')
+const chapterMp3Entries = new Map(
+  [...chaptersData.matchAll(/^\s*(\d+):\s*\[([^\]]*)\]/gm)]
+    .map(([, number, entry]) => [Number(number), entry])
+)
+
+for (let number = 2; number <= 33; number++) {
+  const entry = chapterMp3Entries.get(number) ?? ''
+  const routes = [...entry.matchAll(/['"](\/assets\/audio\/libro-1\/[^'"]+\.mp3)['"]/g)]
+    .map(([, route]) => route)
+  const expectedParts = [4, 29, 32].includes(number) ? 2 : 1
+
+  assert.equal(new Set(routes).size, expectedParts,
+    `El capítulo ${number} debe declarar ${expectedParts} MP3 distintos`)
+  for (const route of routes) {
+    assert.ok(mp3Exists(new URL(`../public${route}`, import.meta.url)),
+      `Falta el MP3 del capítulo ${number}: ${route}`)
+  }
+}assert.ok(bookOneCatalog.includes('CHAPTERS.filter((chapter) => chapter.book === 1)') &&
   bookOneCatalog.includes('MP3 por incorporar') &&
   bookOneCatalog.includes('chapterHref(chapter)'),
   'El catálogo debe mostrar 33 capítulos y distinguir audio disponible de audio pendiente')
