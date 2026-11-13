@@ -3,13 +3,22 @@
  * Nunca guardar aquí revelaciones N4/N5/C100, llaves ni URLs privadas.
  * Las láminas del autor siguen en su Biblioteca personal hasta aprobarlas.
  */
+export type GalleryView = {
+  id: string
+  label: string
+  /** Archivo nulo hasta aprobar su publicación; una vista no equivale a una edad. */
+  imageSrc: string | null
+}
+
 export type GalleryStage = {
   id: string
   label: string
   context: string
   /** Ruta pública solamente cuando el autor autorice expresamente la imagen. */
   imageSrc: string | null
-  status: 'referencia-privada' | 'por-definir'
+  status: 'identidad-aprobada' | 'referencia-privada' | 'por-definir'
+  /** Ángulos de un único modelo facial: siete vistas no significan siete edades. */
+  views?: readonly GalleryView[]
 }
 
 export type GalleryCharacter = {
@@ -25,6 +34,22 @@ export const CHARACTER_GALLERY_V1: readonly GalleryCharacter[] = [
     name: 'Juan Colorao',
     description: 'Evolución de Juanito a Juan: las edades de las láminas son referencias de producción, no fechas automáticas del relato.',
     stages: [
+      {
+        id: 'juanco-presentador-adulto',
+        label: 'JUANCO adulto · bienvenida y portada',
+        context: 'Identidad facial aprobada por el autor a partir de su plantilla de siete vistas y fotogramas originales. Sombrero charro, traje COLORAO y pañuelo azul. No sustituye al Juan adolescente del Libro I; la imagen permanece fuera de este repositorio.',
+        imageSrc: null,
+        status: 'identidad-aprobada',
+        views: [
+          { id: 'frente', label: '01 · Frente', imageSrc: null },
+          { id: 'tres-cuartos-izq', label: '02 · Tres cuartos izquierdo', imageSrc: null },
+          { id: 'perfil-izq', label: '03 · Perfil izquierdo', imageSrc: null },
+          { id: 'espalda', label: '04 · Espalda', imageSrc: null },
+          { id: 'perfil-der', label: '05 · Perfil derecho', imageSrc: null },
+          { id: 'tres-cuartos-der', label: '06 · Tres cuartos derecho', imageSrc: null },
+          { id: 'frente-alternativa', label: '07 · Frente alternativo', imageSrc: null },
+        ],
+      },
       { id: 'juan-0-2', label: 'Primera infancia', context: 'Lámina visual · 0–2 años (concepto)', imageSrc: null, status: 'referencia-privada' },
       { id: 'juan-3-5', label: 'Niñez temprana', context: 'Lámina visual · 3–5 años (concepto)', imageSrc: null, status: 'referencia-privada' },
       { id: 'juan-6-10', label: 'Niñez', context: 'Lámina visual · 6–10 años (concepto)', imageSrc: null, status: 'referencia-privada' },
