@@ -90,7 +90,7 @@ export default async function GuardianOracleWorkbenchPage() {
               <section aria-label={'Capítulos de ' + oracle.name} className="space-y-2">
                 <h3 className="text-xs tracking-widest text-gold/75">LIBRO I · ASIGNACIÓN EDITORIAL</h3>
                 <ol className="space-y-2">
-                  {oracle.chapters.map((chapter) => (
+                  {oracle.chapters.map((chapter: { number: number; title: string; href: string; audioParts: number; hasCatalogAudio: boolean }) => (
                     <li key={chapter.number} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gold/15 bg-black/40 px-3 py-3">
                       <div className="flex min-w-0 flex-1 items-start gap-3">
                         <span className="shrink-0 text-xs tabular-nums text-gold/75">{String(chapter.number).padStart(2, '0')}</span>
