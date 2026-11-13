@@ -57,6 +57,7 @@ test('solo rutas locales del directorio autorizado pueden publicarse', () => {
 
 test('inventario rechaza enlaces privados incluso si el estado dice aprobado', () => {
   const wrong = structuredClone(juanco)
+  wrong.stages[0].publicationApproved = true
   wrong.stages[0].views[3].imageSrc = 'https://private.example.com/juanco.png'
   assert.throws(() => assertGalleryImageSources([wrong]), /Ruta de vista no autorizada/)
   const wrongPortrait = structuredClone(juanco)
