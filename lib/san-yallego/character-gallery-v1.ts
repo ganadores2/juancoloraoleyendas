@@ -35,6 +35,7 @@ export type GalleryCharacter = {
 export const CHARACTER_GALLERY_V1: readonly GalleryCharacter[] = [
   {
     id: 'juan-colorao',
+    sourceDoc: 'docs/personajes/juan-colorao-ficha-visual-maestra-v1.md',
     name: 'Juan Colorao',
     description: 'Evolución de Juanito a Juan: las edades de las láminas son referencias de producción, no fechas automáticas del relato.',
     stages: [
@@ -67,6 +68,7 @@ export const CHARACTER_GALLERY_V1: readonly GalleryCharacter[] = [
   },
   {
     id: 'maria',
+    sourceDoc: 'docs/personajes/maria-de-los-angeles-ficha-visual-maestra-v1.md',
     name: 'María de los Ángeles',
     description: 'Evolución visual propia, con etapas y decisiones independientes de las de Juan.',
     stages: [
@@ -78,6 +80,7 @@ export const CHARACTER_GALLERY_V1: readonly GalleryCharacter[] = [
   },
   {
     id: 'xolo',
+    sourceDoc: 'docs/personajes/xolo-ficha-visual-maestra-v1.md',
     name: 'XOLO',
     description: 'Guardián y compañero; conservar el misterio y no inferir edad biológica de las ilustraciones.',
     stages: [
@@ -87,6 +90,7 @@ export const CHARACTER_GALLERY_V1: readonly GalleryCharacter[] = [
   },
   {
     id: 'don-chema',
+    sourceDoc: 'docs/personajes/don-chema-ficha-visual-maestra-v1.md',
     name: 'Don Chema',
     description: 'Personaje del pueblo y posible protagonista de Las Andanzas de Don Chema.',
     stages: [
