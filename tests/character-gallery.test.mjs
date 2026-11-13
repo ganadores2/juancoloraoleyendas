@@ -61,6 +61,7 @@ test('inventario rechaza enlaces privados incluso si el estado dice aprobado', (
   wrong.stages[0].views[3].imageSrc = 'https://private.example.com/juanco.png'
   assert.throws(() => assertGalleryImageSources([wrong]), /Ruta de vista no autorizada/)
   const wrongPortrait = structuredClone(juanco)
+  wrongPortrait.stages[0].publicationApproved = true
   wrongPortrait.stages[0].imageSrc = '/images/privada.png'
   assert.throws(() => assertGalleryImageSources([wrongPortrait]), /Ruta de retrato no autorizada/)
 })
