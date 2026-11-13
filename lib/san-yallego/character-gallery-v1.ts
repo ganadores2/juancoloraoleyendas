@@ -19,6 +19,8 @@ export type GalleryStage = {
   status: 'identidad-aprobada' | 'referencia-privada' | 'por-definir'
   /** Ángulos de un único modelo facial: siete vistas no significan siete edades. */
   views?: readonly GalleryView[]
+  /** Aprobación independiente y explícita para publicar archivos de este modelo. */
+  publicationApproved?: boolean
 }
 
 export type GalleryCharacter = {
