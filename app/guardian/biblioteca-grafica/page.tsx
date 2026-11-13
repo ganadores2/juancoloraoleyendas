@@ -105,11 +105,32 @@ export default async function BibliotecaGraficaPage({ searchParams }: PageProps)
           </p>
         )}
 
+        <nav aria-label="Ir a un personaje" className="rounded-xl border border-gold/20 bg-white/5 p-4">
+          <p className="mb-3 text-center text-xs tracking-wide text-foreground/65">
+            {visibleCharacters.length} personajes con etapas en este filtro
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {visibleCharacters.map((character) => (
+              <a key={character.id} href={'#personaje-' + character.id}
+                className="inline-flex min-h-10 items-center rounded-full border border-gold/25 px-3 py-1 text-xs text-gold/90 hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-gold">
+                {character.name}
+              </a>
+            ))}
+          </div>
+        </nav>
+
         {visibleCharacters.map((character) => (
-          <section key={character.id} aria-labelledby={'personaje-' + character.id} className="space-y-4">
+          <section key={character.id} aria-labelledby={'personaje-' + character.id} className="scroll-mt-10 space-y-4">
             <div className="space-y-2 border-b border-gold/25 pb-4">
               <h2 id={'personaje-' + character.id} className="font-display text-xl text-gold sm:text-2xl">{character.name}</h2>
               <p className="max-w-3xl text-sm leading-relaxed text-foreground/70">{character.description}</p>
+              {character.sourceDoc && (
+                <a href={'https://github.com/ganadores2/juancoloraoleyendas/blob/main/' + character.sourceDoc}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center text-xs text-gold/85 underline underline-offset-4 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold">
+                  Consultar la ficha editorial de preproducción
+                </a>
+              )}
             </div>
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {character.stages.map((stage) => (
