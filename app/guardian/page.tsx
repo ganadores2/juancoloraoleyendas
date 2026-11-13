@@ -91,6 +91,15 @@ export default async function GuardianPage({ searchParams }: Props) {
           </Link>
         </div>
 
+        <div className="flex justify-center">
+          <Link
+            href="/guardian/biblioteca-grafica"
+            className="inline-flex min-h-12 items-center justify-center rounded-xl border border-gold/45 bg-white/5 px-6 py-3 text-center font-display text-xs tracking-[0.12em] text-gold hover:border-gold/75 hover:bg-gold/10"
+          >
+            BIBLIOTECA GRÁFICA DE PERSONAJES · TALLER PRIVADO
+          </Link>
+        </div>
+
         <ol className="grid gap-4 sm:grid-cols-2">
           {SITES.map((site) => (
             <li key={site.id}>
