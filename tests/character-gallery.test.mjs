@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
+import { readFileSync } from 'node:fs'
 import { isSafePublicPortraitPath, assertGalleryImageSources, galleryCounts } from '../lib/san-yallego/gallery-policy.mjs'
 
 const juanco = {
@@ -67,4 +68,22 @@ test('inventario rechaza enlaces privados incluso si el estado dice aprobado', (
   const withoutPermission = structuredClone(juanco)
   withoutPermission.stages[0].imageSrc = '/assets/images/personajes/juanco.webp'
   assert.throws(() => assertGalleryImageSources([withoutPermission]), /Publicación de imagen no aprobada/)
+})
+
+test('el inventario real de JUANCO contiene los siete ángulos y ninguna imagen publicada', () => {
+  const source = readFileSync(new URL('../lib/san-yallego/character-gallery-v1.ts', import.meta.url), 'utf8')
+  const model = source.split("id: 'juanco-presentador-adulto'")[1]?.split("id: 'juan-0-2'")[0]
+  assert.ok(model, 'Debe existir la etapa de JUANCO adulto')
+  assert.match(model, /status: 'identidad-aprobada'/)
+  const views = [...model.matchAll(/\{ id: '([^']+)', label: '[^']+', imageSrc: null \}/g)]
+  assert.equal(views.length, 7, 'Deben quedar exactamente siete vistas privadas')
+  assert.equal(new Set(views.map((view) => view[1])).size, 7)
+  assert.doesNotMatch(model, /publicationApproved: true/, 'La aprobación facial no publica imágenes')
+})
+
+test('la página privada conserva autenticación del lado servidor y validación de rutas', () => {
+  const page = readFileSync(new URL('../app/guardian/biblioteca-grafica/page.tsx', import.meta.url), 'utf8')
+  assert.match(page, /if \(!\(await hasGuardianSession\(\)\)\) redirect\('\/guardian'\)/)
+  assert.match(page, /assertGalleryImageSources\(CHARACTER_GALLERY_V1\)/)
+  assert.match(page, /robots: \{ index: false, follow: false \}/)
 })
