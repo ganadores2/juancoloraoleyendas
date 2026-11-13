@@ -33,6 +33,33 @@ libros y audios permanece independiente; ningún capítulo se retira ni bloquea 
   autorización expresa) y el archivo debe vivir bajo `/assets/images/personajes/`,
   sin URL externa, datos privados, parámetros ni ascensos de directorio.
 
+
+## Ampliación de inventario para doce personajes
+
+Se incorporan **ocho fichas adicionales**, sin archivos fotográficos y sin edades
+inventadas: Abuelo Pancho, Dolores Colorao, Doña Chavela, Gabriel, Tomás, Lupita,
+Geraldo y El Ojón. Junto con Juan Colorao, María de los Ángeles, XOLO y Don Chema,
+la galería ofrece **doce entradas de preproducción**.
+
+- Cada personaje referencia su fichero ya existente `docs/personajes/...`, que
+  describe su procedencia. La navegación incluye un índice de enlaces internos
+  para consultar rápidamente una ficha en teléfono o escritorio.
+- **Chavela:** no se inventa una edad a partir del rumor de generaciones, ni una
+  imagen individual que no ha sido identificada inequívocamente.
+- **Dolores:** no se introduce el error de la lámina que la llama «amiga de Juanito».
+- **Tomás:** no se unen homónimos documentales sin identificación narrativa.
+- **Gabriel:** no se decide arbitrariamente entre «Vallego» y «Yallego».
+- **Lupita y Geraldo:** las láminas conceptuales no autorizan futuros, edades
+  ni hechos que las escenas publicadas no confirmen.
+- **El Ojón:** su alta de personaje en universo extendido NO equivale a un avatar
+  maestro, aparición obligatoria ni episodio de animación terminado.
+- **Abuelo Pancho:** identidad y humor distintos de Don Chema.
+
+El verificador de galería impide también IDs repetidos, fuentes editoriales fuera
+de `docs/personajes/`, plantillas de vistas incompletas o con vistas repetidas.
+Las fotos siguen sin incorporarse. Ningún cambio altera el catálogo cronológico
+original ni los archivos de los oráculos.
+
 ## Protección
 
 La página verifica `hasGuardianSession()` del lado del servidor antes de renderizar.
