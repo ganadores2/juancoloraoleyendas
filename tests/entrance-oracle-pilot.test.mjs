@@ -62,7 +62,8 @@ test('el piloto exige sesión privada antes de preparar contenido y no se indexa
 })
 
 test('no hay modelo externo, prompt reservado ni vínculo a los ocho sitios sellados', () => {
-  assert.doesNotMatch(page + pilot, /openai|anthropic|elevenlabs|C100|N5|N4|sitio-0[3-9]|sitio-10/i)
+  assert.doesNotMatch(page + pilot, /openai|anthropic|elevenlabs|sitio-0[3-9]|sitio-10/i)
+  assert.match(page, /N4, N5 y C100 permanecen fuera del piloto/)
   assert.match(page, /N0: orientación/)
   const sites = source('lib/san-yallego/sites.ts')
   assert.equal([...sites.matchAll(/unlock: \{ kind: 'sealed' \}/g)].length, 8)
