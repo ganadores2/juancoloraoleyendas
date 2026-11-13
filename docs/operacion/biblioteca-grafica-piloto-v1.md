@@ -12,15 +12,26 @@ libros y audios permanece independiente; ningún capítulo se retira ni bloquea 
 
 ## Contenido de esta primera versión
 
+- **JUANCO adulto — presentador de bienvenida/portada**: el autor aprobó la identidad de
+  la plantilla reciente de siete vistas. Se inventarían **siete ángulos de un mismo
+  modelo** (frontal, tres cuartos izquierdo, perfil izquierdo, espalda, perfil
+  derecho, tres cuartos derecho, frontal alternativo), no siete edades.
+  **Identidad aprobada NO equivale a permiso para publicar la imagen.** Los siete
+  archivos siguen sin copiarse al repositorio (`imageSrc: null`), y esta aprobación
+  no define el rostro de Juan a los 17 años ni de los libros siguientes.
+- **Filtros de estado** en el Taller: todos, identidad aprobada, referencias privadas,
+  etapas pendientes; con resumen visible de imágenes efectivamente incorporadas.
 - Juan Colorao: rangos de las *láminas visuales conceptuales* 0–2, 3–5, 6–10, 11–15
   y 16–20, sin convertirlos en edades automáticas de un capítulo; ranuras de Libros
   II, III y IV y una visión artística **no canónica** de Juan a los 120 años.
 - María de los Ángeles: referencia visual de Libro I y ranuras de futuras etapas.
 - XOLO: continuidad gráfica sin asignar edad biológica ni revelar su naturaleza.
 - Don Chema: continuidad de San Yallego y propuesta de futura serie cómica.
-- Cada tarjeta admite `imageSrc`, pero todos los valores están a `null`: no se
-  fingen fotos, no se publican originales de Biblioteca privada y no se reutilizan
-  dibujos de otra edad para simular una etapa.
+- Las tarjetas y siete vistas admiten `imageSrc`, pero **todos los valores actuales
+  permanecen en `null`**: no se fingen fotos ni se copian originales privados.
+  Para aceptar una ruta, la etapa requiere `publicationApproved: true` (con
+  autorización expresa) y el archivo debe vivir bajo `/assets/images/personajes/`,
+  sin URL externa, datos privados, parámetros ni ascensos de directorio.
 
 ## Protección
 
@@ -45,12 +56,23 @@ biografías N4/N5/C100, manuscritos reservados ni URLs de imágenes privadas a
 7. Integrar a los Oráculos GPT únicamente datos y fotos publicables filtrados por
    nivel de acceso, capítulo publicado y progreso del visitante.
 
+## Pruebas introducidas en esta rama
+
+- `lib/san-yallego/gallery-policy.mjs`: verifica directorio autorizado de imágenes,
+  distingue identidad de publicación y rechaza rutas privadas y estados sin permiso.
+- `tests/character-gallery.test.mjs`: cubre siete ángulos, recuentos, ausencia de
+  publicaciones y bloqueo de URLs no permitidas. Ejecutar `pnpm run test:gallery`.
+- La suite también se incorpora a `pnpm run test:security` y al comando `pnpm build`,
+  para que CI compruebe el Taller junto a las reglas existentes.
+
 ## Lista de validación antes de fusionar
 
-- [ ] `pnpm typecheck` y `pnpm build` superan las pruebas.
+- [ ] `pnpm run test:gallery`, `pnpm typecheck` y `pnpm build` superan las pruebas.
 - [ ] Acceso directo sin sesión a `/guardian/biblioteca-grafica` redirige a `/guardian`.
 - [ ] Acceso desde la Sala del Creador con sesión autorizada funciona.
 - [ ] Ningún retrato privado está en `public/` ni en el código cliente.
+- [ ] Las siete vistas de JUANCO no se presentan como siete edades de Juanito.
+- [ ] La aprobación facial no permite publicar un archivo sin permiso editorial explícito.
 - [ ] Móvil/escritorio, retorno al Taller y lector de pantalla verificados.
 - [ ] Autor aprueba expresamente merge; publicación/producción requieren aprobación adicional.
 
