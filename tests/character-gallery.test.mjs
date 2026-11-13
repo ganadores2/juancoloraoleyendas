@@ -87,3 +87,41 @@ test('la página privada conserva autenticación del lado servidor y validación
   assert.match(page, /assertGalleryImageSources\(CHARACTER_GALLERY_V1\)/)
   assert.match(page, /robots: \{ index: false, follow: false \}/)
 })
+
+test('la galería conserva doce fichas editoriales y ninguna fotografía enlazada', () => {
+  const source = readFileSync(new URL('../lib/san-yallego/character-gallery-v1.ts', import.meta.url), 'utf8')
+  const names = [...source.matchAll(/sourceDoc: 'docs\/personajes\/([^']+)'/g)].map((item) => item[1])
+  assert.equal(names.length, 12, 'Se esperan doce personajes con procedencia')
+  assert.equal(new Set(names).size, 12, 'Ninguna ficha debe asociarse accidentalmente a dos personajes')
+  assert.equal([...source.matchAll(/imageSrc: null/g)].length > 0, true)
+  assert.doesNotMatch(source, /imageSrc: ['"]/, 'No incluir rutas de imágenes antes de autorización')
+  assert.doesNotMatch(source, /publicationApproved: true/, 'No hay autorización para publicar retratos')
+})
+
+test('el registro rechaza personajes, etapas o ángulos duplicados', () => {
+  assert.throws(() => assertGalleryImageSources([juanco, juanco]), /Identificador de personaje/)
+  const repeatedStage = structuredClone(juanco)
+  repeatedStage.stages.push(structuredClone(repeatedStage.stages[1]))
+  assert.throws(() => assertGalleryImageSources([repeatedStage]), /Etapa repetida/)
+  const repeatedView = structuredClone(juanco)
+  repeatedView.stages[0].views[6].id = 'frente'
+  assert.throws(() => assertGalleryImageSources([repeatedView]), /vistas duplicadas/)
+  const incomplete = structuredClone(juanco)
+  incomplete.stages[0].views.pop()
+  assert.throws(() => assertGalleryImageSources([incomplete]), /Plantilla incompleta/)
+})
+
+test('una referencia editorial mal formada no se acepta como fuente', () => {
+  const wrong = structuredClone(juanco)
+  wrong.sourceDoc = 'docs/personajes/../../.env'
+  assert.throws(() => assertGalleryImageSources([wrong]), /Fuente editorial/)
+  wrong.sourceDoc = 'docs/personajes/juan-ficha-visual-maestra-v1.md'
+  assert.equal(assertGalleryImageSources([wrong]), true)
+})
+
+test('la galería presenta navegación por personaje y fuente editorial', () => {
+  const page = readFileSync(new URL('../app/guardian/biblioteca-grafica/page.tsx', import.meta.url), 'utf8')
+  assert.match(page, /aria-label="Ir a un personaje"/)
+  assert.match(page, /character\.sourceDoc/)
+  assert.match(page, /href=\{'#personaje-' \+ character\.id\}/)
+})
