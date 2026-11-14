@@ -9,6 +9,8 @@ export const ASSETS = {
     portada: '/assets/images/portada-san-yallego.jpg',
     mapa: '/assets/images/mapa-san-yallego.jpg',
     oraculoEntrada: '/assets/images/oraculo-entrada.jpg',
+    /** Fotografía ampliada del autor: integrar solo tras su validación en el Taller. Fallback a original si no está desplegada. */
+    oraculoEntradaLlaveOculta: '/assets/images/oraculo-entrada-llave-oculta.png',
     oraculoCasaJuanito: '/assets/images/oraculo-casa-juanito.jpg',
     llave: '/assets/images/llave-san-yallego.png',
   },
