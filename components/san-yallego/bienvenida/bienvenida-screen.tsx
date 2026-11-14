@@ -20,7 +20,8 @@ export function BienvenidaScreen() {
   const firstVideoRef = useRef<HTMLVideoElement>(null)
   const secondVideoRef = useRef<HTMLVideoElement>(null)
   const freezeCanvasRef = useRef<HTMLCanvasElement>(null)
-  // Una copia del último fotograma del saludo 1 cubre el instante en que
+  const freezeReadyRef = useRef(false)
+  // Una copia del último fotograma válido del saludo 1 cubre el instante en que
   // el navegador deja de dibujar el video terminado.
   const [secondVisible, setSecondVisible] = useState(false)
   const [phase, setPhase] = useState<Phase>('saludo')
@@ -30,18 +31,21 @@ export function BienvenidaScreen() {
   const captureFirstFrame = useCallback(() => {
     const video = firstVideoRef.current
     const canvas = freezeCanvasRef.current
-    if (!video || !canvas || video.readyState < 2 || !video.videoWidth || !video.videoHeight) return
+    if (!video || !canvas || video.readyState < 2 || !video.videoWidth || !video.videoHeight) return false
     // Conservamos nitidez Full HD con un límite razonable de memoria.
     const width = Math.min(video.videoWidth, 1920)
     const height = Math.round(width * video.videoHeight / video.videoWidth)
     const context = canvas.getContext('2d')
-    if (!context) return
+    if (!context) return false
     try {
       if (canvas.width !== width) canvas.width = width
       if (canvas.height !== height) canvas.height = height
       context.drawImage(video, 0, 0, width, height)
+      freezeReadyRef.current = true
+      return true
     } catch {
       // Si el navegador no permite capturar el fotograma, mantiene el video debajo.
+      return false
     }
   }, [])
 
@@ -58,9 +62,9 @@ export function BienvenidaScreen() {
 
   const next = useCallback(() => {
     if (phase === 'saludo') {
-      // Actualizamos siempre la imagen justo al terminar el video: una captura
-      // anterior (onTimeUpdate) puede tener varias décimas de segundo de atraso.
-      captureFirstFrame()
+      // No sobrescribimos una captura válida tomada antes del final: algunos
+      // navegadores limpian el fotograma al disparar "ended" y producirían un flash.
+      if (!freezeReadyRef.current) captureFirstFrame()
       firstVideoRef.current?.pause()
       setPlayback('idle')
       setPhase('invitacion')
@@ -137,6 +141,8 @@ export function BienvenidaScreen() {
         onEnded={next}
         onTimeUpdate={() => {
           const video = firstVideoRef.current
+          // Guardamos un fotograma todavía válido muy cerca del cierre. Si "ended"
+          // llega con el decoder ya limpio, esta captura permanece intacta.
           if (video && Number.isFinite(video.duration) && video.duration - video.currentTime <= 0.55) {
             captureFirstFrame()
           }
@@ -153,7 +159,7 @@ export function BienvenidaScreen() {
       <video
         ref={secondVideoRef}
         src={ASSETS.video.bienvenidaMicrofono}
-        className={`absolute inset-0 z-10 size-full bg-black transition-opacity duration-300 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 z-10 size-full bg-black transition-opacity duration-500 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
         playsInline
         preload="auto"
         muted={!soundOn}
