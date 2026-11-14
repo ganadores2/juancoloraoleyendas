@@ -1,5 +1,7 @@
 # Libro I — El Gran Cambio: integración de los 33 capítulos MP3
 
+> **Actualización auditada — 14 de noviembre de 2026.** La rama `main` ya contiene los 33 capítulos en **36 archivos MP3** (4, 29 y 32 divididos en dos partes), con rutas cotejadas contra `chapters.ts`. Las notas de abajo documentan el proceso anterior de incorporación y no deben interpretarse como estado actual. La reproducción final y la sincronización texto-audio siguen pendientes de comprobación manual. Ver `docs/operacion/candidato-integrado-libro-1-qa-2026-11-14.md` en la rama candidata.
+
 ## Estado confirmado
 
 - Fuente literaria: PDF oficial «Juan Colorao Leyendas — Libro 1 — El Gran Cambio», edición para audiolibro multivoz (170 páginas, 33 capítulos).
