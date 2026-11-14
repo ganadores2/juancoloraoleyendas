@@ -67,6 +67,35 @@ await run('Primera visita: solo el primer capítulo abierto', async () => {
   assert.equal(closed, 32, 'Deben aparecer 32 capítulos por descubrir')
 })
 
+await run('Metadatos de los 36 MP3 decodificables por Chromium', async () => {
+  const observations = await page.evaluate(async (urls) => {
+    const readOne = (url) => new Promise(resolve => {
+      const media = new Audio()
+      media.preload = 'metadata'
+      const timer = setTimeout(() => finish({ url, error: 'tiempo agotado' }), 20000)
+      const finish = result => {
+        clearTimeout(timer)
+        media.pause()
+        media.removeAttribute('src')
+        media.load()
+        resolve(result)
+      }
+      media.onloadedmetadata = () => finish({ url, duration: media.duration })
+      media.onerror = () => finish({ url, error: 'no se pudieron cargar metadatos' })
+      media.src = url
+      media.load()
+    })
+    const result = []
+    for (let index = 0; index < urls.length; index += 4) {
+      result.push(...await Promise.all(urls.slice(index, index + 4).map(readOne)))
+    }
+    return result
+  }, audioUrls)
+  assert.equal(observations.length, 36)
+  const failed = observations.filter(item => !Number.isFinite(item.duration) || item.duration <= 0)
+  assert.deepEqual(failed, [], 'Hay MP3 que Chromium no pudo reconocer')
+})
+
 await run('Enlace directo al capítulo 2: puerta narrativa', async () => {
   await page.goto(base + '/libro/1/capitulo/2', { waitUntil: 'domcontentloaded' })
   await page.getByText(/Este capítulo todavía no se ha abierto en tu recorrido/).waitFor()
@@ -82,6 +111,10 @@ await run('Leer el capítulo 1 desbloquea los capítulos 2–33', async () => {
   await page.locator('ol[aria-label="Capítulos del Libro I"] a[href="/libro/1/capitulo/33"]').waitFor()
   const count = await page.locator('ol[aria-label="Capítulos del Libro I"] a[href^="/libro/1/capitulo/"]').count()
   assert.equal(count, 33)
+  await page.reload({ waitUntil: 'domcontentloaded' })
+  await page.locator('ol[aria-label="Capítulos del Libro I"] a[href="/libro/1/capitulo/33"]').waitFor()
+  assert.equal(await page.locator('ol[aria-label="Capítulos del Libro I"] a[href^="/libro/1/capitulo/"]').count(), 33,
+    'El desbloqueo debe sobrevivir a una recarga')
 })
 
 await run('Capítulos 4, 29 y 32 muestran reproductor de dos partes', async () => {
@@ -90,6 +123,25 @@ await run('Capítulos 4, 29 y 32 muestran reproductor de dos partes', async () =
     await page.getByText('PARTE 1 DE 2', { exact: true }).waitFor()
     const src = await page.locator('audio').getAttribute('src')
     assert.ok(src?.includes('capitulo-' + String(n).padStart(2, '0') + '-'), `Audio inicial erróneo: capítulo ${n} ${src}`)
+  }
+})
+
+await run('Transición de partes en 4, 29 y 32 sin completar el capítulo anticipadamente', async () => {
+  for (const number of [4, 29, 32]) {
+    await page.goto(base + '/libro/1/capitulo/' + number, { waitUntil: 'domcontentloaded' })
+    await page.getByText('PARTE 1 DE 2', { exact: true }).waitFor()
+    await page.locator('audio').evaluate(media => {
+      // Simula el evento ended: prueba la lógica, NO el contenido ni la duración real.
+      Object.defineProperty(media, 'ended', { configurable: true, get: () => true })
+      media.dispatchEvent(new Event('ended', { bubbles: true }))
+    })
+    await page.getByText('PARTE 2 DE 2', { exact: true }).waitFor({ timeout: 5000 })
+    const src = await page.locator('audio').getAttribute('src')
+    assert.ok(src?.endsWith('parte-2.mp3'), `Capítulo ${number} no avanzó a parte 2: ${src}`)
+    const completed = await page.evaluate(id => (
+      JSON.parse(localStorage.getItem('san-yallego:progreso:v1') || '{}')?.completedChapters?.includes(id) ?? false
+    ), 'libro-1-capitulo-' + number)
+    assert.equal(completed, false, `Capítulo ${number} se marcó completo demasiado pronto`)
   }
 })
 
