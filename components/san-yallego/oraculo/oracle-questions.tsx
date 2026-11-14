@@ -24,7 +24,10 @@ export function OracleQuestions({ questions, closingLine, onAnswer, onDiscover }
   return (
     <section
       aria-label="El Oráculo pregunta"
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black via-black/80 to-transparent px-6 pb-10 pt-24"
+      className={finished
+        ? 'pointer-events-none fixed inset-x-0 top-20 z-20 bg-gradient-to-b from-black/85 via-black/65 to-transparent px-4 pb-12 pt-6'
+        : 'pointer-events-none fixed inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black via-black/80 to-transparent px-6 pb-10 pt-24'
+      }
     >
       <div className="pointer-events-auto mx-auto flex max-w-xl flex-col items-center gap-5 text-center">
         {finished ? (
@@ -36,7 +39,7 @@ export function OracleQuestions({ questions, closingLine, onAnswer, onDiscover }
             )}
             {onDiscover && (
               <button type="button" onClick={onDiscover} className={ritualButton('primary')}>
-                Tocar la piedra
+                Tocar la argolla del pedestal
               </button>
             )}
           </div>

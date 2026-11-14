@@ -43,9 +43,15 @@ function FlightHeading({ place, approaching, panorama }: { place: string; approa
 /** Reproduce los dos tramos antes de entregar el control a la experiencia del sitio.
  * No abre lugares sellados ni modifica el progreso del visitante.
  */
-export function SiteJourney({ siteId, children }: { siteId: SiteId; children: ReactNode }) {
+export function SiteJourney({ siteId, children, fromNewKey = false }: {
+  siteId: SiteId
+  children: ReactNode
+  /** Permite iniciar el primer descenso solo al venir del ritual; la llave sigue siendo obligatoria. */
+  fromNewKey?: boolean
+}) {
   const { progress, hydrated } = useProgress()
-  const [phase, setPhase] = useState(() => initialJourneyPhase(siteId))
+  const [phase, setPhase] = useState(() =>
+    siteId === 'casa-de-juanito' && fromNewKey ? 'descenso' : initialJourneyPhase(siteId))
   const advance = useCallback(() => setPhase((current) => advanceJourneyPhase(current)), [])
   const site = getSite(siteId)
 
