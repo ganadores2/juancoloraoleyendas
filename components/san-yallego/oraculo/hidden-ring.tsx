@@ -8,26 +8,37 @@ interface HiddenRingProps {
   onTouch: () => void
 }
 
-/** Argolla antigua incrustada en la piedra: parece herraje, adorno o desagüe. */
+/**
+ * Área táctil centrada en la argolla REAL de la fotografía.
+ * No reemplaza ni tapa el herraje original con otro dibujo.
+ * El tamaño mínimo facilita su descubrimiento en móvil y teclado.
+ */
 export function HiddenRing({ x, y, sizePx, state, onTouch }: HiddenRingProps) {
+  const target = Math.max(sizePx, 56)
+
   return (
     <button
       type="button"
       onClick={onTouch}
       disabled={state !== 'dormida'}
-      aria-label="Argolla antigua en la piedra"
-      className="absolute -translate-x-1/2 -translate-y-1/2 p-3 focus-visible:outline-none [&:focus-visible>span]:ring-2 [&:focus-visible>span]:ring-gold/60"
-      style={{ left: `${x}%`, top: `${y}%` }}
+      aria-label="Tocar la argolla antigua para extraer la llave"
+      title="La piedra también escucha"
+      className={cn(
+        'absolute z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full',
+        'touch-manipulation bg-transparent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold',
+        state === 'dormida' && 'cursor-pointer',
+      )}
+      style={{ left: `${x}%`, top: `${y}%`, width: target, height: target }}
     >
       <span
-        className={cn(
-          'block rounded-full border-[3px] transition-[border-color,opacity] duration-700',
-          'border-[oklch(0.42_0.04_55)] bg-[radial-gradient(circle,oklch(0.1_0.01_50)_45%,oklch(0.22_0.03_55)_60%,transparent_62%)] opacity-80 shadow-[inset_0_1px_2px_oklch(0_0_0/0.8),0_1px_0_oklch(1_0_0/0.08)]',
-          state === 'despertando' && 'animate-sy-ring-reveal border-gold opacity-100',
-          state === 'abierta' && 'border-gold/70 opacity-100 shadow-[0_0_14px_2px_oklch(0.8_0.12_82/0.35)]',
-        )}
-        style={{ width: sizePx, height: sizePx }}
         aria-hidden
+        className={cn(
+          'pointer-events-none block size-8 rounded-full border-2 border-gold/20',
+          'shadow-[0_0_18px_3px_oklch(0.78_0.14_75/0.12)] transition-[border-color,box-shadow,opacity] duration-500',
+          state === 'dormida' && 'animate-sy-ring-reveal hover:border-gold/65',
+          state === 'despertando' && 'border-gold shadow-[0_0_35px_10px_oklch(0.88_0.13_80/0.45)]',
+          state === 'abierta' && 'border-gold/30 opacity-45',
+        )}
       />
     </button>
   )
