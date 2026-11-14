@@ -45,3 +45,30 @@ jobs:
 
       - name: Build application
         run: pnpm run build
+
+      - name: Install pinned Chromium browser for integration tests
+        run: |
+          npm install --prefix "$RUNNER_TEMP/sy-playwright" --no-save --no-package-lock playwright@1.55.0
+          node "$RUNNER_TEMP/sy-playwright/node_modules/playwright/cli.js" install --with-deps chromium
+
+      - name: Start local production build for browser tests
+        run: |
+          pnpm exec next start -H 127.0.0.1 -p 3000 > "$RUNNER_TEMP/sy-next.log" 2>&1 &
+          for i in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:3000/libro/1 > /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          cat "$RUNNER_TEMP/sy-next.log"
+          exit 1
+
+      - name: Browser E2E - 33 chapters, media and 8 sealed sites
+        env:
+          SY_BASE_URL: http://127.0.0.1:3000
+          SY_PLAYWRIGHT_MODULE: ${{ runner.temp }}/sy-playwright/node_modules/playwright/index.mjs
+        run: node scripts/e2e-libro-1.mjs
+
+      - name: Print local Next logs if test fails
+        if: failure()
+        run: cat "$RUNNER_TEMP/sy-next.log" || true
