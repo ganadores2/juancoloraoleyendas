@@ -176,6 +176,55 @@ await run('Nueva visita móvil: bloqueo independiente y diseño sin desbordamien
   assert.ok(size.scrollWidth <= size.width + 6, `Desbordamiento horizontal en móvil: ${JSON.stringify(size)}`)
 })
 await mobile.close()
+
+// Prueba independiente de AUDIO: un visitante nuevo no puede abrir los otros
+// capítulos hasta que el reproductor del primero termina (sin botón de lectura).
+const listeningContext = await browser.newContext({ viewport: { width: 1280, height: 800 } })
+const listeningPage = await listeningContext.newPage()
+await run('Escuchar el capítulo 1 hasta su final desbloquea los otros 32', async () => {
+  await listeningPage.goto(base + '/libro/1/capitulo/1', { waitUntil: 'domcontentloaded' })
+  await listeningPage.getByRole('button', { name: /^Reproducir CAPÍTULO 1/ }).click()
+  // Escuchamos los primeros instantes reales y luego avanzamos al final del MP3.
+  // No equivale a auditar la narración entera, pero dispara un fin real de audio.
+  await listeningPage.waitForFunction(() => {
+    const audio = document.querySelector('audio')
+    return audio && audio.currentTime > 0.35 && Number.isFinite(audio.duration)
+  }, { timeout: 30000 })
+  await listeningPage.locator('audio').evaluate(audio => {
+    audio.currentTime = Math.max(0, audio.duration - 1.25)
+  })
+  await listeningPage.waitForFunction(() => {
+    try {
+      return JSON.parse(localStorage.getItem('san-yallego:progreso:v1') || '{}')
+        ?.completedChapters?.includes('libro-1-capitulo-1')
+    } catch {
+      return false
+    }
+  }, { timeout: 20000 })
+  await listeningPage.getByText('ELIGE TU SIGUIENTE MIRADA').waitFor()
+  await listeningPage.goto(base + '/libro/1', { waitUntil: 'domcontentloaded' })
+  await listeningPage.locator('ol[aria-label="Capítulos del Libro I"] a[href="/libro/1/capitulo/33"]').waitFor()
+  assert.equal(await listeningPage.locator('ol[aria-label="Capítulos del Libro I"] a[href^="/libro/1/capitulo/"]').count(), 33)
+})
+await listeningContext.close()
+
+// Saludos y acceso comprensibles sin adivinar que hay que tocar el micrófono.
+// El aspecto cinematográfico y el microdestello todavía requieren QA humano.
+const welcomeContext = await browser.newContext({ viewport: { width: 1280, height: 720 } })
+const welcomePage = await welcomeContext.newPage()
+await run('Dos saludos → invitación → portal sin pulsar el micrófono', async () => {
+  await welcomePage.goto(base + '/bienvenida', { waitUntil: 'domcontentloaded' })
+  await welcomePage.getByRole('button', { name: 'Ver siguiente saludo' }).waitFor()
+  assert.equal(await welcomePage.locator('video').count(), 2, 'La bienvenida debe mantener ambos videos montados')
+  await welcomePage.getByRole('button', { name: 'Ver siguiente saludo' }).click()
+  await welcomePage.getByRole('button', { name: 'Continuar la bienvenida' }).click()
+  await welcomePage.getByText('Ven y explora mi mundo. Tu aventura en San Yallego está por comenzar.').waitFor()
+  await welcomePage.getByRole('button', { name: 'COMENZAR EL RECORRIDO' }).click()
+  await welcomePage.waitForURL('**/portal', { timeout: 12000 })
+  assert.equal(new URL(welcomePage.url()).pathname, '/portal')
+})
+await welcomeContext.close()
+
 await browser.close()
 
 const failed = results.filter(result => !result.ok)
