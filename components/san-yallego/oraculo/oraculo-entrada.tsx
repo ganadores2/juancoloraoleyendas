@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { useProgress } from '@/hooks/use-san-yallego'
-import { STAGE_ASPECT } from '@/lib/san-yallego/assets'
+import { ASSETS, STAGE_ASPECT } from '@/lib/san-yallego/assets'
 import { ORACLES } from '@/lib/san-yallego/oracles'
 import { hasCompletedEntranceOracle, hasItem } from '@/lib/san-yallego/progress'
 import { CinematicImage } from '../cinematic-image'
@@ -14,7 +14,7 @@ import { KeyReveal } from './key-reveal'
 import { OracleQuestions } from './oracle-questions'
 
 const oracle = ORACLES['oraculo-entrada']
-const REVEAL_DURATION_MS = 450
+const REVEAL_DURATION_MS = 950
 
 type Phase = 'explorando' | 'despertando' | 'llave'
 
@@ -22,6 +22,9 @@ export function OraculoEntrada() {
   const { progress, hydrated, findKey, visitSite, answerOracle } = useProgress()
   const [phase, setPhase] = useState<Phase>('explorando')
   const [showPass, setShowPass] = useState(false)
+  // La fotografía ampliada es opcional en el PR; no romper el sitio si aún falta en public/.
+  const [expandedReady, setExpandedReady] = useState(false)
+  const [expandedMissing, setExpandedMissing] = useState(false)
   const discoveryStarted = useRef(false)
   const revealTimer = useRef<number | null>(null)
   const alreadyHasKey = hydrated && hasItem(progress, 'llave-san-yallego')
@@ -54,8 +57,27 @@ export function OraculoEntrada() {
       <h1 className="sr-only">Oráculo de la Entrada a San Yallego</h1>
       <Stage aspectRatio={STAGE_ASPECT.oraculo}>
         <CinematicImage src={oracle.image} alt={oracle.imageAlt} />
+        {!expandedMissing && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={ASSETS.images.oraculoEntradaLlaveOculta}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            onLoad={() => setExpandedReady(true)}
+            onError={() => {
+              setExpandedMissing(true)
+              setExpandedReady(false)
+            }}
+            className={`absolute inset-0 size-full object-cover transition-opacity duration-500 ${expandedReady ? 'opacity-100' : 'opacity-0'}`}
+          />
+        )}
         {oracle.hiddenRing && hydrated && (questionsComplete || alreadyHasKey) && (
-          <HiddenRing {...oracle.hiddenRing} state={ringState} onTouch={touchRing} />
+          <HiddenRing
+            {...(expandedReady ? (oracle.hiddenRingOnExpandedImage ?? oracle.hiddenRing) : oracle.hiddenRing)}
+            state={ringState}
+            onTouch={touchRing}
+          />
         )}
       </Stage>
 
