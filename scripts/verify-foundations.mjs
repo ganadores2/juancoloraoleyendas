@@ -197,6 +197,14 @@ assert.ok(welcome.includes("window.matchMedia('(orientation: landscape) and (max
   'El móvil horizontal debe disponer de un poster real del primer fotograma del segundo saludo')
 assert.ok(welcome.includes("onClick={() => void play()}"),
   'Debe quedar una opción manual si el navegador bloquea el video')
+assert.ok(welcome.includes("onTransitionEnd={(event) => {") &&
+  welcome.includes("event.propertyName !== 'opacity'") &&
+  welcome.includes("if (!compactLandscape)") &&
+  welcome.includes("setSecondStartVisible(false)"),
+  'En móvil horizontal el poster debe cubrir todo el fundido antes de retirarse')
+assert.ok(welcome.includes("!(compactLandscape && phase === 'invitacion' && playback === 'idle')") &&
+  welcome.includes("setPlayback('paused')"),
+  'No debe asomarse el botón negro durante el relevo; sí si el autoplay se bloquea')
 
 assert.match(audioPlayer, /if \(!soundOn\) \{\s*audio\.muted = false\s*toggleSound\(\)/,
   'Tocar Reproducir debe activar el sonido cuando el visitante lo había silenciado')
