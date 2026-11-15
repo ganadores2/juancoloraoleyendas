@@ -56,3 +56,13 @@ test('El cargador del servidor une capítulo 1 y capítulos 2–33 sin exponer e
   assert.match(chapterTextSource, /remainingChapters\[String\(chapter\)\]/)
   assert.match(chapterTextSource, /chapter < 1 \|\| chapter > 33/)
 })
+
+test('Los cierres de citas no duplican el punto final en los capítulos 2–33', () => {
+  for (let number = 2; number <= 33; number++) {
+    const paragraphs = reading.chapters[String(number)]
+    for (const [index, paragraph] of paragraphs.entries()) {
+      assert.doesNotMatch(paragraph, /[.!?…]”\./,
+        `Capítulo ${number}, párrafo ${index + 1}: punto final duplicado tras comillas`)
+    }
+  }
+})
