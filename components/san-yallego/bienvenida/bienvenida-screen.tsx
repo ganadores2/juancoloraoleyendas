@@ -21,6 +21,8 @@ export function BienvenidaScreen() {
   const secondVideoRef = useRef<HTMLVideoElement>(null)
   const freezeCanvasRef = useRef<HTMLCanvasElement>(null)
   const freezeReadyRef = useRef(false)
+  const secondFreezeCanvasRef = useRef<HTMLCanvasElement>(null)
+  const secondFreezeReadyRef = useRef(false)
   const secondAdvanceTriggeredRef = useRef(false)
   // Una copia del último fotograma válido del saludo 1 cubre el instante en que
   // el navegador deja de dibujar el video terminado.
@@ -50,6 +52,25 @@ export function BienvenidaScreen() {
     }
   }, [])
 
+  const captureSecondFrame = useCallback(() => {
+    const video = secondVideoRef.current
+    const canvas = secondFreezeCanvasRef.current
+    if (!video || !canvas || video.readyState < 2 || !video.videoWidth || !video.videoHeight) return false
+    const width = Math.min(video.videoWidth, 1920)
+    const height = Math.round(width * video.videoHeight / video.videoWidth)
+    const context = canvas.getContext('2d')
+    if (!context) return false
+    try {
+      if (canvas.width !== width) canvas.width = width
+      if (canvas.height !== height) canvas.height = height
+      context.drawImage(video, 0, 0, width, height)
+      secondFreezeReadyRef.current = true
+      return true
+    } catch {
+      return false
+    }
+  }, [])
+
   const play = useCallback(async () => {
     const video = phase === 'saludo' ? firstVideoRef.current : secondVideoRef.current
     if (!video || (phase !== 'saludo' && phase !== 'invitacion')) return
@@ -72,11 +93,13 @@ export function BienvenidaScreen() {
     } else if (phase === 'invitacion') {
       if (secondAdvanceTriggeredRef.current) return
       secondAdvanceTriggeredRef.current = true
+      // Congelamos un fotograma válido ANTES de pausar el decoder.
+      if (!secondFreezeReadyRef.current) captureSecondFrame()
       secondVideoRef.current?.pause()
       setPlayback('idle')
       setPhase('microfono')
     }
-  }, [phase, captureFirstFrame])
+  }, [phase, captureFirstFrame, captureSecondFrame])
 
   // Intento de reproducción sin imponer un segundo clic. El navegador puede
   // exigir interacción para habilitar audio: el botón manual sigue disponible.
@@ -178,6 +201,14 @@ export function BienvenidaScreen() {
             video &&
             !secondAdvanceTriggeredRef.current &&
             Number.isFinite(video.duration) &&
+            video.duration - video.currentTime <= 0.28
+          ) {
+            captureSecondFrame()
+          }
+          if (
+            video &&
+            !secondAdvanceTriggeredRef.current &&
+            Number.isFinite(video.duration) &&
             video.duration - video.currentTime <= 0.14
           ) {
             next()
@@ -190,6 +221,11 @@ export function BienvenidaScreen() {
         onError={() => { if (phase === 'invitacion') setPlayback('error') }}
         aria-hidden={isSaludo}
         aria-label="Juan Colorao te invita a conocer San Yallego"
+      />
+      <canvas
+        ref={secondFreezeCanvasRef}
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 z-[15] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${phase === 'microfono' || phase === 'saliendo' ? 'opacity-100' : 'opacity-0'}`}
       />
 
       {(phase === 'saludo' || phase === 'invitacion') && playback !== 'playing' && playback !== 'error' && (
@@ -218,7 +254,7 @@ export function BienvenidaScreen() {
       )}
 
       {phase === 'microfono' && (
-        <div className="animate-sy-fade-in absolute inset-0 z-20 flex flex-col items-center justify-center gap-5 bg-gradient-to-t from-black/80 via-transparent to-black/35 px-5 text-center">
+        <div className="animate-sy-invitation-fade absolute inset-0 z-20 flex flex-col items-center justify-center gap-5 bg-gradient-to-t from-black/80 via-transparent to-black/35 px-5 text-center">
           <p className="font-display text-[10px] tracking-[0.27em] text-gold/90">
             JUAN COLORAO TE INVITA
           </p>
