@@ -126,13 +126,13 @@ export function BienvenidaScreen() {
   }
 
   return (
-    <main className="fixed inset-0 overflow-hidden bg-black">
-      <h1 className="sr-only">Bienvenida de Juan Colorao a San Yallego</h1>
+    <main className="fixed inset-0 z-40 overflow-hidden bg-[#0b3439]">
+      <div className="pointer-events-none absolute inset-0 bg-[#0b3439]" aria-hidden="true" />\n      <h1 className="sr-only">Bienvenida de Juan Colorao a San Yallego</h1>
 
       <video
         ref={firstVideoRef}
         src={ASSETS.video.bienvenida}
-        className={`absolute inset-0 size-full bg-black ${fillScreen ? 'object-cover' : 'object-contain'}`}
+        className={`absolute inset-0 size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'}`}
         playsInline
         preload="auto"
         muted={!soundOn}
