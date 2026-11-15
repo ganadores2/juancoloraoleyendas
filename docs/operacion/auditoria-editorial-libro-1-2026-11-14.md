@@ -3,7 +3,7 @@ Fecha: 14 de noviembre de 2026
 
 ## Alcance y fuentes
 - Comparación de los 32 capítulos de `lib/san-yallego/book-one-reading-v1.json` con `EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md` (fuente de lectura) y la extracción textual `EL_GRAN_CAMBIO_TRANSCRIPCION_INTEGRA_SRT.txt`.
-- La comparación normaliza títulos de capítulos, espacios, saltos de línea, acentos y signos de puntuación. Cada uno de los 32 cuerpos narrativos de la web coincide en palabras y orden con su capítulo de la edición V1 **antes de aplicar las pequeñas correcciones ortotipográficas**.
+- La comparación normaliza títulos de capítulos, espacios, saltos de línea, acentos y signos de puntuación. Cada uno de los 32 cuerpos narrativos de la web coincidía en palabras y orden con su capítulo de la edición V1 **antes de aplicar la limpieza de puntuación y la grafía Chavela**. Estas correcciones quedan registradas para no interpretarlas como diferencias de narración.
 - El SRT añade cabeceras `CAPÍTULO N`, cierres `FIN DEL CAPÍTULO N`, comentarios de producción al acabar los capítulos 12, 17 y 28, y coda en el 33. No volcar esos materiales auxiliares a la web automáticamente.
 - La mención «Capítulo 24» en el cuerpo del 31 es una remisión narrativa interna; no se elimina.
 - Esta es **auditoría texto↔texto**. NO representa una comparación auditiva o transcripción independiente de los MP3; la fidelidad de la interpretación vocal permanece pendiente.
@@ -11,6 +11,7 @@ Fecha: 14 de noviembre de 2026
 ## Correcciones automáticas autorizadas
 - 9 puntos finales duplicados al terminar una cita cerrada con comillas (`.”.` y `...”.”`) en el catálogo de lectura, preservando las palabras. Commit `ad3b475`.
 - Prueba de regresión para detectar esos cierres duplicados en capítulos 2–33. Commit `96a0bab`.
+- Grafía del personaje normalizada en el texto web: **Chabela → Chavela** (14 apariciones en el capítulo 1 y 11 en capítulos 2–33), según la aclaración del autor de que se trata de errores de escritura. No se alteran el SRT ni las grabaciones.
 - No se han editado los 36 MP3, el SRT archivado, las ediciones maestras ni la producción.
 
 ## Excepciones para no marcar errores falsos
@@ -21,7 +22,7 @@ Fecha: 14 de noviembre de 2026
 ## Casos que requieren decisión editorial humana (sin modificaciones)
 1. Capítulo 4: `—Yo .Si.` — separación y acentuación de diálogo ambiguas; escuchar y reconstruir el contexto.
 2. Capítulo 25: `Los dieciséis no estaba...` — posible discordancia; verificar intención de frase completa antes de corregir.
-3. Grafía de Doña Chabela/Chavela — uniformar nombre canónico conforme a decisión del autor sin cambiar la interpretación de voz.
+3. Grafía de Doña Chabela/Chavela — **resuelta en lector web** como Chavela por aclaración del autor. Verificar únicamente que otros documentos editoriales se actualicen al preparar una nueva edición definitiva.
 4. Capítulo 33: coda final presente en la extracción SRT pero no en la edición V1; mantener reservada, pendiente de decisión explícita del autor.
 5. Capítulos 12, 17 y 28: comentarios editoriales que aparecen solo en extracción SRT y no son parte del texto de lectura; comprobar en grabación antes de cualquier corte.
 
