@@ -23,6 +23,8 @@ export function BienvenidaScreen() {
   const freezeReadyRef = useRef(false)
   const secondFreezeCanvasRef = useRef<HTMLCanvasElement>(null)
   const secondFreezeReadyRef = useRef(false)
+  const secondStartCanvasRef = useRef<HTMLCanvasElement>(null)
+  const secondStartReadyRef = useRef(false)
   const secondAdvanceTriggeredRef = useRef(false)
   const secondPrimedRef = useRef(false)
   // Una copia del último fotograma válido del saludo 1 cubre el instante en que
@@ -30,6 +32,8 @@ export function BienvenidaScreen() {
   const [secondVisible, setSecondVisible] = useState(false)
   const [secondFreezeVisible, setSecondFreezeVisible] = useState(false)
   const [firstFreezeVisible, setFirstFreezeVisible] = useState(false)
+  const [secondStartVisible, setSecondStartVisible] = useState(false)
+  const [compactLandscape, setCompactLandscape] = useState(false)
   const [phase, setPhase] = useState<Phase>('saludo')
   const [playback, setPlayback] = useState<Playback>('idle')
   const [fillScreen, setFillScreen] = useState(true)
@@ -90,7 +94,11 @@ export function BienvenidaScreen() {
       // En móvil el decoder puede tardar un instante en entregar el siguiente video.
       // Pintamos primero una copia estable del último frame por encima del Video 1.
       if (!freezeReadyRef.current) captureFirstFrame()
-      setFirstFreezeVisible(true)
+      if (compactLandscape && secondStartReadyRef.current) {
+        setSecondStartVisible(true)
+      } else {
+        setFirstFreezeVisible(true)
+      }
       window.requestAnimationFrame(() => {
         firstVideoRef.current?.pause()
         setPlayback('idle')
@@ -111,7 +119,34 @@ export function BienvenidaScreen() {
         })
       })
     }
-  }, [phase, captureFirstFrame, captureSecondFrame])
+  }, [phase, captureFirstFrame, captureSecondFrame, compactLandscape])
+
+  useEffect(() => {
+    const query = window.matchMedia('(orientation: landscape) and (max-height: 600px)')
+    const sync = () => setCompactLandscape(query.matches)
+    sync()
+    query.addEventListener?.('change', sync)
+    return () => query.removeEventListener?.('change', sync)
+  }, [])
+
+  const captureSecondStartFrame = useCallback(() => {
+    const video = secondVideoRef.current
+    const canvas = secondStartCanvasRef.current
+    if (!video || !canvas || video.readyState < 2 || !video.videoWidth || !video.videoHeight) return false
+    const width = Math.min(video.videoWidth, 1920)
+    const height = Math.round(width * video.videoHeight / video.videoWidth)
+    const context = canvas.getContext('2d')
+    if (!context) return false
+    try {
+      if (canvas.width !== width) canvas.width = width
+      if (canvas.height !== height) canvas.height = height
+      context.drawImage(video, 0, 0, width, height)
+      secondStartReadyRef.current = true
+      return true
+    } catch {
+      return false
+    }
+  }, [])
 
   // En móviles algunos navegadores ignoran parcialmente preload="auto".
   // Forzamos la carga del segundo saludo desde el montaje para reducir el hueco
@@ -168,11 +203,13 @@ export function BienvenidaScreen() {
       video.requestVideoFrameCallback(() => {
         setSecondVisible(true)
         setFirstFreezeVisible(false)
+        setSecondStartVisible(false)
       })
     } else {
       // Compatibilidad: navegadores sin requestVideoFrameCallback.
       setSecondVisible(true)
       setFirstFreezeVisible(false)
+      setSecondStartVisible(false)
     }
   }
 
@@ -210,7 +247,12 @@ export function BienvenidaScreen() {
       <canvas
         ref={freezeCanvasRef}
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 z-[5] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${firstFreezeVisible || (!isSaludo && !secondVisible) ? 'opacity-100' : 'opacity-0'}`}
+        className={`pointer-events-none absolute inset-0 z-[5] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${firstFreezeVisible || (!isSaludo && !secondVisible && !secondStartVisible) ? 'opacity-100' : 'opacity-0'}`}
+      />
+      <canvas
+        ref={secondStartCanvasRef}
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 z-[8] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${secondStartVisible ? 'opacity-100' : 'opacity-0'}`}
       />
       <video
         ref={secondVideoRef}
@@ -219,8 +261,14 @@ export function BienvenidaScreen() {
         playsInline
         preload="auto"
         muted={!soundOn}
-        onLoadedData={() => { secondPrimedRef.current = true }}
-        onCanPlay={() => { secondPrimedRef.current = true }}
+        onLoadedData={() => {
+          secondPrimedRef.current = true
+          if (compactLandscape) captureSecondStartFrame()
+        }}
+        onCanPlay={() => {
+          secondPrimedRef.current = true
+          if (compactLandscape && !secondStartReadyRef.current) captureSecondStartFrame()
+        }}
         onPlay={() => { if (phase === 'invitacion') setPlayback('playing') }}
         onPlaying={revealSecondVideo}
         onTimeUpdate={() => {
