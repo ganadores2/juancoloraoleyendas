@@ -22,7 +22,7 @@ Fecha: 14 de noviembre de 2026
 
 ## Casos que requieren decisión editorial humana (sin modificaciones)
 1. Capítulo 4: **RESUELTO por el autor**: Juan dice «—No tengo miedo.» y María responde «—Yo sí.». Corregida la grafía en el texto web, sin cambiar el audio.
-2. Capítulo 25: `Los dieciséis no estaba...` — posible discordancia; verificar intención de frase completa antes de corregir.
+2. Capítulo 25: **RESUELTO por el autor**. «Los dieciséis» alude a los dieciséis años de Juan y al umbral de decisiones (irse, quedarse, su relación con María). La lectura web ya contiene correctamente «Los dieciséis no estaban resultando tan sagrados como prometían». No se cambió el texto por estar correcta la concordancia.
 3. Grafía de Doña Chabela/Chavela — **resuelta en lector web** como Chavela por aclaración del autor. Verificar únicamente que otros documentos editoriales se actualicen al preparar una nueva edición definitiva.
 4. Capítulo 33: **RESUELTO por el autor**. El audio cierra con «FIN DEL CAPÍTULO 33»; lo posterior en el SRT es extra editorial no necesario y no se incorpora al libro. Mantener el archivo original como respaldo; sin cortes de audio.
 5. Capítulos 12, 17 y 28: comentarios editoriales que aparecen solo en extracción SRT y no son parte del texto de lectura; comprobar en grabación antes de cualquier corte.
