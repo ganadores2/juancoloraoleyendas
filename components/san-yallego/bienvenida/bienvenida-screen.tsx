@@ -21,6 +21,7 @@ export function BienvenidaScreen() {
   const secondVideoRef = useRef<HTMLVideoElement>(null)
   const freezeCanvasRef = useRef<HTMLCanvasElement>(null)
   const freezeReadyRef = useRef(false)
+  const secondAdvanceTriggeredRef = useRef(false)
   // Una copia del último fotograma válido del saludo 1 cubre el instante en que
   // el navegador deja de dibujar el video terminado.
   const [secondVisible, setSecondVisible] = useState(false)
@@ -69,6 +70,8 @@ export function BienvenidaScreen() {
       setPlayback('idle')
       setPhase('invitacion')
     } else if (phase === 'invitacion') {
+      if (secondAdvanceTriggeredRef.current) return
+      secondAdvanceTriggeredRef.current = true
       secondVideoRef.current?.pause()
       setPlayback('idle')
       setPhase('microfono')
@@ -127,7 +130,8 @@ export function BienvenidaScreen() {
 
   return (
     <main className="fixed inset-0 z-40 overflow-hidden bg-[#0b3439]">
-      <div className="pointer-events-none absolute inset-0 bg-[#0b3439]" aria-hidden="true" />\n      <h1 className="sr-only">Bienvenida de Juan Colorao a San Yallego</h1>
+      <div className="pointer-events-none absolute inset-0 bg-[#0b3439]" aria-hidden="true" />
+      <h1 className="sr-only">Bienvenida de Juan Colorao a San Yallego</h1>
 
       <video
         ref={firstVideoRef}
@@ -165,9 +169,24 @@ export function BienvenidaScreen() {
         muted={!soundOn}
         onPlay={() => { if (phase === 'invitacion') setPlayback('playing') }}
         onPlaying={revealSecondVideo}
-        onTimeUpdate={revealSecondVideo}
+        onTimeUpdate={() => {
+          revealSecondVideo()
+          const video = secondVideoRef.current
+          // Cerramos unas centésimas antes del último frame. Algunos MP4/decoders
+          // pueden traer o mostrar un destello justo al llegar a "ended".
+          if (
+            video &&
+            !secondAdvanceTriggeredRef.current &&
+            Number.isFinite(video.duration) &&
+            video.duration - video.currentTime <= 0.14
+          ) {
+            next()
+          }
+        }}
         onPause={() => { if (phase === 'invitacion') setPlayback((state) => state === 'error' ? state : 'paused') }}
-        onEnded={next}
+        onEnded={() => {
+          if (!secondAdvanceTriggeredRef.current) next()
+        }}
         onError={() => { if (phase === 'invitacion') setPlayback('error') }}
         aria-hidden={isSaludo}
         aria-label="Juan Colorao te invita a conocer San Yallego"
