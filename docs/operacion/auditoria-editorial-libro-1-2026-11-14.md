@@ -4,7 +4,7 @@ Fecha: 14 de noviembre de 2026
 ## Alcance y fuentes
 - Comparación de los 32 capítulos de `lib/san-yallego/book-one-reading-v1.json` con `EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md` (fuente de lectura) y la extracción textual `EL_GRAN_CAMBIO_TRANSCRIPCION_INTEGRA_SRT.txt`.
 - La comparación normaliza títulos de capítulos, espacios, saltos de línea, acentos y signos de puntuación. Cada uno de los 32 cuerpos narrativos de la web coincidía en palabras y orden con su capítulo de la edición V1 **antes de aplicar la limpieza de puntuación y la grafía Chavela**. Estas correcciones quedan registradas para no interpretarlas como diferencias de narración.
-- El SRT añade cabeceras `CAPÍTULO N`, cierres `FIN DEL CAPÍTULO N`, comentarios de producción al acabar los capítulos 12, 17 y 28, y texto editorial adicional tras el cierre del 33. No volcar esos materiales auxiliares a la web automáticamente.
+- El SRT añade cabeceras `CAPÍTULO N`, cierres `FIN DEL CAPÍTULO N`, instrucciones editoriales no narradas al acabar los capítulos 12, 17 y 28 (confirmación del autor), y texto editorial adicional tras el cierre del 33. No volcar esos materiales auxiliares a la web automáticamente.
 - **Decisión autoral confirmada:** en el audio del capítulo 33 la última frase es «FIN DEL CAPÍTULO 33». Todo lo que aparezca después de ese cierre en el texto SRT es material editorial extra, no contenido narrativo necesario ni coda para publicación. Se conserva exclusivamente en la fuente de respaldo y queda fuera del libro visible. El lector web ya termina su cuerpo narrativo en «Y Siguió… caminando…»; no requiere recortar ni alterar el MP3.
 - La mención «Capítulo 24» en el cuerpo del 31 es una remisión narrativa interna; no se elimina.
 - Esta es **auditoría texto↔texto**. NO representa una comparación auditiva o transcripción independiente de los MP3; la fidelidad de la interpretación vocal permanece pendiente.
@@ -25,7 +25,7 @@ Fecha: 14 de noviembre de 2026
 2. Capítulo 25: **RESUELTO por el autor**. «Los dieciséis» alude a los dieciséis años de Juan y al umbral de decisiones (irse, quedarse, su relación con María). La lectura web ya contiene correctamente «Los dieciséis no estaban resultando tan sagrados como prometían». No se cambió el texto por estar correcta la concordancia.
 3. Grafía de Doña Chabela/Chavela — **resuelta en lector web** como Chavela por aclaración del autor. Verificar únicamente que otros documentos editoriales se actualicen al preparar una nueva edición definitiva.
 4. Capítulo 33: **RESUELTO por el autor**. El audio cierra con «FIN DEL CAPÍTULO 33»; lo posterior en el SRT es extra editorial no necesario y no se incorpora al libro. Mantener el archivo original como respaldo; sin cortes de audio.
-5. Capítulos 12, 17 y 28: comentarios editoriales que aparecen solo en extracción SRT y no son parte del texto de lectura; comprobar en grabación antes de cualquier corte.
+5. Capítulos 12, 17 y 28: **RESUELTO por declaración expresa del autor**. Los textos extra son instrucciones editoriales para ElevenLabs que el sistema interpretó, pero NO convirtió en audio. No forman parte de la narración ni del texto de lectura; se conservan solamente en el SRT/respaldo original. No se requiere corte de MP3 ni modificación de los capítulos. La exclusión está validada por el autor, sin presentarla como una verificación auditiva independiente.
 
 ## Próximo control
 - Obtener acceso al MP3 real del capítulo 1 y realizar una transcripción independiente con autorización de coste si usa servicio de pago.
