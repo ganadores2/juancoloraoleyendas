@@ -20,7 +20,7 @@ Fecha: 14 de noviembre de 2026
 - No se elimina contenido narrativo porque el SRT o la edición incluyan notas técnicas.
 
 ## Casos que requieren decisión editorial humana (sin modificaciones)
-1. Capítulo 4: `—Yo .Si.` — separación y acentuación de diálogo ambiguas; escuchar y reconstruir el contexto.
+1. Capítulo 4: **RESUELTO por el autor**: Juan dice «—No tengo miedo.» y María responde «—Yo sí.». Corregida la grafía en el texto web, sin cambiar el audio.
 2. Capítulo 25: `Los dieciséis no estaba...` — posible discordancia; verificar intención de frase completa antes de corregir.
 3. Grafía de Doña Chabela/Chavela — **resuelta en lector web** como Chavela por aclaración del autor. Verificar únicamente que otros documentos editoriales se actualicen al preparar una nueva edición definitiva.
 4. Capítulo 33: coda final presente en la extracción SRT pero no en la edición V1; mantener reservada, pendiente de decisión explícita del autor.
