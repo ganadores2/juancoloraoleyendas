@@ -177,6 +177,42 @@ await run('Nueva visita móvil: bloqueo independiente y diseño sin desbordamien
 })
 await mobile.close()
 
+// Prueba móvil horizontal: es el escenario más exigente para controles y Pase.
+const landscape = await browser.newContext({ viewport: { width: 844, height: 390 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true })
+const landscapePage = await landscape.newPage()
+await landscapePage.addInitScript(() => {
+  localStorage.setItem('san-yallego:progreso:v1', JSON.stringify({
+    version: 1,
+    portalCrossed: true,
+    items: ['llave-san-yallego'],
+    passIssuedAt: new Date().toISOString(),
+    unlockedSites: ['entrada', 'casa-de-juanito'],
+    visitedSites: ['entrada'],
+    completedChapters: [],
+    oracleAnswers: { 'oraculo-entrada': ['', '', ''] },
+  }))
+})
+await run('Móvil horizontal: bienvenida y Pase sin desbordamiento ni botones cortados', async () => {
+  await landscapePage.goto(base + '/bienvenida', { waitUntil: 'domcontentloaded' })
+  await landscapePage.getByRole('button', { name: 'Ver siguiente saludo' }).waitFor()
+  const welcomeSize = await landscapePage.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth }))
+  assert.ok(welcomeSize.scrollWidth <= welcomeSize.width + 6, `Desbordamiento horizontal en bienvenida: ${JSON.stringify(welcomeSize)}`)
+  assert.ok(await landscapePage.getByRole('button', { name: /Pausar bienvenida|Reproducir bienvenida/ }).isVisible())
+  assert.ok(await landscapePage.getByRole('button', { name: 'COMENZAR EL RECORRIDO' }).isVisible())
+
+  await landscapePage.goto(base + '/sitio/entrada', { waitUntil: 'domcontentloaded' })
+  await landscapePage.getByRole('button', { name: 'Seguir el descenso' }).click()
+  await landscapePage.getByRole('button', { name: 'Saltar al Oráculo' }).click()
+  await landscapePage.getByRole('button', { name: 'Ver tu Pase de San Yallego' }).waitFor()
+  await landscapePage.getByRole('button', { name: 'Ver tu Pase de San Yallego' }).click()
+  await landscapePage.getByText('Has encontrado la Llave de San Yallego.').waitFor()
+  const passSize = await landscapePage.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth }))
+  assert.ok(passSize.scrollWidth <= passSize.width + 6, `Desbordamiento horizontal en Pase: ${JSON.stringify(passSize)}`)
+  assert.ok(await landscapePage.getByRole('link', { name: 'Continuar a la Casa de Juanito' }).isVisible())
+  assert.ok(await landscapePage.getByRole('link', { name: 'Volver al mapa' }).last().isVisible())
+})
+await landscape.close()
+
 // Prueba independiente de AUDIO: un visitante nuevo no puede abrir los otros
 // capítulos hasta que el reproductor del primero termina (sin botón de lectura).
 const listeningContext = await browser.newContext({ viewport: { width: 1280, height: 800 } })
