@@ -27,6 +27,7 @@ export function BienvenidaScreen() {
   // Una copia del último fotograma válido del saludo 1 cubre el instante en que
   // el navegador deja de dibujar el video terminado.
   const [secondVisible, setSecondVisible] = useState(false)
+  const [secondFreezeVisible, setSecondFreezeVisible] = useState(false)
   const [phase, setPhase] = useState<Phase>('saludo')
   const [playback, setPlayback] = useState<Playback>('idle')
   const [fillScreen, setFillScreen] = useState(true)
@@ -93,11 +94,17 @@ export function BienvenidaScreen() {
     } else if (phase === 'invitacion') {
       if (secondAdvanceTriggeredRef.current) return
       secondAdvanceTriggeredRef.current = true
-      // Congelamos un fotograma válido ANTES de pausar el decoder.
+      // Primero pintamos una copia estable por encima del video. Dos frames después
+      // pausamos el decoder y mostramos la invitación, evitando un frame intermedio.
       if (!secondFreezeReadyRef.current) captureSecondFrame()
-      secondVideoRef.current?.pause()
-      setPlayback('idle')
-      setPhase('microfono')
+      setSecondFreezeVisible(true)
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          secondVideoRef.current?.pause()
+          setPlayback('idle')
+          setPhase('microfono')
+        })
+      })
     }
   }, [phase, captureFirstFrame, captureSecondFrame])
 
@@ -225,7 +232,7 @@ export function BienvenidaScreen() {
       <canvas
         ref={secondFreezeCanvasRef}
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 z-[15] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${phase === 'microfono' || phase === 'saliendo' ? 'opacity-100' : 'opacity-0'}`}
+        className={`pointer-events-none absolute inset-0 z-[15] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${secondFreezeVisible || phase === 'microfono' || phase === 'saliendo' ? 'opacity-100' : 'opacity-0'}`}
       />
 
       {(phase === 'saludo' || phase === 'invitacion') && playback !== 'playing' && playback !== 'error' && (
