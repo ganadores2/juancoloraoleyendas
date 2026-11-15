@@ -24,10 +24,12 @@ export function BienvenidaScreen() {
   const secondFreezeCanvasRef = useRef<HTMLCanvasElement>(null)
   const secondFreezeReadyRef = useRef(false)
   const secondAdvanceTriggeredRef = useRef(false)
+  const secondPrimedRef = useRef(false)
   // Una copia del último fotograma válido del saludo 1 cubre el instante en que
   // el navegador deja de dibujar el video terminado.
   const [secondVisible, setSecondVisible] = useState(false)
   const [secondFreezeVisible, setSecondFreezeVisible] = useState(false)
+  const [firstFreezeVisible, setFirstFreezeVisible] = useState(false)
   const [phase, setPhase] = useState<Phase>('saludo')
   const [playback, setPlayback] = useState<Playback>('idle')
   const [fillScreen, setFillScreen] = useState(true)
@@ -85,12 +87,15 @@ export function BienvenidaScreen() {
 
   const next = useCallback(() => {
     if (phase === 'saludo') {
-      // No sobrescribimos una captura válida tomada antes del final: algunos
-      // navegadores limpian el fotograma al disparar "ended" y producirían un flash.
+      // En móvil el decoder puede tardar un instante en entregar el siguiente video.
+      // Pintamos primero una copia estable del último frame por encima del Video 1.
       if (!freezeReadyRef.current) captureFirstFrame()
-      firstVideoRef.current?.pause()
-      setPlayback('idle')
-      setPhase('invitacion')
+      setFirstFreezeVisible(true)
+      window.requestAnimationFrame(() => {
+        firstVideoRef.current?.pause()
+        setPlayback('idle')
+        setPhase('invitacion')
+      })
     } else if (phase === 'invitacion') {
       if (secondAdvanceTriggeredRef.current) return
       secondAdvanceTriggeredRef.current = true
@@ -107,6 +112,15 @@ export function BienvenidaScreen() {
       })
     }
   }, [phase, captureFirstFrame, captureSecondFrame])
+
+  // En móviles algunos navegadores ignoran parcialmente preload="auto".
+  // Forzamos la carga del segundo saludo desde el montaje para reducir el hueco
+  // entre videos sin iniciar su reproducción ni consumir un segundo gesto.
+  useEffect(() => {
+    const video = secondVideoRef.current
+    if (!video) return
+    video.load()
+  }, [])
 
   // Intento de reproducción sin imponer un segundo clic. El navegador puede
   // exigir interacción para habilitar audio: el botón manual sigue disponible.
@@ -151,10 +165,14 @@ export function BienvenidaScreen() {
     if (!video) return
     // Esperamos al primer fotograma REAL, no solo al evento play.
     if (typeof video.requestVideoFrameCallback === 'function') {
-      video.requestVideoFrameCallback(() => setSecondVisible(true))
+      video.requestVideoFrameCallback(() => {
+        setSecondVisible(true)
+        setFirstFreezeVisible(false)
+      })
     } else {
       // Compatibilidad: navegadores sin requestVideoFrameCallback.
       setSecondVisible(true)
+      setFirstFreezeVisible(false)
     }
   }
 
@@ -177,8 +195,12 @@ export function BienvenidaScreen() {
           const video = firstVideoRef.current
           // Guardamos un fotograma todavía válido muy cerca del cierre. Si "ended"
           // llega con el decoder ya limpio, esta captura permanece intacta.
-          if (video && Number.isFinite(video.duration) && video.duration - video.currentTime <= 0.55) {
-            captureFirstFrame()
+          if (video && Number.isFinite(video.duration)) {
+            const remaining = video.duration - video.currentTime
+            if (remaining <= 0.55) captureFirstFrame()
+            // Cubrimos solo las últimas centésimas: no se percibe como pausa,
+            // pero evita que el decoder móvil enseñe un frame vacío al terminar.
+            if (remaining <= 0.08 && freezeReadyRef.current) setFirstFreezeVisible(true)
           }
         }}
         onError={() => { if (phase === 'saludo') setPlayback('error') }}
@@ -188,7 +210,7 @@ export function BienvenidaScreen() {
       <canvas
         ref={freezeCanvasRef}
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 z-0 size-full bg-transparent ${fillScreen ? 'object-cover' : 'object-contain'} ${isSaludo ? 'opacity-0' : 'opacity-100'}`}
+        className={`pointer-events-none absolute inset-0 z-[5] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${firstFreezeVisible || (!isSaludo && !secondVisible) ? 'opacity-100' : 'opacity-0'}`}
       />
       <video
         ref={secondVideoRef}
@@ -197,6 +219,8 @@ export function BienvenidaScreen() {
         playsInline
         preload="auto"
         muted={!soundOn}
+        onLoadedData={() => { secondPrimedRef.current = true }}
+        onCanPlay={() => { secondPrimedRef.current = true }}
         onPlay={() => { if (phase === 'invitacion') setPlayback('playing') }}
         onPlaying={revealSecondVideo}
         onTimeUpdate={() => {
