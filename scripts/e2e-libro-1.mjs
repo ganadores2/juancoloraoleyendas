@@ -23,6 +23,29 @@ const videos = [...new Set([...assetSource.matchAll(/['"](\/assets\/video\/[^'"]
 const audioUrls = [first, ...mp3s]
 assert.equal(audioUrls.length, 36)
 
+const reading = JSON.parse(source('lib/san-yallego/book-one-reading-v1.json'))
+const chapterOneParagraphs = source('lib/san-yallego/chapter-one-text.ts')
+  .split('\n')
+  .filter(line => /^\s{2}"(?:[^"\\]|\\.)*",?\s*$/.test(line))
+  .map(line => JSON.parse(line.trim().replace(/,$/, '')))
+
+const wordsByChapter = new Map()
+wordsByChapter.set(1, chapterOneParagraphs.join(' ').trim().split(/\s+/u).filter(Boolean).length)
+for (let number = 2; number <= 33; number++) {
+  const paragraphs = reading.chapters[String(number)]
+  wordsByChapter.set(number, paragraphs.join(' ').trim().split(/\s+/u).filter(Boolean).length)
+}
+
+const audioChunk = chapterSource.split('const chapterAudio')[1]?.split('\n  }\n')[0]
+assert.ok(audioChunk, 'No se pudo leer chapterAudio para el diagnóstico de ritmo')
+const audioByChapter = new Map()
+for (const match of audioChunk.matchAll(/^\s*(\d{1,2}):\s*\[([\s\S]*?)\]/gm)) {
+  const number = Number(match[1])
+  const urls = [...match[2].matchAll(/['"](\/assets\/audio\/libro-1\/[^'"]+\.mp3)['"]/g)].map(item => item[1])
+  if (number === 1 && match[2].includes('ASSETS.audio.libro1Capitulo1')) urls.push(first)
+  audioByChapter.set(number, urls)
+}
+
 const results = []
 async function run(label, fn) {
   try {
@@ -67,6 +90,7 @@ await run('Primera visita: solo el primer capítulo abierto', async () => {
   assert.equal(closed, 32, 'Deben aparecer 32 capítulos por descubrir')
 })
 
+let decodedAudioMetadata = []
 await run('Metadatos de los 36 MP3 decodificables por Chromium', async () => {
   const observations = await page.evaluate(async (urls) => {
     const readOne = (url) => new Promise(resolve => {
@@ -94,6 +118,41 @@ await run('Metadatos de los 36 MP3 decodificables por Chromium', async () => {
   assert.equal(observations.length, 36)
   const failed = observations.filter(item => !Number.isFinite(item.duration) || item.duration <= 0)
   assert.deepEqual(failed, [], 'Hay MP3 que Chromium no pudo reconocer')
+  decodedAudioMetadata = observations
+})
+
+await run('Diagnóstico de ritmo: texto y duración de audio por capítulo', async () => {
+  const durationByUrl = new Map(decodedAudioMetadata.map(item => [item.url, item.duration]))
+  let totalSeconds = 0
+  const metrics = []
+
+  for (let number = 1; number <= 33; number++) {
+    const urls = audioByChapter.get(number)
+    assert.ok(urls?.length, `Capítulo ${number}: sin audio para medir ritmo`)
+    const duration = urls.reduce((sum, url) => {
+      const seconds = durationByUrl.get(url)
+      assert.ok(Number.isFinite(seconds) && seconds > 0, `Capítulo ${number}: duración inválida en ${url}`)
+      return sum + seconds
+    }, 0)
+    const words = wordsByChapter.get(number)
+    assert.ok(Number.isFinite(words) && words > 0, `Capítulo ${number}: sin palabras para medir ritmo`)
+    const wpm = words / (duration / 60)
+    totalSeconds += duration
+    metrics.push({ number, words, duration, wpm })
+    // Umbral deliberadamente amplio: no juzga actuación ni estilo; solo detecta
+    // asociaciones absurdas, archivos truncados o audios claramente equivocados.
+    assert.ok(wpm >= 35 && wpm <= 260,
+      `Capítulo ${number}: relación texto/audio atípica (${wpm.toFixed(1)} palabras/min)`)
+  }
+
+  const hours = totalSeconds / 3600
+  assert.ok(hours >= 4.5 && hours <= 9.5,
+    `Duración total inesperada del Libro I: ${hours.toFixed(2)} h`)
+
+  console.log('RITMO LIBRO I: ' + metrics
+    .map(item => `C${String(item.number).padStart(2, '0')}=${item.wpm.toFixed(0)}ppm`)
+    .join(' · '))
+  console.log(`DURACIÓN TOTAL AUDIO LIBRO I: ${hours.toFixed(2)} h`)
 })
 
 await run('Enlace directo al capítulo 2: puerta narrativa', async () => {
