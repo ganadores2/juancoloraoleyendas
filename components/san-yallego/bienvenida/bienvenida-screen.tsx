@@ -168,7 +168,8 @@ export function BienvenidaScreen() {
       return
     }
     void video.play().catch(() => {
-      // Si el navegador bloquea el video, queda disponible el botón manual.
+      // Si el navegador bloquea el video, habilitar la opción manual.
+      setPlayback('paused')
     })
   }, [phase])
 
@@ -202,14 +203,20 @@ export function BienvenidaScreen() {
     if (typeof video.requestVideoFrameCallback === 'function') {
       video.requestVideoFrameCallback(() => {
         setSecondVisible(true)
-        setFirstFreezeVisible(false)
-        setSecondStartVisible(false)
+        // En horizontal compacto, mantener el poster durante todo el fundido.
+        if (!compactLandscape) {
+          setFirstFreezeVisible(false)
+          setSecondStartVisible(false)
+        }
       })
     } else {
       // Compatibilidad: navegadores sin requestVideoFrameCallback.
       setSecondVisible(true)
-      setFirstFreezeVisible(false)
-      setSecondStartVisible(false)
+      // En horizontal compacto, mantener el poster durante todo el fundido.
+      if (!compactLandscape) {
+        setFirstFreezeVisible(false)
+        setSecondStartVisible(false)
+      }
     }
   }
 
@@ -271,6 +278,12 @@ export function BienvenidaScreen() {
         }}
         onPlay={() => { if (phase === 'invitacion') setPlayback('playing') }}
         onPlaying={revealSecondVideo}
+        onTransitionEnd={(event) => {
+          if (event.propertyName !== 'opacity' || !secondVisible || !compactLandscape) return
+          // Esperar al final del crossfade antes de retirar la cortina.
+          setFirstFreezeVisible(false)
+          setSecondStartVisible(false)
+        }}
         onTimeUpdate={() => {
           revealSecondVideo()
           const video = secondVideoRef.current
@@ -307,7 +320,8 @@ export function BienvenidaScreen() {
         className={`pointer-events-none absolute inset-0 z-[15] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${secondFreezeVisible || phase === 'microfono' || phase === 'saliendo' ? 'opacity-100' : 'opacity-0'}`}
       />
 
-      {(phase === 'saludo' || phase === 'invitacion') && playback !== 'playing' && playback !== 'error' && (
+      {(phase === 'saludo' || phase === 'invitacion') && playback !== 'playing' && playback !== 'error' &&
+        !(compactLandscape && phase === 'invitacion' && playback === 'idle') && (
         <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/25 px-4">
           <button
             type="button"
