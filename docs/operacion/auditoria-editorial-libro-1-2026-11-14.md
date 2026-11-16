@@ -27,6 +27,17 @@ Fecha: 14 de noviembre de 2026
 4. Capítulo 33: **RESUELTO por el autor**. El audio cierra con «FIN DEL CAPÍTULO 33»; lo posterior en el SRT es extra editorial no necesario y no se incorpora al libro. Mantener el archivo original como respaldo; sin cortes de audio.
 5. Capítulos 12, 17 y 28: **RESUELTO por declaración expresa del autor**. Los textos extra son instrucciones editoriales para ElevenLabs que el sistema interpretó, pero NO convirtió en audio. No forman parte de la narración ni del texto de lectura; se conservan solamente en el SRT/respaldo original. No se requiere corte de MP3 ni modificación de los capítulos. La exclusión está validada por el autor, sin presentarla como una verificación auditiva independiente.
 
+
+## Repetición independiente del cotejo textual completo — 16 de noviembre de 2026
+
+**Resultado: 33 de 33 capítulos coinciden en palabras y orden** entre la fuente `EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md` localizada en la biblioteca del proyecto (11.122 líneas, sección de cada capítulo) y los textos de la rama candidata.
+
+**Método:** se recuperaron los 33 cuerpos completos de la edición V1, capítulo por capítulo, desde la biblioteca; se obtuvieron de GitHub `lib/san-yallego/chapter-one-text.ts` (cap. 1, 100 párrafos) y `lib/san-yallego/book-one-reading-v1.json` (caps. 2–33). Se compararon los cuerpos completos como secuencia de palabras con normalización de mayúsculas, diacríticos, puntuación, espacios y la sustitución autoral **Chabela → Chavela**. Para el capítulo 1 coincidieron **1.212 palabras**. Para el conjunto completo, **0 discrepancias de palabras** según esa normalización, sin capítulos faltantes.
+
+**Alcance de la evidencia:** este método detecta diferencias de palabras y orden; NO valida coincidencia exacta de tildes, signos, párrafos o pausas, ni demuestra que los MP3 digan lo mismo. La fuente V1 proviene del SRT y no sustituye una transcripción auditiva independiente. El archivo fuente antiguo sigue escribiendo Chabela; solo el lector web adopta la grafía Chavela acordada. Las instrucciones editoriales de capítulos 12, 17, 28 y el material posterior al cierre 33 se excluyen de la lectura por decisión del autor.
+
+**Resultado operativo:** no se requieren cambios en los textos por divergencia léxica respecto a la edición V1. El siguiente pendiente de mayor valor es cotejo con **audio real**, comenzando por el cap. 1, cuando se disponga de un acceso y una herramienta fiable sin costo o se autorice explícitamente otro método. No se descargó, transcribió ni modificó ningún MP3 en esta corrida. El entorno actual no pudo resolver por red la URL pública del MP3 y no cuenta con un motor de reconocimiento de voz instalado.
+
 ## Próximo control
 - Obtener acceso al MP3 real del capítulo 1 y realizar una transcripción independiente con autorización de coste si usa servicio de pago.
 - Si valida la metodología, extender el cotejo narración↔lectura a capítulos 2–33, marcando hallazgos según nivel: (a) mecánico inequívoco, autocorregible en Preview; (b) fonético intencional, preservar; (c) narrativo/artístico, consultar al autor.
