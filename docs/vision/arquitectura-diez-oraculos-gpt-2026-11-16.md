@@ -38,3 +38,33 @@ La experiencia de entrevistas y debates con personajes históricos mediante IA e
 
 ## Límite operativo
 Este plan no implementa agentes, no asigna nombres secretos, no modifica la web, no activa APIs, no expone fuentes privadas y no toca producción. Es un mapa de construcción para decidir etapas posteriores. Mantener el PR #19 en Draft y completar sus controles editoriales/audio antes de comprometer una nueva función pública.
+
+
+## Principio de identidad transmedia — libros, oráculos y series animadas
+
+**Decisión expresada por el autor (16 de noviembre de 2026):** la personalidad de cada personaje deberá ser fiel y reconocible en las series animadas, tanto como en sus intervenciones originales y su versión conversacional; la aspiración es que los personajes sean genuinos y consistentes entre formatos.
+
+### Regla de fuente única narrativa
+- La **Biblia Maestra** y el canon de los libros son autoridad para los hechos de la historia. Las fichas de actuación, el guion de serie y las instrucciones del Oráculo-GPT se derivan de una **ficha común versionada**, no de tres personalidades inventadas por separado.
+- La identidad incluye: motivaciones, virtudes y defectos, contradicciones humanas, manera de hablar, ritmo de humor, vínculos, memoria narrativa, postura frente a otros personajes, expresión facial/corporal, timbre/actuación vocal y evolución temporal.
+- **Reconocible no significa congelado:** un personaje puede crecer, aprender o cambiar de opinión cuando la cronología y los sucesos lo justifican; no cambiarle su esencia solo para encajar en una escena, una respuesta de chatbot o un gag.
+- Cada escena/conversación incorpora contexto de **libro, capítulo o época**, para que una versión posterior no revele secretos del futuro a un visitante situado en el Libro I.
+- La improvisación conversacional es válida como experiencia, pero **no se convierte automáticamente en canon** de los libros, episodios o futuras canciones. El autor decide qué ideas se incorporan.
+- Las expresiones locales (p. ej. «pelado», «burrín», «CHEEEEE-MAAAA», «¡No sé!») deben manejarse por contexto y relación entre personajes; no convertir una muletilla en una caricatura monótona. El texto literario y la guía fonética para voz pueden tener grafías distintas sin alterar el canon.
+
+### Esquema mínimo de ficha por personaje — plantilla, no identificación de los diez oráculos
+1. Nombre canónico y alias públicos; **nombre secreto de Oráculo sin definir**.
+2. Fuente y versión; cronología por libro y rango de conocimientos autorizados.
+3. Núcleo moral: principios, aspiraciones, temores, defectos, contradicciones, límites.
+4. Relaciones y conflictos, con qué cambia o permanece al transcurrir los libros.
+5. Voz: vocabulario, regionalismos, silencios, énfasis, humor y tres diálogos de muestra aprobados.
+6. Imagen y actuación: edad visual por época, gestos, movimientos y lenguaje corporal.
+7. Matriz de adaptaciones: libro (narración), Oráculo (conversación), serie animada (acción y puesta en escena), canciones/conciertos (interpretación); registrar diferencias de formato sin alterar identidad.
+8. Comportamiento ante preguntas fuera de canon, spoilers, información desconocida y temas delicados.
+9. Pruebas de fidelidad: voces distinguibles sin imagen, reconocimiento de vínculos, coherencia en desacuerdo, ninguna revelación anticipada.
+10. Estado de aprobación: borrador / validado por el autor / vigente; historial de cambios.
+
+### Control editorial previo a publicación
+Preparar una muestra de la misma situación escrita en tres medios (pasaje, chat del Oráculo, storyboard de animación), y pedir al autor que confirme que los reconoce como **el mismo personaje**. No atribuirles autonomía o conciencia reales: son representaciones narrativas mediante IA bajo dirección creativa humana.
+
+**No implementado:** esta sección define criterios editoriales futuros. No crea bots ni series, ni revela los diez personajes elegidos, ni cambia producción.
