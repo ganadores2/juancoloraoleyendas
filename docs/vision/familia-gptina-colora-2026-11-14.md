@@ -29,3 +29,18 @@ Diseñar una biblia de agentes con ficha de voz, personalidad, límites de conoc
 
 ## Restricciones de este registro
 Este archivo documenta la visión para preservarla en futuros chats e informes. No crea agentes ni activa funciones ni servicios. No modificar producción, main, costos, seguridad o llaves; PR #19 continúa en Draft.
+
+## Ampliación autoral — 16 de noviembre de 2026: Los Diez Oráculos-GPT y el capítulo 100
+
+**Nueva decisión de visión del creador:**
+- La experiencia comunitaria se articula en **diez Oráculos-GPT**, con nombres secretos futuros.
+- Esos **diez nombres corresponderán a los diez personajes principales de los tres primeros libros**. La elección exacta de personajes, el mapeo oráculo↔personaje y los nombres secretos **NO están decididos todavía**; no inferirlos ni publicar identificaciones anticipadas.
+- **Después del capítulo 100 la trilogía no significa el final del universo**: se prevé una transición narrativa y experiencial hacia su presencia en el mundo real, mediante experiencias inteligentes de los personajes. No fijar por ahora reglas exactas de salida, revelación ni continuidad cronológica.
+- Los personajes podrán continuar «vivos» como entidades narrativas interactivas en San Yallego incluso mientras el proyecto desarrolle **conciertos, canciones y encuentros/eventos en la realidad**. Se trata de persistencia de ficción interactiva, no de existencia biológica ni de promesa de una implementación ya realizada.
+- El creador expresa la posibilidad de **reunir a los diez** fuera del espacio puramente literario mediante tecnología, respetando la identidad propia de cada personaje y los valores y canon de los tres libros.
+- Relación con **El Bélico**: la ambición de llevarlo a la realidad se extiende a la familia de protagonistas; desarrollar cada línea sin confundir personajes, libros o hitos.
+- **Principio de diseño:** una experiencia transmedia donde historias, oráculos, personajes inteligentes, música y eventos refuercen la participación comunitaria a largo plazo.
+
+**Pendientes de diseño autoral, no obstáculos para conservar la visión:** identificar las diez figuras principales de la trilogía y asociarlas a oráculos concretos; decidir cuándo y cómo se revelan los nombres secretos; acordar el significado exacto del umbral «después del capítulo 100» y las formas de interacción física/digital; especificar propiedad intelectual, voz, consentimiento y seguridad antes de prototipos.
+
+**Estado técnico:** decisión creativa registrada para planificación, sin implementación, sin nuevas APIs, sin gasto ni exposición de los ocho sitios protegidos. Mantener PR #19 en Draft; no tocar producción.
