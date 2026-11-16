@@ -66,3 +66,26 @@ test('Los cierres de citas no duplican el punto final en los capítulos 2–33',
     }
   }
 })
+
+
+test('La lectura preserva decisiones editoriales confirmadas por el autor', () => {
+  const allChapters = Object.values(reading.chapters).flat().join('\n')
+  assert.doesNotMatch(chapterOneSource, /Chabela/i, 'Capítulo 1: reapareció la grafía incorrecta Chabela')
+  assert.doesNotMatch(allChapters, /Chabela/i, 'Capítulos 2–33: reapareció la grafía incorrecta Chabela')
+
+  const chapterFour = reading.chapters['4']
+  const firstReply = chapterFour.indexOf('—No tengo miedo.')
+  assert.ok(firstReply >= 0, 'Capítulo 4: falta la declaración de Juan')
+  assert.equal(chapterFour[firstReply + 1], '—Yo sí.',
+    'Capítulo 4: la réplica de María debe conservar la corrección autoral')
+
+  const chapterTwentyFive = reading.chapters['25'].join(' ')
+  assert.match(chapterTwentyFive, /Los dieciséis no estaban resultando tan sagrados como prometían\./,
+    'Capítulo 25: preservar la concordancia y el sentido de los dieciséis años')
+
+  const chapterThirtyThree = reading.chapters['33']
+  assert.equal(chapterThirtyThree.at(-1), 'Y Siguió… caminando…',
+    'Capítulo 33: preservar el cierre narrativo aprobado sin anexar notas editoriales')
+  assert.doesNotMatch(chapterThirtyThree.join(' '), /FIN DEL CAPÍTULO 33/i,
+    'Capítulo 33: el cierre hablado es una indicación de audio, no texto narrativo')
+})
