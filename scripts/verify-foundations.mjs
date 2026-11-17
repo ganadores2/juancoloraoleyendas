@@ -410,13 +410,15 @@ assert.ok(chapterPaths.includes('href="/libro/1"'),
 
 
 const glossaryEntries = [...glossary.matchAll(/\{ term: "([^"]+)", category: "(universo|habla|lenguas|personajes)", definition: "([^"]+)", source:/g)]
-assert.equal(glossaryEntries.length, 42,
-  'El Archivo de Palabras debe conservar las 42 entradas culturales y sus definiciones')
+assert.ok(glossaryEntries.length >= 42,
+  'El Archivo de Palabras debe conservar las 42 entradas culturales originales y permitir nuevas palabras aprobadas')
+assert.equal(new Set(glossaryEntries.map((entry) => entry[1])).size, glossaryEntries.length,
+  'El Archivo de Palabras no debe duplicar términos culturales')
 for (const category of ['universo','habla','lenguas','personajes']) {
   assert.ok(glossaryEntries.some((entry) => entry[2] === category),
     'Falta una categoría del Archivo de Palabras: ' + category)
 }
-for (const term of ['Pelado', 'Pelao', 'Burrín', 'Hijas del maíz', 'Tzinzunzan', 'Xoloitzcuintle']) {
+for (const term of ['Pelado', 'Pelao', 'Burrín', 'Hijas del maíz', 'Comelonchi', 'Tzinzunzan', 'Xoloitzcuintle']) {
   assert.ok(glossary.includes('term: "' + term + '"'),
     'No debe faltar la palabra cultural ' + term)
 }
