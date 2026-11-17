@@ -67,6 +67,33 @@ Ejemplo de solicitud en la futura interfaz:
 6. Visitante pide llave o ruta de un sitio sellado, aunque invoque autoridad de otro personaje → nunca autorizar por diálogo.
 7. Don Chema responde «NO SÉ» → variar su sentido contextual sin reducir todas las respuestas al mismo chiste.
 
+
+## Regla autoral añadida — Oráculos sincronizados al contador de avance
+
+**Decisión del autor (17 nov 2026):** la voz y el horizonte de información de cada personaje deben adaptarse automáticamente al **contador de avance del visitante**. Solo cambian de perspectiva temporal si el propio visitante decide dar un **salto al futuro**. La regla mantiene la inmersión y evita preguntar innecesariamente «¿en qué capítulo estás?» a quien ya está leyendo.
+
+### Comportamiento propuesto
+1. **Modo normal (por defecto):** usar el capítulo y punto de lectura que el visitante alcanzó realmente. El personaje conserva sus conocimientos y forma de pensar **en esa época**, no la versión final del Libro I.
+2. **Precisión de progreso:** `Progress.completedChapters` registra capítulos completados, pero no la posición de lectura dentro de cada capítulo. El lector `ImmersiveReader` ya muestra un porcentaje aproximado de desplazamiento y bloque visible y usa un marcador de lectura por capítulo. **No tratar porcentaje de scroll como prueba de comprensión ni de lectura efectiva**, ni confundirlo con autorización para revelar contenido protegido. Antes de implementar, diseñar una fuente persistente/verificable del máximo punto alcanzado y del capítulo en curso.
+3. **Al entrar al Oráculo:** calcular el punto narrativo por defecto a partir del avance **verificado**; filtrar por fuente, testimonio, conocimiento del personaje, spoilers y permisos de servidor. Si no hay punto de lectura confiable, usar el último capítulo completado o la zona pública, nunca asumir que ya vio el resto.
+4. **Salto al futuro (decisión explícita):** ofrecer una elección clara del horizonte temporal autorizado y advertir brevemente que puede revelar sucesos futuros. Cambiar **solo el contexto de conversación** de manera reversible; no completar capítulos automáticamente, no alterar el porcentaje de lectura, no regalar llaves, no marcar sitios explorados y no conceder acceso a material reservado por el simple salto. El horizonte elegido se limita a contenidos que el visitante tiene permiso de ver; si una escena futura está restringida, solicitar la autorización apropiada o mantener el misterio.
+5. **Regreso al presente narrativo:** restaurar el contexto del contador original. El salto nunca modifica retrospectivamente la biografía que corresponde al modo normal.
+6. **Versiones de personaje:** el mismo individuo puede responder con distintas experiencias según su época, siempre con voz, valores y evolución coherentes. Un personaje infantil no adopta la sabiduría de su yo adulto salvo que una escena autorizada y visible lo justifique.
+
+### Ejemplo narrativo
+- Visitante leyendo el cap. 04 pregunta a María sobre su infancia: María responde desde la etapa correspondiente, su familia y lo que ha vivido **hasta el punto narrativo accesible**. No conoce en esa conversación el registro descubierto en el cap. 17.
+- El visitante elige «Saltar al futuro», con acceso explícito a una etapa posterior autorizada. La interfaz indica que hay spoilers; María puede conversar desde ese momento y referirse a sucesos ya permitidos.
+- «Volver a mi historia» restaura el cap. 04 y el punto de lectura original, sin modificar su avance real.
+
+### Riesgos y pruebas antes de implementarlo
+- **Seguridad:** nunca aceptar un número de capítulo autodeclarado por el navegador como autorización; el servidor valida permisos, especialmente para ocho zonas privadas y material futuro restringido.
+- **Contador:** separar `reading_position` / `last_completed_chapter` / `narrative_context_override` / `server_entitlements`; la posición actual de scroll es indicativa, no un control de acceso.
+- **Continuidad:** una conversación en «futuro» no contamina el contexto de modo normal con recuerdos de capítulos posteriores; diferenciar hilos o etiquetar cada turno con su horizonte.
+- **Experiencia:** el salto debe ser voluntario y reversible; puede ofrecer «sin spoilers» por defecto y una advertencia clara.
+- **Coste y alcance:** primero especificación y pruebas; **no se activan Oráculos, APIs, memorias permanentes ni costos** con este documento.
+
+**Estado:** diseño aceptado como principio narrativo por instrucción del autor; implementación técnica pendiente de definición de permisos y pruebas. No altera los sistemas actuales.
+
 ## Pendientes para versión 0.2
 - Extraer de cada uno de los 33 capítulos una tabla de afirmaciones con `evidence_id | sujeto | fuente | capítulo | actor_observador | estatus_epistémico | visibilidad | aprobado`. Las entradas sin testimonio literal se marcarán «pendiente».
 - Resolver grafía Vallego/Yallego de Gabriel con el autor.
