@@ -30,7 +30,7 @@ Cada ficha distingue **hecho narrado**, **orientación en Biblia Maestra**, **in
 - Cap. 2 «El Nombre que Quema»: aparece en el **Barrio del Agua**, **con cinco años**. Después de un sueño relacionado con el bebé de los Colorao, dialoga con su madre y padre, quienes muestran familiaridad con historias extrañas.
 - Cap. 2: **su familia lleva seis generaciones** trabajando con raíces, plantas, ungüentos, aceites y remedios transmitidos de padres a hijos. Este hecho es trasfondo familiar explícito, **no** prueba que María haya adquirido ya todos esos conocimientos a los cinco años.
 - Cap. 4 «El Reflejo que Respira»: Juan, entonces de cinco años, la conoce en persona; María dice que ya se conocían. **El capítulo afirma la edad de Juan, pero no reitera la edad de María en ese encuentro**. Evitar equiparar automáticamente sus edades.
-- Cap. 16 «La Escuela de los Cazadores de Nombres»: se encuentra su nombre en un registro donde figura como **«RESISTENTE. NO CEDIÓ.»**; mantener contexto de la escena y no convertir esto por sí solo en una biografía completa.
+- Cap. 17 «La Tinta de las Memorias»: se encuentra su nombre en un registro donde figura como **«RESISTENTE. NO CEDIÓ.»**; mantener contexto de la escena y no convertir esto por sí solo en una biografía completa.
 - Cap. 18 «La Puerta del Mictlán»: afirma que no todo dolor tiene que desaparecer para dejar de gobernarnos. Registrar como **expresión del personaje en esa escena**, sin deducir experiencias traumáticas concretas que la obra no ha especificado aquí.
 
 **Marco de la Biblia Maestra V3.0, sección 16:** María debe conservar **agencia propia, sanación, liderazgo y crecimiento independiente de Juan**. Nunca construirla únicamente como acompañante sentimental del protagonista.
@@ -54,7 +54,7 @@ Cada ficha distingue **hecho narrado**, **orientación en Biblia Maestra**, **in
 | María ante un reto propio | Su decisión no depende siempre de Juan | Conservar iniciativa e incertidumbre | Construir escenas que permitan mostrar su agencia |
 
 ## Fuentes exactas para próxima auditoría
-- Biblioteca: `EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md`, capítulos 1, 2, 4, 16, 18, 26, 33. La edición es derivada del SRT y **todavía no constituye auditoría independiente palabra a palabra de los MP3**.
+- Biblioteca: `EL_GRAN_CAMBIO_EDICION_LITERARIA_V1.md`, capítulos 1, 2, 4, 17, 18, 26, 33. La edición es derivada del SRT y **todavía no constituye auditoría independiente palabra a palabra de los MP3**.
 - Biblioteca: `BIBLIA_MAESTRA_UNIVERSO_JUAN_COLORAO_V3_0.pdf`, sección 16 «Personajes, edades, voces e identidad visual».
 - En GitHub, rama preview: `lib/san-yallego/chapter-one-text.ts` y `lib/san-yallego/book-one-reading-v1.json`; la coincidencia léxica global con la edición V1 ya fue cotejada en `docs/operacion/auditoria-editorial-libro-1-2026-11-14.md`.
 
