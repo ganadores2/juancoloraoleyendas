@@ -42,6 +42,9 @@ export default function LibroUnoPage() {
           <Link href="/mapa" className={ritualButton('secondary', 'min-h-12 tracking-[0.14em]')}>
             Regresar al mapa
           </Link>
+          <Link href="/opinion" className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#B5E8BE]/70 bg-black/55 px-5 py-3 text-center text-sm text-[#D8F4DE] transition-colors hover:border-[#B5E8BE] hover:bg-black/75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B5E8BE]">
+            Tu opinión
+          </Link>
         </div>
       </div>
     </main>
