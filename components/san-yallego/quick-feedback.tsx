@@ -69,7 +69,7 @@ export function QuickFeedback() {
                 ]).map((option) => (
                   <label
                     key={option.value}
-                    className={`inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md border px-4 py-2 text-sm transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#873D32] ${answers[index] === option.value ? (option.value === 'No' ? 'border-[#A24F42] bg-[#F3D9D2] text-[#7A2E27]' : 'border-[#347551] bg-[#DCEAD8] text-[#205737]') : 'border-gold/30 bg-black/30 text-[#4B3A2E] hover:border-gold/70'}`}
+                    className={`inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md border px-4 py-2 text-sm transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#873D32] ${answers[index] === option.value ? (option.value === 'No' ? 'border-[#A24F42] bg-[#F3D9D2] text-[#7A2E27]' : 'border-[#347551] bg-[#DCEAD8] text-[#205737]') : 'border-[#BFA98D] bg-[#FFFAF1] text-[#3E3026] hover:border-[#873D32]'}`}
                   >
                     <input
                       type="radio"
@@ -103,7 +103,7 @@ export function QuickFeedback() {
         <button
           type="button"
           onClick={copyFeedback}
-          className="min-h-12 rounded-md border border-gold/70 bg-gold/15 px-4 py-3 text-sm font-semibold text-[#873D32] hover:bg-gold/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          className="min-h-12 rounded-md border border-[#873D32] bg-[#873D32] px-4 py-3 text-sm font-semibold text-[#FFF4E6] hover:bg-[#6F3129] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#873D32]"
         >
           Copiar mis respuestas
         </button>
