@@ -104,7 +104,6 @@ export function JourneyScore() {
         src={SRC}
         preload="none"
         loop
-        playsInline
         aria-hidden="true"
         onError={() => setBlocked(true)}
       />
