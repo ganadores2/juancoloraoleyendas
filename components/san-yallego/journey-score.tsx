@@ -30,7 +30,7 @@ export function JourneyScore() {
   const { soundOn } = useSound()
   const audioRef = useRef<HTMLAudioElement>(null)
   const rafRef = useRef<number | null>(null)
-  const [started, setStarted] = useState(false)
+  const [playing, setPlaying] = useState(false)
   const [blocked, setBlocked] = useState(false)
   const startedRef = useRef(false)
 
@@ -67,7 +67,7 @@ export function JourneyScore() {
       audio.volume = 0.04
       void audio.play().then(() => {
         startedRef.current = true
-        setStarted(true)
+        setPlaying(true)
         setBlocked(false)
       }).catch(() => setBlocked(true))
     }
@@ -105,31 +105,33 @@ export function JourneyScore() {
         preload="none"
         loop
         aria-hidden="true"
-        onError={() => setBlocked(true)}
+        onError={() => { setBlocked(true); setPlaying(false) }}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
       />
-      {canControl && (blocked || started) && (
+      {canControl && soundOn && (pathname === '/' || pathname === '/mapa' || blocked || playing || startedRef.current) && (
         <button
           type="button"
-          aria-label={blocked ? 'Iniciar música de San Yallego' : 'Pausar o reanudar música de San Yallego'}
+          aria-label={playing ? 'Pausar música de San Yallego' : 'Reproducir música de San Yallego'}
           onClick={() => {
             const audio = audioRef.current
             if (!audio) return
             if (!audio.paused) {
               audio.pause()
-              setStarted(false)
+              setPlaying(false)
               return
             }
             if (!soundOn) return
             audio.volume = targetVolume(pathname)
             void audio.play().then(() => {
               startedRef.current = true
-              setStarted(true)
+              setPlaying(true)
               setBlocked(false)
             }).catch(() => setBlocked(true))
           }}
           className="fixed bottom-[calc(8rem+env(safe-area-inset-bottom))] right-4 z-40 rounded-full border border-gold/35 bg-black/80 px-3 py-2 text-[11px] text-gold shadow-lg backdrop-blur-md md:bottom-20 md:right-6"
         >
-          {blocked ? '♫ Activar música' : '♫ Música ambiental'}
+          {playing ? '♫ Pausar música' : '♫ Activar música'}
         </button>
       )}
     </>
