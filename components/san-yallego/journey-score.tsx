@@ -96,7 +96,7 @@ export function JourneyScore() {
   }, [])
 
   if (!ENABLED) return null
-  const canControl = isJourney(pathname)
+  const canControl = pathname === '/' || pathname === '/mapa'
   return (
     <>
       <audio
@@ -109,7 +109,7 @@ export function JourneyScore() {
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />
-      {canControl && soundOn && (pathname === '/' || pathname === '/mapa' || blocked || playing || startedRef.current) && (
+      {canControl && soundOn && true && (
         <button
           type="button"
           aria-label={playing ? 'Pausar música de San Yallego' : 'Reproducir música de San Yallego'}
