@@ -42,24 +42,24 @@ export function QuickFeedback() {
   const answered = Object.keys(answers).length
 
   return (
-    <main className="min-h-dvh bg-background px-4 py-10 text-foreground sm:px-6">
-      <section className="mx-auto flex w-full max-w-xl flex-col gap-5 rounded-xl border border-gold/30 bg-black/40 p-5 shadow-xl sm:p-8">
+    <main className="min-h-dvh bg-[#DDD0B5] px-4 py-10 text-[#372B24] sm:px-6">
+      <section className="mx-auto flex w-full max-w-xl flex-col gap-5 rounded-xl border border-[#B88D6A] bg-[#F8EBD5] p-5 shadow-xl sm:p-8">
         <header className="space-y-2 text-center">
-          <p className="font-display text-[11px] tracking-[0.25em] text-gold/80">JUAN COLORAO · LEYENDAS</p>
-          <h1 className="font-display text-2xl tracking-[0.13em] text-gold sm:text-3xl">TU OPINIÓN</h1>
-          <p className="text-sm leading-relaxed text-foreground/80">
+          <p className="font-display text-[11px] tracking-[0.25em] text-[#7B4436]">JUAN COLORAO · LEYENDAS</p>
+          <h1 className="font-display text-2xl tracking-[0.13em] text-[#873D32] sm:text-3xl">TU OPINIÓN</h1>
+          <p className="text-sm leading-relaxed text-[#4B3A2E]">
             Cinco preguntas rápidas. Tu respuesta es voluntaria y puedes dejar alguna sin contestar.
           </p>
         </header>
 
-        <div className="space-y-2 rounded-lg border border-copper/35 bg-black/50 p-3 text-sm text-foreground/80">
-          <p className="font-semibold text-gold">Versión de prueba: aún no envía opiniones automáticamente.</p>
+        <div className="space-y-2 rounded-lg border border-[#BC9474] bg-[#F0DDC0] p-3 text-sm text-[#4B3A2E]">
+          <p className="font-semibold text-[#873D32]">Versión de prueba: aún no envía opiniones automáticamente.</p>
           <p>Al terminar puedes copiar tus respuestas y enviarlas personalmente por Messenger u otro medio a quien te invitó. No se almacenan aquí.</p>
         </div>
 
         <div className="space-y-4">
           {QUESTIONS.map((question, index) => (
-            <fieldset key={question} className="space-y-2 border-b border-gold/15 pb-4">
+            <fieldset key={question} className="space-y-2 border-b border-[#D5BFA3] pb-4">
               <legend className="mb-2 text-sm leading-relaxed">{index + 1}. {question}</legend>
               <div className="flex flex-wrap gap-2">
                 {([
@@ -69,7 +69,7 @@ export function QuickFeedback() {
                 ]).map((option) => (
                   <label
                     key={option.value}
-                    className={`inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md border px-4 py-2 text-sm transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-gold ${answers[index] === option.value ? 'border-gold bg-gold/20 text-gold' : 'border-gold/30 bg-black/30 text-foreground/80 hover:border-gold/70'}`}
+                    className={`inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md border px-4 py-2 text-sm transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#873D32] ${answers[index] === option.value ? (option.value === 'No' ? 'border-[#A24F42] bg-[#F3D9D2] text-[#7A2E27]' : 'border-[#347551] bg-[#DCEAD8] text-[#205737]') : 'border-gold/30 bg-black/30 text-[#4B3A2E] hover:border-gold/70'}`}
                   >
                     <input
                       type="radio"
@@ -88,38 +88,38 @@ export function QuickFeedback() {
         </div>
 
         <label className="flex flex-col gap-2 text-sm">
-          ¿Qué mejorarías? <span className="text-foreground/60">(opcional)</span>
+          ¿Qué mejorarías? <span className="text-[#69594C]">(opcional)</span>
           <textarea
             value={comment}
             maxLength={1000}
             onChange={(event) => { setComment(event.target.value); setStatus('idle') }}
             rows={3}
             placeholder="Una sugerencia breve..."
-            className="w-full rounded-md border border-gold/30 bg-black/50 p-3 text-base text-foreground placeholder:text-foreground/45 focus-visible:outline-2 focus-visible:outline-gold"
+            className="w-full rounded-md border border-[#BFA98D] bg-[#FFFAF1] p-3 text-base text-[#372B24] placeholder:text-[#786A5D] focus-visible:outline-2 focus-visible:outline-[#873D32]"
           />
         </label>
 
-        <p className="text-xs text-foreground/60">{answered} de 5 preguntas respondidas</p>
+        <p className="text-xs text-[#69594C]">{answered} de 5 preguntas respondidas</p>
         <button
           type="button"
           onClick={copyFeedback}
-          className="min-h-12 rounded-md border border-gold/70 bg-gold/15 px-4 py-3 text-sm font-semibold text-gold hover:bg-gold/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          className="min-h-12 rounded-md border border-gold/70 bg-gold/15 px-4 py-3 text-sm font-semibold text-[#873D32] hover:bg-gold/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
         >
           Copiar mis respuestas
         </button>
         {status === 'copied' && (
-          <p role="status" className="text-sm text-gold">
+          <p role="status" className="text-sm text-[#285E41]">
             Respuestas copiadas. Pégalas en Messenger y envíalas a quien te invitó. Todavía no las hemos recibido.
           </p>
         )}
         {status === 'error' && (
-          <p role="alert" className="text-sm text-foreground/85">
+          <p role="alert" className="text-sm text-[#873D32]">
             Tu navegador no permitió copiar automáticamente. Prueba en otra ventana o selecciona el texto manualmente cuando esté disponible. No se ha enviado nada.
           </p>
         )}
-        <div className="flex flex-wrap justify-center gap-5 border-t border-gold/15 pt-4 text-sm">
-          <Link href="/mapa" className="min-h-11 py-3 text-gold underline-offset-4 hover:underline">Volver al mapa</Link>
-          <Link href="/libro/1" className="min-h-11 py-3 text-gold underline-offset-4 hover:underline">Ir al Libro I</Link>
+        <div className="flex flex-wrap justify-center gap-5 border-t border-[#D5BFA3] pt-4 text-sm">
+          <Link href="/mapa" className="min-h-11 py-3 text-[#873D32] underline-offset-4 hover:underline">Volver al mapa</Link>
+          <Link href="/libro/1" className="min-h-11 py-3 text-[#873D32] underline-offset-4 hover:underline">Ir al Libro I</Link>
         </div>
       </section>
     </main>
