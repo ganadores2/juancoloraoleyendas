@@ -89,7 +89,7 @@ export function JourneyScore() {
     } else if (startedRef.current && !audio.paused) {
       fadeTo(targetVolume(pathname))
     }
-  }, [pathname, soundOn, fadeTo])
+  }, [pathname, soundOn, fadeTo, playing])
 
   useEffect(() => () => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
