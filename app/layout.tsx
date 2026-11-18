@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Cinzel, Cormorant_Garamond } from 'next/font/google'
 import { SoundToggle } from '@/components/san-yallego/sound-toggle'
+import { JourneyScore } from '@/components/san-yallego/journey-score'
 import { TravelerMapNav } from '@/components/san-yallego/traveler-map-nav'
 import './globals.css'
 
@@ -70,6 +71,7 @@ export default function RootLayout({
         {children}
         <TravelerMapNav />
         <SoundToggle />
+        <JourneyScore />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
