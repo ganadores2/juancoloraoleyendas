@@ -43,7 +43,7 @@ export function QuickFeedback() {
 
   return (
     <main className="min-h-dvh bg-[#DDD0B5] px-4 py-10 text-[#372B24] sm:px-6">
-      <section className="mx-auto flex w-full max-w-xl flex-col gap-5 rounded-xl border border-[#B88D6A] bg-[#F8EBD5] p-5 shadow-xl sm:p-8">
+      <section className="mx-auto flex w-full max-w-xl flex-col gap-5 rounded-xl border border-[#B5E8BE] bg-[#F8EBD5] p-5 shadow-[inset_0_0_10px_rgba(172,232,185,0.42),0_0_12px_rgba(172,232,185,0.22)] sm:p-8">
         <header className="space-y-2 text-center">
           <p className="font-display text-[11px] tracking-[0.25em] text-[#7B4436]">JUAN COLORAO · LEYENDAS</p>
           <h1 className="font-display text-2xl tracking-[0.13em] text-[#873D32] sm:text-3xl">TU OPINIÓN</h1>
