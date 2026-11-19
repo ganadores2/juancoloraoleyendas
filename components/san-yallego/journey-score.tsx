@@ -10,7 +10,7 @@ import { useSound } from '@/hooks/use-san-yallego'
  * y activar NEXT_PUBLIC_SAN_YALLEGO_EPICO=enabled SOLO en preview.
  */
 const ENABLED = process.env.NEXT_PUBLIC_SAN_YALLEGO_EPICO === 'enabled'
-const SRC = '/assets/audio/ambiente/san-yallego-epico-preview.mp3'
+const SRC = '/assets/audio/ambiente/EPICO.mp3'
 const MAX_VOLUME = 0.12 // Bajo las voces; afinar con pruebas reales de mezcla
 const FADE_MS = 1800
 
