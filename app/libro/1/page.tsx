@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { CHAPTERS, chapterHref } from '@/lib/san-yallego/chapters'
+import { CHAPTERS } from '@/lib/san-yallego/chapters'
+import { ChapterIndex } from '@/components/san-yallego/capitulo/chapter-index'
 import { ritualButton } from '@/components/san-yallego/ritual'
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function LibroUnoPage() {
             EL GRAN CAMBIO
           </h1>
           <p className="max-w-xl text-balance text-sm leading-relaxed text-foreground/75">
-            Los 33 capítulos de «El Gran Cambio» están disponibles para leer y escuchar. Puedes abrir cualquier capítulo desde el índice o vivir primero el recorrido cinematográfico de San Yallego.
+            El Libro I contiene 33 capítulos para leer y escuchar. Comienza con «El Primer Grito»: al terminarlo, podrás descubrir los 32 restantes, o vivir primero el recorrido cinematográfico de San Yallego.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link href="/bienvenida" className={ritualButton('secondary', 'min-h-11 tracking-[0.14em]')}>
@@ -35,36 +36,14 @@ export default function LibroUnoPage() {
           </div>
         </header>
 
-        <ol className="grid gap-3" aria-label="Capítulos del Libro I">
-          {chapters.map((chapter) => (
-            <li key={chapter.id}
-              className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-gold/20 bg-black/50 px-5 py-4">
-              <div className="flex min-w-0 flex-1 items-center gap-4">
-                <span className="w-9 shrink-0 font-display text-xs tabular-nums text-gold/75">
-                  {String(chapter.number).padStart(2, '0')}
-                </span>
-                <span className="font-display text-sm leading-relaxed text-foreground/90 sm:text-base">
-                  {chapter.title}
-                </span>
-              </div>
-              <div className="flex flex-wrap items-center justify-end gap-3">
-                <Link href={chapterHref(chapter)}
-                  className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-gold/60 px-4 py-2 font-display text-[10px] tracking-[0.12em] text-gold hover:bg-gold/10">
-                  {chapter.audio ? 'LEER / ESCUCHAR' : 'LEER'}
-                </Link>
-                {!chapter.audio && (
-                  <span className="text-right text-[11px] leading-relaxed text-foreground/55">
-                    MP3 por incorporar
-                  </span>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
+        <ChapterIndex chapters={chapters} />
 
         <div className="flex flex-wrap justify-center gap-4">
           <Link href="/mapa" className={ritualButton('secondary', 'min-h-12 tracking-[0.14em]')}>
             Regresar al mapa
+          </Link>
+          <Link href="/opinion" className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#B5E8BE]/70 bg-black/55 px-5 py-3 text-center text-sm text-[#D8F4DE] transition-colors hover:border-[#B5E8BE] hover:bg-black/75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B5E8BE]">
+            Tu opinión
           </Link>
         </div>
       </div>

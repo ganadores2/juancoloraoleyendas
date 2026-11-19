@@ -21,14 +21,14 @@ export interface Chapter {
   siteId: SiteId
   /** URL del MP3 disponible en esta versión; null significa pendiente de incorporar al sitio. */
   audio: string | null
-  /** Reservado para los capítulos grabados en dos partes, sin inventar rutas todavía. */
+  /** Lista ordenada de MP3 del capítulo; 4, 29 y 32 tienen dos partes. */
   audioParts: readonly string[]
   paths: ChapterPath[]
 }
 
-/** Índice oficial de «El Gran Cambio»: manuscrito ElevenLabs, 33 capítulos.
- * Los audios 2-33 existen en la biblioteca del autor, pero todavía no se han
- * recibido ni subido aquí. No generar enlaces a MP3 ausentes.
+/** Índice oficial de «El Gran Cambio»: 33 capítulos con 36 MP3 en main.
+ * El acceso progresivo a los capítulos se controla en la experiencia del lector,
+ * no en este catálogo de audios. Verificar las rutas en cada build candidato.
  */
 export const BOOK_ONE_TITLES = [
   'El Primer Grito',

@@ -16,7 +16,7 @@ const INTERLUDIO = [
   },
   {
     title: 'El siguiente umbral',
-    text: 'Este interludio no reemplaza al Capítulo II, «El Nombre Que Quema». Los 33 capítulos de «El Gran Cambio» ya existen. Puedes descubrir sus títulos en el índice oficial mientras incorporamos los demás audiolibros.',
+    text: 'Este interludio no reemplaza al Capítulo II, «El Nombre Que Quema». Al terminar el primer capítulo, el índice del Libro I abrirá las otras 32 historias para leer o escuchar.',
   },
 ] as const
 

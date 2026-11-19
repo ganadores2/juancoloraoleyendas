@@ -96,9 +96,13 @@ export function MapaScreen() {
         </aside>
       )}
 
-      {/* Acceso cultural público; no afecta la Llave ni el progreso de los sitios. */}
-      <nav aria-label="Biblioteca de San Yallego"
-        className="fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] left-4 z-30 md:bottom-6 md:left-6">
+      {/* Enlaces públicos, separados del Guardián y por encima del control inferior en móvil. */}
+      <nav aria-label="Biblioteca y opiniones de San Yallego"
+        className="fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] left-4 z-30 flex flex-col items-start gap-2 md:bottom-6 md:left-6">
+        <Link href="/opinion"
+          className="inline-flex min-h-11 max-w-[calc(100vw-2rem)] items-center rounded-full border border-[#B5E8BE]/75 bg-black/80 px-4 py-2 text-[12px] tracking-[0.08em] text-[#D8F4DE] shadow-[0_0_10px_rgba(172,232,185,0.18)] backdrop-blur-md transition-colors hover:border-[#B5E8BE] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B5E8BE]">
+          Tu opinión
+        </Link>
         <Link href="/glosario"
           className="inline-flex min-h-11 max-w-[calc(100vw-2rem)] items-center rounded-full border border-gold/40 bg-black/75 px-4 py-2 text-[11px] tracking-[0.09em] text-gold/90 shadow-lg backdrop-blur-md transition-colors hover:border-gold hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
           Archivo de Palabras
