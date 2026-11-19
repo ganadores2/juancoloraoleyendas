@@ -4,12 +4,7 @@ import { usePathname } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useSound } from '@/hooks/use-san-yallego'
 
-/**
- * BSO Épico: una única capa que sobrevive a las transiciones de Next.js.
- * Desactivada hasta publicar el archivo original autorizado en public/assets/audio/ambiente
- * y activar NEXT_PUBLIC_SAN_YALLEGO_EPICO=enabled SOLO en preview.
- */
-const ENABLED = process.env.NEXT_PUBLIC_SAN_YALLEGO_EPICO === 'enabled'
+/** Una banda sonora persistente, habilitada EXCLUSIVAMENTE por el layout servidor en Preview. */
 const SRC = '/assets/audio/ambiente/EPICO.mp3'
 const MAX_VOLUME = 0.12 // Bajo las voces; afinar con pruebas reales de mezcla
 const FADE_MS = 1800
@@ -25,7 +20,7 @@ function targetVolume(path: string) {
   return MAX_VOLUME
 }
 
-export function JourneyScore() {
+export function JourneyScore({ enabled }: { enabled: boolean }) {
   const pathname = usePathname()
   const { soundOn } = useSound()
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -56,7 +51,7 @@ export function JourneyScore() {
   // El primer gesto en «Comenzar la aventura» habilita la pista sin exigir
   // un toque extra. No reintentar automáticamente si el navegador la bloquea.
   useEffect(() => {
-    if (!ENABLED) return
+    if (!enabled) return
     const onClick = (event: MouseEvent) => {
       const link = (event.target as Element | null)?.closest?.('a[href]')
       if (!link || startedRef.current || !soundOn) return
@@ -73,11 +68,11 @@ export function JourneyScore() {
     }
     document.addEventListener('click', onClick, true)
     return () => document.removeEventListener('click', onClick, true)
-  }, [pathname, soundOn])
+  }, [enabled, pathname, soundOn])
 
   // Las rutas de lectura, encuesta y zona privada NO tienen música.
   useEffect(() => {
-    if (!ENABLED) return
+    if (!enabled) return
     const audio = audioRef.current
     if (!audio) return
     if (!isJourney(pathname) || !soundOn) {
@@ -89,13 +84,13 @@ export function JourneyScore() {
     } else if (startedRef.current && !audio.paused) {
       fadeTo(targetVolume(pathname))
     }
-  }, [pathname, soundOn, fadeTo, playing])
+  }, [enabled, pathname, soundOn, fadeTo, playing])
 
   useEffect(() => () => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
   }, [])
 
-  if (!ENABLED) return null
+  if (!enabled) return null
   const canControl = pathname === '/' || pathname === '/mapa'
   return (
     <>
@@ -109,7 +104,7 @@ export function JourneyScore() {
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />
-      {canControl && soundOn && true && (
+      {canControl && soundOn && (
         <button
           type="button"
           aria-label={playing ? 'Pausar música de San Yallego' : 'Reproducir música de San Yallego'}
