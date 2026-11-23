@@ -31,6 +31,14 @@ export function HomeScreen({ introReady = false }: { introReady?: boolean }) {
           <p className="max-w-xl text-balance text-xl italic text-foreground/90 md:text-2xl">
             Aquí las leyendas no se cuentan. Se descubren.
           </p>
+          <div className="flex flex-col items-center gap-2" aria-label="Presentación del libro">
+            <p className="font-display text-xs tracking-[0.2em] text-gold sm:text-sm sm:tracking-[0.3em]">
+              LIBRO I · EL GRAN CAMBIO
+            </p>
+            <p className="max-w-lg text-balance text-sm leading-relaxed text-foreground/85 sm:text-base">
+              Explora el pueblo donde comienza una historia que podrás leer o escuchar.
+            </p>
+          </div>
         </div>
 
         <div className="animate-sy-fade-in flex flex-col items-center gap-4 [animation-delay:900ms]">
@@ -39,8 +47,8 @@ export function HomeScreen({ introReady = false }: { introReady?: boolean }) {
           </Link>
           <p className="max-w-sm text-balance text-sm italic text-foreground/70">
             {introReady
-              ? 'Juan Colorao te dará la bienvenida. Escucha su invitación y descubre por dónde comenzar.'
-              : 'Tu primer camino comienza en el mapa. Mira con atención: San Yallego tiene sus propias señales.'}
+              ? 'Juan Colorao te dará la bienvenida antes de descubrir los caminos de San Yallego.'
+              : 'Tu primer camino comienza en el mapa. San Yallego tiene sus propias señales.'}
           </p>
         </div>
       </div>
