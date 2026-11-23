@@ -17,3 +17,8 @@ Esta frase pertenece al inicio del Capítulo 1; no debe alterarse por esta nota.
 
 ## Alcance técnico
 Documento editorial en rama de trabajo preview exclusivamente. No tocar código, contenido público, despliegues de producción, el Guardián, ni los ocho lugares protegidos.
+
+## Título reservado para posible serie derivada
+**TLAXICCOHUIXTLÁN: EL OTRO SAN YALLEGO**
+
+Formulación explícita elegida por el creador (22 de noviembre de 2026) como título conceptual de una futura serie independiente. Es una propuesta de formato reservada, no un encargo de escribir sinopsis, episodios ni abrir los secretos de la puerta histórica. Mantener intactas las decisiones de misterio y continuidad anteriores.
