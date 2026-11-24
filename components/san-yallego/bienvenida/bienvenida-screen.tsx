@@ -268,7 +268,7 @@ export function BienvenidaScreen() {
       <video
         ref={secondVideoRef}
         src={ASSETS.video.bienvenidaMicrofono}
-        className={`absolute inset-0 z-10 size-full bg-black transition-opacity duration-150 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 z-10 size-full bg-black transition-opacity duration-300 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
         playsInline
         preload="auto"
         muted={!soundOn}
