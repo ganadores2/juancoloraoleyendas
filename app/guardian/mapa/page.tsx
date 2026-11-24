@@ -145,6 +145,13 @@ export default async function GuardianMapaPage() {
           </Link>
 
           <Link
+            href="/guardian/oraculos"
+            className="inline-flex min-h-11 items-center rounded-lg border border-gold/50 px-4 py-2 text-sm text-gold transition-colors hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-gold"
+          >
+            Tablero de los Diez Oráculos
+          </Link>
+
+          <Link
             href="/mapa"
             className="inline-flex min-h-11 items-center px-3 py-2 text-sm text-foreground/75 underline underline-offset-4 transition-colors hover:text-gold"
           >
