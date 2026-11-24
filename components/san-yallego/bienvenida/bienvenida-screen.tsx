@@ -208,20 +208,13 @@ export function BienvenidaScreen() {
     if (typeof video.requestVideoFrameCallback === 'function') {
       video.requestVideoFrameCallback(() => {
         setSecondVisible(true)
-        // En horizontal compacto, mantener el poster durante todo el fundido.
-        if (!compactLandscape) {
-          setFirstFreezeVisible(false)
-          setSecondStartVisible(false)
-        }
+        // Conservamos el fotograma de respaldo durante TODO el fundido.
+        // Así la transición es imagen→imagen, nunca un panel turquesa visible.
       })
     } else {
       // Compatibilidad: navegadores sin requestVideoFrameCallback.
       setSecondVisible(true)
-      // En horizontal compacto, mantener el poster durante todo el fundido.
-      if (!compactLandscape) {
-        setFirstFreezeVisible(false)
-        setSecondStartVisible(false)
-      }
+      // Igual en navegadores sin requestVideoFrameCallback: conservar el respaldo.
     }
   }
 
@@ -266,16 +259,16 @@ export function BienvenidaScreen() {
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 z-[8] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${secondStartVisible ? 'opacity-100' : 'opacity-0'}`}
       />
-      {/* Una capa CSS sólida absorbe el microdestello sin reexportar ninguno de los saludos.
-          z-9: encima de los fotogramas congelados y debajo del segundo video (z-10). */}
+      {/* Respaldo turquesa SOLO detrás de los fotogramas congelados (z-4).
+          Nunca debe tapar ni reemplazar la imagen visible durante la transición. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 z-[9] bg-[#20D9E6] ${turquoiseMaskVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`pointer-events-none absolute inset-0 z-[4] bg-[#20D9E6] ${turquoiseMaskVisible ? 'opacity-100' : 'opacity-0'}`}
       />
       <video
         ref={secondVideoRef}
         src={ASSETS.video.bienvenidaMicrofono}
-        className={`absolute inset-0 z-10 size-full bg-black transition-opacity duration-300 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 z-10 size-full bg-black transition-opacity duration-150 ease-in-out ${fillScreen ? 'object-cover' : 'object-contain'} ${secondVisible ? 'opacity-100' : 'opacity-0'}`}
         playsInline
         preload="auto"
         muted={!soundOn}
@@ -291,13 +284,10 @@ export function BienvenidaScreen() {
         onPlaying={revealSecondVideo}
         onTransitionEnd={(event) => {
           if (event.propertyName !== 'opacity' || !secondVisible) return
-          // El segundo saludo ya cubre por completo el escenario.
-          // Retiramos el fondo turquesa solo DESPUÉS del fundido, también en móvil.
+          // Al terminar el fundido de imagen a imagen, liberamos los respaldos.
           setTurquoiseMaskVisible(false)
-          if (compactLandscape) {
-            setFirstFreezeVisible(false)
-            setSecondStartVisible(false)
-          }
+          setFirstFreezeVisible(false)
+          setSecondStartVisible(false)
         }}
         onTimeUpdate={() => {
           revealSecondVideo()
