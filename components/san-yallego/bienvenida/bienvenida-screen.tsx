@@ -33,6 +33,9 @@ export function BienvenidaScreen() {
   const [secondFreezeVisible, setSecondFreezeVisible] = useState(false)
   const [firstFreezeVisible, setFirstFreezeVisible] = useState(false)
   const [secondStartVisible, setSecondStartVisible] = useState(false)
+  // Cortina turquesa: protege el salto de decodificador sin alterar los MP4.
+  // Queda DETRÁS del saludo 2 durante su fundido para evitar un fotograma vacío.
+  const [turquoiseMaskVisible, setTurquoiseMaskVisible] = useState(false)
   const [compactLandscape, setCompactLandscape] = useState(false)
   const [phase, setPhase] = useState<Phase>('saludo')
   const [playback, setPlayback] = useState<Playback>('idle')
@@ -94,6 +97,8 @@ export function BienvenidaScreen() {
       // En móvil el decoder puede tardar un instante en entregar el siguiente video.
       // Pintamos primero una copia estable del último frame por encima del Video 1.
       if (!freezeReadyRef.current) captureFirstFrame()
+      // La máscara se pinta antes de pausar el decoder del primer saludo.
+      setTurquoiseMaskVisible(true)
       if (compactLandscape && secondStartReadyRef.current) {
         setSecondStartVisible(true)
       } else {
@@ -261,6 +266,12 @@ export function BienvenidaScreen() {
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 z-[8] size-full bg-[#0b3439] ${fillScreen ? 'object-cover' : 'object-contain'} ${secondStartVisible ? 'opacity-100' : 'opacity-0'}`}
       />
+      {/* Una capa CSS sólida absorbe el microdestello sin reexportar ninguno de los saludos.
+          z-9: encima de los fotogramas congelados y debajo del segundo video (z-10). */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 z-[9] bg-[#20D9E6] ${turquoiseMaskVisible ? 'opacity-100' : 'opacity-0'}`}
+      />
       <video
         ref={secondVideoRef}
         src={ASSETS.video.bienvenidaMicrofono}
@@ -279,10 +290,14 @@ export function BienvenidaScreen() {
         onPlay={() => { if (phase === 'invitacion') setPlayback('playing') }}
         onPlaying={revealSecondVideo}
         onTransitionEnd={(event) => {
-          if (event.propertyName !== 'opacity' || !secondVisible || !compactLandscape) return
-          // Esperar al final del crossfade antes de retirar la cortina.
-          setFirstFreezeVisible(false)
-          setSecondStartVisible(false)
+          if (event.propertyName !== 'opacity' || !secondVisible) return
+          // El segundo saludo ya cubre por completo el escenario.
+          // Retiramos el fondo turquesa solo DESPUÉS del fundido, también en móvil.
+          setTurquoiseMaskVisible(false)
+          if (compactLandscape) {
+            setFirstFreezeVisible(false)
+            setSecondStartVisible(false)
+          }
         }}
         onTimeUpdate={() => {
           revealSecondVideo()
