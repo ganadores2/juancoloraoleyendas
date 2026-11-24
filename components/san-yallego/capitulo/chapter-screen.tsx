@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useProgress } from '@/hooks/use-san-yallego'
 import { type Chapter, chapterHref } from '@/lib/san-yallego/chapters'
+import { canOpenBookOneChapter } from '@/lib/san-yallego/chapter-access.mjs'
 import { getSite, siteLabel } from '@/lib/san-yallego/sites'
 import { ritualButton } from '../ritual'
 import { AudioPlayer } from './audio-player'
@@ -31,9 +32,30 @@ export function ChapterScreen({ chapter, paragraphs }: { chapter: Chapter; parag
   const site = getSite(chapter.siteId)!
 
   if (!hydrated) return <main className="min-h-dvh bg-black" />
-  // Las rutas del audiolibro son públicas desde el índice oficial.
-  // Los oráculos y el acceso a los sitios siguen protegidos en sus propias rutas.
-  // Así no se obliga a repetir los vuelos al cambiar de vista previa de Vercel.
+  // Puerta narrativa de la biblioteca, no seguridad de contenido: las rutas
+  // y MP3 permanecen públicos. Los ocho lugares sellados siguen independientes.
+  if (chapter.book === 1 && !canOpenBookOneChapter(chapter.number, progress.completedChapters)) {
+    return (
+      <main className="flex min-h-dvh flex-col items-center justify-center gap-6 bg-black px-6 py-16 text-center text-foreground">
+        <p className="font-display text-xs tracking-[0.22em] text-gold/75">EL CAMINO SE ABRE PASO A PASO</p>
+        <h1 className="max-w-xl font-display text-2xl leading-relaxed text-gold">
+          Este capítulo todavía no se ha abierto en tu recorrido.
+        </h1>
+        <p className="max-w-md text-sm leading-relaxed text-foreground/80">
+          Termina de leer o escuchar el Capítulo I, «El Primer Grito», para
+          descubrir los otros 32 capítulos del Libro I.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link href="/libro/1/capitulo/1" className={ritualButton('primary', 'min-h-12')}>
+            Leer o escuchar el Capítulo I
+          </Link>
+          <Link href="/libro/1" className={ritualButton('secondary', 'min-h-12')}>
+            Volver al índice
+          </Link>
+        </div>
+      </main>
+    )
+  }
   const completed = justFinished || progress.completedChapters.includes(chapter.id)
   const heading = `CAPÍTULO ${chapter.number} — ${chapter.title.toUpperCase()}`
 

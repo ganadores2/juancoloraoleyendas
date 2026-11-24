@@ -80,6 +80,7 @@ const geraldoVisualDoc = source('docs/personajes/geraldo-ficha-visual-maestra-v1
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
+const chapterIndex = source('components/san-yallego/capitulo/chapter-index.tsx')
 const reader = source('components/san-yallego/capitulo/immersive-reader.tsx')
 const chapterOneText = source('lib/san-yallego/chapter-one-text.ts')
 const bookOneReading = JSON.parse(source('lib/san-yallego/book-one-reading-v1.json'))
@@ -179,16 +180,33 @@ assert.ok(welcome.includes('requestVideoFrameCallback') && welcome.includes('dur
   'El segundo video debe aparecer al tener fotograma con fundido de 300 ms')
 assert.ok(welcome.includes('freezeCanvasRef') && welcome.includes('captureFirstFrame()'),
   'Debe congelarse un fotograma real del saludo 1 para evitar un destello entre videos')
-assert.ok(welcome.includes('captureFirstFrame()\n      firstVideoRef.current?.pause()'),
-  'Al terminar el primer saludo debe actualizarse el fotograma final antes de pausar')
+assert.ok(welcome.includes('captureFirstFrame()') &&
+  welcome.includes('setFirstFreezeVisible(true)') &&
+  welcome.includes('window.requestAnimationFrame(() => {') &&
+  welcome.includes('firstVideoRef.current?.pause()'),
+  'Al terminar el primer saludo debe pintar una copia estable antes de pausar el decoder')
 assert.doesNotMatch(welcome, /if \(!frameCapturedRef\.current\)/,
   'No debe reutilizarse una captura antigua al comenzar el segundo saludo')
 assert.ok(welcome.includes('Math.min(video.videoWidth, 1920)'),
   'El fotograma congelado debe conservar nitidez Full HD para evitar cambio visual de resolución')
-assert.ok(welcome.includes("z-0 size-full bg-transparent") && welcome.includes('z-10 size-full bg-black'),
-  'La imagen congelada debe quedar entre el primer y segundo video')
+assert.ok(welcome.includes("z-[5] size-full bg-[#0b3439]") && welcome.includes('z-10 size-full bg-black'),
+  'La imagen congelada debe cubrir el primer video mientras aparece el segundo')
+assert.ok(welcome.includes("window.matchMedia('(orientation: landscape) and (max-height: 600px)')") &&
+  welcome.includes('secondStartCanvasRef') &&
+  welcome.includes('captureSecondStartFrame()'),
+  'El móvil horizontal debe disponer de un poster real del primer fotograma del segundo saludo')
 assert.ok(welcome.includes("onClick={() => void play()}"),
   'Debe quedar una opción manual si el navegador bloquea el video')
+assert.ok(welcome.includes("onTransitionEnd={(event) => {") &&
+  welcome.includes("event.propertyName !== 'opacity'") &&
+  welcome.includes("if (event.propertyName !== 'opacity' || !secondVisible) return") &&
+  welcome.includes("setTurquoiseMaskVisible(false)") &&
+  welcome.includes("setFirstFreezeVisible(false)") &&
+  welcome.includes("setSecondStartVisible(false)"),
+  'El respaldo del saludo 1 y el poster móvil deben mantenerse hasta finalizar el fundido de opacidad; después se retiran junto con la máscara turquesa')
+assert.ok(welcome.includes("!(compactLandscape && phase === 'invitacion' && playback === 'idle')") &&
+  welcome.includes("setPlayback('paused')"),
+  'No debe asomarse el botón negro durante el relevo; sí si el autoplay se bloquea')
 
 assert.match(audioPlayer, /if \(!soundOn\) \{\s*audio\.muted = false\s*toggleSound\(\)/,
   'Tocar Reproducir debe activar el sonido cuando el visitante lo había silenciado')
@@ -349,8 +367,8 @@ assert.ok(chapterScreen.includes("chapter.audio ? 'escuchar' : 'leer'") &&
   chapterScreen.includes('Regresar al índice de los 33 capítulos'),
   'Los capítulos sin MP3 deben iniciar en lectura y ofrecer navegación cronológica')
 
-assert.ok(bookOneCatalog.includes("LEER / ESCUCHAR"),
-  'El menú debe mostrar que el Capítulo I admite lectura y escucha')
+assert.ok(chapterIndex.includes("LEER / ESCUCHAR"),
+  'El índice debe mostrar la opción de leer y escuchar los capítulos disponibles')
 assert.ok(chapterPaths.includes('Has terminado el primer capítulo.'),
   'El mensaje de cierre debe servir a lectores y oyentes')
 
@@ -379,10 +397,13 @@ for (let number = 2; number <= 33; number++) {
     assert.ok(mp3Exists(new URL(`../public${route}`, import.meta.url)),
       `Falta el MP3 del capítulo ${number}: ${route}`)
   }
-}assert.ok(bookOneCatalog.includes('CHAPTERS.filter((chapter) => chapter.book === 1)') &&
-  bookOneCatalog.includes('MP3 por incorporar') &&
-  bookOneCatalog.includes('chapterHref(chapter)'),
-  'El catálogo debe mostrar 33 capítulos y distinguir audio disponible de audio pendiente')
+}
+assert.ok(bookOneCatalog.includes('CHAPTERS.filter((chapter) => chapter.book === 1)') &&
+  bookOneCatalog.includes('<ChapterIndex chapters={chapters} />') &&
+  chapterIndex.includes('chapterHref(chapter)') &&
+  chapterIndex.includes('canOpenBookOneChapter(chapter.number, progress.completedChapters)') &&
+  chapterScreen.includes('!canOpenBookOneChapter(chapter.number, progress.completedChapters)'),
+  'El catálogo debe mostrar los 33 títulos y abrir los capítulos 2–33 solo tras terminar el primero')
 assert.ok(chapterScreen.includes(": chapter.audio ? (") &&
   chapterScreen.includes('AUDIO PENDIENTE DE INCORPORAR'),
   'El modo lectura no debe intentar reproducir archivos MP3 que aún no están en el servidor')
@@ -391,13 +412,15 @@ assert.ok(chapterPaths.includes('href="/libro/1"'),
 
 
 const glossaryEntries = [...glossary.matchAll(/\{ term: "([^"]+)", category: "(universo|habla|lenguas|personajes)", definition: "([^"]+)", source:/g)]
-assert.equal(glossaryEntries.length, 42,
-  'El Archivo de Palabras debe conservar las 42 entradas culturales y sus definiciones')
+assert.ok(glossaryEntries.length >= 42,
+  'El Archivo de Palabras debe conservar las 42 entradas culturales originales y permitir nuevas palabras aprobadas')
+assert.equal(new Set(glossaryEntries.map((entry) => entry[1])).size, glossaryEntries.length,
+  'El Archivo de Palabras no debe duplicar términos culturales')
 for (const category of ['universo','habla','lenguas','personajes']) {
   assert.ok(glossaryEntries.some((entry) => entry[2] === category),
     'Falta una categoría del Archivo de Palabras: ' + category)
 }
-for (const term of ['Pelado', 'Pelao', 'Burrín', 'Hijas del maíz', 'Tzinzunzan', 'Xoloitzcuintle']) {
+for (const term of ['Pelado', 'Pelao', 'Burrín', 'Hijas del maíz', 'Comelonchi', 'Tzinzunzan', 'Xoloitzcuintle']) {
   assert.ok(glossary.includes('term: "' + term + '"'),
     'No debe faltar la palabra cultural ' + term)
 }

@@ -105,6 +105,15 @@
   }
 }
 
+@keyframes sy-invitation-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes sy-breathe {
   0%,
   100% {
@@ -188,6 +197,9 @@
 .animate-sy-fade-in {
   animation: sy-fade-in 1.4s ease-out both;
 }
+.animate-sy-invitation-fade {
+  animation: sy-invitation-fade 450ms ease-out both;
+}
 .animate-sy-breathe {
   animation: sy-breathe 3.2s ease-in-out infinite;
 }
@@ -207,6 +219,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-sy-fade-in,
+  .animate-sy-invitation-fade,
   .animate-sy-breathe,
   .animate-sy-ripple,
   .animate-sy-ring-reveal,
