@@ -27,6 +27,7 @@ export function BienvenidaScreen() {
   const secondStartReadyRef = useRef(false)
   const secondAdvanceTriggeredRef = useRef(false)
   const secondPrimedRef = useRef(false)
+  const secondRevealScheduledRef = useRef(false)
   // Una copia del último fotograma válido del saludo 1 cubre el instante en que
   // el navegador deja de dibujar el video terminado.
   const [secondVisible, setSecondVisible] = useState(false)
@@ -201,20 +202,27 @@ export function BienvenidaScreen() {
   const src = isSaludo ? ASSETS.video.bienvenida : ASSETS.video.bienvenidaMicrofono
 
   const revealSecondVideo = () => {
-    if (phase !== 'invitacion' || secondVisible) return
+    if (phase !== 'invitacion' || secondVisible || secondRevealScheduledRef.current) return
     const video = secondVideoRef.current
-    if (!video) return
-    // Esperamos al primer fotograma REAL, no solo al evento play.
+    if (!video || video.readyState < 2) return
+    secondRevealScheduledRef.current = true
+
+    // Algunos decodificadores muestran un fotograma intermedio justo al iniciar
+    // el segundo MP4. Conservamos el último frame del saludo 1 por debajo
+    // hasta recibir DOS fotogramas reales del saludo 2.
     if (typeof video.requestVideoFrameCallback === 'function') {
       video.requestVideoFrameCallback(() => {
-        setSecondVisible(true)
-        // Conservamos el fotograma de respaldo durante TODO el fundido.
-        // Así la transición es imagen→imagen, nunca un panel turquesa visible.
+        video.requestVideoFrameCallback(() => {
+          setSecondVisible(true)
+        })
       })
     } else {
-      // Compatibilidad: navegadores sin requestVideoFrameCallback.
-      setSecondVisible(true)
-      // Igual en navegadores sin requestVideoFrameCallback: conservar el respaldo.
+      // Sin la API de video-frame: esperar dos repintados antes del fundido.
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          setSecondVisible(true)
+        })
+      })
     }
   }
 
