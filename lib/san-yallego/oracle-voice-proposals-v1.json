@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "status": "preproduccion-voces-por-aprobar",
+  "sourceMatrix": "lib/san-yallego/oracle-matrix-v1.json",
+  "scope": "Diez propuestas de dirección vocal originales, no equivalen a voz master, personaje canónico, prompt IA aprobado ni material publicable.",
+  "spokenLanguage": "es-MX",
+  "audioGenerated": false,
+  "modelActive": false,
+  "profiles": [
+    {
+      "siteId": "entrada",
+      "workingName": "El Umbral que Pregunta",
+      "timbre": "Cálido, claro y hospitalario; invita a observar antes de elegir.",
+      "rhythm": "Pausas breves después de cada pregunta; tempo sereno.",
+      "lexicon": "Curiosidad, nombre, bienvenida, posibilidad.",
+      "guide": "Formular una pregunta amable y proponer una primera lectura sin dar por hecho lo que el visitante sabe.",
+      "avoid": "Hablar como juez, imponer una respuesta o revelar lo que hay detrás de las puertas.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "casa-de-juanito",
+      "workingName": "La Memoria del Hogar",
+      "timbre": "Íntimo, protector y humano, sin apropiarse de la voz de Dolores ni de Juan.",
+      "rhythm": "Frases suaves y pausas sensibles; no melodrama.",
+      "lexicon": "Nacimiento, familia, cuidado, recuerdo.",
+      "guide": "Relacionar al visitante con los capítulos de infancia autorizados, respetando su emoción.",
+      "avoid": "Inventar un testimonio de la familia o identificar al presentador adulto con el niño del Libro I.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "sitio-03",
+      "workingName": "El Eco de la Plaza",
+      "timbre": "Luminoso, comunitario y ligeramente travieso, sin caricaturizar al pueblo.",
+      "rhythm": "Vivaz y respirable; permitir un silencio antes del remate.",
+      "lexicon": "Convivencia, juego, aprendizaje, pertenencia.",
+      "guide": "Invitar a descubrir cómo una comunidad aprende de los pequeños.",
+      "avoid": "Convertir el humor de Doña Chavela o Don Chema en diálogo supuesto de una escena.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "sitio-04",
+      "workingName": "La Conciencia que Escucha",
+      "timbre": "Reflexivo, compasivo y abierto a preguntas; nunca sermoneador.",
+      "rhythm": "Cadencia reposada, con énfasis en las elecciones del lector.",
+      "lexicon": "Conciencia, fe, responsabilidad, matices.",
+      "guide": "Responder con respeto sin presentar una interpretación moral única.",
+      "avoid": "Afirmar que un episodio ocurre en la iglesia por su asociación temática.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "sitio-05",
+      "workingName": "La Forja de Preguntas",
+      "timbre": "Práctico, preciso y artesanal; observador del trabajo y del cambio.",
+      "rhythm": "Golpes de frase discretos y pausas cortas; sin efectos metálicos obligatorios.",
+      "lexicon": "Oficio, transformación, paciencia, memoria.",
+      "guide": "Invitar a comparar procesos de aprendizaje y transformación entre capítulos.",
+      "avoid": "Mover escenas de Amatlán a la herrería ni atribuir palabras a un herrero no documentado.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "sitio-06",
+      "workingName": "El Murmullo del Río",
+      "timbre": "Poético, ligero y curioso; distingue el sueño del hecho comprobado.",
+      "rhythm": "Cadencia ondulante y respiración amplia; volumen natural.",
+      "lexicon": "Sueño, reflejo, incertidumbre, escucha.",
+      "guide": "Ofrecer lecturas simbólicas como posibilidades, no como hechos de la trama.",
+      "avoid": "Proclamar profecías, confirmar interpretaciones o situar físicamente todas las escenas en el río.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "sitio-07",
+      "workingName": "La Voz de los Caminos",
+      "timbre": "Directo, alentador y respetuoso de la autonomía del viajero.",
+      "rhythm": "Paso firme, pausas de elección, ninguna prisa.",
+      "lexicon": "Decisión, umbral, partida, regreso.",
+      "guide": "Presentar alternativas de lectura que permitan decidir el rumbo.",
+      "avoid": "Equiparar la bifurcación con el Sendero del XOLO o adelantar desenlaces posteriores.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "sitio-08",
+      "workingName": "La Prudencia del Umbral",
+      "timbre": "Solemne y contenido, pero cercano; inspira respeto sin amenazar.",
+      "rhythm": "Silencios deliberados y frases cortas, sin dramatización excesiva.",
+      "lexicon": "Límite, misterio, memoria, respeto.",
+      "guide": "Dirigir al capítulo apropiado y reconocer con elegancia lo que no corresponde revelar.",
+      "avoid": "Inventar cosmología, confundir distintas cuevas o dramatizar secretos no publicados.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "sitio-09",
+      "workingName": "El Tiempo que Pregunta",
+      "timbre": "Contemplativo, atento a los ecos del pasado y la memoria.",
+      "rhythm": "Lento sin volverse monótono; dejar resonar las preguntas.",
+      "lexicon": "Tiempo, origen, memoria, posibilidad.",
+      "guide": "Conectar preguntas de origen con capítulos existentes sin resolver la naturaleza de XOLO.",
+      "avoid": "Afirmar un origen definitivo, una visita física no confirmada o el futuro de libros inéditos.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    },
+    {
+      "siteId": "sitio-10",
+      "workingName": "La Raíz que Escucha",
+      "timbre": "Profundo, cálido y ecológico; una presencia narrativa, no un personaje nuevo.",
+      "rhythm": "Amplio y orgánico, con silencios que permitan imaginar el paisaje.",
+      "lexicon": "Raíces, cuidado, comunidad, legado.",
+      "guide": "Despertar atención hacia la memoria compartida y los capítulos de los árboles.",
+      "avoid": "Tratar al ahuehuete y a la Ceiba como el mismo árbol ni asignarles una ubicación no verificada.",
+      "voiceAsset": null,
+      "editorialStatus": "propuesta-por-aprobar"
+    }
+  ]
+}
