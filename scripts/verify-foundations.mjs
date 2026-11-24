@@ -80,6 +80,7 @@ const geraldoVisualDoc = source('docs/personajes/geraldo-ficha-visual-maestra-v1
 const oracleAudioCatalog = source('lib/san-yallego/oracle-audio-catalog.ts')
 const temporalDesign = source('docs/oraculos/arquitectura-temporal-libros-1-4.md')
 const bookOneCatalog = source('app/libro/1/page.tsx')
+const chapterIndex = source('components/san-yallego/capitulo/chapter-index.tsx')
 const reader = source('components/san-yallego/capitulo/immersive-reader.tsx')
 const chapterOneText = source('lib/san-yallego/chapter-one-text.ts')
 const bookOneReading = JSON.parse(source('lib/san-yallego/book-one-reading-v1.json'))
@@ -349,8 +350,8 @@ assert.ok(chapterScreen.includes("chapter.audio ? 'escuchar' : 'leer'") &&
   chapterScreen.includes('Regresar al índice de los 33 capítulos'),
   'Los capítulos sin MP3 deben iniciar en lectura y ofrecer navegación cronológica')
 
-assert.ok(bookOneCatalog.includes("LEER / ESCUCHAR"),
-  'El menú debe mostrar que el Capítulo I admite lectura y escucha')
+assert.ok(chapterIndex.includes("LEER / ESCUCHAR"),
+  'El índice debe mostrar la opción de leer y escuchar los capítulos disponibles')
 assert.ok(chapterPaths.includes('Has terminado el primer capítulo.'),
   'El mensaje de cierre debe servir a lectores y oyentes')
 
@@ -379,10 +380,13 @@ for (let number = 2; number <= 33; number++) {
     assert.ok(mp3Exists(new URL(`../public${route}`, import.meta.url)),
       `Falta el MP3 del capítulo ${number}: ${route}`)
   }
-}assert.ok(bookOneCatalog.includes('CHAPTERS.filter((chapter) => chapter.book === 1)') &&
-  bookOneCatalog.includes('MP3 por incorporar') &&
-  bookOneCatalog.includes('chapterHref(chapter)'),
-  'El catálogo debe mostrar 33 capítulos y distinguir audio disponible de audio pendiente')
+}
+assert.ok(bookOneCatalog.includes('CHAPTERS.filter((chapter) => chapter.book === 1)') &&
+  bookOneCatalog.includes('<ChapterIndex chapters={chapters} />') &&
+  chapterIndex.includes('chapterHref(chapter)') &&
+  chapterIndex.includes('canOpenBookOneChapter(chapter.number, progress.completedChapters)') &&
+  chapterScreen.includes('!canOpenBookOneChapter(chapter.number, progress.completedChapters)'),
+  'El catálogo debe mostrar los 33 títulos y abrir los capítulos 2–33 solo tras terminar el primero')
 assert.ok(chapterScreen.includes(": chapter.audio ? (") &&
   chapterScreen.includes('AUDIO PENDIENTE DE INCORPORAR'),
   'El modo lectura no debe intentar reproducir archivos MP3 que aún no están en el servidor')
