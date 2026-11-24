@@ -91,6 +91,15 @@ export default async function GuardianPage({ searchParams }: Props) {
           </Link>
         </div>
 
+        <div className="flex justify-center">
+          <Link
+            href="/guardian/piloto-oraculo-entrada"
+            className="inline-flex min-h-12 items-center justify-center rounded-lg border border-gold/50 px-6 py-3 text-center font-display text-xs tracking-[0.1em] text-gold transition-colors hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-gold"
+          >
+            PROBAR PILOTO GUIADO DEL ORÁCULO DE ENTRADA
+          </Link>
+        </div>
+
         <ol className="grid gap-4 sm:grid-cols-2">
           {SITES.map((site) => (
             <li key={site.id}>
