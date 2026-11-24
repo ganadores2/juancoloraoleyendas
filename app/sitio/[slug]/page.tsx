@@ -6,7 +6,10 @@ import { SiteJourney } from '@/components/san-yallego/site-journey'
 import { SealedSite } from '@/components/san-yallego/sealed-site'
 import { getSite, siteLabel, SITES } from '@/lib/san-yallego/sites'
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ 'desde-llave'?: string }>
+}
 
 export function generateStaticParams() {
   return SITES.map((site) => ({ slug: site.id }))
@@ -20,15 +23,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params, searchParams }: Props) {
   const site = getSite((await params).slug)
   if (!site) notFound()
+  const comingFromKey = (await searchParams)['desde-llave'] === '1'
 
   switch (site.experience) {
     case 'oraculo-entrada':
       return <SiteJourney siteId={site.id}><OraculoEntrada /></SiteJourney>
     case 'casa-de-juanito':
-      return <SiteJourney siteId={site.id}><CasaJuanitoScreen skipDescenso /></SiteJourney>
+      return <SiteJourney siteId={site.id} fromNewKey={comingFromKey}><CasaJuanitoScreen skipDescenso /></SiteJourney>
     case 'sellado':
       return <SealedSite title={siteLabel(site)} />
   }

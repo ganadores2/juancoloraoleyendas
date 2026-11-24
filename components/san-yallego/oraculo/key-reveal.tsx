@@ -60,8 +60,8 @@ export function KeyReveal({ justFound }: KeyRevealProps) {
           Tu primer destino se ha revelado: la Casa de Juanito. Allí comienza «El primer grito».
         </p>
         <div className="sy-key-actions flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-          <Link href="/sitio/casa-de-juanito" className={ritualButton('primary', 'max-w-full px-4 py-3 text-[11px] tracking-[0.15em] sm:px-6')}>
-            Continuar a la Casa de Juanito
+          <Link href="/sitio/casa-de-juanito?desde-llave=1" className={ritualButton('primary', 'max-w-full px-4 py-3 text-[11px] tracking-[0.15em] sm:px-6')}>
+            Comenzar vuelo a la Casa de Juanito
           </Link>
           <Link href="/mapa" className={ritualButton('secondary', 'px-4 py-3 tracking-[0.16em]')}>
             Volver al mapa

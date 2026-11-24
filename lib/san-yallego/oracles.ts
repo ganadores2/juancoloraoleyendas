@@ -12,6 +12,8 @@ export interface Oracle {
   closingLine?: string
   /** Posición de la argolla oculta sobre la imagen del Oráculo, en porcentaje. */
   hiddenRing?: { x: number; y: number; sizePx: number }
+  /** Coordenadas verificadas exclusivamente sobre la imagen ampliada aportada por el autor. */
+  hiddenRingOnExpandedImage?: { x: number; y: number; sizePx: number }
 }
 
 export const ORACLES: Record<OracleId, Oracle> = {
@@ -27,6 +29,7 @@ export const ORACLES: Record<OracleId, Oracle> = {
     ],
     closingLine: 'Entonces mira bien. La piedra también escucha.',
     hiddenRing: { x: 71, y: 78, sizePx: 30 },
+    hiddenRingOnExpandedImage: { x: 49.3, y: 78, sizePx: 64 },
   },
   'oraculo-casa-de-juanito': {
     id: 'oraculo-casa-de-juanito',
