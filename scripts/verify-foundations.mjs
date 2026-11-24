@@ -199,9 +199,11 @@ assert.ok(welcome.includes("onClick={() => void play()}"),
   'Debe quedar una opción manual si el navegador bloquea el video')
 assert.ok(welcome.includes("onTransitionEnd={(event) => {") &&
   welcome.includes("event.propertyName !== 'opacity'") &&
-  welcome.includes("if (!compactLandscape)") &&
+  welcome.includes("if (event.propertyName !== 'opacity' || !secondVisible) return") &&
+  welcome.includes("setTurquoiseMaskVisible(false)") &&
+  welcome.includes("setFirstFreezeVisible(false)") &&
   welcome.includes("setSecondStartVisible(false)"),
-  'En móvil horizontal el poster debe cubrir todo el fundido antes de retirarse')
+  'El respaldo del saludo 1 y el poster móvil deben mantenerse hasta finalizar el fundido de opacidad; después se retiran junto con la máscara turquesa')
 assert.ok(welcome.includes("!(compactLandscape && phase === 'invitacion' && playback === 'idle')") &&
   welcome.includes("setPlayback('paused')"),
   'No debe asomarse el botón negro durante el relevo; sí si el autoplay se bloquea')
